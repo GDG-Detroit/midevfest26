@@ -1,10 +1,100 @@
-import { useEffect, useRef } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import PropTypes from 'prop-types'
+import { FaArrowRight } from 'react-icons/fa6'
+import CTAButton from '@/components/ui/CTAButton'
 import { createPrideTrailScene } from './prideTrailScene'
+
+const HERO_LINKS = [
+  { href: '#partners', label: 'Call for Sponsors' },
+  { href: '#about', label: 'About the Summit' },
+  { href: '#schedule', label: 'Schedule' },
+]
+
+function PrideHeroForeground() {
+  return (
+    <div className="relative z-10 flex min-h-[90vh] w-full items-center justify-center px-4 py-24 pt-28 sm:px-6">
+      <div
+        className="bg-pride-hero-glass mx-auto w-full max-w-3xl rounded-2xl px-6 py-10 text-center sm:px-10 sm:py-12"
+        role="group"
+        aria-labelledby="pride-hero-title"
+      >
+        {/* Top metadata */}
+        <p className="font-body text-[10px] font-semibold uppercase tracking-[0.35em] text-white/55 sm:text-xs">
+          Detroit &middot; IBM HQ &middot; 2026 &middot; Powered by Compass
+          Detroit &amp; IBM
+        </p>
+
+        {/* Main title */}
+        <h1
+          id="pride-hero-title"
+          className="font-heading mt-6 text-3xl font-black uppercase leading-[1.05] tracking-tight text-white sm:mt-8 sm:text-4xl md:text-5xl lg:text-[3.25rem]"
+        >
+          Detroit Pride Innovation Summit
+        </h1>
+
+        {/* Subheading */}
+        <p className="font-body mt-5 text-xs font-semibold uppercase tracking-[0.3em] text-iwd-gold-300/90 sm:text-sm">
+          Registration opens soon
+        </p>
+
+        {/* Primary CTAs */}
+        <div className="mt-8 flex flex-col items-center justify-center gap-4 sm:flex-row sm:gap-5">
+          <CTAButton
+            href="#"
+            label="Register Now"
+            icon={<FaArrowRight />}
+            iconPosition="right"
+            ariaLabel="Register for the Detroit Pride Innovation Summit (link coming soon)"
+            className="w-full min-w-48 sm:w-auto"
+          />
+          <CTAButton
+            href="#partners"
+            label="Become a Sponsor"
+            variant="secondary"
+            target="_self"
+            ariaLabel="Become a sponsor for the Detroit Pride Innovation Summit"
+            className="w-full min-w-48 border-iwd-gold-400/40 text-white sm:w-auto dark:border-iwd-gold-400/40 dark:text-white dark:hover:text-white"
+          />
+        </div>
+
+        {/* Venue callout */}
+        <p className="font-body mt-6 text-[11px] uppercase tracking-[0.2em] text-white/45 sm:text-xs">
+          Venue:{' '}
+          <span className="inline-block rounded border border-iwd-gold-400/35 bg-white/[0.04] px-2 py-0.5 font-semibold tracking-[0.15em] text-iwd-gold-300/90">
+            IBM HQ
+          </span>
+        </p>
+
+        {/* Description */}
+        <p className="font-body mx-auto mt-6 max-w-xl text-base leading-relaxed text-white">
+          A day of learning, building, and connecting for LGBTQ+ innovators and
+          allies in Detroit&apos;s tech ecosystem — hosted at IBM HQ with
+          workshops, talks, and community.
+        </p>
+
+        {/* Footer links */}
+        <nav
+          className="mt-8 flex flex-wrap items-center justify-center gap-3"
+          aria-label="Hero quick links"
+        >
+          {HERO_LINKS.map((link) => (
+            <a
+              key={link.href}
+              href={link.href}
+              className="rounded-full border border-iwd-gold-400/30 bg-white/[0.03] px-4 py-2 font-body text-[10px] font-semibold uppercase tracking-[0.18em] text-white/80 transition-colors hover:border-iwd-gold-400/50 hover:bg-white/[0.06] hover:text-white sm:text-[11px]"
+            >
+              {link.label}
+            </a>
+          ))}
+        </nav>
+      </div>
+    </div>
+  )
+}
 
 /**
  * Hero section with the animated pride trail WebGL background.
- * Drop `children` on top for copy, CTAs, etc. (same pattern as LandingSection).
+ * Optional `children` render below the built-in foreground card.
  */
 function LandingSectionPride({
   children,
@@ -12,14 +102,29 @@ function LandingSectionPride({
   showDebugGUI = import.meta.env.DEV,
 }) {
   const canvasHostRef = useRef(null)
+  const sceneRef = useRef(null)
+  const [isAnimationPlaying, setIsAnimationPlaying] = useState(true)
 
   useEffect(() => {
     const host = canvasHostRef.current
     if (!host) return undefined
 
     const scene = createPrideTrailScene(host, { showDebugGUI })
-    return () => scene.dispose()
+    sceneRef.current = scene
+    setIsAnimationPlaying(scene.getPlaying())
+    return () => {
+      scene.dispose()
+      sceneRef.current = null
+    }
   }, [showDebugGUI])
+
+  const toggleAnimationPlayback = () => {
+    const scene = sceneRef.current
+    if (!scene) return
+    const next = !scene.getPlaying()
+    scene.setPlaying(next)
+    setIsAnimationPlaying(next)
+  }
 
   return (
     <section
@@ -32,6 +137,29 @@ function LandingSectionPride({
         className="absolute inset-0 z-0"
         aria-hidden="true"
       />
+
+      <button
+        type="button"
+        onClick={toggleAnimationPlayback}
+        className="absolute bottom-6 right-6 z-30 flex size-12 items-center justify-center rounded-full border border-white/40 bg-black/60 text-white shadow-2xl backdrop-blur-lg transition-all hover:scale-110 hover:bg-black/80 lg:bottom-12 lg:right-12"
+        aria-label={
+          isAnimationPlaying
+            ? 'Pause background animation'
+            : 'Play background animation'
+        }
+      >
+        {isAnimationPlaying ? (
+          <svg className="size-4" fill="currentColor" viewBox="0 0 24 24">
+            <path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z" />
+          </svg>
+        ) : (
+          <svg className="size-4" fill="currentColor" viewBox="0 0 24 24">
+            <path d="M8 5v14l11-7z" />
+          </svg>
+        )}
+      </button>
+
+      <PrideHeroForeground />
       {children ? <div className="relative z-10">{children}</div> : null}
     </section>
   )

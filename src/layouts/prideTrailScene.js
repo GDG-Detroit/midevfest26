@@ -205,7 +205,7 @@ const FOREGROUND_BLUR_SHADER = {
  * Mounts the pride trail WebGL scene inside a DOM container.
  * @param {HTMLElement} container
  * @param {{ showDebugGUI?: boolean, config?: Partial<typeof DEFAULT_CONFIG> }} options
- * @returns {{ dispose: () => void }}
+ * @returns {{ setPlaying: (playing: boolean) => void, getPlaying: () => boolean, dispose: () => void }}
  */
 export function createPrideTrailScene(container, options = {}) {
   const config = { ...DEFAULT_CONFIG, ...options.config }
@@ -222,6 +222,7 @@ export function createPrideTrailScene(container, options = {}) {
   let floorMesh
   let gui = null
   let animationId = null
+  let isPlaying = true
   let globalTime = 0
   const clock = new THREE.Clock()
   const trailObjects = []
@@ -369,12 +370,27 @@ export function createPrideTrailScene(container, options = {}) {
   }
 
   function animate() {
+    if (!isPlaying) {
+      animationId = null
+      return
+    }
     animationId = requestAnimationFrame(animate)
     globalTime += clock.getDelta() * config.speedMultiplier
     trailMaterials.forEach((m) => {
       m.uTime.value = globalTime
     })
     composer.render()
+  }
+
+  function setPlaying(playing) {
+    isPlaying = playing
+    if (playing) {
+      clock.getDelta()
+      if (animationId === null) animate()
+    } else if (animationId !== null) {
+      cancelAnimationFrame(animationId)
+      animationId = null
+    }
   }
 
   function setupGUI(GUI) {
@@ -573,6 +589,8 @@ export function createPrideTrailScene(container, options = {}) {
   animate()
 
   return {
+    setPlaying,
+    getPlaying: () => isPlaying,
     dispose() {
       if (animationId !== null) cancelAnimationFrame(animationId)
       resizeObserver.disconnect()
