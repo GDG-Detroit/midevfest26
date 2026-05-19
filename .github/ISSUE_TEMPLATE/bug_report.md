@@ -1,10 +1,12 @@
 ---
 name: Bug Report
-about: Create a report to help us improve the Black History Month Innovation Summit website
+about: Report a bug on the Detroit Pride Innovation Summit website (IBM HQ)
 title: '[BUG] '
 labels: bug
 assignees: ''
 ---
+
+**Event:** Detroit Pride Innovation Summit · **Venue:** IBM HQ
 
 ## Bug Description
 

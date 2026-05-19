@@ -1,10 +1,12 @@
 ---
 name: Accessibility Issue
-about: Report an accessibility issue with the Black History Month Innovation Summit website
+about: Report an accessibility issue on the Detroit Pride Innovation Summit website (IBM HQ)
 title: '[A11Y] '
 labels: accessibility, bug
 assignees: ''
 ---
+
+**Event:** Detroit Pride Innovation Summit · **Venue:** IBM HQ
 
 ## Accessibility Issue Description
 

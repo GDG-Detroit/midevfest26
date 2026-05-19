@@ -1,8 +1,8 @@
 blank_issues_enabled: false
 contact_links:
-  - name: Black History Month Innovation Summit Community
-    url: https://bhmsummit.com/
-    about: Join our Compass Detroit community for discussions and support
+  - name: Detroit Pride Innovation Summit
+    url: https://github.com/Compass-Detroit/pridemi26#readme
+    about: Event info — Detroit Pride Innovation Summit at IBM HQ
   - name: General Questions
-    url: https://github.com/Compass-Detroit/BHM-website/discussions
+    url: https://github.com/Compass-Detroit/pridemi26/discussions
     about: Ask general questions about the project in our discussions

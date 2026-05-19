@@ -24,7 +24,7 @@ This project includes VS Code extension recommendations. When you open the proje
 
 ```bash
 git clone <repo-url>
-cd IWD-website-2026
+cd pridemi26
 npm install
 npm run dev
 ```
@@ -55,13 +55,13 @@ This application can be containerized using Docker for easy deployment and consi
 1. Build the Docker image:
 
 ```bash
-docker build -t iwd-website .
+docker build -t pridemi26 .
 ```
 
 2. Run the container:
 
 ```bash
-docker run -p 3000:3000 iwd-website
+docker run -p 3000:3000 pridemi26
 ```
 
 3. Open your browser and navigate to `http://localhost:3000`
@@ -70,13 +70,13 @@ docker run -p 3000:3000 iwd-website
 
 | Command                                                 | Description                                     |
 | ------------------------------------------------------- | ----------------------------------------------- |
-| `docker build -t iwd-website .`                         | Build the Docker image                          |
-| `docker run -p 3000:3000 iwd-website`                   | Run the container on port 3000                  |
-| `docker run -d -p 3000:3000 --name iwd-app iwd-website` | Run container in detached mode with custom name |
-| `docker stop iwd-app`                                   | Stop the running container                      |
-| `docker rm iwd-app`                                     | Remove the container                            |
+| `docker build -t pridemi26 .`                         | Build the Docker image                          |
+| `docker run -p 3000:3000 pridemi26`                   | Run the container on port 3000                  |
+| `docker run -d -p 3000:3000 --name pridemi-app pridemi26` | Run container in detached mode with custom name |
+| `docker stop pridemi-app`                                   | Stop the running container                      |
+| `docker rm pridemi-app`                                     | Remove the container                            |
 | `docker images`                                         | List all Docker images                          |
-| `docker rmi iwd-website`                                | Remove the Docker image                         |
+| `docker rmi pridemi26`                                | Remove the Docker image                         |
 
 ### Environment Variables
 
@@ -262,7 +262,7 @@ The site is deployed on [Vercel](https://vercel.com) and uses Vercel Analytics a
 
 ### Issues
 
-This project uses GitHub Issues & GitHub Projects in the [Compass-Detroit/IWD-website-2026](https://github.com/Compass-Detroit/IWD-website-2026) repository for tracking development. Please create an issue if you encounter any problems or have suggestions for improvements.
+This project uses GitHub Issues & GitHub Projects in the [Compass-Detroit/pridemi26](https://github.com/Compass-Detroit/pridemi26) repository for tracking development. Please create an issue if you encounter any problems or have suggestions for improvements.
 
 ### Pull Requests
 
