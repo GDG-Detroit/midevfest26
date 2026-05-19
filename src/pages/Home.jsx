@@ -1,5 +1,5 @@
 import PageLayout from '@/layouts/PageLayout'
-import LandingSection from '@/layouts/LandingSection'
+import LandingSectionPride from '@/layouts/LandingSectionPride'
 import LocationSection from '@/layouts/LocationSection'
 import AboutSection from '@/layouts/AboutSection'
 import AttendeeSection from '@/layouts/AttendeeSection'
@@ -24,7 +24,7 @@ function Home() {
         International Women&apos;s Day Innovation Summit {currentYear}
       </h1>
 
-      <LandingSection />
+      <LandingSectionPride />
 
       <div className="bg-iwd-surface-raised relative z-10 space-y-32 py-20 dark:bg-iwd-black-950">
         <LocationSection />
