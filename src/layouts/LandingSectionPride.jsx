@@ -29,7 +29,10 @@ function PrideHeroForeground() {
           id="pride-hero-title"
           className="font-heading mt-6 text-3xl font-black uppercase leading-[1.05] tracking-tight text-white sm:mt-8 sm:text-4xl md:text-5xl lg:text-[3.25rem]"
         >
-          Detroit Pride Innovation Summit
+          Detroit Pride{' '}
+          <span className="block text-iwd-gold-400 text-xl sm:text-2xl md:text-3xl lg:text-4xl mt-2 normal-case font-large">
+            Innovation Summit
+          </span>
         </h1>
 
         {/* Subheading */}
