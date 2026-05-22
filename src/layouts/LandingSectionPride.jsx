@@ -4,7 +4,7 @@ import { FaArrowRight } from 'react-icons/fa6'
 import CTAButton from '@/components/ui/CTAButton'
 import { createPrideTrailScene } from './prideTrailScene'
 import useHeroAnimation from '@/hooks/useHeroAnimation'
-import heroTrails800 from '@/assets/images/hero/hero-trails.webp'
+import heroTrails from '@/assets/images/hero/hero-trails.webp'
 import heroTrailsFull from '@/assets/images/hero/hero-trails.png'
 
 /** Matches Navbar / HeroAnimationProvider desktop breakpoint. */
@@ -114,7 +114,7 @@ function PrideHeroStaticBackground() {
       <picture className="block size-full">
         <source media={HERO_DESKTOP_MEDIA} srcSet={heroTrailsFull} />
         <img
-          src={heroTrails800}
+          src={heroTrails}
           alt=""
           width={800}
           height={279}
