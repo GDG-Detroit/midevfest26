@@ -1,8 +1,10 @@
-# International Women's Day Innovation Summit 2026
+# Detroit Pride Innovation Summit 2026
 
-The website for the [IWD Innovation Summit 2026](https://iwdsummit.com/). Built with Vite, React, and Tailwind CSS.
+The website for the [Detroit Pride Innovation Summit 2026](https:pridemi26.vercel.app/). Built with Vite, React, and Tailwind CSS.
 
-Organized by **Compass Detroit** in partnership with **GDG Detroit** and **Women Techmakers**.
+Organized by **Compass Detroit** in partnership with **GDG Detroit** and **Other Organizations**.
+
+Hero animation is a custom WebGL animation created with Three.js and lil-gui. It is used to create the pride trail effect on the hero section. Author of initial effect attribution: [Sabo Sugi](https://www.reddit.com/user/CollectionBulky1564/). Effect enhanced and customized by **[Greg Miller](https://github.com/shrinkray)** for Compass Detroit.
 
 ## Quick Start
 
@@ -259,6 +261,21 @@ The site is deployed on [Vercel](https://vercel.com) and uses Vercel Analytics a
 3. Deploy
 
 **Alternative**: Use [Docker](#docker) for self-hosted deployments.
+
+## Attribution
+
+### Hero background (Three.js)
+
+The landing hero uses a **WebGL pride trail animation** powered by [Three.js](https://threejs.org/) and a custom scene in this repository.
+
+| Credit                         | Details                                                                                                                                                                                                                                                                                                                                                               |
+| ------------------------------ | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **Three.js**                   | Copyright © 2010–2026 [three.js authors](https://github.com/mrdoob/three.js). [MIT License](https://github.com/mrdoob/three.js/blob/dev/LICENSE). Used for WebGL rendering, shader materials, and post-processing (`EffectComposer`, `UnrealBloomPass`, `SMAAPass`, and related addons under `three/addons`).                                                        |
+| **Initial pride trail effect** | [Sabo Sugi](https://www.reddit.com/user/CollectionBulky1564/) — original WebGL concept and shaders adapted for this site.                                                                                                                                                                                                                                             |
+| **Site integration**           | [Greg Miller](https://github.com/shrinkray) (Compass Detroit) — React integration, Gilbert Baker rainbow palette, performance and accessibility behavior (static fallback, mobile pause), and scene wiring in `src/layouts/prideTrailScene.js` and `src/layouts/LandingSectionPride.jsx`. Dev-only tuning UI uses [lil-gui](https://github.com/georgealways/lil-gui). |
+| **Static hero fallback**       | When animation is off (mobile viewport, `prefers-reduced-motion`, user pause, or mobile nav over the hero), the site shows poster frames in `src/assets/images/hero/` (`hero-trails.webp`, `hero-trails-800x.webp`, `hero-trails.png`) instead of running the WebGL loop.                                                                                             |
+
+Dependency versions: `three`, `lil-gui` (see `package.json`).
 
 ### Issues
 
