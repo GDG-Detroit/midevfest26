@@ -30,7 +30,7 @@ function PrideHeroForeground() {
           className="font-heading mt-6 text-3xl font-black uppercase leading-[1.05] tracking-tight text-white sm:mt-8 sm:text-4xl md:text-5xl lg:text-[3.25rem]"
         >
           Detroit Pride{' '}
-          <span className="block text-iwd-gold-400 text-xl sm:text-2xl md:text-3xl lg:text-4xl mt-2 normal-case font-large">
+          <span className="mt-2 block text-xl normal-case text-iwd-gold-400 font-heading sm:text-2xl md:text-3xl lg:text-4xl">
             Innovation Summit
           </span>
         </h1>
@@ -43,20 +43,26 @@ function PrideHeroForeground() {
         {/* Primary CTAs */}
         <div className="mt-8 flex flex-col items-center justify-center gap-4 sm:flex-row sm:gap-5">
           <CTAButton
-            href="#"
+            href="mailto:registration@compassdetroit.org"
             label="Register Now"
-            icon={<FaArrowRight />}
-            iconPosition="right"
+            target="_blank"
+            rel="noopener noreferrer"
             ariaLabel="Register for the Detroit Pride Innovation Summit (link coming soon)"
             className="w-full min-w-48 sm:w-auto"
+            icon={<FaArrowRight />}
+            iconPosition="right"
           />
+
           <CTAButton
-            href="#partners"
+            href="mailto:sponsors@compassdetroit.org"
             label="Become a Sponsor"
             variant="secondary"
-            target="_self"
+            target="_blank"
+            rel="noopener noreferrer"
             ariaLabel="Become a sponsor for the Detroit Pride Innovation Summit"
             className="w-full min-w-48 border-iwd-gold-400/40 text-white sm:w-auto dark:border-iwd-gold-400/40 dark:text-white dark:hover:text-white"
+            icon={<FaArrowRight />}
+            iconPosition="right"
           />
         </div>
 
@@ -114,7 +120,6 @@ function LandingSectionPride({
 
     const scene = createPrideTrailScene(host, { showDebugGUI })
     sceneRef.current = scene
-    setIsAnimationPlaying(scene.getPlaying())
     return () => {
       scene.dispose()
       sceneRef.current = null
