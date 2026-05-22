@@ -21,26 +21,5 @@
   "tailwindCSS.experimental.classSort": false,
   "tailwindCSS.experimental.configFile": "./tailwind.config.js",
   "tailwindCSS.includeLanguages": {},
-  "tailwindCSS.experimental.includeLanguages": {},
-
-  "peacock.color": "#703c78",
-  "workbench.colorCustomizations": {
-    "activityBar.activeBackground": "#904d9a",
-    "activityBar.background": "#904d9a",
-    "activityBar.foreground": "#e7e7e7",
-    "activityBar.inactiveForeground": "#e7e7e799",
-    "activityBarBadge.background": "#aa9f55",
-    "activityBarBadge.foreground": "#15202b",
-    "commandCenter.border": "#e7e7e799",
-    "sash.hoverBorder": "#904d9a",
-    "statusBar.background": "#703c78",
-    "statusBar.foreground": "#e7e7e7",
-    "statusBarItem.hoverBackground": "#904d9a",
-    "statusBarItem.remoteBackground": "#703c78",
-    "statusBarItem.remoteForeground": "#e7e7e7",
-    "titleBar.activeBackground": "#703c78",
-    "titleBar.activeForeground": "#e7e7e7",
-    "titleBar.inactiveBackground": "#703c7899",
-    "titleBar.inactiveForeground": "#e7e7e799"
-  }
+  "tailwindCSS.experimental.includeLanguages": {}
 }
