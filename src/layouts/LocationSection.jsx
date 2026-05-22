@@ -144,7 +144,7 @@ function LocationSection() {
               <h3 className="text-xl font-semibold text-white">When</h3>
             </div>
             <p className="text-lg font-semibold tracking-wide text-iwd-gold-300">
-              March 28, 2026
+              June 27, 2026
             </p>
             <p className="mt-2 text-gray-400">
               Doors Open 8:00 AM <br /> Sessions to 5:00 PM
@@ -319,7 +319,7 @@ function LocationSection() {
                 IBM HQ Detroit
               </div>
               <iframe
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2951.265106112538!2d-83.05315364177726!3d42.338780280806414!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8824d2ca78df0e73%3A0xe54d6afcc1dacc7!2sLittle%20Caesars%20Global%20Resource%20Center!5e0!3m2!1sen!2sus!4v1711204899999!5m2!1sen!2sus"
+                src="https://www.google.com/maps?q=IBM%20HQ%20Detroit%2C%20500%20Woodward%20Ave%2C%20Detroit%2C%20MI%2048226&output=embed"
                 width="100%"
                 height="100%"
                 style={{
