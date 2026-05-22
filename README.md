@@ -4,7 +4,7 @@ The website for the [Detroit Pride Innovation Summit 2026](https://pridemi26.ver
 
 Organized by **Compass Detroit** in partnership with **GDG Detroit** and **Other Organizations**.
 
-Hero animation is a custom WebGL animation created with Three.js and lil-gui. It is used to create the pride trail effect on the hero section. Author of initial effect attribution: [Sabo Sugi](https://www.reddit.com/user/CollectionBulky1564/). Effect enhanced and customized by **[Greg Miller](https://github.com/shrinkray)** for Compass Detroit.
+Hero animation is a custom WebGL animation created with Three.js and lil-gui. It is used to create the pride trail effect on the hero section. Author of initial effect attribution: [Sabo Sugi](https://x.com/sabosugi/). Effect enhanced and customized by **[Greg Miller](https://github.com/shrinkray)** for Compass Detroit.
 
 ## Quick Start
 
