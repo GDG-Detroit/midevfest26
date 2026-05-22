@@ -138,8 +138,13 @@ function LandingSectionPride({
 }) {
   const canvasHostRef = useRef(null)
   const sceneRef = useRef(null)
-  const { shouldPlay, setUserPlaying, isNarrowViewport } = useHeroAnimation()
-  const showAnimatedBackground = shouldPlay && !isNarrowViewport
+  const {
+    shouldPlay,
+    userWantsPlaying,
+    toggleUserPlayback,
+    canControlPlayback,
+  } = useHeroAnimation()
+  const showAnimatedBackground = shouldPlay
 
   useEffect(() => {
     if (!showAnimatedBackground) return undefined
@@ -154,10 +159,6 @@ function LandingSectionPride({
       sceneRef.current = null
     }
   }, [showDebugGUI, showAnimatedBackground])
-
-  const toggleAnimationPlayback = () => {
-    setUserPlaying(!shouldPlay)
-  }
 
   return (
     <section
@@ -175,19 +176,19 @@ function LandingSectionPride({
         <PrideHeroStaticBackground />
       )}
 
-      {!isNarrowViewport ? (
+      {canControlPlayback ? (
         <button
           type="button"
-          onClick={toggleAnimationPlayback}
+          onClick={toggleUserPlayback}
           className="absolute bottom-6 right-6 z-30 flex size-12 items-center justify-center rounded-full border border-white/40 bg-black/60 text-white shadow-2xl backdrop-blur-lg transition-all hover:scale-110 hover:bg-black/80 lg:bottom-12 lg:right-12"
-          aria-pressed={showAnimatedBackground}
+          aria-pressed={userWantsPlaying}
           aria-label={
-            showAnimatedBackground
+            userWantsPlaying
               ? 'Pause background animation'
               : 'Play background animation'
           }
         >
-          {showAnimatedBackground ? (
+          {userWantsPlaying ? (
             <svg className="size-4" fill="currentColor" viewBox="0 0 24 24">
               <path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z" />
             </svg>

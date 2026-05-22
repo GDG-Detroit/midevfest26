@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState } from 'react'
+import { useCallback, useEffect, useMemo, useState } from 'react'
 import PropTypes from 'prop-types'
 import HeroAnimationContext from '@/contexts/heroAnimationContextCore'
 
@@ -6,7 +6,8 @@ import HeroAnimationContext from '@/contexts/heroAnimationContextCore'
 const NARROW_VIEWPORT_QUERY = '(max-width: 1499px)'
 
 export default function HeroAnimationProvider({ children }) {
-  const [userPlaying, setUserPlaying] = useState(null)
+  /** Explicit user preference; independent of system/layout overrides. */
+  const [userWantsPlaying, setUserWantsPlaying] = useState(true)
   const [mobileNavOpen, setMobileNavOpen] = useState(false)
   const [isNarrowViewport, setIsNarrowViewport] = useState(false)
   const [prefersReducedMotion, setPrefersReducedMotion] = useState(false)
@@ -29,23 +30,51 @@ export default function HeroAnimationProvider({ children }) {
     }
   }, [])
 
-  const shouldPlay = useMemo(() => {
-    if (mobileNavOpen) return false
-    if (prefersReducedMotion) return false
-    if (isNarrowViewport) return false
-    if (userPlaying !== null) return userPlaying
-    return true
-  }, [mobileNavOpen, prefersReducedMotion, isNarrowViewport, userPlaying])
+  const canControlPlayback = useMemo(
+    () =>
+      !prefersReducedMotion && !isNarrowViewport && !mobileNavOpen,
+    [prefersReducedMotion, isNarrowViewport, mobileNavOpen]
+  )
+
+  const shouldPlay = useMemo(
+    () =>
+      userWantsPlaying &&
+      !prefersReducedMotion &&
+      !isNarrowViewport &&
+      !mobileNavOpen,
+    [
+      userWantsPlaying,
+      prefersReducedMotion,
+      isNarrowViewport,
+      mobileNavOpen,
+    ]
+  )
+
+  const toggleUserPlayback = useCallback(() => {
+    setUserWantsPlaying((prev) => !prev)
+  }, [])
 
   const value = useMemo(
     () => ({
       shouldPlay,
-      setUserPlaying,
+      userWantsPlaying,
+      setUserWantsPlaying,
+      toggleUserPlayback,
+      canControlPlayback,
+      prefersReducedMotion,
       setMobileNavOpen,
       isNarrowViewport,
       mobileNavOpen,
     }),
-    [shouldPlay, isNarrowViewport, mobileNavOpen]
+    [
+      shouldPlay,
+      userWantsPlaying,
+      toggleUserPlayback,
+      canControlPlayback,
+      prefersReducedMotion,
+      isNarrowViewport,
+      mobileNavOpen,
+    ]
   )
 
   return (
