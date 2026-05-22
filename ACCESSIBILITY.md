@@ -19,9 +19,6 @@ We use `eslint-plugin-jsx-a11y` to catch accessibility issues during development
 ```bash
 # Run accessibility linting
 npm run lint:a11y
-
-# Run accessibility check (alias)
-npm run a11y:check
 ```
 
 **Configuration**: `.eslintrc.a11y.cjs`

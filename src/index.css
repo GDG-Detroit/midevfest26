@@ -265,6 +265,14 @@
   border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
+.bg-pride-hero-glass {
+  background: rgba(2, 6, 23, 0.45);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  box-shadow: 0 24px 80px rgba(0, 0, 0, 0.35);
+}
+
 @keyframes fillProgress {
   from {
     width: 0%;
@@ -372,92 +380,150 @@
 [data-mode='light'] :is(#hero, .site-header.site-header--dark) .text-gray-600 {
   color: rgb(229 231 235 / 0.92);
 }
-[data-mode='light'] :is(#hero, .site-header.site-header--dark) .text-iwd-gold-300 {
+[data-mode='light']
+  :is(#hero, .site-header.site-header--dark)
+  .text-iwd-gold-300 {
   color: rgb(var(--iwd-accent-300) / 1);
 }
-[data-mode='light'] :is(#hero, .site-header.site-header--dark) .text-iwd-gold-300\/50 {
+[data-mode='light']
+  :is(#hero, .site-header.site-header--dark)
+  .text-iwd-gold-300\/50 {
   color: rgb(var(--iwd-accent-300) / 0.5);
 }
-[data-mode='light'] :is(#hero, .site-header.site-header--dark) .text-iwd-gold-300\/80 {
+[data-mode='light']
+  :is(#hero, .site-header.site-header--dark)
+  .text-iwd-gold-300\/80 {
   color: rgb(var(--iwd-accent-300) / 0.8);
 }
-[data-mode='light'] :is(#hero, .site-header.site-header--dark) .text-iwd-gold-300\/90 {
+[data-mode='light']
+  :is(#hero, .site-header.site-header--dark)
+  .text-iwd-gold-300\/90 {
   color: rgb(var(--iwd-accent-300) / 0.9);
 }
-[data-mode='light'] :is(#hero, .site-header.site-header--dark) .text-iwd-gold-400 {
+[data-mode='light']
+  :is(#hero, .site-header.site-header--dark)
+  .text-iwd-gold-400 {
   color: rgb(var(--iwd-accent-400) / 1);
 }
-[data-mode='light'] :is(#hero, .site-header.site-header--dark) .text-iwd-gold-400\/40 {
+[data-mode='light']
+  :is(#hero, .site-header.site-header--dark)
+  .text-iwd-gold-400\/40 {
   color: rgb(var(--iwd-accent-400) / 0.4);
 }
-[data-mode='light'] :is(#hero, .site-header.site-header--dark) .text-iwd-gold-400\/45 {
+[data-mode='light']
+  :is(#hero, .site-header.site-header--dark)
+  .text-iwd-gold-400\/45 {
   color: rgb(var(--iwd-accent-400) / 0.45);
 }
-[data-mode='light'] :is(#hero, .site-header.site-header--dark) .text-iwd-gold-400\/50 {
+[data-mode='light']
+  :is(#hero, .site-header.site-header--dark)
+  .text-iwd-gold-400\/50 {
   color: rgb(var(--iwd-accent-400) / 0.5);
 }
-[data-mode='light'] :is(#hero, .site-header.site-header--dark) .text-iwd-gold-400\/70 {
+[data-mode='light']
+  :is(#hero, .site-header.site-header--dark)
+  .text-iwd-gold-400\/70 {
   color: rgb(var(--iwd-accent-400) / 0.7);
 }
-[data-mode='light'] :is(#hero, .site-header.site-header--dark) .text-iwd-gold-400\/80 {
+[data-mode='light']
+  :is(#hero, .site-header.site-header--dark)
+  .text-iwd-gold-400\/80 {
   color: rgb(var(--iwd-accent-400) / 0.8);
 }
-[data-mode='light'] :is(#hero, .site-header.site-header--dark) .border-iwd-gold-400\/30 {
+[data-mode='light']
+  :is(#hero, .site-header.site-header--dark)
+  .border-iwd-gold-400\/30 {
   border-color: rgb(var(--iwd-accent-400) / 0.3);
 }
-[data-mode='light'] :is(#hero, .site-header.site-header--dark) .border-iwd-gold-400\/40 {
+[data-mode='light']
+  :is(#hero, .site-header.site-header--dark)
+  .border-iwd-gold-400\/40 {
   border-color: rgb(var(--iwd-accent-400) / 0.4);
 }
-[data-mode='light'] :is(#hero, .site-header.site-header--dark) .border-iwd-gold-400\/50 {
+[data-mode='light']
+  :is(#hero, .site-header.site-header--dark)
+  .border-iwd-gold-400\/50 {
   border-color: rgb(var(--iwd-accent-400) / 0.5);
 }
-[data-mode='light'] :is(#hero, .site-header.site-header--dark) .bg-iwd-gold-400\/10 {
+[data-mode='light']
+  :is(#hero, .site-header.site-header--dark)
+  .bg-iwd-gold-400\/10 {
   background-color: rgb(var(--iwd-accent-400) / 0.1);
 }
-[data-mode='light'] :is(#hero, .site-header.site-header--dark) .bg-iwd-gold-400\/15 {
+[data-mode='light']
+  :is(#hero, .site-header.site-header--dark)
+  .bg-iwd-gold-400\/15 {
   background-color: rgb(var(--iwd-accent-400) / 0.15);
 }
-[data-mode='light'] :is(#hero, .site-header.site-header--dark) .bg-iwd-gold-400\/20 {
+[data-mode='light']
+  :is(#hero, .site-header.site-header--dark)
+  .bg-iwd-gold-400\/20 {
   background-color: rgb(var(--iwd-accent-400) / 0.2);
 }
-[data-mode='light'] :is(#hero, .site-header.site-header--dark) .border-white\/\[0\.08\] {
+[data-mode='light']
+  :is(#hero, .site-header.site-header--dark)
+  .border-white\/\[0\.08\] {
   border-color: rgb(255 255 255 / 0.08);
 }
-[data-mode='light'] :is(#hero, .site-header.site-header--dark) .hover\:border-iwd-gold-400\/50:hover {
+[data-mode='light']
+  :is(#hero, .site-header.site-header--dark)
+  .hover\:border-iwd-gold-400\/50:hover {
   border-color: rgb(var(--iwd-accent-400) / 0.5);
 }
-[data-mode='light'] :is(#hero, .site-header.site-header--dark) .hover\:bg-iwd-gold-400\/20:hover {
+[data-mode='light']
+  :is(#hero, .site-header.site-header--dark)
+  .hover\:bg-iwd-gold-400\/20:hover {
   background-color: rgb(var(--iwd-accent-400) / 0.2);
 }
 /* Light mode: CTAButton hover resets to rest colors — mirror resting gold on dark hero */
-[data-mode='light'] :is(#hero, .site-header.site-header--dark) .hover\:bg-iwd-gold-400\/10:hover {
+[data-mode='light']
+  :is(#hero, .site-header.site-header--dark)
+  .hover\:bg-iwd-gold-400\/10:hover {
   background-color: rgb(var(--iwd-accent-400) / 0.1);
 }
-[data-mode='light'] :is(#hero, .site-header.site-header--dark) .hover\:border-iwd-gold-400\/30:hover {
+[data-mode='light']
+  :is(#hero, .site-header.site-header--dark)
+  .hover\:border-iwd-gold-400\/30:hover {
   border-color: rgb(var(--iwd-accent-400) / 0.3);
 }
-[data-mode='light'] :is(#hero, .site-header.site-header--dark) .hover\:border-black\/10:hover {
+[data-mode='light']
+  :is(#hero, .site-header.site-header--dark)
+  .hover\:border-black\/10:hover {
   border-color: rgb(255 255 255 / 0.14);
 }
-[data-mode='light'] :is(#hero, .site-header.site-header--dark) .hover\:bg-black\/\[0\.04\]:hover {
+[data-mode='light']
+  :is(#hero, .site-header.site-header--dark)
+  .hover\:bg-black\/\[0\.04\]:hover {
   background-color: rgb(255 255 255 / 0.06);
 }
-[data-mode='light'] :is(#hero, .site-header.site-header--dark) .hover\:text-gray-600:hover {
+[data-mode='light']
+  :is(#hero, .site-header.site-header--dark)
+  .hover\:text-gray-600:hover {
   color: rgb(229 231 235 / 0.92);
 }
-[data-mode='light'] :is(#hero, .site-header.site-header--dark) .border-black\/10 {
+[data-mode='light']
+  :is(#hero, .site-header.site-header--dark)
+  .border-black\/10 {
   border-color: rgb(255 255 255 / 0.14);
 }
-[data-mode='light'] :is(#hero, .site-header.site-header--dark) .bg-black\/\[0\.04\] {
+[data-mode='light']
+  :is(#hero, .site-header.site-header--dark)
+  .bg-black\/\[0\.04\] {
   background-color: rgb(255 255 255 / 0.06);
 }
-[data-mode='light'] :is(#hero, .site-header.site-header--dark) .hover\:border-black\/20:hover {
+[data-mode='light']
+  :is(#hero, .site-header.site-header--dark)
+  .hover\:border-black\/20:hover {
   border-color: rgb(255 255 255 / 0.22);
 }
-[data-mode='light'] :is(#hero, .site-header.site-header--dark) .hover\:bg-black\/\[0\.08\]:hover {
+[data-mode='light']
+  :is(#hero, .site-header.site-header--dark)
+  .hover\:bg-black\/\[0\.08\]:hover {
   background-color: rgb(255 255 255 / 0.1);
 }
-[data-mode='light'] :is(#hero, .site-header.site-header--dark) .hover\:text-black:hover {
+[data-mode='light']
+  :is(#hero, .site-header.site-header--dark)
+  .hover\:text-black:hover {
   color: rgb(255 255 255);
 }
 
@@ -1329,5 +1395,3 @@
     min-height: 100vh;
   }
 }
-
-
