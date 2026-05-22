@@ -31,8 +31,7 @@ export default function HeroAnimationProvider({ children }) {
   }, [])
 
   const canControlPlayback = useMemo(
-    () =>
-      !prefersReducedMotion && !isNarrowViewport && !mobileNavOpen,
+    () => !prefersReducedMotion && !isNarrowViewport && !mobileNavOpen,
     [prefersReducedMotion, isNarrowViewport, mobileNavOpen]
   )
 
@@ -42,12 +41,7 @@ export default function HeroAnimationProvider({ children }) {
       !prefersReducedMotion &&
       !isNarrowViewport &&
       !mobileNavOpen,
-    [
-      userWantsPlaying,
-      prefersReducedMotion,
-      isNarrowViewport,
-      mobileNavOpen,
-    ]
+    [userWantsPlaying, prefersReducedMotion, isNarrowViewport, mobileNavOpen]
   )
 
   const toggleUserPlayback = useCallback(() => {
