@@ -9,6 +9,7 @@ import {
 import Home from '@/pages/Home'
 import ThemeProvider from '@/components/ui/ThemeContext'
 import ScheduleProvider from '@/components/ui/ScheduleContext'
+import HeroAnimationProvider from '@/components/ui/HeroAnimationProvider'
 
 const CareersHub = lazy(() => import('@/pages/CareersHub'))
 const ConnectionsPage = lazy(() => import('@/pages/Connections'))
@@ -21,7 +22,8 @@ function App() {
   return (
     <ThemeProvider>
       <ScheduleProvider>
-        <Router>
+        <HeroAnimationProvider>
+          <Router>
           <div role="document">
             {/* Skip Link - First element for accessibility; hidden until Tab focus */}
             <a className="skip-link" href="#main-content">
@@ -53,7 +55,8 @@ function App() {
               </Routes>
             </Suspense>
           </div>
-        </Router>
+          </Router>
+        </HeroAnimationProvider>
       </ScheduleProvider>
     </ThemeProvider>
   )
