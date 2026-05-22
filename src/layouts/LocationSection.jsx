@@ -50,6 +50,9 @@ const VENUE_IMAGES = [
 
 const AUTOPLAY_INTERVAL = 5000
 
+const VENUE_GOOGLE_MAPS_URL =
+  'https://www.google.com/maps/search/?api=1&query=500+Woodward+Ave,+Detroit,+MI+48226'
+
 function LocationSection() {
   const [activeImg, setActiveImg] = useState(0)
   const [isPlaying, setIsPlaying] = useState(true)
@@ -158,15 +161,13 @@ function LocationSection() {
               </div>
               <h3 className="text-xl font-semibold text-white">Venue</h3>
             </div>
-            <p className="mb-2 text-2xl font-bold text-white">
-              Little Caesars Global Resource Center
-            </p>
+            <p className="mb-2 text-2xl font-bold text-white">IBM HQ Detroit</p>
             <p className="mb-4 text-lg text-gray-300">
-              2125 Woodward Ave, Detroit, MI 48201
+              500 Woodward Ave, Detroit, MI 48226
             </p>
             <div className="flex flex-wrap gap-3">
               <a
-                href="https://www.google.com/maps/place/Little+Caesars+Corporate+Office/data=!4m2!3m1!1s0x0:0x14096f8dc7a099f3?sa=X&ved=1t:2428&ictx=111"
+                href={VENUE_GOOGLE_MAPS_URL}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center gap-2 rounded-lg border border-iwd-gold-500/30 bg-iwd-gold-500/10 px-4 py-2 text-sm font-semibold text-iwd-gold-300 transition-colors hover:bg-iwd-gold-500/20"
@@ -315,10 +316,10 @@ function LocationSection() {
           <div className="w-full lg:w-1/2">
             <div className="bg-iwd-surface-raised relative aspect-[4/3] w-full overflow-hidden rounded-3xl border border-white/[0.1] shadow-2xl dark:bg-iwd-black-950/50">
               <div className="absolute right-4 top-4 z-20 rounded-md bg-black/60 px-3 py-1 text-xs font-bold uppercase tracking-widest text-iwd-gold-300">
-                Little Caesars HQ
+                IBM HQ Detroit
               </div>
               <iframe
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1474.743169822604!2d-83.05315364177726!3d42.338780280806414!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8824d2ca78df0e73%3A0xe54d6afcc1dacc7!2sLittle%20Caesars%20Global%20Resource%20Center!5e0!3m2!1sen!2sus!4v1711204899999!5m2!1sen!2sus"
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2951.265106112538!2d-83.05315364177726!3d42.338780280806414!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8824d2ca78df0e73%3A0xe54d6afcc1dacc7!2sLittle%20Caesars%20Global%20Resource%20Center!5e0!3m2!1sen!2sus!4v1711204899999!5m2!1sen!2sus"
                 width="100%"
                 height="100%"
                 style={{
@@ -328,7 +329,7 @@ function LocationSection() {
                 allowFullScreen=""
                 loading="lazy"
                 referrerPolicy="no-referrer-when-downgrade"
-                title="Little Caesars Global Resource Center Venue Map"
+                title="IBM HQ Detroit Venue Map"
                 className="absolute inset-0 size-full"
               />
               <div className="pointer-events-none absolute inset-0 z-10 rounded-3xl ring-1 ring-inset ring-white/10" />
@@ -336,14 +337,14 @@ function LocationSection() {
               {/* Pin Overlay */}
               <div className="pointer-events-none absolute left-1/2 top-1/2 flex -translate-x-1/2 -translate-y-1/2 flex-col items-center">
                 <div className="mb-2 rounded-full bg-iwd-gold-400/90 px-3 py-1 text-[10px] font-black uppercase tracking-widest text-iwd-black-950 shadow-2xl">
-                  PIZZA PIZZA
+                  IBM HQ Detroit
                 </div>
                 <FaMapPin className="size-10 text-iwd-gold-400 drop-shadow-[0_0_15px_rgba(255,184,0,0.8)]" />
               </div>
             </div>
             <div className="mt-4 flex flex-wrap gap-3">
               <a
-                href="https://www.google.com/maps/place/Little+Caesars+Corporate+Office/data=!4m2!3m1!1s0x0:0x14096f8dc7a099f3?sa=X&ved=1t:2428&ictx=111"
+                href={VENUE_GOOGLE_MAPS_URL}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center gap-2 rounded-lg border border-iwd-gold-500/30 bg-iwd-gold-500/10 px-4 py-2 text-sm font-semibold text-iwd-gold-300 transition-colors hover:bg-iwd-gold-500/20"

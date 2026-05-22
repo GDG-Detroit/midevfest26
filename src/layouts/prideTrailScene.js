@@ -1,3 +1,8 @@
+/**
+ * Pride trail WebGL hero background.
+ * Initial effect concept and shaders: Sabo Sugi (https://www.reddit.com/user/CollectionBulky1564/)
+ * Site integration and adaptations: Greg Miller / Compass Detroit — see README Attribution.
+ */
 import * as THREE from 'three'
 import { EffectComposer } from 'three/addons/postprocessing/EffectComposer.js'
 import { RenderPass } from 'three/addons/postprocessing/RenderPass.js'
