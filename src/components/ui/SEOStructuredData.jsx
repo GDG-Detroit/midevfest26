@@ -9,20 +9,20 @@ const SEOStructuredData = memo(({ speakersData = [] }) => {
   const eventData = {
     '@context': 'https://schema.org',
     '@type': 'Event',
-    'name': "Detroit International Women's Day Innovation Summit 2026",
+    'name': 'Detroit Pride Innovation Summit 2026',
     'description':
-      'Celebrating innovation, empowerment, and community at the IWD Innovation Summit 2026 in Detroit.',
-    'image': 'https://iwdsummit.com/social-card.jpg',
+      'Celebrating innovation, empowerment, and community at the Detroit Pride Innovation Summit 2026 in Detroit.',
+    'image': 'https://pridemi26.vercel.app/social-card.jpg',
     'startDate': '2026-03-28T08:00:00-05:00',
     'endDate': '2026-03-28T17:00:00-05:00',
     'eventStatus': 'https://schema.org/EventScheduled',
     'eventAttendanceMode': 'https://schema.org/OfflineEventAttendanceMode',
     'location': {
       '@type': 'Place',
-      'name': 'Little Caesars Global Resource Center',
+      'name': 'IBM HQ Detroit',
       'address': {
         '@type': 'PostalAddress',
-        'streetAddress': '2125 Woodward Ave',
+        'streetAddress': '39555 Orchard Hill Pl',
         'addressLocality': 'Detroit',
         'addressRegion': 'MI',
         'postalCode': '48201',
@@ -32,7 +32,7 @@ const SEOStructuredData = memo(({ speakersData = [] }) => {
     'organizer': {
       '@type': 'Organization',
       'name': 'Compass Detroit / GDG Detroit',
-      'url': 'https://iwdsummit.com',
+      'url': 'https://pridemi26.vercel.app/',
     },
     'performer': speakersData.map((speaker) => ({
       '@type': 'Person',
