@@ -581,9 +581,7 @@ export function createPrideTrailScene(container, options = {}) {
   resizeObserver.observe(container)
 
   if (showDebugGUI) {
-    import('lil-gui')
-      .then(({ default: GUI }) => setupGUI(GUI))
-      .catch(() => {})
+    import('lil-gui').then(({ default: GUI }) => setupGUI(GUI)).catch(() => {})
   }
 
   animate()

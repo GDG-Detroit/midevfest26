@@ -68,15 +68,15 @@ docker run -p 3000:3000 pridemi26
 
 ### Docker Commands
 
-| Command                                                 | Description                                     |
-| ------------------------------------------------------- | ----------------------------------------------- |
-| `docker build -t pridemi26 .`                         | Build the Docker image                          |
-| `docker run -p 3000:3000 pridemi26`                   | Run the container on port 3000                  |
+| Command                                                   | Description                                     |
+| --------------------------------------------------------- | ----------------------------------------------- |
+| `docker build -t pridemi26 .`                             | Build the Docker image                          |
+| `docker run -p 3000:3000 pridemi26`                       | Run the container on port 3000                  |
 | `docker run -d -p 3000:3000 --name pridemi-app pridemi26` | Run container in detached mode with custom name |
-| `docker stop pridemi-app`                                   | Stop the running container                      |
-| `docker rm pridemi-app`                                     | Remove the container                            |
-| `docker images`                                         | List all Docker images                          |
-| `docker rmi pridemi26`                                | Remove the Docker image                         |
+| `docker stop pridemi-app`                                 | Stop the running container                      |
+| `docker rm pridemi-app`                                   | Remove the container                            |
+| `docker images`                                           | List all Docker images                          |
+| `docker rmi pridemi26`                                    | Remove the Docker image                         |
 
 ### Environment Variables
 
