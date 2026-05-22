@@ -8,7 +8,7 @@ Organized by **Compass Detroit** in partnership with **GDG Detroit** and **Women
 
 ### Prerequisites
 
-- Node.js 18+
+- Node.js 22+
 - npm
 
 ### Recommended VS Code Extensions
