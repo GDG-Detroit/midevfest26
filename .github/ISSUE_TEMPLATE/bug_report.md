@@ -33,30 +33,6 @@ assignees: ''
 
 <!-- If applicable, add screenshots to help explain your problem -->
 
-## Environment
-
-<!-- Please complete the following information -->
-
-- **Browser**: [e.g. Chrome, Firefox, Safari]
-- **Browser Version**: [e.g. 22]
-- **Operating System**: [e.g. iOS, Windows, macOS, Linux]
-- **Device**: [e.g. Desktop, Mobile, Tablet]
-- **Screen Size**: [e.g. 1920x1080, 375x667]
-
-## Additional Context
-
-<!-- Add any other context about the problem here -->
-
-## Accessibility Impact
-
-<!-- If this bug affects accessibility, please describe the impact -->
-
-- [ ] This bug affects keyboard navigation
-- [ ] This bug affects screen reader users
-- [ ] This bug affects color contrast
-- [ ] This bug affects other accessibility features
-- [ ] No accessibility impact
-
 ## Priority
 
 <!-- Mark the priority level -->
