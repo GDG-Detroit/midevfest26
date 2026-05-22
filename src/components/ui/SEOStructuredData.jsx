@@ -13,8 +13,8 @@ const SEOStructuredData = memo(({ speakersData = [] }) => {
     'description':
       'Celebrating innovation, empowerment, and community at the Detroit Pride Innovation Summit 2026 in Detroit.',
     'image': 'https://pridemi26.vercel.app/social-card.jpg',
-    'startDate': '2026-06-27T08:00:00-04:00',
-    'endDate': '2026-06-27T17:00:00-04:00',
+    'startDate': '2026-06-20T08:00:00-04:00',
+    'endDate': '2026-06-20T17:00:00-04:00',
     'eventStatus': 'https://schema.org/EventScheduled',
     'eventAttendanceMode': 'https://schema.org/OfflineEventAttendanceMode',
     'location': {

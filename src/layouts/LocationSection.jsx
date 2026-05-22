@@ -144,7 +144,7 @@ function LocationSection() {
               <h3 className="text-xl font-semibold text-white">When</h3>
             </div>
             <p className="text-lg font-semibold tracking-wide text-iwd-gold-300">
-              June 27, 2026
+              June 20, 2026
             </p>
             <p className="mt-2 text-gray-400">
               Doors Open 8:00 AM <br /> Sessions to 5:00 PM
