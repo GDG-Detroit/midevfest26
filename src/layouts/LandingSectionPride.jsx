@@ -4,7 +4,7 @@ import { FaArrowRight } from 'react-icons/fa6'
 import CTAButton from '@/components/ui/CTAButton'
 import { createPrideTrailScene } from './prideTrailScene'
 import useHeroAnimation from '@/hooks/useHeroAnimation'
-import heroTrails800 from '@/assets/images/hero/hero-trails-800x.webp'
+import heroTrails800 from '@/assets/images/hero/hero-trails.webp'
 import heroTrailsFull from '@/assets/images/hero/hero-trails.png'
 
 /** Matches Navbar / HeroAnimationProvider desktop breakpoint. */
@@ -176,27 +176,27 @@ function LandingSectionPride({
       )}
 
       {!isNarrowViewport ? (
-      <button
-        type="button"
-        onClick={toggleAnimationPlayback}
-        className="absolute bottom-6 right-6 z-30 flex size-12 items-center justify-center rounded-full border border-white/40 bg-black/60 text-white shadow-2xl backdrop-blur-lg transition-all hover:scale-110 hover:bg-black/80 lg:bottom-12 lg:right-12"
-        aria-pressed={showAnimatedBackground}
-        aria-label={
-          showAnimatedBackground
-            ? 'Pause background animation'
-            : 'Play background animation'
-        }
-      >
-        {showAnimatedBackground ? (
-          <svg className="size-4" fill="currentColor" viewBox="0 0 24 24">
-            <path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z" />
-          </svg>
-        ) : (
-          <svg className="size-4" fill="currentColor" viewBox="0 0 24 24">
-            <path d="M8 5v14l11-7z" />
-          </svg>
-        )}
-      </button>
+        <button
+          type="button"
+          onClick={toggleAnimationPlayback}
+          className="absolute bottom-6 right-6 z-30 flex size-12 items-center justify-center rounded-full border border-white/40 bg-black/60 text-white shadow-2xl backdrop-blur-lg transition-all hover:scale-110 hover:bg-black/80 lg:bottom-12 lg:right-12"
+          aria-pressed={showAnimatedBackground}
+          aria-label={
+            showAnimatedBackground
+              ? 'Pause background animation'
+              : 'Play background animation'
+          }
+        >
+          {showAnimatedBackground ? (
+            <svg className="size-4" fill="currentColor" viewBox="0 0 24 24">
+              <path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z" />
+            </svg>
+          ) : (
+            <svg className="size-4" fill="currentColor" viewBox="0 0 24 24">
+              <path d="M8 5v14l11-7z" />
+            </svg>
+          )}
+        </button>
       ) : null}
 
       <PrideHeroForeground />
