@@ -1,8 +1,14 @@
-import { useEffect, useRef, useState } from 'react'
+import { useEffect, useRef } from 'react'
 import PropTypes from 'prop-types'
 import { FaArrowRight } from 'react-icons/fa6'
 import CTAButton from '@/components/ui/CTAButton'
 import { createPrideTrailScene } from './prideTrailScene'
+import useHeroAnimation from '@/hooks/useHeroAnimation'
+import heroTrails800 from '@/assets/images/hero/hero-trails-800x.webp'
+import heroTrailsFull from '@/assets/images/hero/hero-trails.png'
+
+/** Matches Navbar / HeroAnimationProvider desktop breakpoint. */
+const HERO_DESKTOP_MEDIA = '(min-width: 1500px)'
 
 const HERO_LINKS = [
   { href: '#partners', label: 'Call for Sponsors' },
@@ -101,6 +107,26 @@ function PrideHeroForeground() {
   )
 }
 
+/** Static frame shown whenever WebGL animation is not running. */
+function PrideHeroStaticBackground() {
+  return (
+    <div className="absolute inset-0 z-0 bg-black" aria-hidden="true">
+      <picture className="block size-full">
+        <source media={HERO_DESKTOP_MEDIA} srcSet={heroTrailsFull} />
+        <img
+          src={heroTrails800}
+          alt=""
+          width={800}
+          height={279}
+          className="size-full object-cover object-center"
+          decoding="async"
+          fetchPriority="high"
+        />
+      </picture>
+    </div>
+  )
+}
+
 /**
  * Hero section with the animated pride trail WebGL background.
  * Optional `children` render below the built-in foreground card.
@@ -112,9 +138,12 @@ function LandingSectionPride({
 }) {
   const canvasHostRef = useRef(null)
   const sceneRef = useRef(null)
-  const [isAnimationPlaying, setIsAnimationPlaying] = useState(true)
+  const { shouldPlay, setUserPlaying, isNarrowViewport } = useHeroAnimation()
+  const showAnimatedBackground = shouldPlay && !isNarrowViewport
 
   useEffect(() => {
+    if (!showAnimatedBackground) return undefined
+
     const host = canvasHostRef.current
     if (!host) return undefined
 
@@ -124,14 +153,10 @@ function LandingSectionPride({
       scene.dispose()
       sceneRef.current = null
     }
-  }, [showDebugGUI])
+  }, [showDebugGUI, showAnimatedBackground])
 
   const toggleAnimationPlayback = () => {
-    const scene = sceneRef.current
-    if (!scene) return
-    const next = !scene.getPlaying()
-    scene.setPlaying(next)
-    setIsAnimationPlaying(next)
+    setUserPlaying(!shouldPlay)
   }
 
   return (
@@ -140,23 +165,29 @@ function LandingSectionPride({
       aria-label="Hero Section"
       className={`relative min-h-[90vh] w-full overflow-hidden bg-black ${className}`}
     >
-      <div
-        ref={canvasHostRef}
-        className="absolute inset-0 z-0"
-        aria-hidden="true"
-      />
+      {showAnimatedBackground ? (
+        <div
+          ref={canvasHostRef}
+          className="absolute inset-0 z-0"
+          aria-hidden="true"
+        />
+      ) : (
+        <PrideHeroStaticBackground />
+      )}
 
+      {!isNarrowViewport ? (
       <button
         type="button"
         onClick={toggleAnimationPlayback}
         className="absolute bottom-6 right-6 z-30 flex size-12 items-center justify-center rounded-full border border-white/40 bg-black/60 text-white shadow-2xl backdrop-blur-lg transition-all hover:scale-110 hover:bg-black/80 lg:bottom-12 lg:right-12"
+        aria-pressed={showAnimatedBackground}
         aria-label={
-          isAnimationPlaying
+          showAnimatedBackground
             ? 'Pause background animation'
             : 'Play background animation'
         }
       >
-        {isAnimationPlaying ? (
+        {showAnimatedBackground ? (
           <svg className="size-4" fill="currentColor" viewBox="0 0 24 24">
             <path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z" />
           </svg>
@@ -166,6 +197,7 @@ function LandingSectionPride({
           </svg>
         )}
       </button>
+      ) : null}
 
       <PrideHeroForeground />
       {children ? <div className="relative z-10">{children}</div> : null}

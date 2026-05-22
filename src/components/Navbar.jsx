@@ -1,16 +1,19 @@
-import { useCallback, useEffect, useRef, useState } from 'react'
+import { useCallback, useEffect, useMemo, useRef, useState } from 'react'
 import { FaBars, FaXmark } from 'react-icons/fa6'
 import { Link, useLocation } from 'react-router-dom'
 import CompassDetroitLogo from './ui/CompassDetroitLogo'
 import ThemeSwitcher from './ui/ThemeSwitcher'
 import { sections } from '@/data/2026/navigation'
 import useTheme from '@/hooks/useTheme'
+import useHeroAnimation from '@/hooks/useHeroAnimation'
+import NavRunOfShow from '@/components/nav/NavRunOfShow'
 
 // Section links have id (anchor); route links have to (full page)
 const navSections = sections.filter((s) => s.id)
 
 function Navbar() {
   const { mode } = useTheme()
+  const { setMobileNavOpen } = useHeroAnimation()
   const location = useLocation()
   const isHomePage = location.pathname === '/'
   const isLightMode = mode === 'light'
@@ -23,6 +26,16 @@ function Navbar() {
   const navRef = useRef(null)
   const mobileButtonRef = useRef(null)
   const headerBarRef = useRef(null)
+
+  const mobileNavSections = useMemo(() => {
+    const schedule = sections.find((s) => s.id === 'schedule')
+    const rest = sections.filter((s) => s.id !== 'schedule')
+    return schedule ? [schedule, ...rest] : sections
+  }, [])
+
+  useEffect(() => {
+    setMobileNavOpen(isHomePage && isNavVisible)
+  }, [isHomePage, isNavVisible, setMobileNavOpen])
 
   // Sync header height to CSS custom property for .nav-menu-expanded max-height
   useEffect(() => {
@@ -337,11 +350,26 @@ function Navbar() {
     </ul>
   )
 
+  const handleViewFullSchedule = (event) => {
+    handleNavigation(event, 'schedule')
+  }
+
   // Mobile Navigation List (section links + route links like Previous Events)
   const mobileNavList = (
     <div className="flex max-h-[85vh] w-full flex-col overflow-y-auto">
+      {isHomePage ? (
+        <div className="border-b border-white/10 px-4 pb-4 pt-3">
+          <h2 className="font-heading text-sm font-black uppercase tracking-[0.2em] text-iwd-gold-300">
+            Run of show
+          </h2>
+          <p className="font-body mt-1 text-xs text-white/50">
+            Summit day at a glance
+          </p>
+          <NavRunOfShow onViewFullSchedule={handleViewFullSchedule} />
+        </div>
+      ) : null}
       <ul className="flex flex-col space-y-2 p-4 text-white">
-        {sections.map((section) => {
+        {(isHomePage ? mobileNavSections : sections).map((section) => {
           const isRouteLink = !!section.to
           const linkKey = section.id || section.to
           const isActive = isRouteLink
