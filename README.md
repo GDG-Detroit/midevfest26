@@ -1,6 +1,6 @@
 # Detroit Pride Innovation Summit 2026
 
-The website for the [Detroit Pride Innovation Summit 2026](https:pridemi26.vercel.app/). Built with Vite, React, and Tailwind CSS.
+The website for the [Detroit Pride Innovation Summit 2026](https://pridemi26.vercel.app/). Built with Vite, React, and Tailwind CSS.
 
 Organized by **Compass Detroit** in partnership with **GDG Detroit** and **Other Organizations**.
 

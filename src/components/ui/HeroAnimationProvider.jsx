@@ -1,20 +1,33 @@
-import { useCallback, useEffect, useMemo, useState } from 'react'
+import { useCallback, useLayoutEffect, useMemo, useState } from 'react'
 import PropTypes from 'prop-types'
 import HeroAnimationContext from '@/contexts/heroAnimationContextCore'
 
 /** Matches Navbar mobile menu breakpoint (desktop nav at min-[1500px]). */
 const NARROW_VIEWPORT_QUERY = '(max-width: 1499px)'
+const REDUCED_MOTION_QUERY = '(prefers-reduced-motion: reduce)'
+
+function readIsNarrowViewport() {
+  if (typeof window === 'undefined') return false
+  return window.matchMedia(NARROW_VIEWPORT_QUERY).matches
+}
+
+function readPrefersReducedMotion() {
+  if (typeof window === 'undefined') return false
+  return window.matchMedia(REDUCED_MOTION_QUERY).matches
+}
 
 export default function HeroAnimationProvider({ children }) {
   /** Explicit user preference; independent of system/layout overrides. */
   const [userWantsPlaying, setUserWantsPlaying] = useState(true)
   const [mobileNavOpen, setMobileNavOpen] = useState(false)
-  const [isNarrowViewport, setIsNarrowViewport] = useState(false)
-  const [prefersReducedMotion, setPrefersReducedMotion] = useState(false)
+  const [isNarrowViewport, setIsNarrowViewport] = useState(readIsNarrowViewport)
+  const [prefersReducedMotion, setPrefersReducedMotion] = useState(
+    readPrefersReducedMotion
+  )
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     const narrowMq = window.matchMedia(NARROW_VIEWPORT_QUERY)
-    const motionMq = window.matchMedia('(prefers-reduced-motion: reduce)')
+    const motionMq = window.matchMedia(REDUCED_MOTION_QUERY)
 
     const sync = () => {
       setIsNarrowViewport(narrowMq.matches)
