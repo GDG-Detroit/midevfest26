@@ -65,17 +65,13 @@ const JobBoardSection = ({ year = new Date().getFullYear() }) => {
               >
                 <div className="flex h-full min-h-[160px] flex-col items-center gap-8 rounded-3xl border border-white/[0.08] bg-white/[0.03] p-12 backdrop-blur-md transition-all duration-500 hover:-translate-y-2 hover:border-iwd-gold-400/20 hover:bg-white/[0.05] hover:shadow-2xl hover:shadow-black/40 active:scale-[0.98] sm:flex-row">
                   {/* Logo container */}
-                  <div className="flex size-32 shrink-0 items-center justify-center overflow-hidden rounded-[2rem] border border-white/[0.08] bg-white/[0.05] p-6 backdrop-blur-sm transition-all duration-500 group-hover:border-iwd-gold-400/30 group-hover:shadow-lg group-hover:shadow-iwd-gold-500/10">
-                    <div className="relative flex size-full items-center justify-center">
-                      {/* Subtle glow/halo for dark backgrounds */}
-                      <div className="absolute inset-0 rounded-full bg-white/5 blur-2xl" />
-                      <img
-                        src={company.logo}
-                        alt={`${company.name} logo`}
-                        className="relative size-24 object-contain transition-transform duration-500 group-hover:scale-110"
-                        loading="lazy"
-                      />
-                    </div>
+                  <div className="flex size-32 shrink-0 items-center justify-center overflow-hidden rounded-[2rem] border border-stone-300/70 bg-gradient-to-br from-stone-300/90 via-stone-100 to-gray-300/80 p-6 shadow-sm shadow-black/20 transition-all duration-500 group-hover:border-iwd-gold-400/30 group-hover:from-stone-200 group-hover:via-stone-50 group-hover:to-primary-100/60 group-hover:shadow-md group-hover:shadow-black/25 light:border-stone-300 light:from-stone-200 light:via-stone-100 light:to-stone-300/90">
+                    <img
+                      src={company.logo}
+                      alt={`${company.name} logo`}
+                      className="logo-halo size-24 object-contain transition-transform duration-500 group-hover:scale-110"
+                      loading="lazy"
+                    />
                   </div>
                   {/* Company name */}
                   <div className="flex flex-col">

@@ -3,6 +3,13 @@ import { FaEnvelope } from 'react-icons/fa6'
 import CTAButton from '@/components/ui/CTAButton'
 import SectionSkipLink from '@/components/ui/SectionSkipLink'
 
+const DESC_MAX_LENGTH = 100
+
+function truncateDescription(text, maxLength = DESC_MAX_LENGTH) {
+  if (!text || text.length <= maxLength) return text
+  return `${text.slice(0, maxLength).trimEnd()}…`
+}
+
 const PartnersSection = ({ partnersData = {}, year }) => {
   const isCurrentYear = year === new Date().getFullYear()
 
@@ -58,31 +65,21 @@ const PartnersSection = ({ partnersData = {}, year }) => {
           <>
             {/* Single Partners Grid */}
             <div className="mx-auto mt-12 grid w-full max-w-7xl grid-cols-1 gap-12 sm:grid-cols-2 lg:grid-cols-2 xl:grid-cols-3">
-              {allPartners.map((partner) => (
-                <button
-                  key={partner.id}
-                  className="group w-full"
-                  style={{ perspective: '1000px' }}
-                  onClick={() =>
-                    partner.url && window.open(partner.url, '_blank')
-                  }
-                  type="button"
-                  aria-label={`${partner.name} — click to visit (hover to learn more)`}
-                >
-                  <div className="relative h-56 w-full transition-transform duration-700 [transform-style:preserve-3d] group-hover:[transform:rotateY(180deg)]">
+              {allPartners.map((partner) => {
+                const cardClass =
+                  'group block w-full rounded-[2rem] border-0 bg-transparent p-0 text-left focus:outline-none focus-visible:ring-2 focus-visible:ring-focus-ring focus-visible:ring-offset-2 focus-visible:ring-offset-iwd-black-950'
+                const cardStyle = { perspective: '1000px' }
+                const cardInner = (
+                  <div className="relative h-56 w-full transition-transform duration-700 [transform-style:preserve-3d] group-hover:[transform:rotateY(180deg)] group-focus-visible:[transform:rotateY(180deg)]">
                     {/* ── Front: Large logo ── */}
-                    <div className="absolute inset-0 flex items-center justify-center rounded-[2rem] border border-white/[0.08] bg-white/[0.03] p-10 shadow-2xl backdrop-blur-md [backface-visibility:hidden]">
+                    <div className="absolute inset-0 flex items-center justify-center rounded-[2rem] border border-stone-300/70 bg-gradient-to-br from-stone-300/90 via-stone-100 to-gray-300/80 p-10 shadow-sm shadow-black/20 [backface-visibility:hidden] light:border-stone-300 light:from-stone-200 light:via-stone-100 light:to-stone-300/90">
                       {partner.logo ? (
-                        <div className="relative flex size-full items-center justify-center">
-                          {/* Subtle glow/halo for dark backgrounds */}
-                          <div className="absolute inset-0 rounded-full bg-white/5 blur-3xl" />
-                          <img
-                            src={partner.logo}
-                            alt={partner.name}
-                            className="relative max-h-40 max-w-[85%] object-contain transition-transform duration-700 group-hover:scale-110"
-                            loading="lazy"
-                          />
-                        </div>
+                        <img
+                          src={partner.logo}
+                          alt=""
+                          className="logo-halo max-h-40 max-w-[85%] object-contain transition-transform duration-700 group-hover:scale-110"
+                          loading="lazy"
+                        />
                       ) : (
                         <p className="text-center text-3xl font-bold tracking-tight text-gray-900 dark:text-white/90">
                           {partner.name}
@@ -90,13 +87,20 @@ const PartnersSection = ({ partnersData = {}, year }) => {
                       )}
                     </div>
                     {/* ── Back: Org info ── */}
-                    <div className="from-iwd-dark-900 to-iwd-dark-950 absolute inset-0 flex flex-col items-center justify-start overflow-y-auto rounded-[2rem] border border-iwd-gold-400/20 bg-gradient-to-br p-6 pt-8 backdrop-blur-xl [backface-visibility:hidden] [transform:rotateY(180deg)]">
+                    <div className="from-iwd-dark-900 to-iwd-dark-950 absolute inset-0 flex flex-col items-center justify-center overflow-hidden rounded-[2rem] border border-iwd-gold-400/20 bg-gradient-to-br p-6 backdrop-blur-xl [backface-visibility:hidden] [transform:rotateY(180deg)]">
                       <h3 className="mb-4 text-2xl font-black tracking-tight text-white">
                         {partner.name}
                       </h3>
                       {partner.desc && (
-                        <p className="line-clamp-6 text-center text-base leading-relaxed text-gray-900 dark:text-white/70">
-                          {partner.desc}
+                        <p
+                          className="line-clamp-4 text-center text-base leading-relaxed text-gray-900 dark:text-white/70"
+                          title={
+                            partner.desc.length > DESC_MAX_LENGTH
+                              ? partner.desc
+                              : undefined
+                          }
+                        >
+                          {truncateDescription(partner.desc)}
                         </p>
                       )}
                       {partner.url && (
@@ -119,8 +123,32 @@ const PartnersSection = ({ partnersData = {}, year }) => {
                       )}
                     </div>
                   </div>
-                </button>
-              ))}
+                )
+
+                return partner.url ? (
+                  <a
+                    key={partner.id}
+                    href={partner.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className={cardClass}
+                    style={cardStyle}
+                    aria-label={`${partner.name} — visit website (hover or focus for description)`}
+                  >
+                    {cardInner}
+                  </a>
+                ) : (
+                  <button
+                    key={partner.id}
+                    type="button"
+                    className={`${cardClass} cursor-default`}
+                    style={cardStyle}
+                    aria-label={`${partner.name} — focus for partner description`}
+                  >
+                    {cardInner}
+                  </button>
+                )
+              })}
             </div>
 
             {/* CTA stays the same */}
