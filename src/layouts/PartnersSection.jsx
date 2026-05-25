@@ -65,18 +65,12 @@ const PartnersSection = ({ partnersData = {}, year }) => {
           <>
             {/* Single Partners Grid */}
             <div className="mx-auto mt-12 grid w-full max-w-7xl grid-cols-1 gap-12 sm:grid-cols-2 lg:grid-cols-2 xl:grid-cols-3">
-              {allPartners.map((partner) => (
-                <button
-                  key={partner.id}
-                  className="group w-full"
-                  style={{ perspective: '1000px' }}
-                  onClick={() =>
-                    partner.url && window.open(partner.url, '_blank')
-                  }
-                  type="button"
-                  aria-label={`${partner.name} — click to visit (hover to learn more)`}
-                >
-                  <div className="relative h-56 w-full transition-transform duration-700 [transform-style:preserve-3d] group-hover:[transform:rotateY(180deg)]">
+              {allPartners.map((partner) => {
+                const cardClass =
+                  'group block w-full rounded-[2rem] focus:outline-none focus-visible:ring-2 focus-visible:ring-focus-ring focus-visible:ring-offset-2 focus-visible:ring-offset-iwd-black-950'
+                const cardStyle = { perspective: '1000px' }
+                const cardInner = (
+                  <div className="relative h-56 w-full transition-transform duration-700 [transform-style:preserve-3d] group-hover:[transform:rotateY(180deg)] group-focus-visible:[transform:rotateY(180deg)]">
                     {/* ── Front: Large logo ── */}
                     <div className="absolute inset-0 flex items-center justify-center rounded-[2rem] border border-stone-300/70 bg-gradient-to-br from-stone-300/90 via-stone-100 to-gray-300/80 p-10 shadow-sm shadow-black/20 [backface-visibility:hidden] light:border-stone-300 light:from-stone-200 light:via-stone-100 light:to-stone-300/90">
                       {partner.logo ? (
@@ -93,13 +87,13 @@ const PartnersSection = ({ partnersData = {}, year }) => {
                       )}
                     </div>
                     {/* ── Back: Org info ── */}
-                    <div className="from-iwd-dark-900 to-iwd-dark-950 absolute inset-0 flex flex-col items-center justify-start overflow-y-auto rounded-[2rem] border border-iwd-gold-400/20 bg-gradient-to-br p-6 pt-8 backdrop-blur-xl [backface-visibility:hidden] [transform:rotateY(180deg)]">
+                    <div className="from-iwd-dark-900 to-iwd-dark-950 absolute inset-0 flex flex-col items-center justify-center overflow-hidden rounded-[2rem] border border-iwd-gold-400/20 bg-gradient-to-br p-6 backdrop-blur-xl [backface-visibility:hidden] [transform:rotateY(180deg)]">
                       <h3 className="mb-4 text-2xl font-black tracking-tight text-white">
                         {partner.name}
                       </h3>
                       {partner.desc && (
                         <p
-                          className="text-center text-base leading-relaxed text-gray-900 dark:text-white/70"
+                          className="line-clamp-4 text-center text-base leading-relaxed text-gray-900 dark:text-white/70"
                           title={
                             partner.desc.length > DESC_MAX_LENGTH
                               ? partner.desc
@@ -129,8 +123,31 @@ const PartnersSection = ({ partnersData = {}, year }) => {
                       )}
                     </div>
                   </div>
-                </button>
-              ))}
+                )
+
+                return partner.url ? (
+                  <a
+                    key={partner.id}
+                    href={partner.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className={cardClass}
+                    style={cardStyle}
+                    aria-label={`${partner.name} — visit website (hover or focus for description)`}
+                  >
+                    {cardInner}
+                  </a>
+                ) : (
+                  <article
+                    key={partner.id}
+                    className={cardClass}
+                    style={cardStyle}
+                    aria-label={partner.name}
+                  >
+                    {cardInner}
+                  </article>
+                )
+              })}
             </div>
 
             {/* CTA stays the same */}
