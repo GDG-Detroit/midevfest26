@@ -1,11 +1,11 @@
 import { useState, useRef, useEffect } from 'react'
 import PropTypes from 'prop-types'
-import { FaPalette, FaSun, FaMoon } from 'react-icons/fa6'
+import { FaPalette } from 'react-icons/fa6'
 import useTheme from '@/hooks/useTheme'
 import { THEMES } from '@/constants/ui'
 
 function ThemeSwitcher({ dropdownUp = false }) {
-  const { theme, setTheme, mode, toggleMode } = useTheme()
+  const { theme, setTheme } = useTheme()
   const [open, setOpen] = useState(false)
   const ref = useRef(null)
   const currentTheme = THEMES.find((t) => t.id === theme)
@@ -22,21 +22,6 @@ function ThemeSwitcher({ dropdownUp = false }) {
 
   return (
     <div ref={ref} className="relative flex items-center gap-1.5">
-      {/* Light / Dark toggle */}
-      <button
-        onClick={toggleMode}
-        aria-label={
-          mode === 'dark' ? 'Switch to light mode' : 'Switch to dark mode'
-        }
-        className="flex size-8 items-center justify-center rounded-full border border-white/20 bg-black/30 text-white backdrop-blur-md transition-all duration-300 hover:border-white/40 hover:bg-black/50 focus:outline-none focus:ring-2 focus:ring-[rgb(var(--iwd-accent-500)/0.12)] focus:ring-offset-2 focus:ring-offset-black active:scale-95"
-      >
-        {mode === 'dark' ? (
-          <FaSun className="size-3 text-iwd-gold-400" />
-        ) : (
-          <FaMoon className="size-3 text-iwd-gold-400" />
-        )}
-      </button>
-
       {/* Color theme trigger */}
       <button
         onClick={() => setOpen((o) => !o)}

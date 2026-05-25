@@ -1,4 +1,4 @@
-import { useEffect, useState, useMemo, useCallback } from 'react'
+import { useEffect, useState, useMemo } from 'react'
 import PropTypes from 'prop-types'
 import ThemeContext from '@/contexts/themeContextCore'
 
@@ -20,7 +20,7 @@ function writeStorage(key, value) {
 
 export default function ThemeProvider({ children }) {
   const [theme, setTheme] = useState(() => readStorage('iwd-theme', 'purple'))
-  const [mode, setMode] = useState(() => readStorage('iwd-mode', 'dark'))
+  const mode = 'dark'
 
   useEffect(() => {
     document.documentElement.setAttribute('data-theme', theme)
@@ -28,18 +28,11 @@ export default function ThemeProvider({ children }) {
   }, [theme])
 
   useEffect(() => {
-    document.documentElement.setAttribute('data-mode', mode)
-    writeStorage('iwd-mode', mode)
-  }, [mode])
-
-  const toggleMode = useCallback(() => {
-    setMode((prev) => (prev === 'dark' ? 'light' : 'dark'))
+    document.documentElement.setAttribute('data-mode', 'dark')
+    writeStorage('iwd-mode', 'dark')
   }, [])
 
-  const value = useMemo(
-    () => ({ theme, setTheme, mode, toggleMode }),
-    [theme, mode, toggleMode]
-  )
+  const value = useMemo(() => ({ theme, setTheme, mode }), [theme])
 
   return <ThemeContext.Provider value={value}>{children}</ThemeContext.Provider>
 }
