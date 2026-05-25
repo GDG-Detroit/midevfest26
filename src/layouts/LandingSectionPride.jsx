@@ -137,7 +137,9 @@ function LandingSectionPride({
   showDebugGUI = import.meta.env.DEV,
 }) {
   const canvasHostRef = useRef(null)
+  const heroSectionRef = useRef(null)
   const sceneRef = useRef(null)
+  const heroInViewRef = useRef(true)
   const {
     shouldPlay,
     userWantsPlaying,
@@ -150,11 +152,38 @@ function LandingSectionPride({
     if (!showAnimatedBackground) return undefined
 
     const host = canvasHostRef.current
+    const heroEl = heroSectionRef.current
     if (!host) return undefined
 
     const scene = createPrideTrailScene(host, { showDebugGUI })
     sceneRef.current = scene
+
+    const syncPlayback = () => {
+      const tabVisible = document.visibilityState === 'visible'
+      scene.setPlaying(tabVisible && heroInViewRef.current)
+    }
+
+    const intersectionObserver =
+      heroEl &&
+      new IntersectionObserver(
+        ([entry]) => {
+          heroInViewRef.current = entry.isIntersecting
+          syncPlayback()
+        },
+        { root: null, rootMargin: '0px', threshold: 0.05 }
+      )
+
+    if (intersectionObserver && heroEl) {
+      intersectionObserver.observe(heroEl)
+    }
+
+    const onVisibilityChange = () => syncPlayback()
+    document.addEventListener('visibilitychange', onVisibilityChange)
+    syncPlayback()
+
     return () => {
+      document.removeEventListener('visibilitychange', onVisibilityChange)
+      intersectionObserver?.disconnect()
       scene.dispose()
       sceneRef.current = null
     }
@@ -162,6 +191,7 @@ function LandingSectionPride({
 
   return (
     <section
+      ref={heroSectionRef}
       id="hero-pride"
       aria-label="Hero Section"
       className={`relative min-h-[90vh] w-full overflow-hidden bg-black ${className}`}
