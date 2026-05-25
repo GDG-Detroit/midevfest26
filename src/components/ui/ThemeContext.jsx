@@ -32,7 +32,7 @@ export default function ThemeProvider({ children }) {
     writeStorage('iwd-mode', 'dark')
   }, [])
 
-  const value = useMemo(() => ({ theme, setTheme, mode }), [theme])
+  const value = useMemo(() => ({ theme, setTheme, mode }), [theme, mode])
 
   return <ThemeContext.Provider value={value}>{children}</ThemeContext.Provider>
 }

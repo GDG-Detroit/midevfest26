@@ -71,7 +71,7 @@ function Home() {
         </div>
 
         <div id="team">
-          <OrganizersSection defaultExpanded={false} />
+          <OrganizersSection />
         </div>
       </div>
     </PageLayout>
