@@ -27,17 +27,17 @@ const VENUE_IMAGES = [
   },
   {
     src: hqEntrance,
-    alt: 'IBMHQ Entrance',
+    alt: 'Street-level entrance of the 500 Woodward building in downtown Detroit, featuring a stone façade, tall windows, and the main lobby entry where IBM event guests will arrive.',
     label: 'Main Entrance',
   },
   {
     src: hqLobby,
-    alt: 'IBM HQ Lobby',
+    alt: 'Interior lobby of the 500 Woodward building in Detroit with high ceilings, marble finishes, modern seating, and a spacious reception area for IBM event attendees.',
     label: 'Lobby & Atrium',
   },
   {
     src: hqExterior,
-    alt: 'Little Caesars HQ Architectural Detail',
+    alt: '500 Woodward Avenue building in downtown Detroit with an American flag in the foreground. The high-rise office tower features a distinctive stepped crown and serves as the Detroit headquarters location for IBM and event operations.',
     label: 'Architectural Details',
   },
 ]
