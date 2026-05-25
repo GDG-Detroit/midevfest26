@@ -51,8 +51,9 @@ const TRAIL_COLOR_COUNT = 7
 const TRAIL_COLOR_WEIGHTS = [1, 1, 0.3, 1, 1, 1, 1]
 
 function resolveDpr(requested = MAX_DPR) {
-  if (typeof window === 'undefined') return requested
-  return Math.min(requested, window.devicePixelRatio || 1)
+  const deviceDpr =
+    typeof window === 'undefined' ? requested : window.devicePixelRatio || 1
+  return Math.min(requested, deviceDpr, MAX_DPR)
 }
 
 function pickTrailColorIndex() {
