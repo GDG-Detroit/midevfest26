@@ -8,11 +8,17 @@ import { EffectComposer } from 'three/addons/postprocessing/EffectComposer.js'
 import { RenderPass } from 'three/addons/postprocessing/RenderPass.js'
 import { UnrealBloomPass } from 'three/addons/postprocessing/UnrealBloomPass.js'
 import { ShaderPass } from 'three/addons/postprocessing/ShaderPass.js'
-import { SMAAPass } from 'three/addons/postprocessing/SMAAPass.js'
 import { OutputPass } from 'three/addons/postprocessing/OutputPass.js'
 
+/** Cap render resolution for battery/thermals (renderer antialias replaces SMAA). */
+const MAX_DPR = 1.25
+
+const TRAIL_TUBULAR_SEGMENTS = 96
+const FLOOR_GRID_SEGMENTS = 400
+const FOREGROUND_BLUR_SAMPLES = 16
+
 const DEFAULT_CONFIG = {
-  dpr: 1.5,
+  dpr: MAX_DPR,
   exposure: 3.6505,
   brightness: 4.0131,
   bloomStrength: 0.2025,
@@ -20,7 +26,7 @@ const DEFAULT_CONFIG = {
   bloomThreshold: 0.0,
   speedMultiplier: 0.1,
   inverseMotion: false,
-  linesCount: 100,
+  linesCount: 60,
   dotDensity: 70,
   dotSize: 0.25,
   dotSpeed: 1.5,
@@ -43,6 +49,12 @@ const TRAIL_COLOR_COUNT = 7
 
 /** Relative weights for color0–color6 (lower = fewer trails). */
 const TRAIL_COLOR_WEIGHTS = [1, 1, 0.3, 1, 1, 1, 1]
+
+function resolveDpr(requested = MAX_DPR) {
+  const deviceDpr =
+    typeof window === 'undefined' ? requested : window.devicePixelRatio || 1
+  return Math.min(requested, deviceDpr, MAX_DPR)
+}
 
 function pickTrailColorIndex() {
   const total = TRAIL_COLOR_WEIGHTS.reduce((sum, w) => sum + w, 0)
@@ -192,7 +204,7 @@ const FOREGROUND_BLUR_SHADER = {
         vec4 color = vec4(0.0);
         float total = 0.0;
         const float GA = 2.3999632;
-        for (int i = 0; i < 32; i++) {
+        for (int i = 0; i < ${FOREGROUND_BLUR_SAMPLES}; i++) {
           float f = float(i);
           float r = sqrt(f) * radius;
           float theta = f * GA;
@@ -214,6 +226,7 @@ const FOREGROUND_BLUR_SHADER = {
  */
 export function createPrideTrailScene(container, options = {}) {
   const config = { ...DEFAULT_CONFIG, ...options.config }
+  config.dpr = resolveDpr(config.dpr)
   const showDebugGUI = options.showDebugGUI ?? false
 
   let scene
@@ -222,7 +235,6 @@ export function createPrideTrailScene(container, options = {}) {
   let composer
   let bloomPass
   let blurPass
-  let smaaPass
   let outputPass
   let floorMesh
   let gui = null
@@ -256,7 +268,7 @@ export function createPrideTrailScene(container, options = {}) {
   function updateGeometries() {
     if (floorMesh.geometry) floorMesh.geometry.dispose()
 
-    const floorGeo = new THREE.PlaneGeometry(1000, 1000, 1, 1500)
+    const floorGeo = new THREE.PlaneGeometry(1000, 1000, 1, FLOOR_GRID_SEGMENTS)
     floorGeo.rotateX(-Math.PI * 0.5)
     const pos = floorGeo.attributes.position.array
 
@@ -292,7 +304,13 @@ export function createPrideTrailScene(container, options = {}) {
         config.arcRadius,
         config.wallHeight
       )
-      const geo = new THREE.TubeGeometry(path, 200, obj.thickness, 8, false)
+      const geo = new THREE.TubeGeometry(
+        path,
+        TRAIL_TUBULAR_SEGMENTS,
+        obj.thickness,
+        8,
+        false
+      )
       if (obj.mesh.geometry) obj.mesh.geometry.dispose()
       obj.mesh.geometry = geo
       obj.refMesh.geometry = geo
@@ -365,9 +383,6 @@ export function createPrideTrailScene(container, options = {}) {
     camera.updateProjectionMatrix()
     renderer.setSize(width, height)
     composer.setSize(width, height)
-    if (smaaPass) {
-      smaaPass.setSize(width * config.dpr, height * config.dpr)
-    }
     blurPass.uniforms.resolution.value.set(
       width * config.dpr,
       height * config.dpr
@@ -544,7 +559,6 @@ export function createPrideTrailScene(container, options = {}) {
   )
 
   const renderScene = new RenderPass(scene, camera)
-  smaaPass = new SMAAPass(width * config.dpr, height * config.dpr)
   bloomPass = new UnrealBloomPass(
     new THREE.Vector2(width, height),
     config.bloomStrength,
@@ -559,7 +573,6 @@ export function createPrideTrailScene(container, options = {}) {
   composer = new EffectComposer(renderer, renderTarget)
   composer.setPixelRatio(config.dpr)
   composer.addPass(renderScene)
-  composer.addPass(smaaPass)
   composer.addPass(bloomPass)
   composer.addPass(blurPass)
   composer.addPass(outputPass)
@@ -589,7 +602,8 @@ export function createPrideTrailScene(container, options = {}) {
     import('lil-gui').then(({ default: GUI }) => setupGUI(GUI)).catch(() => {})
   }
 
-  animate()
+  // One static frame; loop starts via setPlaying() from LandingSectionPride.
+  composer.render()
 
   return {
     setPlaying,

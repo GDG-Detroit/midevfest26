@@ -2,7 +2,6 @@ import { useEffect, useRef } from 'react'
 import PropTypes from 'prop-types'
 import { FaArrowRight } from 'react-icons/fa6'
 import CTAButton from '@/components/ui/CTAButton'
-import { createPrideTrailScene } from './prideTrailScene'
 import useHeroAnimation from '@/hooks/useHeroAnimation'
 import heroTrails from '@/assets/images/hero/hero-trails.webp'
 import heroTrailsFull from '@/assets/images/hero/hero-trails.png'
@@ -137,7 +136,9 @@ function LandingSectionPride({
   showDebugGUI = import.meta.env.DEV,
 }) {
   const canvasHostRef = useRef(null)
+  const heroSectionRef = useRef(null)
   const sceneRef = useRef(null)
+  const heroInViewRef = useRef(true)
   const {
     shouldPlay,
     userWantsPlaying,
@@ -150,18 +151,54 @@ function LandingSectionPride({
     if (!showAnimatedBackground) return undefined
 
     const host = canvasHostRef.current
+    const heroEl = heroSectionRef.current
     if (!host) return undefined
 
-    const scene = createPrideTrailScene(host, { showDebugGUI })
-    sceneRef.current = scene
+    let cancelled = false
+    let scene = null
+    let intersectionObserver = null
+
+    const syncPlayback = () => {
+      if (!scene) return
+      const tabVisible = document.visibilityState === 'visible'
+      scene.setPlaying(tabVisible && heroInViewRef.current)
+    }
+
+    const onVisibilityChange = () => syncPlayback()
+
+    import('./prideTrailScene').then(({ createPrideTrailScene }) => {
+      if (cancelled) return
+
+      scene = createPrideTrailScene(host, { showDebugGUI })
+      sceneRef.current = scene
+
+      if (heroEl) {
+        intersectionObserver = new IntersectionObserver(
+          ([entry]) => {
+            heroInViewRef.current = entry.isIntersecting
+            syncPlayback()
+          },
+          { root: null, rootMargin: '0px', threshold: 0.05 }
+        )
+        intersectionObserver.observe(heroEl)
+      }
+
+      document.addEventListener('visibilitychange', onVisibilityChange)
+      syncPlayback()
+    })
+
     return () => {
-      scene.dispose()
+      cancelled = true
+      document.removeEventListener('visibilitychange', onVisibilityChange)
+      intersectionObserver?.disconnect()
+      scene?.dispose()
       sceneRef.current = null
     }
   }, [showDebugGUI, showAnimatedBackground])
 
   return (
     <section
+      ref={heroSectionRef}
       id="hero-pride"
       aria-label="Hero Section"
       className={`relative min-h-[90vh] w-full overflow-hidden bg-black ${className}`}
