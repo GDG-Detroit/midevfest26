@@ -67,7 +67,7 @@ const PartnersSection = ({ partnersData = {}, year }) => {
             <div className="mx-auto mt-12 grid w-full max-w-7xl grid-cols-1 gap-12 sm:grid-cols-2 lg:grid-cols-2 xl:grid-cols-3">
               {allPartners.map((partner) => {
                 const cardClass =
-                  'group block w-full rounded-[2rem] focus:outline-none focus-visible:ring-2 focus-visible:ring-focus-ring focus-visible:ring-offset-2 focus-visible:ring-offset-iwd-black-950'
+                  'group block w-full rounded-[2rem] border-0 bg-transparent p-0 text-left focus:outline-none focus-visible:ring-2 focus-visible:ring-focus-ring focus-visible:ring-offset-2 focus-visible:ring-offset-iwd-black-950'
                 const cardStyle = { perspective: '1000px' }
                 const cardInner = (
                   <div className="relative h-56 w-full transition-transform duration-700 [transform-style:preserve-3d] group-hover:[transform:rotateY(180deg)] group-focus-visible:[transform:rotateY(180deg)]">
@@ -76,7 +76,7 @@ const PartnersSection = ({ partnersData = {}, year }) => {
                       {partner.logo ? (
                         <img
                           src={partner.logo}
-                          alt={partner.name}
+                          alt=""
                           className="logo-halo max-h-40 max-w-[85%] object-contain transition-transform duration-700 group-hover:scale-110"
                           loading="lazy"
                         />
@@ -138,14 +138,15 @@ const PartnersSection = ({ partnersData = {}, year }) => {
                     {cardInner}
                   </a>
                 ) : (
-                  <article
+                  <button
                     key={partner.id}
-                    className={cardClass}
+                    type="button"
+                    className={`${cardClass} cursor-default`}
                     style={cardStyle}
-                    aria-label={partner.name}
+                    aria-label={`${partner.name} — focus for partner description`}
                   >
                     {cardInner}
-                  </article>
+                  </button>
                 )
               })}
             </div>
