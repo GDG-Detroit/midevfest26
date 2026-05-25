@@ -3,6 +3,13 @@ import { FaEnvelope } from 'react-icons/fa6'
 import CTAButton from '@/components/ui/CTAButton'
 import SectionSkipLink from '@/components/ui/SectionSkipLink'
 
+const DESC_MAX_LENGTH = 100
+
+function truncateDescription(text, maxLength = DESC_MAX_LENGTH) {
+  if (!text || text.length <= maxLength) return text
+  return `${text.slice(0, maxLength).trimEnd()}…`
+}
+
 const PartnersSection = ({ partnersData = {}, year }) => {
   const isCurrentYear = year === new Date().getFullYear()
 
@@ -71,18 +78,14 @@ const PartnersSection = ({ partnersData = {}, year }) => {
                 >
                   <div className="relative h-56 w-full transition-transform duration-700 [transform-style:preserve-3d] group-hover:[transform:rotateY(180deg)]">
                     {/* ── Front: Large logo ── */}
-                    <div className="absolute inset-0 flex items-center justify-center rounded-[2rem] border border-white/[0.08] bg-white/[0.03] p-10 shadow-2xl backdrop-blur-md [backface-visibility:hidden]">
+                    <div className="absolute inset-0 flex items-center justify-center rounded-[2rem] border border-stone-300/70 bg-gradient-to-br from-stone-300/90 via-stone-100 to-gray-300/80 p-10 shadow-sm shadow-black/20 [backface-visibility:hidden] light:border-stone-300 light:from-stone-200 light:via-stone-100 light:to-stone-300/90">
                       {partner.logo ? (
-                        <div className="relative flex size-full items-center justify-center">
-                          {/* Subtle glow/halo for dark backgrounds */}
-                          <div className="absolute inset-0 rounded-full bg-white/5 blur-3xl" />
-                          <img
-                            src={partner.logo}
-                            alt={partner.name}
-                            className="relative max-h-40 max-w-[85%] object-contain transition-transform duration-700 group-hover:scale-110"
-                            loading="lazy"
-                          />
-                        </div>
+                        <img
+                          src={partner.logo}
+                          alt={partner.name}
+                          className="logo-halo max-h-40 max-w-[85%] object-contain transition-transform duration-700 group-hover:scale-110"
+                          loading="lazy"
+                        />
                       ) : (
                         <p className="text-center text-3xl font-bold tracking-tight text-gray-900 dark:text-white/90">
                           {partner.name}
@@ -95,8 +98,15 @@ const PartnersSection = ({ partnersData = {}, year }) => {
                         {partner.name}
                       </h3>
                       {partner.desc && (
-                        <p className="line-clamp-6 text-center text-base leading-relaxed text-gray-900 dark:text-white/70">
-                          {partner.desc}
+                        <p
+                          className="text-center text-base leading-relaxed text-gray-900 dark:text-white/70"
+                          title={
+                            partner.desc.length > DESC_MAX_LENGTH
+                              ? partner.desc
+                              : undefined
+                          }
+                        >
+                          {truncateDescription(partner.desc)}
                         </p>
                       )}
                       {partner.url && (
