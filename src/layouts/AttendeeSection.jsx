@@ -32,6 +32,9 @@ function AttendeeSection() {
   const row1 = imagePaths.slice(0, midpoint)
   const row2 = imagePaths.slice(midpoint)
 
+  const logoCardClass =
+    'group relative mx-5 flex items-center justify-center overflow-hidden rounded-2xl border border-stone-300/70 bg-gradient-to-br from-stone-300/90 via-stone-100 to-gray-300/80 px-6 py-5 shadow-sm shadow-black/20 transition-all duration-500 hover:border-iwd-gold-400/25 hover:from-stone-200 hover:via-stone-50 hover:to-primary-100/60 hover:shadow-md hover:shadow-black/25 sm:mx-8 sm:px-10 sm:py-6 light:border-stone-300 light:from-stone-200 light:via-stone-100 light:to-stone-300/90'
+
   return (
     <section
       id="attendees"
@@ -101,18 +104,15 @@ function AttendeeSection() {
 
           <Marquee speed={40} pauseOnHover play={isPlaying} gradient={false}>
             {row1.map((img, i) => (
-              <div
-                key={i}
-                className="group relative mx-5 flex items-center justify-center overflow-hidden rounded-2xl border border-white/[0.04] bg-white/[0.02] px-6 py-5 transition-all duration-500 hover:border-white/10 hover:bg-white/[0.05] sm:mx-8 sm:px-10 sm:py-6"
-              >
+              <div key={i} className={logoCardClass}>
                 <img
                   src={img.src}
                   alt={img.name}
                   loading="lazy"
-                  className="logo-halo h-20 max-w-[180px] object-contain transition-all duration-500 group-hover:scale-105 group-hover:drop-shadow-[0_0_20px_rgba(255,255,255,0.15)] sm:h-28 sm:max-w-[260px]"
+                  className="logo-halo h-20 max-w-[180px] object-contain transition-all duration-500 group-hover:scale-105 group-hover:drop-shadow-[0_4px_16px_rgba(0,0,0,0.12)] sm:h-28 sm:max-w-[260px]"
                 />
-                <div className="absolute inset-x-0 bottom-0 flex items-center justify-center bg-gradient-to-t from-iwd-black-950/80 via-iwd-black-950/40 to-transparent px-3 pb-3 pt-8 opacity-0 transition-all duration-300 group-hover:opacity-100">
-                  <span className="font-body text-xs font-medium tracking-wide text-gray-200">
+                <div className="absolute inset-x-0 bottom-0 flex items-center justify-center bg-gradient-to-t from-stone-200/95 via-stone-100/75 to-transparent px-3 pb-3 pt-8 opacity-0 transition-all duration-300 group-hover:opacity-100">
+                  <span className="font-body text-xs font-medium tracking-wide text-stone-700">
                     {img.name}
                   </span>
                 </div>
@@ -134,18 +134,15 @@ function AttendeeSection() {
             direction="right"
           >
             {row2.map((img, i) => (
-              <div
-                key={i}
-                className="group relative mx-5 flex items-center justify-center overflow-hidden rounded-2xl border border-white/[0.04] bg-white/[0.02] px-6 py-5 transition-all duration-500 hover:border-white/10 hover:bg-white/[0.05] sm:mx-8 sm:px-10 sm:py-6"
-              >
+              <div key={i} className={logoCardClass}>
                 <img
                   src={img.src}
                   alt={img.name}
                   loading="lazy"
-                  className="logo-halo h-20 max-w-[180px] object-contain transition-all duration-500 group-hover:scale-105 group-hover:drop-shadow-[0_0_20px_rgba(255,255,255,0.15)] sm:h-28 sm:max-w-[260px]"
+                  className="logo-halo h-20 max-w-[180px] object-contain transition-all duration-500 group-hover:scale-105 group-hover:drop-shadow-[0_4px_16px_rgba(0,0,0,0.12)] sm:h-28 sm:max-w-[260px]"
                 />
-                <div className="absolute inset-x-0 bottom-0 flex items-center justify-center bg-gradient-to-t from-iwd-black-950/80 via-iwd-black-950/40 to-transparent px-3 pb-3 pt-8 opacity-0 transition-all duration-300 group-hover:opacity-100">
-                  <span className="font-body text-xs font-medium tracking-wide text-gray-200">
+                <div className="absolute inset-x-0 bottom-0 flex items-center justify-center bg-gradient-to-t from-stone-200/95 via-stone-100/75 to-transparent px-3 pb-3 pt-8 opacity-0 transition-all duration-300 group-hover:opacity-100">
+                  <span className="font-body text-xs font-medium tracking-wide text-stone-700">
                     {img.name}
                   </span>
                 </div>
