@@ -373,7 +373,7 @@ function LocationSection() {
                   <strong className="mb-1 block text-white">
                     One Detroit Garage (Recommended & Free)
                   </strong>
-                  <p className="text-sm leading-relaxed text-gray-400">
+                  <p className="text-lg leading-relaxed text-gray-400">
                     Adjacent at 1001 Woodward Ave. Most convenient for a quick
                     walk to the entrance.
                   </p>
@@ -385,7 +385,7 @@ function LocationSection() {
           {/* Entrance Card */}
           <div className="group rounded-2xl border border-white/[0.06] bg-white/[0.02] p-8 backdrop-blur-sm transition-all duration-300 hover:border-white/[0.12] hover:bg-white/[0.04]">
             <h3 className="mb-3 text-xl font-semibold text-white">Entrance</h3>
-            <p className="text-sm leading-relaxed text-gray-400">
+            <p className="text-lg leading-relaxed text-gray-400">
               Enter through the main front doors on Woodward Avenue. Check-in is
               located in the main lobby. Have your registration QR code ready.
             </p>

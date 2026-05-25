@@ -78,7 +78,7 @@ const PastEventsSection = () => {
               Events
             </span>
           </h2>
-          <p className="mt-6 text-lg font-light italic leading-8 text-gray-400">
+          <p className="mt-6 text-lg italic leading-relaxed text-gray-400">
             A &quot;no-tech&quot; look at the stories that brought us here.
           </p>
         </div>

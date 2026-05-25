@@ -46,7 +46,7 @@ const PartnersSection = ({ partnersData = {}, year }) => {
       </div>
 
       <div className="mx-auto mt-2 max-w-4xl text-center">
-        <p className="font-body text-base font-light leading-relaxed text-gray-400">
+        <p className="font-body text-lg leading-relaxed text-gray-400">
           Compass Detroit wouldn&apos;t be possible without the support of our
           amazing partners. Thank you for helping us create an unforgettable
           experience for the tech community.
