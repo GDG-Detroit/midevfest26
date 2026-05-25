@@ -60,7 +60,7 @@ function AttendeeSection() {
 
         <div className="mx-auto mb-6 h-px w-24 bg-gradient-to-r from-transparent via-iwd-gold-400/50 to-transparent sm:w-32" />
 
-        <p className="mx-auto max-w-2xl font-body text-base font-light leading-relaxed text-gray-400">
+        <p className="mx-auto max-w-2xl font-body text-lg leading-relaxed text-gray-400">
           These organizations send their people to learn, connect, and grow with
           us. That&rsquo;s not just attendance&nbsp;&mdash; that&rsquo;s belief.
         </p>

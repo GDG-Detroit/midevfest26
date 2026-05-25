@@ -23,12 +23,12 @@ function OrganizersSection() {
         </p>
         <h2 className="mb-3 w-full text-center font-heading text-4xl font-bold text-white sm:text-5xl lg:text-6xl">
           <span className="bg-gradient-to-r from-iwd-gold-300 via-iwd-gold-400 to-iwd-gold-300 bg-clip-text text-transparent">
-            IWD Team
+            Detroit Pride Team
           </span>
         </h2>
         <div className="mb-6 h-px w-24 bg-gradient-to-r from-transparent via-iwd-gold-400/50 to-transparent sm:w-32" />
       </div>
-      <p className="mx-auto max-w-4xl text-center text-sm text-gray-300">
+      <p className="mx-auto max-w-4xl text-center font-body text-lg leading-relaxed text-gray-400">
         Compass organizers are highlighted first, followed by the engineering
         team supporting the event website.
       </p>
