@@ -14,37 +14,31 @@ import SectionSkipLink from '@/components/ui/SectionSkipLink'
 import { GOLD_PRIMARY_LIGHT_HOVER } from '@/constants/goldPrimaryButtonLightHover'
 
 // Venue images
-import lcHqFacade from '@/assets/images/location/lc_hq_facade.jpg'
-import lcHqLobby from '@/assets/images/location/lc_hq_lobby.jpg'
-import lcHqBlueRed from '@/assets/images/location/lc_hq_blue_red.jpg'
-import lcHqFacade2 from '@/assets/images/location/lc_hq_facade_2.jpg'
-import lcHqFox from '@/assets/images/location/lc_hq_fox.jpg'
+import birdseyeView from '@/assets/images/location/85_500woodward-birdeye.webp'
+import hqEntrance from '@/assets/images/location/85_500woodward-entrance.webp'
+import hqExterior from '@/assets/images/location/85_500woodward-exterior.webp'
+import hqLobby from '@/assets/images/location/85_500woodward-lobby.webp'
 
 const VENUE_IMAGES = [
   {
-    src: lcHqFacade,
-    alt: 'Little Caesars HQ Main Entrance',
-    label: 'Main Entrance & Facade',
+    src: birdseyeView,
+    alt: 'Birdseye View of 500 Woodward',
+    label: 'Birdseye View of IBM HQ',
   },
   {
-    src: lcHqLobby,
-    alt: 'Little Caesars HQ Lobby',
+    src: hqEntrance,
+    alt: 'Street-level entrance of the 500 Woodward building in downtown Detroit, featuring a stone façade, tall windows, and the main lobby entry where IBM event guests will arrive.',
+    label: 'Main Entrance',
+  },
+  {
+    src: hqLobby,
+    alt: 'Interior lobby of the 500 Woodward building in Detroit with high ceilings, marble finishes, modern seating, and a spacious reception area for IBM event attendees.',
     label: 'Lobby & Atrium',
   },
   {
-    src: lcHqBlueRed,
-    alt: 'Little Caesars HQ Night Illumination',
-    label: 'Nighttime Illumination',
-  },
-  {
-    src: lcHqFacade2,
-    alt: 'Little Caesars HQ Architectural Detail',
+    src: hqExterior,
+    alt: '500 Woodward Avenue building in downtown Detroit with an American flag in the foreground. The high-rise office tower features a distinctive stepped crown and serves as the Detroit headquarters location for IBM and event operations.',
     label: 'Architectural Details',
-  },
-  {
-    src: lcHqFox,
-    alt: 'Historic Fox Theatre Neighborhood',
-    label: 'Historic Fox Theatre',
   },
 ]
 
@@ -377,52 +371,11 @@ function LocationSection() {
                 </div>
                 <div>
                   <strong className="mb-1 block text-white">
-                    Fox Garage (Recommended)
+                    One Detroit Garage (Recommended & Free)
                   </strong>
                   <p className="text-sm leading-relaxed text-gray-400">
-                    Adjacent at 50 W Montcalm St. Most convenient for a quick
+                    Adjacent at 1001 Woodward Ave. Most convenient for a quick
                     walk to the entrance.
-                  </p>
-                </div>
-              </div>
-              <div className="flex items-start gap-4">
-                <div className="mt-1 flex size-6 shrink-0 items-center justify-center rounded-full bg-iwd-gold-400 font-heading text-[10px] font-black text-iwd-black-950">
-                  2
-                </div>
-                <div>
-                  <strong className="mb-1 block text-white">
-                    Opera House Garage
-                  </strong>
-                  <p className="text-sm leading-relaxed text-gray-400">
-                    Located at 1601 Broadway St. Short walk through District
-                    Detroit.
-                  </p>
-                </div>
-              </div>
-              <div className="flex items-start gap-4">
-                <div className="mt-1 flex size-6 shrink-0 items-center justify-center rounded-full bg-iwd-gold-400 font-heading text-[10px] font-black text-iwd-black-950">
-                  3
-                </div>
-                <div>
-                  <strong className="mb-1 block text-white">
-                    Comerica Park Lots
-                  </strong>
-                  <p className="text-sm leading-relaxed text-gray-400">
-                    Various lots along Witherell St and Montcalm St.
-                  </p>
-                </div>
-              </div>
-              <div className="flex items-start gap-4">
-                <div className="mt-1 flex size-6 shrink-0 items-center justify-center rounded-full bg-iwd-gold-400 font-heading text-[10px] font-black text-iwd-black-950">
-                  4
-                </div>
-                <div>
-                  <strong className="mb-1 block text-white">
-                    MGM Grand Garage (Free)
-                  </strong>
-                  <p className="text-sm leading-relaxed text-gray-400">
-                    Free parking available at MGM Grand Detroit. A scenic ~12
-                    min walk to the venue.
                   </p>
                 </div>
               </div>
