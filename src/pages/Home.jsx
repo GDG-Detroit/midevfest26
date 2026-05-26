@@ -26,7 +26,7 @@ function Home() {
 
       <LandingSectionPride />
 
-      <div className="bg-iwd-surface-raised relative z-10 space-y-32 py-20 dark:bg-iwd-black-950">
+      <div className="bg-iwd-surface-raised relative z-10 py-0 dark:bg-iwd-black-950">
         <LocationSection />
 
         <div id="schedule">
