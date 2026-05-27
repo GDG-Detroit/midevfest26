@@ -21,7 +21,7 @@ function Home() {
     <PageLayout>
       <SEOStructuredData speakersData={Speakers2026} />
       <h1 id="main-heading" className="sr-only">
-        International Women&apos;s Day Innovation Summit {currentYear}
+        Detroit Pride Day Innovation Summit {currentYear}
       </h1>
 
       <LandingSectionPride />
