@@ -1,7 +1,7 @@
 import { useEffect, useRef } from 'react'
 
 // TODO: update back webp
-import lcgrcMap from '@/assets/images/maps/map-pride.svg'
+import ibmHqMap from '@/assets/images/maps/map-ibm-hq.svg'
 
 function VenueMaps() {
   const scrollRef = useRef(null)
@@ -41,7 +41,7 @@ function VenueMaps() {
           aria-label="Scrollable venue map"
         >
           <img
-            src={lcgrcMap}
+            src={ibmHqMap}
             alt=""
             className="min-w-max rounded-2xl"
             loading="lazy"
