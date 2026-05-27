@@ -1,19 +1,10 @@
-import { useEffect, useRef, useState } from 'react'
+import { useEffect, useRef } from 'react'
 
 // TODO: update back webp
-import lcgrcMap from '@/assets/images/maps/lcMap.png'
+import ibmHqMap from '@/assets/images/maps/map-ibm-hq.svg'
 
 function VenueMaps() {
   const scrollRef = useRef(null)
-  const imgRef = useRef(null)
-  const [mapImageReady, setMapImageReady] = useState(false)
-
-  useEffect(() => {
-    const img = imgRef.current
-    if (img?.complete && img.naturalWidth > 0) {
-      setMapImageReady(true)
-    }
-  }, [])
 
   useEffect(() => {
     const el = scrollRef.current
@@ -41,23 +32,19 @@ function VenueMaps() {
       <h2 id="venue-maps-heading" className="sr-only">
         Venue map
       </h2>
-      <div className="mx-1 mb-1 rounded-xl border-4 border-iwd-gold-500 bg-iwd-gold-50">
+      <div className="mx-1 mb-1 rounded-xl border-4 border-iwd-gold-500">
         <div
           ref={scrollRef}
-          className="scrollbar-visible overflow-x-auto overflow-y-hidden scroll-smooth rounded-md focus:outline-none focus-visible:ring-2 focus-visible:ring-focus-ring focus-visible:ring-offset-2 focus-visible:ring-offset-iwd-gold-100"
+          className="flex justify-center items-center w-full scrollbar-visible overflow-x-auto overflow-y-hidden scroll-smooth rounded-md focus:outline-none focus-visible:ring-2 focus-visible:ring-focus-ring focus-visible:ring-offset-2 focus-visible:ring-offset-iwd-gold-100"
           tabIndex={0}
           role="region"
           aria-label="Scrollable venue map"
         >
           <img
-            ref={imgRef}
-            src={lcgrcMap}
+            src={ibmHqMap}
             alt=""
-            className={`min-w-max rounded-2xl object-left-top transition-transform duration-500 ease-out will-change-transform motion-reduce:duration-0 ${
-              mapImageReady ? 'translate-x-[-40px]' : 'translate-x-0'
-            }`}
+            className="min-w-max rounded-2xl"
             loading="lazy"
-            onLoad={() => setMapImageReady(true)}
           />
         </div>
       </div>

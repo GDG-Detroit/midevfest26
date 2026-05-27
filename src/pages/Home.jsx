@@ -21,12 +21,12 @@ function Home() {
     <PageLayout>
       <SEOStructuredData speakersData={Speakers2026} />
       <h1 id="main-heading" className="sr-only">
-        International Women&apos;s Day Innovation Summit {currentYear}
+        Detroit Pride Innovation Summit {currentYear}
       </h1>
 
       <LandingSectionPride />
 
-      <div className="bg-iwd-surface-raised relative z-10 space-y-32 py-20 dark:bg-iwd-black-950">
+      <div className="bg-iwd-surface-raised relative z-10 py-0 dark:bg-iwd-black-950">
         <LocationSection />
 
         <div id="schedule">
