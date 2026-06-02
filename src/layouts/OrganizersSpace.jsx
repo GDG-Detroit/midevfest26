@@ -6,7 +6,7 @@ import { FaLinkedin, FaGithub } from 'react-icons/fa'
 const TrackHeader = memo(({ title }) => (
   <div className="mb-12 flex items-center justify-center gap-6">
     <div className="h-px flex-1 bg-gradient-to-r from-transparent via-white/10 to-transparent" />
-    <h3 className="shrink-0 font-heading text-xl font-black uppercase tracking-[0.3em] text-iwd-gold-400/40">
+    <h3 className="shrink-0 font-heading text-xl font-black uppercase tracking-[0.3em] text-iwd-gold-400">
       {title}
     </h3>
     <div className="h-px flex-1 bg-gradient-to-l from-transparent via-white/10 to-transparent" />
@@ -55,7 +55,7 @@ const TeamCard = memo(
             <h4 className="font-heading text-xl font-black tracking-tight text-white">
               {name}
             </h4>
-            <span className="text-xs font-bold uppercase tracking-widest text-iwd-gold-400/60">
+            <span className="text-xs font-bold uppercase tracking-widest text-iwd-gold-400">
               {role || position || 'Contributor'}
             </span>
             {(organization || university) && (
@@ -139,7 +139,7 @@ export default function OrganizersSpace() {
         <div className="mb-32 flex flex-col items-center text-center">
           <div className="mb-6 flex items-center justify-center gap-4">
             <div className="h-px w-12 bg-gradient-to-r from-transparent to-iwd-gold-400/50" />
-            <span className="font-body text-xs font-black uppercase tracking-[0.5em] text-iwd-gold-400/50">
+            <span className="font-body text-xs font-black uppercase tracking-[0.5em] text-iwd-gold-400">
               Behind the Summit
             </span>
             <div className="h-px w-12 bg-gradient-to-l from-transparent to-iwd-gold-400/50" />
@@ -150,7 +150,7 @@ export default function OrganizersSpace() {
               Space
             </span>
           </h2>
-          <p className="mt-8 max-w-2xl font-body text-lg font-light leading-relaxed text-gray-900 dark:text-white/40 sm:text-xl">
+          <p className="mt-8 max-w-2xl font-body text-lg leading-relaxed text-gray-900 dark:text-white/40 sm:text-xl">
             Meet the visionary organizers and technical contributors working to
             break the pattern in Detroit.
           </p>

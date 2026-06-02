@@ -3,7 +3,7 @@ import { Routes, Route, Link, useLocation } from 'react-router-dom'
 import CompassDetroitLogo from '@/components/ui/CompassDetroitLogo'
 
 // Import all sections for individual playground pages
-import LandingSection from '@/layouts/LandingSection'
+import LandingSectionPride from '@/layouts/LandingSectionPride'
 import LocationSection from '@/layouts/LocationSection'
 import AboutSection from '@/layouts/AboutSection'
 import SessionsSection from '@/layouts/SessionsSection'
@@ -84,7 +84,7 @@ export default function PlaygroundPage() {
               </div>
             }
           />
-          <Route path="hero" element={<LandingSection />} />
+          <Route path="hero" element={<LandingSectionPride />} />
           <Route path="location" element={<LocationSection />} />
           <Route path="about" element={<AboutSection />} />
           <Route path="break-pattern" element={<BreakPatternSection />} />

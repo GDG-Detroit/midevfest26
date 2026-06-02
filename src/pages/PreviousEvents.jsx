@@ -123,7 +123,7 @@ const PreviousEvents = () => {
         {/* Hand-drawn style background accents */}
         <div className="pointer-events-none absolute inset-0 overflow-hidden opacity-20">
           <svg
-            className="absolute right-0 top-0 size-64 -translate-y-1/2 translate-x-1/2 text-iwd-gold-400/20"
+            className="absolute right-0 top-0 size-64 -translate-y-1/2 translate-x-1/2 text-iwd-gold-400"
             viewBox="0 0 200 200"
           >
             <path
@@ -143,7 +143,7 @@ const PreviousEvents = () => {
             />
           </svg>
           <svg
-            className="absolute bottom-0 left-0 size-96 -translate-x-1/4 translate-y-1/4 text-gray-900 dark:text-white/5"
+            className="absolute bottom-0 left-0 size-96 -translate-x-1/4 translate-y-1/4 text-gray-900 dark:text-white"
             viewBox="0 0 400 400"
           >
             <path
@@ -159,7 +159,7 @@ const PreviousEvents = () => {
         <div className="relative mx-auto max-w-7xl px-6 sm:px-10">
           {/* Header */}
           <div className="mb-16 text-center sm:mb-20">
-            <p className="mb-4 font-body text-xs font-medium uppercase tracking-[0.3em] text-iwd-gold-400/80">
+            <p className="mb-4 font-body text-xs font-medium uppercase tracking-[0.3em] text-iwd-gold-400">
               Our Legacy
             </p>
             <h1
@@ -172,7 +172,7 @@ const PreviousEvents = () => {
               </span>
             </h1>
             <div className="mx-auto mb-6 h-px w-24 bg-gradient-to-r from-transparent via-iwd-gold-400/50 to-transparent sm:w-32" />
-            <p className="mx-auto max-w-2xl font-body text-base font-light italic leading-relaxed text-gray-400">
+            <p className="mx-auto max-w-2xl font-body text-base italic leading-relaxed text-gray-400">
               A &quot;no-tech&quot; look at the stories that brought us here.
             </p>
           </div>
@@ -223,13 +223,13 @@ const PreviousEvents = () => {
                         {event.name}
                       </h2>
                     </a>
-                    <p className="mb-1 font-body text-xs font-medium uppercase tracking-wider text-iwd-gold-400/70">
+                    <p className="mb-1 font-body text-xs font-medium uppercase tracking-wider text-iwd-gold-400">
                       {event.tagline}
                     </p>
-                    <p className="mb-4 text-xs uppercase tracking-widest text-gray-500">
+                    <p className="mb-4 text-xs uppercase tracking-widest text-gray-300">
                       {event.date} • {event.location}
                     </p>
-                    <p className="mb-6 text-sm leading-relaxed text-gray-400">
+                    <p className="mb-6 text-sm leading-relaxed text-gray-200">
                       {event.description}
                     </p>
                   </div>
@@ -239,7 +239,7 @@ const PreviousEvents = () => {
                     {event.highlights.map((stat) => (
                       <span
                         key={stat}
-                        className="rounded-md border border-white/[0.06] bg-white/[0.02] px-2.5 py-1 font-body text-[10px] font-semibold uppercase tracking-wider text-gray-500"
+                        className="rounded-md border border-white/[0.06] bg-white/[0.02] px-2.5 py-1 font-body text-[10px] font-semibold uppercase tracking-wider text-gray-200"
                       >
                         {stat}
                       </span>
@@ -254,7 +254,7 @@ const PreviousEvents = () => {
                   {/* Gallery button */}
                   <div className="mt-6 flex items-center gap-x-4">
                     <button
-                      className="flex cursor-default items-center gap-2 text-xs font-black uppercase tracking-widest text-white/20"
+                      className="flex cursor-default items-center gap-2 text-xs font-black uppercase tracking-widest text-white/60"
                       disabled
                       title="Gallery coming soon"
                     >
@@ -304,7 +304,7 @@ const PreviousEvents = () => {
 
           {/* Footer CTA */}
           <div className="mt-24 text-center">
-            <p className="mb-8 font-body text-lg font-light italic text-gray-400">
+            <p className="mb-8 font-body text-lg italic text-gray-400">
               Build the future with us.
             </p>
             <a

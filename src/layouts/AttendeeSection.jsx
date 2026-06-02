@@ -50,7 +50,7 @@ function AttendeeSection() {
 
       {/* Section Header */}
       <div className="relative mx-auto mb-16 max-w-4xl px-6 text-center sm:mb-20">
-        <p className="mb-4 font-body text-xs font-medium uppercase tracking-[0.3em] text-iwd-gold-400/80">
+        <p className="mb-4 font-body text-xs font-medium uppercase tracking-[0.3em] text-iwd-gold-400">
           Our Community
         </p>
 
@@ -63,7 +63,7 @@ function AttendeeSection() {
 
         <div className="mx-auto mb-6 h-px w-24 bg-gradient-to-r from-transparent via-iwd-gold-400/50 to-transparent sm:w-32" />
 
-        <p className="mx-auto max-w-2xl font-body text-lg leading-relaxed text-gray-400">
+        <p className="mx-auto max-w-2xl font-body text-lg leading-relaxed text-gray-400 text-balance">
           These organizations send their people to learn, connect, and grow with
           us. That&rsquo;s not just attendance&nbsp;&mdash; that&rsquo;s belief.
         </p>

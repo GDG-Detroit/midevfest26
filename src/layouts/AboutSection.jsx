@@ -21,7 +21,7 @@ function AboutSection() {
         {/* Eyebrow */}
         <div className="mb-5 flex items-center justify-center gap-4">
           <div className="h-px w-10 bg-gradient-to-r from-transparent to-iwd-gold-400/40 sm:w-14" />
-          <span className="font-body text-[10px] font-semibold uppercase tracking-[0.4em] text-iwd-gold-400/50 sm:text-xs">
+          <span className="font-body text-[10px] font-semibold uppercase tracking-[0.4em] text-iwd-gold-400 sm:text-xs">
             About the Summit
           </span>
           <div className="h-px w-10 bg-gradient-to-l from-transparent to-iwd-gold-400/40 sm:w-14" />
@@ -39,9 +39,9 @@ function AboutSection() {
         </h2>
 
         <p className="font-body text-left text-lg leading-relaxed text-gray-400">
-          The International Women&apos;s Day Innovation Summit brings together
-          technologists, creators, leaders, and allies for a day of learning,
-          building, and empowering women across Detroit&apos;s tech ecosystem.
+          The Detroit Pride Innovation Summit brings together technologists,
+          creators, leaders, and allies for a day of learning, building, and
+          empowering women across Detroit&apos;s tech ecosystem.
         </p>
         <p className="mt-6 font-body text-left text-lg leading-relaxed text-gray-400">
           Hosted by Compass Detroit in partnership with GDG Detroit and Women
@@ -49,7 +49,7 @@ function AboutSection() {
           panels, and community-driven sessions designed to inspire the next
           generation of innovators.
         </p>
-        <p className="mt-6 font-body text-left text-lg leading-relaxed text-gray-400">
+        <p className="mt-6 font-body text-left text-lg leading-relaxed text-gray-400 text-pretty">
           Whether you&apos;re a seasoned engineer, a student exploring your
           first hackathon, a founder building something bold, or an ally
           championing representation —{' '}

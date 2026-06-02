@@ -33,7 +33,7 @@ export default function NavRunOfShow({ onViewFullSchedule }) {
             key={item.id}
             className="rounded-lg border border-white/10 bg-white/[0.04] px-3 py-2.5"
           >
-            <p className="font-body text-[10px] font-semibold uppercase tracking-[0.12em] text-iwd-gold-400/90">
+            <p className="font-body text-[10px] font-semibold uppercase tracking-[0.12em] text-iwd-gold-400">
               {formatTimeRange(item.time, item.timeEnd)}
             </p>
             <p className="font-heading mt-0.5 text-sm font-bold leading-snug text-white">

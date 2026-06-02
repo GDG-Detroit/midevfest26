@@ -18,7 +18,7 @@ function OrganizersSection() {
         aria-hidden="true"
       />
       <div className="flex w-full flex-col items-center pt-0">
-        <p className="mb-4 font-body text-xs font-medium uppercase tracking-[0.3em] text-iwd-gold-400/80">
+        <p className="mb-4 font-body text-xs font-medium uppercase tracking-[0.3em] text-iwd-gold-400">
           Compass Organizers + Developers
         </p>
         <h2 className="mb-3 w-full text-center font-heading text-4xl font-bold text-white sm:text-5xl lg:text-6xl">
@@ -28,7 +28,7 @@ function OrganizersSection() {
         </h2>
         <div className="mb-6 h-px w-24 bg-gradient-to-r from-transparent via-iwd-gold-400/50 to-transparent sm:w-32" />
       </div>
-      <p className="mx-auto max-w-4xl text-center font-body text-lg leading-relaxed text-gray-400">
+      <p className="mx-auto max-w-4xl text-center font-body text-lg leading-relaxed text-gray-400 text-balance">
         Compass organizers are highlighted first, followed by the engineering
         team supporting the event website.
       </p>

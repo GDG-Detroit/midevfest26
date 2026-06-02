@@ -184,12 +184,12 @@ const TeamSection = ({ teamData, year }) => {
                             </p>
                           </div>
                         )}
-                        <p className="mt-2 text-xs font-semibold tracking-wide text-iwd-gold-400/80">
+                        <p className="mt-2 text-xs font-semibold tracking-wide text-iwd-gold-400">
                           {dev.role}
                         </p>
                         {dev.commits != null && dev.commits > 0 && (
                           <div className="mx-auto mt-3 flex w-fit items-center justify-center gap-1.5 rounded-full bg-white/5 px-3 py-1 sm:mx-0 sm:justify-start">
-                            <FaCodeCommit className="size-3 text-iwd-gold-400/60" />
+                            <FaCodeCommit className="size-3 text-iwd-gold-400" />
                             <span className="text-[10px] font-black uppercase tracking-widest text-gray-900 dark:text-white/30">
                               Core Contributor
                             </span>

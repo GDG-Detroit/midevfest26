@@ -41,7 +41,7 @@ const SpeakersContent = ({ year, defaultExpanded }) => {
         />
       </button>
       <div className="text-center">
-        <p className="mb-4 font-body text-xs font-medium uppercase tracking-[0.3em] text-iwd-gold-400/80">
+        <p className="mb-4 font-body text-xs font-medium uppercase tracking-[0.3em] text-iwd-gold-400">
           Meet Our Speakers
         </p>
         <h2 className="mb-5 w-full font-heading text-3xl font-bold text-white sm:text-4xl lg:text-5xl">

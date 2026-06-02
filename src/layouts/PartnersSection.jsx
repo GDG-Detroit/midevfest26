@@ -40,7 +40,7 @@ const PartnersSection = ({ partnersData = {}, year }) => {
       <SectionSkipLink href="#team">Skip partners section</SectionSkipLink>
 
       <div className="relative w-full pt-0">
-        <p className="mb-4 text-center font-body text-xs font-medium uppercase tracking-[0.3em] text-iwd-gold-400/80">
+        <p className="mb-4 text-center font-body text-xs font-medium uppercase tracking-[0.3em] text-iwd-gold-400">
           Our Supporters
         </p>
         <h2 className="mb-5 w-full text-center font-heading text-3xl font-bold text-white sm:text-4xl lg:text-5xl">
@@ -53,7 +53,7 @@ const PartnersSection = ({ partnersData = {}, year }) => {
       </div>
 
       <div className="mx-auto mt-2 max-w-4xl text-center">
-        <p className="font-body text-lg leading-relaxed text-gray-400">
+        <p className="font-body text-lg leading-relaxed text-gray-400 text-balance">
           Compass Detroit wouldn&apos;t be possible without the support of our
           amazing partners. Thank you for helping us create an unforgettable
           experience for the tech community.
@@ -104,7 +104,7 @@ const PartnersSection = ({ partnersData = {}, year }) => {
                         </p>
                       )}
                       {partner.url && (
-                        <span className="mt-3 inline-flex items-center gap-1 text-xs font-medium uppercase tracking-widest text-iwd-gold-400/80">
+                        <span className="mt-3 inline-flex items-center gap-1 text-xs font-medium uppercase tracking-widest text-iwd-gold-400">
                           Visit Site
                           <svg
                             className="size-3"

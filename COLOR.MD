@@ -1,6 +1,6 @@
 # IWD Innovation Summit Color System
 
-This document defines the color palette for the International Women's Day Innovation Summit website.
+This document defines the color palette for the Detroit Pride Innovation Summit website.
 
 The palette is inspired by the Women Techmakers brand and implemented as semantic Tailwind tokens under the `iwd` namespace. The site ships two switchable themes controlled via CSS custom properties and a `data-theme` attribute on `<html>`.
 

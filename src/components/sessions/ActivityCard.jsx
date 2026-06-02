@@ -42,7 +42,7 @@ function ActivityCard({
           {/* Accent icon */}
           <div className="hidden size-10 shrink-0 items-center justify-center rounded-xl border border-white/[0.06] bg-white/[0.04] sm:flex">
             <svg
-              className="size-5 text-iwd-gold-400/70"
+              className="size-5 text-iwd-gold-400"
               fill="none"
               viewBox="0 0 24 24"
               stroke="currentColor"

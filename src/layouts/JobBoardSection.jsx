@@ -24,7 +24,7 @@ const JobBoardSection = ({ year = new Date().getFullYear() }) => {
         {/* Eyebrow */}
         <div className="mb-5 flex items-center justify-center gap-4">
           <div className="h-px w-10 bg-gradient-to-r from-transparent to-iwd-gold-400/40 sm:w-14" />
-          <span className="font-body text-[10px] font-semibold uppercase tracking-[0.4em] text-iwd-gold-400/50 sm:text-xs">
+          <span className="font-body text-[10px] font-semibold uppercase tracking-[0.4em] text-iwd-gold-400 sm:text-xs">
             Career Opportunities
           </span>
           <div className="h-px w-10 bg-gradient-to-l from-transparent to-iwd-gold-400/40 sm:w-14" />
@@ -39,7 +39,7 @@ const JobBoardSection = ({ year = new Date().getFullYear() }) => {
         <div className="mx-auto mb-8 h-px w-24 bg-gradient-to-r from-transparent via-iwd-gold-400/50 to-transparent sm:w-32" />
 
         <div className="mx-auto max-w-4xl">
-          <p className="text-center font-body text-lg leading-relaxed text-gray-400">
+          <p className="text-center font-body text-lg leading-relaxed text-gray-400 text-balance">
             This job board is made possible by our generous sponsors, ranging
             from local Detroit organizations and regional companies to some of
             the world&apos;s best global tech companies. They voluntarily
@@ -78,7 +78,7 @@ const JobBoardSection = ({ year = new Date().getFullYear() }) => {
                     <h3 className="min-w-0 pr-4 text-center text-xl font-black tracking-tight text-white transition-colors duration-300 sm:text-left">
                       {company.name}
                     </h3>
-                    <span className="mt-1 text-center text-xs font-semibold uppercase tracking-widest text-iwd-gold-400/50 sm:text-left">
+                    <span className="mt-1 text-center text-xs font-semibold uppercase tracking-widest text-iwd-gold-400 sm:text-left">
                       Opportunities
                     </span>
                   </div>

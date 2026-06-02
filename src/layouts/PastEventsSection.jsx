@@ -34,7 +34,7 @@ const PastEventsSection = () => {
       {/* Hand-drawn style background accents */}
       <div className="pointer-events-none absolute inset-0 opacity-20">
         <svg
-          className="absolute right-0 top-0 size-64 -translate-y-1/2 translate-x-1/2 text-iwd-gold-400/20"
+          className="absolute right-0 top-0 size-64 -translate-y-1/2 translate-x-1/2 text-iwd-gold-400"
           viewBox="0 0 200 200"
         >
           <path
@@ -69,7 +69,7 @@ const PastEventsSection = () => {
 
       <div className="relative mx-auto max-w-7xl px-6 lg:px-8">
         <div className="mx-auto max-w-2xl text-center">
-          <p className="mb-4 text-sm font-semibold uppercase tracking-[0.4em] text-iwd-gold-400/60">
+          <p className="mb-4 text-sm font-semibold uppercase tracking-[0.4em] text-iwd-gold-400">
             Our Legacy
           </p>
           <h2 className="font-heading text-4xl font-black tracking-tight text-white sm:text-6xl">
@@ -96,10 +96,10 @@ const PastEventsSection = () => {
                 <h3 className="text-xl font-bold uppercase tracking-tight text-white">
                   {event.title}
                 </h3>
-                <p className="mt-2 text-sm font-medium uppercase tracking-wide text-iwd-gold-400/80">
+                <p className="mt-2 text-sm font-medium uppercase tracking-wide text-iwd-gold-400">
                   {event.theme}
                 </p>
-                <p className="mt-4 line-clamp-4 text-base font-light leading-7 text-gray-400">
+                <p className="mt-4 line-clamp-4 text-base leading-7 text-gray-400">
                   {event.description}
                 </p>
               </div>

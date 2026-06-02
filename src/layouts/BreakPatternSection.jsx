@@ -103,7 +103,7 @@ export default function BreakPatternSection() {
                 <span className="mb-1 text-sm font-black uppercase tracking-widest text-white">
                   Join the movement
                 </span>
-                <span className="text-[10px] font-bold uppercase tracking-[0.2em] text-iwd-gold-400/70">
+                <span className="text-[10px] font-bold uppercase tracking-[0.2em] text-iwd-gold-400">
                   Innovators already registered
                 </span>
               </div>
