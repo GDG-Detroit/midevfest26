@@ -68,7 +68,7 @@ const MembersSection = () => {
 
         {/* CTA */}
         <div className="mt-12 flex flex-col items-center gap-4 text-center sm:mt-14">
-          <p className="font-body text-md text-gray-100 dark:text-gray-100">
+          <p className="font-body text-base text-gray-100 dark:text-gray-100">
             Free membership &mdash; no catch, just community.
           </p>
           <CTAButton
