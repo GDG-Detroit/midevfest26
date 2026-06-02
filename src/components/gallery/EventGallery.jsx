@@ -82,7 +82,7 @@ const EventGallery = ({ eventName = 'Event', images = [], onClose }) => {
           <h3 className="font-heading text-xl font-bold text-white sm:text-2xl">
             {eventName}
           </h3>
-          <p className="mt-1 text-xs font-medium uppercase tracking-widest text-iwd-gold-400/60">
+          <p className="mt-1 text-xs font-medium uppercase tracking-widest text-iwd-gold-400">
             {images.length} photos
           </p>
         </div>

@@ -376,7 +376,7 @@ const SessionsSection = ({
           />
         </button>
         <div className="text-center">
-          <p className="mb-4 font-body text-xs font-medium uppercase tracking-[0.3em] text-iwd-gold-400/80">
+          <p className="mb-4 font-body text-xs font-medium uppercase tracking-[0.3em] text-iwd-gold-400">
             What&rsquo;s Happening
           </p>
           <h2 className="mb-5 font-heading text-3xl font-bold text-white sm:text-4xl lg:text-5xl ">
@@ -563,7 +563,7 @@ const SessionsSection = ({
                             key={item.key}
                             className="group relative flex flex-col gap-1 border-l-2 border-iwd-gold-400/30 pl-4 transition-all hover:border-iwd-gold-400"
                           >
-                            <span className="text-[10px] font-black uppercase tracking-wider text-iwd-gold-400/60">
+                            <span className="text-[10px] font-black uppercase tracking-wider text-iwd-gold-400">
                               {item.time}
                             </span>
                             <span className="line-clamp-1 text-xs font-bold text-white transition-colors group-hover:text-iwd-gold-300">

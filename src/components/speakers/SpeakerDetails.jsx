@@ -482,7 +482,7 @@ function SpeakerDetails({
                   </h3>
                   {sessionSpeakers && sessionSpeakers.length > 1 && (
                     <div className="mt-3 border-t border-white/10 pt-3">
-                      <p className="mb-2 text-[10px] font-black uppercase tracking-widest text-iwd-gold-400/80">
+                      <p className="mb-2 text-[10px] font-black uppercase tracking-widest text-iwd-gold-400">
                         Presenters
                       </p>
                       <div className="flex flex-wrap gap-2 text-sm text-gray-300">

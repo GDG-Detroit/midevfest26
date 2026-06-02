@@ -382,7 +382,7 @@ export default function InspirationalHero() {
               </span>
             </cite>
             <span
-              className="font-body text-xs font-light uppercase tracking-[0.25em] sm:text-sm"
+              className="font-body text-xs uppercase tracking-[0.25em] sm:text-sm"
               style={{
                 color: `${palette[4]}cc`,
                 textShadow: `0 0 10px ${palette[3]}20`,

@@ -1414,7 +1414,7 @@ const enrichedExisting = rawSpeakersData
       position: eventMeta.position || speaker.position,
       bio:
         speaker.bio ||
-        `${eventMeta.name} is a confirmed speaker for the Detroit International Women’s Day Innovation Summit.`,
+        `${eventMeta.name} is a confirmed speaker for the Detroit Pride Innovation Summit.`,
       session: speaker.session,
     }
   })

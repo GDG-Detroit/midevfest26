@@ -56,7 +56,7 @@ const MuralItem = memo(({ quote, name, title, image, isLarge }) => {
           <cite className="font-heading text-xl font-black uppercase not-italic tracking-widest text-iwd-gold-300 transition-colors group-hover:text-white">
             {name}
           </cite>
-          <span className="text-xs font-bold uppercase tracking-[0.3em] text-gray-900 dark:text-white/40 group-hover:text-iwd-gold-400/60">
+          <span className="text-xs font-bold uppercase tracking-[0.3em] text-gray-900 dark:text-white/40 group-hover:text-iwd-gold-400">
             {title}
           </span>
         </div>
@@ -115,7 +115,7 @@ export default function InspirationalMural() {
         <div className="mb-24 flex flex-col items-center text-center">
           <div className="mb-8 flex items-center gap-4">
             <div className="h-px w-16 bg-gradient-to-r from-transparent to-iwd-gold-400/50" />
-            <span className="font-body text-xs font-black uppercase tracking-[0.6em] text-iwd-gold-400/90">
+            <span className="font-body text-xs font-black uppercase tracking-[0.6em] text-iwd-gold-400">
               The Voices of Change
             </span>
             <div className="h-px w-16 bg-gradient-to-l from-transparent to-iwd-gold-400/50" />
@@ -126,7 +126,7 @@ export default function InspirationalMural() {
               Mural
             </span>
           </h2>
-          <p className="mt-10 max-w-3xl font-body text-xl font-light leading-relaxed text-gray-900 dark:text-white/60">
+          <p className="mt-10 max-w-3xl font-body text-xl leading-relaxed text-gray-900 dark:text-white/60">
             A celebration of the pioneers, leaders, and visionaries who break
             the pattern and redefine what is possible in tech and beyond.
           </p>

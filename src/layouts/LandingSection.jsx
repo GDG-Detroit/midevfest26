@@ -159,7 +159,7 @@ function LandingSection() {
             style={{ animationDelay: '0.15s' }}
           >
             <div className="h-px w-10 bg-gradient-to-r from-transparent to-iwd-gold-400/60 sm:w-16" />
-            <span className="font-body text-[10px] font-semibold uppercase tracking-[0.4em] text-iwd-gold-400/80 sm:text-xs">
+            <span className="font-body text-[10px] font-semibold uppercase tracking-[0.4em] text-iwd-gold-400 sm:text-xs">
               Compass Detroit &middot; GDG Detroit &middot; Women Techmakers
             </span>
             <div className="h-px w-10 bg-gradient-to-l from-transparent to-iwd-gold-400/60 sm:w-16" />
@@ -171,7 +171,7 @@ function LandingSection() {
             style={{ animationDelay: '0.3s' }}
           >
             <span
-              className="block text-2xl font-light uppercase tracking-[0.4em] text-iwd-gold-300 sm:text-3xl lg:text-4xl"
+              className="block text-2xl uppercase tracking-[0.4em] text-iwd-gold-300 sm:text-3xl lg:text-4xl"
               style={{
                 letterSpacing: '0.4em',
                 lineHeight: '1.2',
@@ -188,7 +188,7 @@ function LandingSection() {
                 lineHeight: '1.1',
               }}
             >
-              International Women&rsquo;s Day
+              Detroit Pride
             </span>
             <span
               className="landing-shimmer mt-2 block bg-gradient-to-r from-iwd-gold-200 via-iwd-gold-400 to-iwd-gold-200 bg-clip-text text-3xl text-transparent sm:text-5xl lg:text-[3.5rem] xl:text-[4.5rem]"
@@ -248,7 +248,7 @@ function LandingSection() {
                   <div className="countdown-cell flex size-14 items-center justify-center rounded-xl border border-white/[0.08] bg-white/[0.03] text-xl font-bold tabular-nums text-white backdrop-blur-sm sm:size-[4.5rem] sm:text-2xl">
                     {String(val).padStart(2, '0')}
                   </div>
-                  <span className="mt-1.5 font-body text-[8px] font-semibold uppercase tracking-[0.25em] text-iwd-gold-400/45 sm:text-[9px]">
+                  <span className="mt-1.5 font-body text-[8px] font-semibold uppercase tracking-[0.25em] text-iwd-gold-400 sm:text-[9px]">
                     {label}
                   </span>
                 </div>
@@ -281,7 +281,7 @@ function LandingSection() {
                   {animatedStats[i]}
                   {stat.suffix}
                 </span>
-                <span className="mt-1 font-body text-[9px] font-semibold uppercase tracking-[0.2em] text-iwd-gold-400/50 sm:text-[10px]">
+                <span className="mt-1 font-body text-[9px] font-semibold uppercase tracking-[0.2em] text-iwd-gold-400 sm:text-[10px]">
                   {stat.label}
                 </span>
               </div>
@@ -290,7 +290,7 @@ function LandingSection() {
 
           {/* Description */}
           <p
-            className="hero-stagger mb-10 max-w-xl font-body text-[15px] font-light leading-[1.8] text-white/55 sm:mb-12 sm:text-base"
+            className="hero-stagger mb-10 max-w-xl font-body text-[15px] leading-[1.8] text-white/55 sm:mb-12 sm:text-base"
             style={{ animationDelay: '1.05s' }}
           >
             A day of learning, building, connecting, and empowering women and

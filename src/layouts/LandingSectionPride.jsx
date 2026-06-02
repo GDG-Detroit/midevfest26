@@ -48,7 +48,7 @@ function PrideHeroForeground() {
         {/* Primary CTAs */}
         <div className="mt-8 flex flex-col items-center justify-center gap-4 sm:flex-row sm:gap-5">
           <CTAButton
-            href="mailto:registration@compassdetroit.org"
+            href="https://bit.ly/pride-summit-26"
             label="Register Now"
             target="_blank"
             rel="noopener noreferrer"
@@ -72,9 +72,9 @@ function PrideHeroForeground() {
         </div>
 
         {/* Venue callout */}
-        <p className="font-body mt-6 text-[11px] uppercase tracking-[0.2em] text-white/45 sm:text-xs">
+        <p className="font-body mt-6 text-[11px] uppercase tracking-[0.2em] text-white/90 sm:text-xs">
           Venue:{' '}
-          <span className="inline-block rounded border border-iwd-gold-400/35 bg-white/[0.04] px-2 py-0.5 font-semibold tracking-[0.15em] text-iwd-gold-300/90">
+          <span className="inline-block rounded border border-iwd-gold-400 bg-white/[0.04] px-2 py-0.5 font-semibold tracking-[0.15em] text-iwd-gold-300">
             IBM HQ
           </span>
         </p>

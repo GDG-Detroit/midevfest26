@@ -16,7 +16,7 @@ function FacilitatorsSection() {
         aria-hidden="true"
       />
       <div className="flex w-full flex-col items-center pt-0">
-        <p className="mb-4 font-body text-xs font-medium uppercase tracking-[0.3em] text-iwd-gold-400/80">
+        <p className="mb-4 font-body text-xs font-medium uppercase tracking-[0.3em] text-iwd-gold-400">
           Session Leaders
         </p>
         <h2 className="mb-3 w-full text-center font-heading text-4xl font-bold text-white sm:text-5xl lg:text-6xl">
