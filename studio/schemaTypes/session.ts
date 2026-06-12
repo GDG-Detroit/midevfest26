@@ -1,5 +1,17 @@
 import {defineArrayMember, defineField, defineType} from 'sanity'
 
+const START_TIME_PATTERN = /^(\d{2}):(\d{2})$/
+
+function isValidStartTime(value: string): boolean {
+  const match = START_TIME_PATTERN.exec(value)
+  if (!match) return false
+
+  const hours = Number(match[1])
+  const minutes = Number(match[2])
+
+  return hours >= 0 && hours <= 23 && minutes >= 0 && minutes <= 59
+}
+
 export const session = defineType({
   name: 'session',
   title: 'Session',
@@ -59,7 +71,12 @@ export const session = defineType({
       validation: (rule) =>
         rule.custom((value) => {
           if (!value) return true
-          return /^\d{2}:\d{2}$/.test(value) ? true : 'Use HH:mm format (e.g. 09:00)'
+          if (!START_TIME_PATTERN.test(value)) {
+            return 'Use HH:mm format (e.g. 09:00)'
+          }
+          return isValidStartTime(value)
+            ? true
+            : 'Enter a valid 24-hour time between 00:00 and 23:59'
         }),
     }),
     defineField({
