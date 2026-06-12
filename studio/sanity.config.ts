@@ -1,15 +1,16 @@
 import {defineConfig} from 'sanity'
 import {structureTool} from 'sanity/structure'
 import {visionTool} from '@sanity/vision'
+import {dataset, projectId, studioTitle} from './env'
 import {schemaTypes} from './schemaTypes'
 import {structure} from './structure'
 
 export default defineConfig({
   name: 'default',
-  title: 'pridemi26',
+  title: studioTitle,
 
-  projectId: 'b18a6pbd',
-  dataset: 'production',
+  projectId,
+  dataset,
 
   plugins: [structureTool({structure}), visionTool()],
 
