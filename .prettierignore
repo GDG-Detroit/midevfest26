@@ -1,0 +1,9 @@
+node_modules
+dist
+dist-ssr
+.reference
+
+# Sanity Studio — generated / installed locally
+studio/node_modules
+studio/dist
+studio/.sanity
