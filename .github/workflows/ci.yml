@@ -71,17 +71,14 @@ jobs:
       - name: Install ChromeDriver matching installed Chrome
         uses: nanasess/setup-chromedriver@v2
 
-      - name: Install accessibility tools
-        run: npm install --no-save @axe-core/cli serve
-
       - name: Start local server
         run: |
-          npx serve dist -p 3000 &
+          ./node_modules/.bin/serve dist -p 3000 &
           sleep 5
 
       - name: Run accessibility tests
         run: |
-          timeout 60 npx axe http://localhost:3000 \
+          timeout 60 ./node_modules/.bin/axe http://localhost:3000 \
             --chromedriver-path "$(which chromedriver)" \
             --exit || {
             echo "Accessibility tests failed or timed out"
