@@ -1,0 +1,72 @@
+{
+  "name": "Pride — Import speakers to Sanity",
+  "nodes": [
+    {
+      "parameters": {},
+      "id": "manual-trigger",
+      "name": "Manual Trigger",
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [0, 0]
+    },
+    {
+      "parameters": {
+        "command": "npm run import:speakers -- --dataset=development"
+      },
+      "id": "run-import",
+      "name": "Run import script",
+      "type": "n8n-nodes-base.executeCommand",
+      "typeVersion": 1,
+      "position": [220, 0],
+      "notes": "Set working directory to your pridemi26 clone. Change --dataset=production for go-live."
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "number": [
+            {
+              "value1": "={{ $json.exitCode }}",
+              "operation": "equal",
+              "value2": 0
+            }
+          ]
+        }
+      },
+      "id": "if-success",
+      "name": "Import succeeded?",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 1,
+      "position": [440, 0]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "={{ $env.VERCEL_DEPLOY_HOOK_URL }}",
+        "options": {}
+      },
+      "id": "vercel-deploy",
+      "name": "Vercel deploy hook",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4,
+      "position": [660, -80],
+      "notes": "Optional. Set VERCEL_DEPLOY_HOOK_URL in n8n environment."
+    }
+  ],
+  "connections": {
+    "Manual Trigger": {
+      "main": [[{"node": "Run import script", "type": "main", "index": 0}]]
+    },
+    "Run import script": {
+      "main": [[{"node": "Import succeeded?", "type": "main", "index": 0}]]
+    },
+    "Import succeeded?": {
+      "main": [
+        [{"node": "Vercel deploy hook", "type": "main", "index": 0}],
+        []
+      ]
+    }
+  },
+  "meta": {
+    "templateCredsSetupCompleted": false
+  }
+}

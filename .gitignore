@@ -12,6 +12,9 @@ dist
 dist-ssr
 *.local
 
+# Sanity import secrets
+scripts/sanity-import/.env
+
 # Editor directories and files
 .vscode/*
 !.vscode/extensions.json
