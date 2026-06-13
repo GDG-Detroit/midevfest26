@@ -20,4 +20,15 @@ export const structure: StructureResolver = (S) =>
             .title('Sessions')
             .defaultOrdering([{field: 'startTime', direction: 'asc'}])
         ),
+      S.listItem()
+        .title('Team')
+        .child(
+          S.documentTypeList('teamMember')
+            .title('Team members')
+            .defaultOrdering([
+              {field: 'teamGroup', direction: 'asc'},
+              {field: 'sortOrder', direction: 'asc'},
+              {field: 'name', direction: 'asc'},
+            ])
+        ),
     ])
