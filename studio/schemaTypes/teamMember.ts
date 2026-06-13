@@ -8,6 +8,15 @@ const TEAM_GROUP_OPTIONS = [
   {title: 'Marketing', value: 'marketing'},
 ]
 
+const TEAM_GROUP_LABELS: Record<string, string> = Object.fromEntries(
+  TEAM_GROUP_OPTIONS.map(({title, value}) => [value, title])
+)
+
+function teamGroupLabel(value: string | undefined): string | undefined {
+  if (!value) return undefined
+  return TEAM_GROUP_LABELS[value] ?? value
+}
+
 export const teamMember = defineType({
   name: 'teamMember',
   title: 'Team member',
@@ -152,7 +161,7 @@ export const teamMember = defineType({
     },
     prepare: ({title, subtitle, group, media, year}) => ({
       title: title ?? 'Unnamed team member',
-      subtitle: [year, group, subtitle].filter(Boolean).join(' · '),
+      subtitle: [year, teamGroupLabel(group), subtitle].filter(Boolean).join(' · '),
       media,
     }),
   },
