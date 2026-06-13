@@ -90,17 +90,20 @@ For **hosted Studio** or **production CLI** commands, set `SANITY_STUDIO_DATASET
 
 Schemas live in `schemaTypes/`:
 
-| Document      | Description                                                                                     |
-| ------------- | ----------------------------------------------------------------------------------------------- |
-| **`event`**   | One per summit year (e.g. Detroit Pride Innovation Summit 2026). Anchors speakers and sessions. |
-| **`speaker`** | Person: name, bio, org, headshot, badges (WTM/GDE), optional social links.                      |
-| **`session`** | Talk or panel: title, track, time, room, description, `participants[]` → speaker refs.          |
+| Document         | Description                                                                                     |
+| ---------------- | ----------------------------------------------------------------------------------------------- |
+| **`event`**      | One per summit year (e.g. Detroit Pride Innovation Summit 2026). Anchors speakers and sessions. |
+| **`speaker`**    | Person: name, bio, org, headshot, badges (WTM/GDE), optional social links.                      |
+| **`session`**    | Talk or panel: title, track, time, room, description, `participants[]` → speaker refs.          |
+| **`teamMember`** | Organizers and dev team: headshot, role, org, bio, `teamGroup` (`compass`, `devteam`, etc.).    |
 
 **Panels:** multiple speakers on one session card share the same session title. The runner sheet uses one row per speaker per session; n8n groups by title.
 
 **Speaker grid:** one card per person. If someone has multiple sessions, the site uses the first session unless `featuredSession` is set on the speaker.
 
-Create an **Event** document before adding speakers or sessions.
+**Team sections:** filter by `teamGroup` — `compass` for organizers, `devteam` for the site dev team (matches `team.js` today).
+
+Create an **Event** document before adding speakers, sessions, or team members.
 
 ---
 
