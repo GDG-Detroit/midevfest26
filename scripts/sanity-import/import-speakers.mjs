@@ -1,4 +1,4 @@
-import {fileURLToPath} from 'url'
+import { fileURLToPath } from 'url'
 import {
   createSanityClient,
   imageFieldFromAsset,
@@ -10,9 +10,18 @@ import {
   speakerDocId,
   uploadImage,
 } from './sanity-client.mjs'
-import {createGoogleClients, downloadFileByName, readSheetRows} from './google.mjs'
+import {
+  createGoogleClients,
+  downloadFileByName,
+  readSheetRows,
+} from './google.mjs'
 
-const REQUIRED_COLUMNS = ['speaker_slug', 'session_slug', 'session_title', 'name']
+const REQUIRED_COLUMNS = [
+  'speaker_slug',
+  'session_slug',
+  'session_title',
+  'name',
+]
 
 function requireEnv(name) {
   const value = process.env[name]?.trim()
@@ -38,7 +47,7 @@ function buildSpeakerPatch(row, eventRef, headshotAsset) {
     _type: 'speaker',
     event: eventRef,
     name: row.name,
-    slug: {_type: 'slug', current: row.speaker_slug},
+    slug: { _type: 'slug', current: row.speaker_slug },
     bio: row.bio || `${row.name} is a confirmed speaker.`,
     organization: row.organization || 'TBD',
     position: row.position || 'Speaker',
@@ -66,7 +75,7 @@ function buildSessionPatch(slug, rows, eventRef) {
     _type: 'session',
     event: eventRef,
     title: primary.session_title,
-    slug: {_type: 'slug', current: slug},
+    slug: { _type: 'slug', current: slug },
     abstract: primary.abstract || undefined,
     description: primary.description || undefined,
     track: primary.track || undefined,
@@ -85,9 +94,9 @@ function buildSessionPatch(slug, rows, eventRef) {
   }
 }
 
-async function resolveEventRef(client, {eventId, eventYear}) {
+async function resolveEventRef(client, { eventId, eventYear }) {
   if (eventId) {
-    return {_type: 'reference', _ref: eventId}
+    return { _type: 'reference', _ref: eventId }
   }
 
   if (!eventYear) {
@@ -95,11 +104,13 @@ async function resolveEventRef(client, {eventId, eventYear}) {
   }
 
   const query = `*[_type == "event" && year == $year][0]._id`
-  const id = await client.fetch(query, {year: Number(eventYear)})
+  const id = await client.fetch(query, { year: Number(eventYear) })
   if (!id) {
-    throw new Error(`No event document found for year ${eventYear}. Create it in Studio first.`)
+    throw new Error(
+      `No event document found for year ${eventYear}. Create it in Studio first.`
+    )
   }
-  return {_type: 'reference', _ref: id}
+  return { _type: 'reference', _ref: id }
 }
 
 export async function importSpeakersFromSheet(options = {}) {
@@ -107,19 +118,21 @@ export async function importSpeakersFromSheet(options = {}) {
   const dataset = options.dataset ?? requireEnv('SANITY_DATASET')
   const token = options.token ?? requireEnv('SANITY_API_TOKEN')
   const spreadsheetId = options.spreadsheetId ?? requireEnv('GOOGLE_SHEET_ID')
-  const driveFolderId = options.driveFolderId ?? requireEnv('GOOGLE_DRIVE_FOLDER_ID')
+  const driveFolderId =
+    options.driveFolderId ?? requireEnv('GOOGLE_DRIVE_FOLDER_ID')
   const credentialsPath =
     options.credentialsPath ?? requireEnv('GOOGLE_APPLICATION_CREDENTIALS')
-  const sheetRange = options.sheetRange ?? process.env.GOOGLE_SHEET_RANGE ?? 'Sheet1'
+  const sheetRange =
+    options.sheetRange ?? process.env.GOOGLE_SHEET_RANGE ?? 'Sheet1'
 
-  const client = createSanityClient({projectId, dataset, token})
-  const {sheets, drive} = await createGoogleClients(credentialsPath)
+  const client = createSanityClient({ projectId, dataset, token })
+  const { sheets, drive } = await createGoogleClients(credentialsPath)
   const eventRef = await resolveEventRef(client, {
     eventId: options.eventId ?? process.env.SANITY_EVENT_ID,
     eventYear: options.eventYear ?? process.env.SANITY_EVENT_YEAR,
   })
 
-  const rows = await readSheetRows(sheets, {spreadsheetId, range: sheetRange})
+  const rows = await readSheetRows(sheets, { spreadsheetId, range: sheetRange })
   const activeRows = rows.filter((row) => row.speaker_slug && row.session_slug)
 
   activeRows.forEach(validateRow)
@@ -179,22 +192,25 @@ export async function importSpeakersFromSheet(options = {}) {
   }
 
   if (mutations.length === 0) {
-    return {speakers: 0, sessions: 0, unpublished: 0}
+    return { speakers: 0, sessions: 0, unpublished: 0 }
   }
 
-  await client.mutate(mutations, {visibility: 'sync'})
+  await client.mutate(mutations, { visibility: 'sync' })
 
   const unpublishSpeakerIds = await client.fetch(
     `*[_type == "speaker" && event._ref == $eventId && !(_id in $ids)]._id`,
-    {eventId: eventRef._ref, ids: [...speakerSlugs].map(speakerDocId)}
+    { eventId: eventRef._ref, ids: [...speakerSlugs].map(speakerDocId) }
   )
   const unpublishSessionIds = await client.fetch(
     `*[_type == "session" && event._ref == $eventId && !(_id in $ids)]._id`,
-    {eventId: eventRef._ref, ids: [...sessionSlugs].map(sessionDocId)}
+    { eventId: eventRef._ref, ids: [...sessionSlugs].map(sessionDocId) }
   )
 
-  const unpublishMutations = [...unpublishSpeakerIds, ...unpublishSessionIds].map((id) => ({
-    patch: {id, set: {published: false}},
+  const unpublishMutations = [
+    ...unpublishSpeakerIds,
+    ...unpublishSessionIds,
+  ].map((id) => ({
+    patch: { id, set: { published: false } },
   }))
 
   if (unpublishMutations.length > 0) {

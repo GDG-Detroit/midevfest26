@@ -6,38 +6,38 @@ Panel: use the **same** `session_title` and `session_slug` on every panelist row
 
 ## Required columns
 
-| Column | Example | Notes |
-|--------|---------|--------|
-| `speaker_slug` | `jenna-ritten` | Stable upsert key |
-| `session_slug` | `opening-remarks` | Stable session key |
-| `session_title` | `Welcome & Opening Remarks` | Display title |
-| `name` | `Jenna Ritten` | |
+| Column          | Example                     | Notes              |
+| --------------- | --------------------------- | ------------------ |
+| `speaker_slug`  | `jenna-ritten`              | Stable upsert key  |
+| `session_slug`  | `opening-remarks`           | Stable session key |
+| `session_title` | `Welcome & Opening Remarks` | Display title      |
+| `name`          | `Jenna Ritten`              |                    |
 
 ## Speaker fields
 
-| Column | Example | Required |
-|--------|---------|----------|
-| `bio` | … | Recommended |
-| `organization` | `IBM Research` | Defaults to `TBD` |
-| `position` | `Chief Developer Advocate` | Defaults to `Speaker` |
-| `linkedIn` | `https://linkedin.com/in/...` | Optional |
-| `twitter` | `handle` | Optional |
-| `github` | `https://github.com/...` | Optional |
-| `isWTM` | `TRUE` / `FALSE` | Optional |
-| `isGDE` | `TRUE` / `FALSE` | Optional |
-| `headshot_filename` | `JennaRitten.jpg` | Must match file in Drive folder |
+| Column              | Example                       | Required                        |
+| ------------------- | ----------------------------- | ------------------------------- |
+| `bio`               | …                             | Recommended                     |
+| `organization`      | `IBM Research`                | Defaults to `TBD`               |
+| `position`          | `Chief Developer Advocate`    | Defaults to `Speaker`           |
+| `linkedIn`          | `https://linkedin.com/in/...` | Optional                        |
+| `twitter`           | `handle`                      | Optional                        |
+| `github`            | `https://github.com/...`      | Optional                        |
+| `isWTM`             | `TRUE` / `FALSE`              | Optional                        |
+| `isGDE`             | `TRUE` / `FALSE`              | Optional                        |
+| `headshot_filename` | `JennaRitten.jpg`             | Must match file in Drive folder |
 
 ## Session fields (per row — merged by `session_slug`)
 
-| Column | Example |
-|--------|---------|
-| `track` | `Level Up` |
-| `time` | `09:00` |
-| `room` | `Main Hall` |
-| `duration_minutes` | `30` |
-| `description` | Full session text |
-| `abstract` | Short blurb |
-| `tags` | `In-person, Level Up` |
+| Column             | Example               |
+| ------------------ | --------------------- |
+| `track`            | `Level Up`            |
+| `time`             | `09:00`               |
+| `room`             | `Main Hall`           |
+| `duration_minutes` | `30`                  |
+| `description`      | Full session text     |
+| `abstract`         | Short blurb           |
+| `tags`             | `In-person, Level Up` |
 
 ## Rules
 

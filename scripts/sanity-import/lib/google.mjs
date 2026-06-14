@@ -1,4 +1,4 @@
-import {google} from 'googleapis'
+import { google } from 'googleapis'
 
 export async function createGoogleClients(credentialsPath) {
   const auth = new google.auth.GoogleAuth({
@@ -12,15 +12,18 @@ export async function createGoogleClients(credentialsPath) {
   const authClient = await auth.getClient()
 
   return {
-    sheets: google.sheets({version: 'v4', auth: authClient}),
-    drive: google.drive({version: 'v3', auth: authClient}),
+    sheets: google.sheets({ version: 'v4', auth: authClient }),
+    drive: google.drive({ version: 'v3', auth: authClient }),
   }
 }
 
 /**
  * Read all rows from the first sheet (or named sheet) as array of objects keyed by header row.
  */
-export async function readSheetRows(sheets, {spreadsheetId, range = 'Sheet1'}) {
+export async function readSheetRows(
+  sheets,
+  { spreadsheetId, range = 'Sheet1' }
+) {
   const response = await sheets.spreadsheets.values.get({
     spreadsheetId,
     range,
@@ -42,7 +45,7 @@ export async function readSheetRows(sheets, {spreadsheetId, range = 'Sheet1'}) {
 /**
  * Download a file from a Drive folder by exact filename.
  */
-export async function downloadFileByName(drive, {folderId, filename}) {
+export async function downloadFileByName(drive, { folderId, filename }) {
   if (!filename) return null
 
   const list = await drive.files.list({
@@ -59,8 +62,8 @@ export async function downloadFileByName(drive, {folderId, filename}) {
   if (!file?.id) return null
 
   const media = await drive.files.get(
-    {fileId: file.id, alt: 'media'},
-    {responseType: 'arraybuffer'}
+    { fileId: file.id, alt: 'media' },
+    { responseType: 'arraybuffer' }
   )
 
   return Buffer.from(media.data)

@@ -1,11 +1,13 @@
 /**
  * Shared Sanity client + deterministic document IDs for idempotent imports.
  */
-import {createClient} from '@sanity/client'
+import { createClient } from '@sanity/client'
 
-export function createSanityClient({projectId, dataset, token}) {
+export function createSanityClient({ projectId, dataset, token }) {
   if (!projectId || !dataset || !token) {
-    throw new Error('Missing SANITY_PROJECT_ID, SANITY_DATASET, or SANITY_API_TOKEN')
+    throw new Error(
+      'Missing SANITY_PROJECT_ID, SANITY_DATASET, or SANITY_API_TOKEN'
+    )
   }
 
   return createClient({
@@ -29,7 +31,7 @@ export function slugRef(type, slug, idFn) {
 }
 
 export async function uploadImage(client, buffer, filename) {
-  return client.assets.upload('image', buffer, {filename})
+  return client.assets.upload('image', buffer, { filename })
 }
 
 export function imageFieldFromAsset(asset) {

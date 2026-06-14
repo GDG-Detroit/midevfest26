@@ -54,14 +54,14 @@
   ],
   "connections": {
     "Manual Trigger": {
-      "main": [[{"node": "Run import script", "type": "main", "index": 0}]]
+      "main": [[{ "node": "Run import script", "type": "main", "index": 0 }]]
     },
     "Run import script": {
-      "main": [[{"node": "Import succeeded?", "type": "main", "index": 0}]]
+      "main": [[{ "node": "Import succeeded?", "type": "main", "index": 0 }]]
     },
     "Import succeeded?": {
       "main": [
-        [{"node": "Vercel deploy hook", "type": "main", "index": 0}],
+        [{ "node": "Vercel deploy hook", "type": "main", "index": 0 }],
         []
       ]
     }

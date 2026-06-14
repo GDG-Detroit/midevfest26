@@ -87,19 +87,19 @@ Sheet columns: [`n8n/sheet-template-speakers.md`](./sheet-template-speakers.md)
 
 Use **Edit Fields (Set)** when switching dev vs production:
 
-| Field | Dev test | Go live |
-|-------|----------|---------|
+| Field     | Dev test      | Go live      |
+| --------- | ------------- | ------------ |
 | `dataset` | `development` | `production` |
 
 Pass to Execute Command via env override (see below).
 
 ### Node 3 — Execute Command
 
-| Setting | Value |
-|---------|--------|
-| Command | `npm` |
-| Arguments | `run import:speakers -- --dataset=development` |
-| Working directory | `/opt/pridemi26` |
+| Setting           | Value                                          |
+| ----------------- | ---------------------------------------------- |
+| Command           | `npm`                                          |
+| Arguments         | `run import:speakers -- --dataset=development` |
+| Working directory | `/opt/pridemi26`                               |
 
 Or call Node directly:
 
@@ -166,21 +166,21 @@ Same pattern: `teamMember` schema + separate sheet tab + `import-team.mjs` (TODO
 
 ## Troubleshooting
 
-| Issue | Fix |
-|-------|-----|
-| `No event document found for year 2026` | Create Event in Studio |
-| `Missing required column` | Match sheet headers to template |
-| Headshot warnings | Filename must match Drive exactly (`JennaRitten.jpg`) |
-| Google 403 | Share sheet/folder with service account email |
-| Sanity 403 | Token needs write access to target dataset |
+| Issue                                   | Fix                                                   |
+| --------------------------------------- | ----------------------------------------------------- |
+| `No event document found for year 2026` | Create Event in Studio                                |
+| `Missing required column`               | Match sheet headers to template                       |
+| Headshot warnings                       | Filename must match Drive exactly (`JennaRitten.jpg`) |
+| Google 403                              | Share sheet/folder with service account email         |
+| Sanity 403                              | Token needs write access to target dataset            |
 
 ---
 
 ## Files in this repo
 
-| Path | Purpose |
-|------|---------|
-| `scripts/sanity-import/import-speakers.mjs` | Import engine |
-| `scripts/sanity-import/.env.example` | Env template |
-| `n8n/sheet-template-speakers.md` | Sheet column spec |
+| Path                                         | Purpose                   |
+| -------------------------------------------- | ------------------------- |
+| `scripts/sanity-import/import-speakers.mjs`  | Import engine             |
+| `scripts/sanity-import/.env.example`         | Env template              |
+| `n8n/sheet-template-speakers.md`             | Sheet column spec         |
 | `n8n/workflows/speakers-import.example.json` | Optional workflow starter |
