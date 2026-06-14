@@ -150,6 +150,8 @@ Vercel redeploy → site build fetches Sanity
 
 Headshots are uploaded to Sanity assets during import (not hotlinked from Drive or Cloudinary).
 
+**n8n + import script:** see [`/n8n/README.md`](../n8n/README.md) and `npm run import:speakers`.
+
 ---
 
 ## Project layout

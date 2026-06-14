@@ -20,7 +20,8 @@
     "preview": "vite preview",
     "prepare": "husky",
     "test:a11y": "npm run build && echo 'Accessibility testing skipped due to ChromeDriver version mismatch'",
-    "audit": "npm audit --audit-level moderate"
+    "audit": "npm audit --audit-level moderate",
+    "import:speakers": "node scripts/sanity-import/import-speakers.mjs"
   },
   "lint-staged": {
     "*.{js,jsx}": [
@@ -47,6 +48,7 @@
     "@axe-core/react": "^4.10.2",
     "@commitlint/cli": "^19.8.1",
     "@commitlint/config-conventional": "^19.8.1",
+    "@sanity/client": "^7.22.1",
     "@svgr/rollup": "^8.1.0",
     "@vitejs/plugin-react-swc": "^3.3.2",
     "autoprefixer": "^10.4.21",
@@ -58,6 +60,7 @@
     "eslint-plugin-react-hooks": "^4.6.0",
     "eslint-plugin-react-refresh": "^0.4.3",
     "eslint-plugin-tailwindcss": "^3.18.2",
+    "googleapis": "^171.4.0",
     "husky": "^9.1.7",
     "lil-gui": "^0.21.0",
     "lint-staged": "^16.2.0",
