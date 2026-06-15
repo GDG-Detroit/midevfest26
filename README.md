@@ -107,6 +107,10 @@ Currently, no environment variables are required to run the application. The app
 ## Project Structure
 
 ```text
+public/                 # Static files at site root (robots.txt, sitemap.xml, social-card.jpg)
+studio/                 # Sanity Studio (separate app — see studio/README.md)
+scripts/sanity-import/  # Speaker import scripts for n8n / manual runs
+n8n/                    # n8n workflow docs and sheet templates
 src/
 ├── assets/             # Images, fonts, and static assets
 ├── components/         # UI components
@@ -115,6 +119,58 @@ src/
 ├── layouts/            # Section layout components
 └── pages/              # Page components
 ```
+
+## SEO & social sharing
+
+Search engines and social platforms read static files and `index.html` directly — they do not run the React app.
+
+| File                                      | Purpose                                                 |
+| ----------------------------------------- | ------------------------------------------------------- |
+| `public/robots.txt`                       | Crawler rules and sitemap location                      |
+| `public/sitemap.xml`                      | List of public routes for search engines                |
+| `public/social-card.jpg`                  | Preview image when links are shared                     |
+| `index.html`                              | Canonical URL, Open Graph, and Twitter/X card meta tags |
+| `src/components/ui/SEOStructuredData.jsx` | JSON-LD event schema on the homepage                    |
+
+**Public routes in the sitemap** (from `src/App.jsx`):
+
+- `/`
+- `/careers-hub`
+- `/connections`
+- `/media`
+- `/past-events`
+
+Excluded from the sitemap: `/playground/*` (internal design previews), `/previous-events` (redirect), and 404 routes.
+
+**When you add a public page**, add a `<url>` entry to `public/sitemap.xml` and bump `<lastmod>`.
+
+**When the production domain changes**, update URLs in:
+
+- `public/robots.txt`
+- `public/sitemap.xml`
+- `index.html` (canonical, `og:*`, `twitter:*`)
+- `src/components/ui/SEOStructuredData.jsx`
+
+**Verify after deploy:**
+
+```bash
+npm run build
+# confirm dist/robots.txt and dist/sitemap.xml exist
+
+curl https://pridemi26.vercel.app/robots.txt
+curl https://pridemi26.vercel.app/sitemap.xml
+```
+
+Test link previews with the [Facebook Sharing Debugger](https://developers.facebook.com/tools/debug/) or [LinkedIn Post Inspector](https://www.linkedin.com/post-inspector/).
+
+**Note:** Subpages share the homepage Open Graph tags until per-route meta tags are added (e.g. `react-helmet-async`). For this event site, that is usually fine.
+
+## Related projects in this repo
+
+| Path                                   | Description                                     |
+| -------------------------------------- | ----------------------------------------------- |
+| [`studio/README.md`](studio/README.md) | Sanity Studio — content model, datasets, deploy |
+| [`n8n/README.md`](n8n/README.md)       | Google Sheet → Sanity import workflow           |
 
 ## Development
 
@@ -125,6 +181,8 @@ This project uses ESLint and Prettier for code quality and formatting:
 - Run `npm run lint` to check for linting issues
 - Run `npm run format:check` to check code formatting
 - Use `npm run lint:fix` and `npm run format` to automatically fix issues
+
+Run format and lint commands from the **repository root** — CI uses the root `package.json`. The `studio/` folder is a separate app with its own Prettier config; use `npx prettier --write .` inside `studio/` for Studio-only files.
 
 ### Git Hooks
 
@@ -253,6 +311,7 @@ The site is deployed on [Vercel](https://vercel.com) and uses Vercel Analytics a
 
 - `vercel.json` – SPA rewrites so client-side routes (e.g. `/past-events`) resolve correctly
 - `base: './'` in Vite config – Output works with Vercel’s static hosting
+- `public/robots.txt` and `public/sitemap.xml` – Copied to `dist/` at build time and served as static files (before SPA rewrites)
 
 **To deploy manually** (e.g. from a fork):
 
