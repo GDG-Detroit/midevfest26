@@ -1,4 +1,4 @@
-# IWD Innovation Summit Color System
+# Pride Innovation Summit Color System
 
 This document defines the color palette for the Detroit Pride Innovation Summit website.
 
@@ -21,7 +21,7 @@ Ocean-forward palette. Cool, professional, and aligned with Google/Women Techmak
 
 ### Purple
 
-Violet-forward palette. Bold, empowering, and aligned with IWD purple tradition.
+Violet-forward palette. Bold, empowering, and aligned with the purple theme tradition.
 
 | Token         | Hex       | RGB         |
 | ------------- | --------- | ----------- |
@@ -85,7 +85,7 @@ Violet-forward palette. Bold, empowering, and aligned with IWD purple tradition.
 
 ## Design Goals
 
-- Align with Women Techmakers / Google IWD visual identity
+- Align with Women Techmakers visual identity
 - Ship multiple themes so the team can A/B test and decide
 - Maintain WCAG 2.1 AA accessibility contrast
 - Scale as a reusable design system across Compass events
