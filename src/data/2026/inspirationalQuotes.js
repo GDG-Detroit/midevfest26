@@ -1,7 +1,7 @@
 /**
  * Inspirational quotes from influential women across technology,
  * science, activism, leadership, and culture — celebrating voices
- * that shaped America and the global IWD movement.
+ * that shaped America and the global women's empowerment movement.
  *
  * Each entry includes the quote, attribution, a brief descriptor,
  * and an optional image import for portrait display.

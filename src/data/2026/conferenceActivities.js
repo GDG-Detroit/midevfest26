@@ -2,13 +2,19 @@
  * Conference activities (non-speaker events) shown in track schedules.
  * Use 24-hour time format (e.g. "08:00", "13:00") for sorting.
  * Track names must match SessionsSection tracks exactly.
- * Adding in or at to the room here instead of forcing 'in' in the ActivityCard component.
- * example: room: 'in (WBC 110-112)' or 'at Lumen Detroit'
+ * Room labels: import from venues.js (ACTIVITY_ROOMS prefixes "in"/"near" where needed).
  */
+import {
+  ACTIVITY_ROOMS,
+  SCHEDULE_TRACK,
+  SESSION_TRACK,
+  VENUE_ROOMS,
+} from './venues'
+
 export const conferenceActivities = [
   {
     id: 'careers-review',
-    track: 'Careers',
+    track: SESSION_TRACK,
     title: 'Resume Review & Mock Interviews',
     content: 'Sign Up Here:',
     cta: {
@@ -19,11 +25,11 @@ export const conferenceActivities = [
     },
     time: '10:00',
     timeEnd: '12:00',
-    room: 'in Value Conference Room',
+    room: ACTIVITY_ROOMS.IN_LEVEL_UP,
   },
   {
     id: 'careers-resume-review',
-    track: 'Careers',
+    track: SESSION_TRACK,
     title: 'Resume Review & Mock Interviews',
     content: 'Sign Up Here:',
     cta: {
@@ -34,11 +40,11 @@ export const conferenceActivities = [
     },
     time: '14:00',
     timeEnd: '16:00',
-    room: 'in Value Conference Room',
+    room: ACTIVITY_ROOMS.IN_LEVEL_UP,
   },
   {
     id: 'careers-mentoring',
-    track: 'Careers',
+    track: SESSION_TRACK,
     title: 'Career Mentorship',
     content: 'Sign Up Here:',
     cta: {
@@ -48,11 +54,11 @@ export const conferenceActivities = [
     },
     time: '10:00',
     timeEnd: '12:00',
-    room: 'in Value Conference Room',
+    room: ACTIVITY_ROOMS.IN_LEVEL_UP,
   },
   {
     id: 'careers-mentorship',
-    track: 'Careers',
+    track: SESSION_TRACK,
     title: 'Career Mentorship',
     content: 'Sign Up Here:',
     cta: {
@@ -62,11 +68,11 @@ export const conferenceActivities = [
     },
     time: '14:00',
     timeEnd: '16:00',
-    room: 'in Value Conference Room',
+    room: ACTIVITY_ROOMS.IN_LEVEL_UP,
   },
   {
     id: 'schedule-checkin',
-    track: 'Schedule',
+    track: SCHEDULE_TRACK,
     title: 'Check-In & Breakfast',
     content: null,
     time: '08:00',
@@ -75,16 +81,16 @@ export const conferenceActivities = [
   },
   {
     id: 'schedule-yoga',
-    track: 'Schedule',
+    track: SCHEDULE_TRACK,
     title: 'Morning Mindfulness & Meditative Yoga',
     content: null,
     time: '08:15',
     timeEnd: '08:45',
-    room: 'near stairs and Value Conference Room',
+    room: ACTIVITY_ROOMS.NEAR_STAIRS_AND_LEVEL_UP,
   },
   {
     id: 'schedule-welcome',
-    track: 'Schedule',
+    track: SCHEDULE_TRACK,
     title: 'Welcome & Opening Remarks',
     content: null,
     time: '09:00',
@@ -93,7 +99,7 @@ export const conferenceActivities = [
   },
   {
     id: 'schedule-panel',
-    track: 'Schedule',
+    track: SCHEDULE_TRACK,
     title: 'Innovation Summit Panel Discussion',
     content: null,
     time: '09:10',
@@ -102,7 +108,7 @@ export const conferenceActivities = [
   },
   {
     id: 'schedule-sessions-morning',
-    track: 'Schedule',
+    track: SCHEDULE_TRACK,
     title: 'Sessions',
     content: null,
     time: '10:00',
@@ -111,34 +117,34 @@ export const conferenceActivities = [
   },
   {
     id: 'schedule-lunch',
-    track: 'Schedule',
+    track: SCHEDULE_TRACK,
     title: 'Lunch Break & Networking',
     content: null,
     time: '12:00',
     timeEnd: '13:00',
-    room: 'near Value Conference Room',
+    room: ACTIVITY_ROOMS.NEAR_LEVEL_UP,
   },
   {
     id: 'schedule-headshots',
-    track: 'Schedule',
+    track: SCHEDULE_TRACK,
     title: 'Professional Headshots',
     content: null,
     time: '12:00',
     timeEnd: '13:00',
-    room: 'near stairs and Value Conference Room',
+    room: ACTIVITY_ROOMS.NEAR_STAIRS_AND_LEVEL_UP,
   },
   {
     id: 'schedule-keynote',
-    track: 'Schedule',
+    track: SCHEDULE_TRACK,
     title: 'Innovation Summit Keynote',
     content: null,
     time: '13:00',
     timeEnd: '14:00',
-    room: 'Pizza Treat',
+    room: VENUE_ROOMS.LEVEL_UP,
   },
   {
     id: 'schedule-sessions-afternoon',
-    track: 'Schedule',
+    track: SCHEDULE_TRACK,
     title: 'Sessions',
     content: null,
     time: '14:00',
@@ -147,7 +153,7 @@ export const conferenceActivities = [
   },
   {
     id: 'schedule-closing',
-    track: 'Schedule',
+    track: SCHEDULE_TRACK,
     title: 'Closing Remarks & Scholarship Awardees',
     content: null,
     time: '16:00',
@@ -156,11 +162,11 @@ export const conferenceActivities = [
   },
   {
     id: 'schedule-techie-hour',
-    track: 'Schedule',
+    track: SCHEDULE_TRACK,
     title: 'Techie Hour & Networking',
     content: null,
     time: '16:30',
     timeEnd: '18:00',
-    room: 'at Sessions',
+    room: ACTIVITY_ROOMS.AT_SESSIONS,
   },
 ]

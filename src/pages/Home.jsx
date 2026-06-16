@@ -11,6 +11,7 @@ import PartnersSection from '@/layouts/PartnersSection'
 import JobBoardSection from '@/layouts/JobBoardSection'
 import OrganizersSection from '@/layouts/OrganizersSection'
 import { SpeakersData as Speakers2026 } from '@/data/2026/speakers'
+import { SESSION_TRACK, SCHEDULE_TRACK } from '@/data/2026/venues'
 import { partnersData } from '@/data/2026/partners'
 
 import MembersSection from '@/layouts/MembersSection'
@@ -34,16 +35,7 @@ function Home() {
             speakersData={Speakers2026}
             year={2026}
             defaultExpanded={false}
-            tracks={[
-              'Map',
-              'Schedule',
-              'Level Up',
-              'Build with AI',
-              'AI Foundations',
-              'Leadership',
-              'Innovation',
-              'Careers',
-            ]}
+            tracks={['Map', SCHEDULE_TRACK, SESSION_TRACK]}
           />
         </div>
 

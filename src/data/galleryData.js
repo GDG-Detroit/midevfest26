@@ -18,7 +18,7 @@ export const eventGalleries = {
     images: [],
   },
   'iwd-summit-2025': {
-    eventName: 'IWD Innovation Summit 2025',
+    eventName: "International Women's Day Innovation Summit 2025",
     images: [],
   },
   'bhm-summit-2025': {
@@ -30,7 +30,7 @@ export const eventGalleries = {
     images: [],
   },
   'iwd-summit-2024': {
-    eventName: 'IWD Innovation Summit 2024',
+    eventName: "International Women's Day Innovation Summit 2024",
     images: [],
   },
   'bhm-summit-2024': {

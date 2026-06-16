@@ -11,6 +11,7 @@ import MyScheduleEmptyState from '@/components/sessions/MyScheduleEmptyState'
 import TrackEmptyState from '@/components/sessions/TrackEmptyState'
 
 import { conferenceActivities } from '@/data/2026/conferenceActivities'
+import { trackStageHeading } from '@/data/2026/venues'
 import { DIRECTION } from '@/constants/directions'
 import { IoChevronDown, IoChevronForward, IoChevronBack } from 'react-icons/io5'
 
@@ -53,7 +54,7 @@ const trackDescriptions = {
         id="build-with-ai-heading"
         className="mx-auto mb-4 text-center text-xl font-semibold text-white sm:text-2xl "
       >
-        Build with AI stage in Pizza Pizza
+        {trackStageHeading('Build with AI')}
       </h3>
     </>
   ),
@@ -63,7 +64,7 @@ const trackDescriptions = {
         id="innovation-heading"
         className="mx-auto mb-4 text-center text-xl font-semibold text-white sm:text-2xl "
       >
-        Innovation stage in The Family Theatre
+        {trackStageHeading('Innovation')}
       </h3>
       <p className="mb-6 max-w-4xl text-pretty text-center text-base text-gray-400">
         Discover groundbreaking ideas and emerging technologies shaping the
@@ -77,7 +78,7 @@ const trackDescriptions = {
         id="level-up-heading"
         className="mx-auto mb-4 text-center text-xl font-semibold text-white sm:text-2xl "
       >
-        Level Up stage in Pizza Treat
+        {trackStageHeading('Level Up')}
       </h3>
       <p className="mb-6 max-w-4xl text-pretty text-center text-base text-gray-400">
         Advance your career and personal growth. From mentorship to leadership,
@@ -92,7 +93,7 @@ const trackDescriptions = {
         id="leadership-heading"
         className="mx-auto mb-4 text-center text-xl font-semibold text-white sm:text-2xl "
       >
-        Leadership stage in Reserve-n-Ready
+        {trackStageHeading('Leadership')}
       </h3>
       <p className="mb-6 max-w-4xl text-pretty text-center text-base text-gray-400">
         Discover insights from founders and entrepreneurs building the next
@@ -106,7 +107,7 @@ const trackDescriptions = {
         id="ai-foundations-heading"
         className="mx-auto mb-4 text-center text-xl font-semibold text-white sm:text-2xl "
       >
-        AI Foundations stage in Hot-n-Ready
+        {trackStageHeading('AI Foundations')}
       </h3>
       <p className="mb-6 max-w-4xl text-pretty text-center text-base text-gray-400">
         Build your foundational knowledge of artificial intelligence.{' '}
@@ -119,7 +120,7 @@ const trackDescriptions = {
         id="careers-heading"
         className="mx-auto mb-4 text-center text-xl font-semibold text-white sm:text-2xl "
       >
-        Careers stage in Value Conference Room
+        {trackStageHeading('Careers')}
       </h3>
     </>
   ),
@@ -143,7 +144,9 @@ const trackDescriptions = {
         id="map-heading"
         className="mx-auto mb-4 text-center text-xl font-normal text-white sm:text-2xl "
       >
-        <span className="font-bold">IWD Innovation Summit Venue Guide</span>
+        <span className="font-bold">
+          Detroit Pride Innovation Summit Venue Guide
+        </span>
       </h3>
       <p className="mb-6 max-w-4xl text-pretty text-center text-base text-gray-400">
         Use this guide to navigate the venue and find session locations.

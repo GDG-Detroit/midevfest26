@@ -246,7 +246,7 @@ export const teamData = [
     team: 'devteam',
     star: false,
     university: '',
-    bio: 'Contributor to IWD Summit schedule and calendar export improvements, focused on reliable iCal workflows and attendee-friendly UX.',
+    bio: 'Contributor to Pride Innovation Summit schedule and calendar export improvements, focused on reliable iCal workflows and attendee-friendly UX.',
     organization: 'Compass Detroit',
     role: 'Developer',
     commits: null,
