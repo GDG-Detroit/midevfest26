@@ -34,16 +34,7 @@ function Home() {
             speakersData={Speakers2026}
             year={2026}
             defaultExpanded={false}
-            tracks={[
-              'Map',
-              'Schedule',
-              'Level Up',
-              'Build with AI',
-              'AI Foundations',
-              'Leadership',
-              'Innovation',
-              'Careers',
-            ]}
+            tracks={['Map', 'Schedule', 'Level Up']}
           />
         </div>
 
