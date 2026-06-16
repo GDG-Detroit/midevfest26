@@ -1,3 +1,4 @@
+import { Buffer } from 'node:buffer'
 import { google } from 'googleapis'
 
 export async function createGoogleClients(credentialsPath) {
