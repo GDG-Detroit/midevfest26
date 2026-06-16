@@ -50,10 +50,15 @@ const buildSessionRange = (time, duration) => {
   return { start, end }
 }
 
+const SAVED_SESSIONS_KEY = 'pridemi26_saved_sessions'
+const LEGACY_SAVED_SESSIONS_KEY = 'iwd26_saved_sessions'
+
 export default function ScheduleProvider({ children }) {
   const [savedSessionIds, setSavedSessionIds] = useState(() => {
     try {
-      const stored = localStorage.getItem('iwd26_saved_sessions')
+      const stored =
+        localStorage.getItem(SAVED_SESSIONS_KEY) ??
+        localStorage.getItem(LEGACY_SAVED_SESSIONS_KEY)
       const parsed = stored ? JSON.parse(stored) : []
       return parsed.map((id) => canonicalizeSessionId(id)).filter(Boolean)
     } catch (e) {
@@ -64,10 +69,7 @@ export default function ScheduleProvider({ children }) {
 
   useEffect(() => {
     try {
-      localStorage.setItem(
-        'iwd26_saved_sessions',
-        JSON.stringify(savedSessionIds)
-      )
+      localStorage.setItem(SAVED_SESSIONS_KEY, JSON.stringify(savedSessionIds))
     } catch (e) {
       console.error('Failed to save sessions to localStorage', e)
     }

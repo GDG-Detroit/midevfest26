@@ -1,5 +1,5 @@
 /**
- * IWD 2026 Speakers Data
+ * Pride Innovation Summit 2026 Speakers Data
  *
  * Add confirmed speakers here following the format below.
  * Speaker images go in: src/data/2026/assets/images/speakers/

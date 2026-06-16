@@ -35,7 +35,7 @@ function MyScheduleExports({ events }) {
         onClick={() =>
           generateICSFile(exportableEvents, {
             extension: 'ical',
-            filename: 'iwd-2026-full-schedule.ical',
+            filename: 'pride-innovation-summit-2026-full-schedule.ical',
           })
         }
         className={buttonClassName}
