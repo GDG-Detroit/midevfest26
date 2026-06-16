@@ -3,35 +3,42 @@
  * Update labels here when room assignments are confirmed.
  */
 
+/** Run-of-show tab (check-in, breaks, keynote, etc.). */
+export const SCHEDULE_TRACK = 'Schedule'
+
+/** Single session track for 2026 — all speaker sessions and activities use this. */
+export const SESSION_TRACK = 'Level Up'
+
 export const VENUE_ROOMS = {
   LEVEL_UP: 'IBM HQ',
-  BUILD_WITH_AI: '',
-  INNOVATION: '',
-  LEADERSHIP: '',
-  AI_FOUNDATIONS: '',
-  CAREERS: '',
 }
 
 /** Primary room per schedule track. */
 export const TRACK_ROOMS = {
-  'Level Up': VENUE_ROOMS.LEVEL_UP,
-  'Build with AI': VENUE_ROOMS.BUILD_WITH_AI,
-  Innovation: VENUE_ROOMS.INNOVATION,
-  Leadership: VENUE_ROOMS.LEADERSHIP,
-  'AI Foundations': VENUE_ROOMS.AI_FOUNDATIONS,
-  Careers: VENUE_ROOMS.CAREERS,
+  [SESSION_TRACK]: VENUE_ROOMS.LEVEL_UP,
+  [SCHEDULE_TRACK]: '',
 }
 
-/** Activity cards sometimes prefix the room (e.g. "in Value Conference Room"). */
+/** Prefix + room label; returns '' when room is unset so UI chips stay hidden. */
+export function withRoomPrefix(prefix, room) {
+  const label = typeof room === 'string' ? room.trim() : ''
+  return label ? `${prefix}${label}` : ''
+}
+
+/** Activity cards sometimes prefix the room (e.g. "in IBM HQ"). */
 export const ACTIVITY_ROOMS = {
-  IN_CAREERS: `in ${VENUE_ROOMS.CAREERS}`,
-  NEAR_CAREERS: `near ${VENUE_ROOMS.CAREERS}`,
-  NEAR_STAIRS_AND_CAREERS: `near stairs and ${VENUE_ROOMS.CAREERS}`,
+  IN_LEVEL_UP: withRoomPrefix('in ', VENUE_ROOMS.LEVEL_UP),
+  NEAR_LEVEL_UP: withRoomPrefix('near ', VENUE_ROOMS.LEVEL_UP),
+  NEAR_STAIRS_AND_LEVEL_UP: withRoomPrefix(
+    'near stairs and ',
+    VENUE_ROOMS.LEVEL_UP
+  ),
   AT_SESSIONS: 'at Sessions',
 }
 
 export function roomForTrack(track) {
-  return TRACK_ROOMS[track] ?? ''
+  const room = TRACK_ROOMS[track]
+  return typeof room === 'string' ? room.trim() : ''
 }
 
 export function trackStageHeading(track) {
