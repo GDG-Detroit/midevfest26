@@ -13,6 +13,7 @@
     "lint": "eslint . --ext js,jsx --report-unused-disable-directives --max-warnings 0",
     "lint:fix": "npm run lint -- --fix",
     "lint:a11y": "eslint . --ext js,jsx --config .eslintrc.a11y.cjs",
+    "a11y:check": "npm run lint:a11y && npm run test:a11y",
     "a11y:check:staged": "git diff --cached --name-only --diff-filter=ACMR | grep -E '\\.(js|jsx)$' | xargs eslint --config .eslintrc.a11y.cjs",
     "format": "prettier --write .",
     "format:check": "prettier --check .",
@@ -41,7 +42,8 @@
     "react-fast-marquee": "^1.6.5",
     "react-icons": "^4.12.0",
     "react-router-dom": "^6.17.0",
-    "three": "^0.184.0"
+    "three": "^0.184.0",
+    "varlock": "^1.7.0"
   },
   "devDependencies": {
     "@axe-core/cli": "^4.8.4",

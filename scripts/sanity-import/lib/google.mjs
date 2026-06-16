@@ -1,3 +1,4 @@
+import { Buffer } from 'node:buffer'
 import { google } from 'googleapis'
 
 export async function createGoogleClients(credentialsPath) {
@@ -56,13 +57,15 @@ export async function downloadFileByName(drive, { folderId, filename }) {
     ].join(' and '),
     fields: 'files(id, name, mimeType)',
     pageSize: 1,
+    supportsAllDrives: true,
+    includeItemsFromAllDrives: true,
   })
 
   const file = list.data.files?.[0]
   if (!file?.id) return null
 
   const media = await drive.files.get(
-    { fileId: file.id, alt: 'media' },
+    { fileId: file.id, alt: 'media', supportsAllDrives: true },
     { responseType: 'arraybuffer' }
   )
 
