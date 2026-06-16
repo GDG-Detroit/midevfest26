@@ -2,9 +2,10 @@
  * Conference activities (non-speaker events) shown in track schedules.
  * Use 24-hour time format (e.g. "08:00", "13:00") for sorting.
  * Track names must match SessionsSection tracks exactly.
- * Adding in or at to the room here instead of forcing 'in' in the ActivityCard component.
- * example: room: 'in (WBC 110-112)' or 'at Lumen Detroit'
+ * Room labels: import from venues.js (ACTIVITY_ROOMS prefixes "in"/"near" where needed).
  */
+import { ACTIVITY_ROOMS, VENUE_ROOMS } from './venues'
+
 export const conferenceActivities = [
   {
     id: 'careers-review',
@@ -19,7 +20,7 @@ export const conferenceActivities = [
     },
     time: '10:00',
     timeEnd: '12:00',
-    room: 'in Value Conference Room',
+    room: ACTIVITY_ROOMS.IN_CAREERS,
   },
   {
     id: 'careers-resume-review',
@@ -34,7 +35,7 @@ export const conferenceActivities = [
     },
     time: '14:00',
     timeEnd: '16:00',
-    room: 'in Value Conference Room',
+    room: ACTIVITY_ROOMS.IN_CAREERS,
   },
   {
     id: 'careers-mentoring',
@@ -48,7 +49,7 @@ export const conferenceActivities = [
     },
     time: '10:00',
     timeEnd: '12:00',
-    room: 'in Value Conference Room',
+    room: ACTIVITY_ROOMS.IN_CAREERS,
   },
   {
     id: 'careers-mentorship',
@@ -62,7 +63,7 @@ export const conferenceActivities = [
     },
     time: '14:00',
     timeEnd: '16:00',
-    room: 'in Value Conference Room',
+    room: ACTIVITY_ROOMS.IN_CAREERS,
   },
   {
     id: 'schedule-checkin',
@@ -80,7 +81,7 @@ export const conferenceActivities = [
     content: null,
     time: '08:15',
     timeEnd: '08:45',
-    room: 'near stairs and Value Conference Room',
+    room: ACTIVITY_ROOMS.NEAR_STAIRS_AND_CAREERS,
   },
   {
     id: 'schedule-welcome',
@@ -116,7 +117,7 @@ export const conferenceActivities = [
     content: null,
     time: '12:00',
     timeEnd: '13:00',
-    room: 'near Value Conference Room',
+    room: ACTIVITY_ROOMS.NEAR_CAREERS,
   },
   {
     id: 'schedule-headshots',
@@ -125,7 +126,7 @@ export const conferenceActivities = [
     content: null,
     time: '12:00',
     timeEnd: '13:00',
-    room: 'near stairs and Value Conference Room',
+    room: ACTIVITY_ROOMS.NEAR_STAIRS_AND_CAREERS,
   },
   {
     id: 'schedule-keynote',
@@ -134,7 +135,7 @@ export const conferenceActivities = [
     content: null,
     time: '13:00',
     timeEnd: '14:00',
-    room: 'Pizza Treat',
+    room: VENUE_ROOMS.LEVEL_UP,
   },
   {
     id: 'schedule-sessions-afternoon',
@@ -161,6 +162,6 @@ export const conferenceActivities = [
     content: null,
     time: '16:30',
     timeEnd: '18:00',
-    room: 'at Sessions',
+    room: ACTIVITY_ROOMS.AT_SESSIONS,
   },
 ]
