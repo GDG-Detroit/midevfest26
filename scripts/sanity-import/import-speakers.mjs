@@ -9,12 +9,12 @@ import {
   slugRef,
   speakerDocId,
   uploadImage,
-} from './sanity-client.mjs'
+} from './lib/sanity-client.mjs'
 import {
   createGoogleClients,
   downloadFileByName,
   readSheetRows,
-} from './google.mjs'
+} from './lib/google.mjs'
 
 const REQUIRED_COLUMNS = [
   'speaker_slug',
