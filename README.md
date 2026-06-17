@@ -82,7 +82,9 @@ docker run -p 3000:3000 pridemi26
 
 ### Environment Variables
 
-Currently, no environment variables are required to run the application. The application uses static data and doesn't require external services.
+The **front-end application** requires no environment variables at runtime.
+
+The **import pipeline** (`scripts/sanity-import/`) requires a `.env` file (gitignored) with Sanity and Google credentials. See `scripts/sanity-import/.env.example` and `n8n/RUNBOOK.md` for setup instructions.
 
 ### Docker Features
 
@@ -93,16 +95,17 @@ Currently, no environment variables are required to run the application. The app
 
 ## Development Scripts
 
-| Command                | Description                                                   |
-| ---------------------- | ------------------------------------------------------------- |
-| `npm run dev`          | Start the development server via Vite                         |
-| `npm run build`        | Build the project for production                              |
-| `npm run preview`      | Create a preview of the production build locally              |
-| `npm run lint`         | Check code for linting errors (includes Tailwind class order) |
-| `npm run lint:fix`     | Automatically fix linting errors                              |
-| `npm run format`       | Format code with Prettier                                     |
-| `npm run format:check` | Check code formatting with Prettier                           |
-| `npm run commitlint`   | Validate commit message format                                |
+| Command                   | Description                                                   |
+| ------------------------- | ------------------------------------------------------------- |
+| `npm run dev`             | Start the development server via Vite                         |
+| `npm run build`           | Build the project for production                              |
+| `npm run preview`         | Create a preview of the production build locally              |
+| `npm run lint`            | Check code for linting errors (includes Tailwind class order) |
+| `npm run lint:fix`        | Automatically fix linting errors                              |
+| `npm run format`          | Format code with Prettier                                     |
+| `npm run format:check`    | Check code formatting with Prettier                           |
+| `npm run commitlint`      | Validate commit message format                                |
+| `npm run import:speakers` | Run the Google Sheets → Sanity speaker import script          |
 
 ## Project Structure
 
@@ -115,6 +118,49 @@ src/
 ├── layouts/            # Section layout components
 └── pages/              # Page components
 ```
+
+## Content pipeline
+
+Speaker, session, and team data is managed in **Sanity Studio** and imported via an automated pipeline:
+
+```
+Google Sheet (speaker data)
+        +
+Google Drive folder (headshots)
+        ↓
+  n8n workflow (self-hosted)
+        ↓
+  import-speakers.mjs
+        ↓
+  Sanity Studio (cloud)
+        ↓
+  Vercel deploy hook → site rebuild
+```
+
+### Import script
+
+```bash
+# Test import against the development dataset
+npm run import:speakers -- --dataset=development
+
+# Production import
+npm run import:speakers -- --dataset=production
+```
+
+Requires `scripts/sanity-import/.env` (gitignored). Copy from `.env.example` and fill in credentials. See `.env.schema` for full documentation of each variable.
+
+### Files
+
+| Path                                          | Purpose                                 |
+| --------------------------------------------- | --------------------------------------- |
+| `scripts/sanity-import/import-speakers.mjs`   | Import engine                           |
+| `scripts/sanity-import/lib/google.mjs`        | Google Sheets + Drive API client        |
+| `scripts/sanity-import/lib/sanity-client.mjs` | Sanity mutations + asset upload         |
+| `scripts/sanity-import/.env.example`          | Environment variable template           |
+| `.env.schema`                                 | varlock schema — documents all env vars |
+| `n8n/RUNBOOK.md`                              | Full setup and repeat runbook           |
+| `n8n/sheet-template-speakers.md`              | Google Sheet column spec                |
+| `n8n/workflows/speakers-import.example.json`  | Importable n8n workflow starter         |
 
 ## Development
 
