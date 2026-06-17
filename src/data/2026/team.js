@@ -5,8 +5,6 @@ import HodaSolati from '@/data/2026/assets/images/speakers/HodaSolati.jpg'
 import JennaRitten from '@/data/2026/assets/images/team/jenna_ritten.webp'
 import RishirajSarkar from '@/data/2026/assets/images/team/rishiraj_sarkar.webp'
 import ShimaSolati from '@/data/2026/assets/images/speakers/ShimaSolati.jpg'
-import ShugmiShumunov from '@/data/2026/assets/images/team/shugmi_shumunov.jpeg'
-import SohamMhatre from '@/data/2026/assets/images/team/soham_mhatre.webp'
 import IdaByrdHill from '@/data/2026/assets/images/team/IdaByrd-Hill.webp'
 import UmeloOnyejiaka from '@/data/2026/assets/images/team/UmeloOnyejiaka.webp'
 import RonaldFrohman from '@/data/2026/assets/images/team/roland_frohman.webp'
@@ -197,59 +195,8 @@ export const teamData = [
 	  Hello, I am the founder of Shrinkray Interactive, a UX/UI development studio in Toledo, Ohio, leaning-in on accessible, high-performance, and user-friendly web experiences. As a founding member of GDG Toledo, I connect developers and designers through events and hackathons. Collaborating with the devteam, I oversee UX Engineering for the Michigan DevFest/Detroit Compass websites creating smooth, inclusive experience for speakers, partners, and attendees. If you are seeking a friendly, versatile, and talented developer for your project, let's connect.
 	`,
     organization: 'Shrinkray Interactive + GDG Toledo + Toledo Codes',
-    role: 'UX Engineer',
+    role: 'Tech Lead, Compass Detroit',
     commits: '150',
     avatar: GregMiller,
-  },
-  {
-    id: 14,
-    name: 'Shugmi Shumunov',
-    twitter: '',
-    linkedin: 'https://www.linkedin.com/in/shugmishumunov/',
-    github: 'https://github.com/ShugKnight24',
-    team: 'devteam',
-    star: false,
-    topContributor: true,
-    university: '',
-    bio: `
-      Shugmi Shumunov is a software developer who believes code is the ultimate storytelling medium. With a primary focus on the JavaScript ecosystem within e-commerce, working across the stack in various industries. Always seeking beautiful, elegant, and performant solutions while collaborating with talented, curious, and passionate engineers and tech enthusiasts.
-
-      When the terminal is closed and his hands are off the keyboard, you'll find him lifting weights, adventuring outdoors, exploring new places, or immersed in the worlds of manga or a good book
-    `,
-    organization: 'Shumunov Solutions',
-    role: 'Developer',
-    commits: 50,
-    avatar: ShugmiShumunov,
-  },
-  {
-    id: 15,
-    name: 'Soham Mhatre',
-    twitter: '',
-    linkedin: null,
-    github: 'https://github.com/soham02',
-    team: 'devteam',
-    star: false,
-    topContributor: true,
-    university: '',
-    bio: `Soham Mhatre is a developer focused on building practical, human-centered software. He works across the MERN stack with a strong focus on cloud and AI workflows. Recent projects include an image labeling system using AWS Recognition and a financial planning/learning platform with real-time persona generation. Soham enjoys translating complex, real-world requirements into simple, shippable features and cares deeply about clean APIs, accessible UIs, and measurable outcomes. Having recently graduated from Harrisburg University with a Master's in Software Engineering, he's now pursuing full-time opportunities where he can contribute end-to-end from backend services and databases to polished frontends that people love to use.  
-`,
-    organization: 'Mhatre Solutions',
-    role: 'Developer',
-    commits: 90,
-    avatar: SohamMhatre,
-  },
-  {
-    id: 20,
-    name: 'Divya Lakshmi',
-    github: 'https://github.com/Divyatech-hub',
-    linkedin: '',
-    team: 'devteam',
-    star: false,
-    university: '',
-    bio: 'Contributor to Pride Innovation Summit schedule and calendar export improvements, focused on reliable iCal workflows and attendee-friendly UX.',
-    organization: 'Compass Detroit',
-    role: 'Developer',
-    commits: null,
-    avatar: 'https://github.com/Divyatech-hub.png',
   },
 ]
