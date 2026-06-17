@@ -36,4 +36,10 @@ module.exports = {
   globals: {
     __dirname: true,
   },
+  overrides: [
+    {
+      files: ['scripts/**/*.{js,mjs,cjs}'],
+      env: { node: true },
+    },
+  ],
 }
