@@ -25,7 +25,7 @@ const pastEvents = [
   {
     id: 2,
     year: '2025',
-    name: 'IWD Innovation Summit 2025',
+    name: "International Women's Day Innovation Summit 2025",
     date: 'March 2025',
     location: 'University of Michigan-Dearborn',
     attendees: '350+',
@@ -70,13 +70,13 @@ const pastEvents = [
   {
     id: 5,
     year: '2024',
-    name: 'IWD Innovation Summit 2024',
+    name: "International Women's Day Innovation Summit 2024",
     date: 'March 2024',
     location: 'University of Michigan-Dearborn',
     attendees: '280+',
     tagline: 'Visibility, leadership, sustainable growth',
     description:
-      'Our first summit under the IWD Innovation Summit brand, focusing on advancing women in technology across disciplines with hands-on workshops and mentorship circles.',
+      "Our first summit under the International Women's Day Innovation Summit brand, focusing on advancing women in technology across disciplines with hands-on workshops and mentorship circles.",
     url: 'https://gdg.community.dev/iwd/',
     highlights: ['4 tracks', '20+ speakers', '280+ attendees'],
     color: '#3b82f6',

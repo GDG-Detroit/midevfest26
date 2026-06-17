@@ -14,11 +14,18 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - README: SEO & social sharing section, updated project structure, Studio/n8n doc links
 - Navbar mobile menu: `.nav-menu-expanded` with `max-height: calc(100vh - 80px)`, `overflow-y: auto`, and `-webkit-overflow-scrolling: touch` so the menu never exceeds viewport height
 - WCAG 1.4.10 Reflow: media query at `max-width: 480px` and `max-height: 400px` to un-stick the header (`position: absolute`) and reduce padding so content is not blocked at high zoom or small viewports
+- `n8n/RUNBOOK.md` — step-by-step import pipeline runbook covering first-time server setup, per-event checklist, "what lives where" reference table, and troubleshooting guide; designed to travel with every cloned repo
+- `.env.schema` — varlock schema documenting all import script environment variables with `@required` and `@sensitive` annotations
 
 ### Changed
 
 - Open Graph and Twitter/X card meta tags in `index.html` — aligned to `pridemi26.vercel.app` (replaced legacy `iwdsummit.com` URLs)
 - **Navbar**: Removed pathway/route-link logic; Navbar now only shows section (anchor) links; route links like Previous Events remain in Footer only
+
+### Fixed
+
+- `scripts/sanity-import/import-speakers.mjs` — corrected import paths from `./sanity-client.mjs` and `./google.mjs` to `./lib/sanity-client.mjs` and `./lib/google.mjs` (files live in `lib/` subdirectory)
+- `scripts/sanity-import/lib/google.mjs` — added `supportsAllDrives: true` and `includeItemsFromAllDrives: true` to Drive API calls so the import works with Google Workspace Shared Drives, not just personal Drive
 
 ## [0.2.0] - 2026-02-13
 
@@ -87,8 +94,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Fixed Montserrat font weight to use Medium (500) instead of Thin (100)
 - Fixed incorrect variable name usage
 
-[Unreleased]: https://github.com/Compass-Detroit/BHM-website/compare/v0.2.0...HEAD
-[0.2.0]: https://github.com/Compass-Detroit/BHM-website/compare/v0.1.2...v0.2.0
-[0.1.2]: https://github.com/Compass-Detroit/BHM-website/compare/v0.1.1...v0.1.2
-[0.1.1]: https://github.com/Compass-Detroit/BHM-website/compare/v0.1.0...v0.1.1
-[0.1.0]: https://github.com/Compass-Detroit/BHM-website/releases/tag/v0.1.0
+[Unreleased]: https://github.com/Compass-Detroit/pridemi26/compare/v0.2.0...HEAD
+[0.2.0]: https://github.com/Compass-Detroit/pridemi26/compare/v0.1.2...v0.2.0
+[0.1.2]: https://github.com/Compass-Detroit/pridemi26/compare/v0.1.1...v0.1.2
+[0.1.1]: https://github.com/Compass-Detroit/pridemi26/compare/v0.1.0...v0.1.1
+[0.1.0]: https://github.com/Compass-Detroit/pridemi26/releases/tag/v0.1.0
