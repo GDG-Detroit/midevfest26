@@ -95,17 +95,17 @@ The **import pipeline** (`scripts/sanity-import/`) requires a `.env` file (gitig
 
 ## Development Scripts
 
-| Command                | Description                                                   |
-| ---------------------- | ------------------------------------------------------------- |
-| `npm run dev`          | Start the development server via Vite                         |
-| `npm run build`        | Build the project for production                              |
-| `npm run preview`      | Create a preview of the production build locally              |
-| `npm run lint`         | Check code for linting errors (includes Tailwind class order) |
-| `npm run lint:fix`     | Automatically fix linting errors                              |
-| `npm run format`       | Format code with Prettier                                     |
-| `npm run format:check` | Check code formatting with Prettier                           |
-| `npm run commitlint`   | Validate commit message format                                |
-| `npm run import:speakers` | Run the Google Sheets → Sanity speaker import script       |
+| Command                   | Description                                                   |
+| ------------------------- | ------------------------------------------------------------- |
+| `npm run dev`             | Start the development server via Vite                         |
+| `npm run build`           | Build the project for production                              |
+| `npm run preview`         | Create a preview of the production build locally              |
+| `npm run lint`            | Check code for linting errors (includes Tailwind class order) |
+| `npm run lint:fix`        | Automatically fix linting errors                              |
+| `npm run format`          | Format code with Prettier                                     |
+| `npm run format:check`    | Check code formatting with Prettier                           |
+| `npm run commitlint`      | Validate commit message format                                |
+| `npm run import:speakers` | Run the Google Sheets → Sanity speaker import script          |
 
 ## Project Structure
 
@@ -151,16 +151,16 @@ Requires `scripts/sanity-import/.env` (gitignored). Copy from `.env.example` and
 
 ### Files
 
-| Path | Purpose |
-| ---- | ------- |
-| `scripts/sanity-import/import-speakers.mjs` | Import engine |
-| `scripts/sanity-import/lib/google.mjs` | Google Sheets + Drive API client |
-| `scripts/sanity-import/lib/sanity-client.mjs` | Sanity mutations + asset upload |
-| `scripts/sanity-import/.env.example` | Environment variable template |
-| `.env.schema` | varlock schema — documents all env vars |
-| `n8n/RUNBOOK.md` | Full setup and repeat runbook |
-| `n8n/sheet-template-speakers.md` | Google Sheet column spec |
-| `n8n/workflows/speakers-import.example.json` | Importable n8n workflow starter |
+| Path                                          | Purpose                                 |
+| --------------------------------------------- | --------------------------------------- |
+| `scripts/sanity-import/import-speakers.mjs`   | Import engine                           |
+| `scripts/sanity-import/lib/google.mjs`        | Google Sheets + Drive API client        |
+| `scripts/sanity-import/lib/sanity-client.mjs` | Sanity mutations + asset upload         |
+| `scripts/sanity-import/.env.example`          | Environment variable template           |
+| `.env.schema`                                 | varlock schema — documents all env vars |
+| `n8n/RUNBOOK.md`                              | Full setup and repeat runbook           |
+| `n8n/sheet-template-speakers.md`              | Google Sheet column spec                |
+| `n8n/workflows/speakers-import.example.json`  | Importable n8n workflow starter         |
 
 ## Development
 

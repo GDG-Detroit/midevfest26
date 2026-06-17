@@ -6,19 +6,19 @@ Step-by-step reference for running the Google Sheets → Sanity import for each 
 
 ## What lives where
 
-| Location | What belongs there | Notes |
-|---|---|---|
-| **Google Cloud Console** | Service account + JSON key | One-time; shared across all events |
-| **n8n server `~/`** | `google-sa.json` | The downloaded key file, renamed. Shared across all events. |
-| **n8n server `~/[event-repo]/`** | Cloned repo | One per event |
-| **n8n server `~/[event-repo]/scripts/sanity-import/`** | `.env` file | One per event; gitignored, never in GitHub |
-| **Docker container `/secrets/`** | `google-sa.json` | Mounted from server via docker-compose volume |
-| **Docker container `/opt/[event-repo]/`** | Cloned repo | Mounted from server via docker-compose volume |
-| **GitHub** | Public repo (source code only) | No secrets ever committed |
-| **Google Drive** | Speaker sheet + headshots folder | Shared with service account email |
-| **Sanity** | Project, datasets, Event document, API token | One Sanity project per event |
-| **Vercel** | Deployed website + deploy hook URL | One Vercel project per event |
-| **n8n UI** | One workflow per event | Duplicate previous event's workflow |
+| Location                                               | What belongs there                           | Notes                                                       |
+| ------------------------------------------------------ | -------------------------------------------- | ----------------------------------------------------------- |
+| **Google Cloud Console**                               | Service account + JSON key                   | One-time; shared across all events                          |
+| **n8n server `~/`**                                    | `google-sa.json`                             | The downloaded key file, renamed. Shared across all events. |
+| **n8n server `~/[event-repo]/`**                       | Cloned repo                                  | One per event                                               |
+| **n8n server `~/[event-repo]/scripts/sanity-import/`** | `.env` file                                  | One per event; gitignored, never in GitHub                  |
+| **Docker container `/secrets/`**                       | `google-sa.json`                             | Mounted from server via docker-compose volume               |
+| **Docker container `/opt/[event-repo]/`**              | Cloned repo                                  | Mounted from server via docker-compose volume               |
+| **GitHub**                                             | Public repo (source code only)               | No secrets ever committed                                   |
+| **Google Drive**                                       | Speaker sheet + headshots folder             | Shared with service account email                           |
+| **Sanity**                                             | Project, datasets, Event document, API token | One Sanity project per event                                |
+| **Vercel**                                             | Deployed website + deploy hook URL           | One Vercel project per event                                |
+| **n8n UI**                                             | One workflow per event                       | Duplicate previous event's workflow                         |
 
 ---
 
@@ -49,6 +49,7 @@ scp ~/path/to/downloaded-key.json shrinkray@your-server:~/google-sa.json
 ```
 
 Or paste the file contents via nano if scp is unavailable:
+
 ```bash
 # On the server:
 nano ~/google-sa.json
@@ -56,6 +57,7 @@ nano ~/google-sa.json
 ```
 
 Lock down the file permissions:
+
 ```bash
 chmod 600 ~/google-sa.json
 ```
@@ -77,6 +79,7 @@ services:
 > For each new event repo, add another volume line following the same pattern.
 
 Restart n8n after any changes:
+
 ```bash
 docker compose down && docker compose up -d
 ```
@@ -159,6 +162,7 @@ GOOGLE_DRIVE_FOLDER_ID=                      # from Drive folder URL
 ```
 
 Then restart n8n:
+
 ```bash
 docker compose down && docker compose up -d
 ```
@@ -172,6 +176,7 @@ node --env-file=scripts/sanity-import/.env \
 ```
 
 Expected output:
+
 ```
 Import complete: { speakers: N, sessions: N, unpublished: 0, dataset: 'development' }
 ```
@@ -226,14 +231,14 @@ git pull
 
 ## Troubleshooting
 
-| Error | Fix |
-|---|---|
-| `No event document found for year XXXX` | Create and **Publish** the Event doc in Studio |
-| `Unauthorized - Session not found` | API token is wrong — check you pasted `sk-...` not the token name |
-| `Missing required column` | Sheet header row doesn't match the template |
-| `Headshot not found in Drive` | Filename in sheet must match Drive file exactly (case-sensitive) |
-| `Google 403` | Share the sheet and folder with the service account `client_email` |
-| `Permission denied` cloning repo | Directory already exists — run `sudo rm -rf ~/[repo]` first |
-| `ERR_MODULE_NOT_FOUND` | Run `npm ci` — node_modules missing |
-| Node version error | Use NVM: `nvm install && nvm use` from the repo directory |
-| Headshots not found in Shared Drive | Confirm `supportsAllDrives: true` fix is in `lib/google.mjs` |
+| Error                                   | Fix                                                                |
+| --------------------------------------- | ------------------------------------------------------------------ |
+| `No event document found for year XXXX` | Create and **Publish** the Event doc in Studio                     |
+| `Unauthorized - Session not found`      | API token is wrong — check you pasted `sk-...` not the token name  |
+| `Missing required column`               | Sheet header row doesn't match the template                        |
+| `Headshot not found in Drive`           | Filename in sheet must match Drive file exactly (case-sensitive)   |
+| `Google 403`                            | Share the sheet and folder with the service account `client_email` |
+| `Permission denied` cloning repo        | Directory already exists — run `sudo rm -rf ~/[repo]` first        |
+| `ERR_MODULE_NOT_FOUND`                  | Run `npm ci` — node_modules missing                                |
+| Node version error                      | Use NVM: `nvm install && nvm use` from the repo directory          |
+| Headshots not found in Shared Drive     | Confirm `supportsAllDrives: true` fix is in `lib/google.mjs`       |
