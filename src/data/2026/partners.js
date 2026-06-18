@@ -1,29 +1,23 @@
-import CCS from '@/assets/images/sponsors/spo-ccs-logo.webp'
+import DevsCreate313 from '@/assets/images/sponsors/DevsCreate.webp'
 import CompassDetroit from '@/assets/images/sponsors/Compass_Detroit_logo.webp'
-import DetroitHackerHouse from '@/assets/images/sponsors/Detroit_Hacker_House.png'
 import DTE from '@/assets/images/sponsors/spo-dte-logo.webp'
 import GDGDetroit from '@/assets/images/sponsors/org-gdg-detroit.webp'
 import GDGToledo from '@/assets/images/sponsors/org-gdg-toledo.webp'
 import GDGWindsor from '@/assets/images/sponsors/org-gdg-windsor.webp'
 import NSBEDetroit from '@/assets/images/organizations/org-nsbe-logo.webp'
 import SHPEDetroit from '@/assets/images/organizations/org-shpe-logo.webp'
-import DevOpsDetroit from '@/assets/images/sponsors/DevOps_Detroit_Logo.webp'
-import AutomationWorkz from '@/assets/images/sponsors/Automation_Workz.webp'
 import Techqueria from '@/assets/images/sponsors/techqueria.jpg'
-import WhyNotCollab from '@/assets/images/sponsors/whynotcollab.png'
-import HeartOfTheCity from '@/assets/images/sponsors/heartofthecity.jpg'
 import Jac3D from '@/assets/images/sponsors/jac3d.png'
 import LitteCaesars from '@/assets/images/sponsors/little-caesars.webp'
-import MCWT from '@/assets/images/sponsors/mcwt.jpg'
 import WomenTechmakers from '@/assets/images/sponsors/Women_Techmakers.webp'
-import UndergroundPrinting from '@/assets/images/sponsors/Underground_Printing.webp'
+import IBM from '@/assets/images/sponsors/IBM_logo.webp'
 
 export const partnersData = {
   partners: [
     {
       id: 1,
-      name: 'Little Caesars',
-      logo: LitteCaesars,
+      name: 'IBM',
+      logo: IBM,
       desc: 'Little Caesars, headquartered in Detroit, Michigan, was founded by Mike and Marian Ilitch in 1959 and is now the third largest pizza chain in the world with stores in all 50 U.S. states and 27 countries and territories.',
       url: 'https://littlecaesars.com/en-us/',
     },
@@ -36,11 +30,12 @@ export const partnersData = {
     },
     {
       id: 3,
-      name: 'GDG Detroit',
-      logo: GDGDetroit,
-      desc: 'The Detroit Google Developers Group is an inclusive group that meets monthly online and in downtown Detroit to help educate and provide networking opportunities for software developers in the Detroit area.',
-      url: 'https://gdg.community.dev/gdg-detroit/',
+      name: 'DevsCreate313',
+      logo: DevsCreate313,
+      desc: 'DevsCreate313 is a nonprofit organization dedicated to creating a collaborative tech ecosystem in the Detroit area. We are a community of developers, designers, entrepreneurs, and technologists who are passionate about building the future of technology in Detroit.',
+      url: 'https://devscreate313.org/',
     },
+
     {
       id: 4,
       name: 'DTE',
@@ -50,105 +45,62 @@ export const partnersData = {
     },
     {
       id: 5,
-      name: 'MCWT',
-      logo: MCWT,
-      desc: 'MCWT is a network connecting executives, students, business owners, entrepreneurs, and others to a thriving technology community through mentoring, leadership development, networking, and technology experiences across all career stages, inspiring and nurturing technologically oriented women.',
-      url: 'https://mcwt.org/',
-    },
-    {
-      id: 6,
-      name: 'Women Techmakers',
-      logo: WomenTechmakers,
-      desc: 'Googles Women Techmakers program provides visibility, community, and resources for women in technology.',
-      url: 'https://www.technovation.org/women-techmakers/',
-    },
-    {
-      id: 7,
-      name: 'CCS',
-      logo: CCS,
-      desc: 'CCS provides students a rigorous and innovative education aligned with industry requirements. Our graduates are innovators, problem solvers and futurists who are prepared for a career, not just a job. CCS alumni know success. They are entrepreneurs. They are working artists. Fortune 500 companies hire them. The stories you will watch here are a testament to the impact CCS alumni are making in the art/design world. All of them dared to dream big. Let their stories inspire you.',
-      url: 'https://www.ccsdetroit.edu/',
-    },
-    {
-      id: 8,
       name: 'NSBE Detroit',
       logo: NSBEDetroit,
       desc: 'Representing Black Engineers in Detroit. NSBE Detroit Professionals strive to increase technical awareness, encourage scholastic achievement, and stimulate enthusiasm in the black engineering community of Detroit. NSBEs mission is to increase the number of culturally responsible Black engineers who excel academically, succeed professionally and positively impact the community. The NSBE Professionals inspire the next generation of technical professionals, and serve as a catalyst for transform.',
       url: 'https://nsbedetroitprofessionals.org/',
     },
     {
-      id: 9,
-      name: 'DevOps Detroit',
-      logo: DevOpsDetroit,
-      desc: 'DevOps Detroit is a nonprofit organization dedicated to empowering Detroit’s tech community through collaboration, education, and innovation. Founded with the mission of making Detroit a hub for DevOps excellence, we bring together professionals, students, and enthusiasts to share knowledge, build skills, and grow careers in cloud, DevOps, security, AI, and software development.',
-      url: 'https://www.devopsdetroit.io/',
+      id: 6,
+      name: 'GDG Detroit',
+      logo: GDGDetroit,
+      desc: 'The Detroit Google Developers Group is an inclusive group that meets monthly online and in downtown Detroit to help educate and provide networking opportunities for software developers in the Detroit area.',
+      url: 'https://gdg.community.dev/gdg-detroit/',
     },
     {
-      id: 10,
-      name: 'Underground Printing',
-      logo: UndergroundPrinting,
-      desc: 'Underground Printing offers custom apparel solutions, making it easy to create top-selling products for group orders and businesses.',
-      url: 'https://undergroundshirts.com/',
+      id: 7,
+      name: 'Little Caesars',
+      logo: LitteCaesars,
+      desc: 'Little Caesars, headquartered in Detroit, Michigan, was founded by Mike and Marian Ilitch in 1959 and is now the third largest pizza chain in the world with stores in all 50 U.S. states and 27 countries and territories.',
+      url: 'https://littlecaesars.com/en-us/',
     },
-
     {
-      id: 11,
+      id: 8,
       name: 'SHPE Detroit',
       logo: SHPEDetroit,
       desc: 'SHPE Detroit is transforming lives in Detroit by inspiring and motivating young Hispanic students to excel in STEM education through mentorship and community involvement and enhancing career opportunities for Hispanics by building a strong professional network.',
       url: 'https://www.shpedetroit.org/',
     },
     {
-      id: 12,
-      name: 'Detroit Hacker House',
-      logo: DetroitHackerHouse,
-      desc: 'Detroit Hacker House is where builders become founders. We run a residential accelerator and community programming designed to take you from idea to launched product.',
-      url: 'https://detroithackerhouse.com',
+      id: 9,
+      name: 'Women Techmakers',
+      logo: WomenTechmakers,
+      desc: 'Googles Women Techmakers program provides visibility, community, and resources for women in technology.',
+      url: 'https://www.technovation.org/women-techmakers/',
     },
     {
-      id: 13,
-      name: 'Automation Workz',
-      logo: AutomationWorkz,
-      desc: 'Automation Workz is a post-secondary tech certification school that uses video games to train students for certification exams in IoT, Cybersecurity, Network Engineering, Linux/Python, Analytics, Digital Marketing, and Fraud Examination, leading to jobs earning $40,000 to $90,000. Automation Workz can reskill your employees to seize the $9 trillion dollar Diversity Markets through scalable, customized services designed exclusively for your organization.',
-      url: 'https://autoworkz.org/',
-    },
-    {
-      id: 14,
-      name: 'Techqueria Detroit',
-      logo: Techqueria,
-      desc: 'We’re a vibrant, 25,000-strong community empowering Latiné professionals to thrive in every corner of the tech industry. Techqueria provide mentorship, career development, and advocacy for DEI.',
-      url: 'https://techqueria.org',
-    },
-    {
-      id: 15,
-      name: 'Why Not Collab Detroit',
-      logo: WhyNotCollab,
-      desc: 'Why Not Collab Detroit is an initiative dedicated to creating budget-friendly visual, musical, and artistic content by fostering partnerships among Detroit-based creators.',
-      url: 'https://www.instagram.com/whynotcollabdet',
-    },
-    {
-      id: 16,
-      name: 'Heart of The City Photography',
-      logo: HeartOfTheCity,
-      desc: 'Specializes in creating headshots, high school senior portraits, branding imagery, and corporate & social impact event photography that authentically reflect who you are.',
-      url: 'https://www.hocxsls.com',
-    },
-    {
-      id: 17,
+      id: 10,
       name: 'Jac3D G33k',
       logo: Jac3D,
       desc: 'A technology and fitness enthusiast dedicated to digital innovation and community building in the Detroit tech space.',
       url: 'https://www.instagram.com/jac3dg33k',
     },
     {
-      id: 18,
+      id: 11,
+      name: 'Techqueria Detroit',
+      logo: Techqueria,
+      desc: 'We’re a vibrant, 25,000-strong community empowering Latiné professionals to thrive in every corner of the tech industry. Techqueria provide mentorship, career development, and advocacy for DEI.',
+      url: 'https://techqueria.org',
+    },
+    {
+      id: 12,
       name: 'GDG Toledo',
       logo: GDGToledo,
       desc: 'Google Developer Group Toledo is a community of developers interested in Google technologies.',
       url: 'https://gdg.community.dev/gdg-toledo/',
     },
     {
-      id: 19,
+      id: 13,
       name: 'GDG Windsor',
       logo: GDGWindsor,
       desc: 'Google Developer Group Windsor is a community of developers interested in Google technologies.',
