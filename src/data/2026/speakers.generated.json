@@ -8,6 +8,8 @@
     "position": "Lead Coding Mentor | Co-founder of DevsCreate313",
     "isWTM": false,
     "isGDE": false,
+    "isModerator": false,
+    "sortOrder": 0,
     "session": {
       "title": "AI Fluency 101: Building Fundamentals to use any AI tool effectively",
       "abstract": "",
@@ -16,7 +18,18 @@
       "track": "Level Up",
       "time": "09:00",
       "room": "2415",
-      "sessionDuration": 30
+      "sessionDuration": 30,
+      "speakers": ["Nick Gordon"],
+      "moderators": [],
+      "panelists": ["Nick Gordon"],
+      "participants": [
+        {
+          "name": "Nick Gordon",
+          "avatar": "https://cdn.sanity.io/images/b18a6pbd/production/25063a1c9d83aff85371bf0f779c9e9ab461299b-716x466.png",
+          "isModerator": false,
+          "sortOrder": 0
+        }
+      ]
     },
     "linkedIn": "https://www.linkedin.com/in/nicholas-gordon-406394bb/"
   },
@@ -29,6 +42,8 @@
     "position": "Trainer / Developer",
     "isWTM": false,
     "isGDE": false,
+    "isModerator": false,
+    "sortOrder": 0,
     "session": {
       "title": "Getting Started with Running AI Models Locally",
       "abstract": "",
@@ -37,7 +52,18 @@
       "track": "Level Up",
       "time": "09:30",
       "room": "2415",
-      "sessionDuration": 30
+      "sessionDuration": 30,
+      "speakers": ["William Bowen"],
+      "moderators": [],
+      "panelists": ["William Bowen"],
+      "participants": [
+        {
+          "name": "William Bowen",
+          "avatar": "https://cdn.sanity.io/images/b18a6pbd/production/feaaf2ff238cae420236bd75536af5561cd65bca-400x400.jpg",
+          "isModerator": false,
+          "sortOrder": 0
+        }
+      ]
     },
     "linkedIn": "https://www.linkedin.com/in/william-bowen-a7216610/"
   },
@@ -50,6 +76,8 @@
     "position": "UX Engineer & Founder",
     "isWTM": false,
     "isGDE": false,
+    "isModerator": false,
+    "sortOrder": 0,
     "session": {
       "title": "Eight Surprising Facts about Web Accessibility",
       "abstract": "",
@@ -58,7 +86,18 @@
       "track": "Level Up",
       "time": "10:00",
       "room": "2415",
-      "sessionDuration": 30
+      "sessionDuration": 30,
+      "speakers": ["Greg Miller"],
+      "moderators": [],
+      "panelists": ["Greg Miller"],
+      "participants": [
+        {
+          "name": "Greg Miller",
+          "avatar": "https://cdn.sanity.io/images/b18a6pbd/production/08b257831f9046d9eb3f59b0dfd9acddd561c1c3-800x800.jpg",
+          "isModerator": false,
+          "sortOrder": 0
+        }
+      ]
     },
     "linkedIn": "https://www.linkedin.com/in/gregraymiller/"
   },
@@ -71,6 +110,8 @@
     "position": "Assistant Professor",
     "isWTM": false,
     "isGDE": false,
+    "isModerator": false,
+    "sortOrder": 0,
     "session": {
       "title": "Before It Disappears: Personal Archiving and Preserving Your Digital Life",
       "abstract": "",
@@ -79,7 +120,18 @@
       "track": "Level Up",
       "time": "10:30",
       "room": "2415",
-      "sessionDuration": 30
+      "sessionDuration": 30,
+      "speakers": ["Tyler Musgrave"],
+      "moderators": [],
+      "panelists": ["Tyler Musgrave"],
+      "participants": [
+        {
+          "name": "Tyler Musgrave",
+          "avatar": "https://cdn.sanity.io/images/b18a6pbd/production/91ac01bfc97b6c9fae9bcf68ac1bdc23f16fc744-4024x6048.jpg",
+          "isModerator": false,
+          "sortOrder": 0
+        }
+      ]
     },
     "linkedIn": "https://www.linkedin.com/in/tylerm313/"
   },
@@ -92,6 +144,8 @@
     "position": "COO",
     "isWTM": false,
     "isGDE": false,
+    "isModerator": false,
+    "sortOrder": 0,
     "session": {
       "title": "From 100 Views to Viral Momentum: How Viralizer Uses Reinforced Machine Learning to Transform Detroit’s Creator and Business Ecosystem",
       "abstract": "",
@@ -100,7 +154,18 @@
       "track": "Level Up",
       "time": "11:00",
       "room": "2515",
-      "sessionDuration": 30
+      "sessionDuration": 30,
+      "speakers": ["Yusuf Ansari"],
+      "moderators": [],
+      "panelists": ["Yusuf Ansari"],
+      "participants": [
+        {
+          "name": "Yusuf Ansari",
+          "avatar": "https://cdn.sanity.io/images/b18a6pbd/production/266dd016f96849f3e96460713fd3ac92d5fbdecf-1205x1205.jpg",
+          "isModerator": false,
+          "sortOrder": 0
+        }
+      ]
     },
     "linkedIn": "https://www.linkedin.com/in/realyusufansari/"
   },
@@ -113,6 +178,8 @@
     "position": "Developer & Founder",
     "isWTM": false,
     "isGDE": false,
+    "isModerator": false,
+    "sortOrder": 0,
     "session": {
       "title": "Coding at the Speed of Thought: Professional Portfolio",
       "abstract": "",
@@ -121,7 +188,18 @@
       "track": "Level Up",
       "time": "11:30",
       "room": "2415",
-      "sessionDuration": 45
+      "sessionDuration": 45,
+      "speakers": ["Shugmi Shumunov"],
+      "moderators": [],
+      "panelists": ["Shugmi Shumunov"],
+      "participants": [
+        {
+          "name": "Shugmi Shumunov",
+          "avatar": "https://cdn.sanity.io/images/b18a6pbd/production/f29eb48c40a810f7fbf7cc285ef11ced9de16eee-3024x4032.jpg",
+          "isModerator": false,
+          "sortOrder": 0
+        }
+      ]
     },
     "linkedIn": "https://www.linkedin.com/in/shugmishumunov/"
   },
@@ -134,6 +212,8 @@
     "position": "Principal Supervisor, Project Cost Analyst",
     "isWTM": false,
     "isGDE": false,
+    "isModerator": false,
+    "sortOrder": 0,
     "session": {
       "title": "Innovation Summit Panel Discussion",
       "abstract": "",
@@ -142,7 +222,60 @@
       "track": "Level Up",
       "time": "13:00",
       "room": "2415",
-      "sessionDuration": 60
+      "sessionDuration": 60,
+      "speakers": [
+        "Elizabeth Badgett",
+        "Jacquise Purifoy",
+        "Nick Gordon",
+        "Rachel Simone",
+        "Nicholas Calderon",
+        "Tim Moore"
+      ],
+      "moderators": ["Nicholas Calderon", "Tim Moore"],
+      "panelists": [
+        "Elizabeth Badgett",
+        "Jacquise Purifoy",
+        "Nick Gordon",
+        "Rachel Simone"
+      ],
+      "participants": [
+        {
+          "name": "Elizabeth Badgett",
+          "avatar": "https://cdn.sanity.io/images/b18a6pbd/production/3cab778f1c2bc503a58fdeaa1a4b3ae089722ac4-4413x5809.jpg",
+          "isModerator": false,
+          "sortOrder": 0
+        },
+        {
+          "name": "Jacquise Purifoy",
+          "avatar": "https://cdn.sanity.io/images/b18a6pbd/production/3d612e2d99fc14b514cc271085dcc1c63440176f-2160x1440.jpg",
+          "isModerator": false,
+          "sortOrder": 2
+        },
+        {
+          "name": "Nick Gordon",
+          "avatar": "https://cdn.sanity.io/images/b18a6pbd/production/25063a1c9d83aff85371bf0f779c9e9ab461299b-716x466.png",
+          "isModerator": false,
+          "sortOrder": 3
+        },
+        {
+          "name": "Rachel Simone",
+          "avatar": "https://cdn.sanity.io/images/b18a6pbd/production/18d651b7f2f810ca5bc62985a493428fd828a7f9-400x400.webp",
+          "isModerator": false,
+          "sortOrder": 4
+        },
+        {
+          "name": "Nicholas Calderon",
+          "avatar": "https://cdn.sanity.io/images/b18a6pbd/production/f101796e037729bcca947b2aa14012e6acbdf0f5-400x400.jpg",
+          "isModerator": true,
+          "sortOrder": 5
+        },
+        {
+          "name": "Tim Moore",
+          "avatar": "https://cdn.sanity.io/images/b18a6pbd/production/f41fa145e99ecf7d21698adbb6017771647a9335-400x400.webp",
+          "isModerator": true,
+          "sortOrder": 6
+        }
+      ]
     },
     "linkedIn": "https://www.linkedin.com/in/elizabeth-badgett-aa5920259"
   },
@@ -155,6 +288,8 @@
     "position": "Trainer",
     "isWTM": false,
     "isGDE": false,
+    "isModerator": false,
+    "sortOrder": 2,
     "session": {
       "title": "Innovation Summit Panel Discussion",
       "abstract": "",
@@ -163,7 +298,60 @@
       "track": "Level Up",
       "time": "13:00",
       "room": "2415",
-      "sessionDuration": 60
+      "sessionDuration": 60,
+      "speakers": [
+        "Elizabeth Badgett",
+        "Jacquise Purifoy",
+        "Nick Gordon",
+        "Rachel Simone",
+        "Nicholas Calderon",
+        "Tim Moore"
+      ],
+      "moderators": ["Nicholas Calderon", "Tim Moore"],
+      "panelists": [
+        "Elizabeth Badgett",
+        "Jacquise Purifoy",
+        "Nick Gordon",
+        "Rachel Simone"
+      ],
+      "participants": [
+        {
+          "name": "Elizabeth Badgett",
+          "avatar": "https://cdn.sanity.io/images/b18a6pbd/production/3cab778f1c2bc503a58fdeaa1a4b3ae089722ac4-4413x5809.jpg",
+          "isModerator": false,
+          "sortOrder": 0
+        },
+        {
+          "name": "Jacquise Purifoy",
+          "avatar": "https://cdn.sanity.io/images/b18a6pbd/production/3d612e2d99fc14b514cc271085dcc1c63440176f-2160x1440.jpg",
+          "isModerator": false,
+          "sortOrder": 2
+        },
+        {
+          "name": "Nick Gordon",
+          "avatar": "https://cdn.sanity.io/images/b18a6pbd/production/25063a1c9d83aff85371bf0f779c9e9ab461299b-716x466.png",
+          "isModerator": false,
+          "sortOrder": 3
+        },
+        {
+          "name": "Rachel Simone",
+          "avatar": "https://cdn.sanity.io/images/b18a6pbd/production/18d651b7f2f810ca5bc62985a493428fd828a7f9-400x400.webp",
+          "isModerator": false,
+          "sortOrder": 4
+        },
+        {
+          "name": "Nicholas Calderon",
+          "avatar": "https://cdn.sanity.io/images/b18a6pbd/production/f101796e037729bcca947b2aa14012e6acbdf0f5-400x400.jpg",
+          "isModerator": true,
+          "sortOrder": 5
+        },
+        {
+          "name": "Tim Moore",
+          "avatar": "https://cdn.sanity.io/images/b18a6pbd/production/f41fa145e99ecf7d21698adbb6017771647a9335-400x400.webp",
+          "isModerator": true,
+          "sortOrder": 6
+        }
+      ]
     },
     "linkedIn": "https://www.linkedin.com/in/jacquise-a-purifoy-b35b0a43/"
   },
@@ -176,6 +364,8 @@
     "position": "Lead Coding Mentor | Co-founder of DevsCreate313",
     "isWTM": false,
     "isGDE": false,
+    "isModerator": false,
+    "sortOrder": 3,
     "session": {
       "title": "Innovation Summit Panel Discussion",
       "abstract": "",
@@ -184,19 +374,74 @@
       "track": "Level Up",
       "time": "13:00",
       "room": "2415",
-      "sessionDuration": 60
+      "sessionDuration": 60,
+      "speakers": [
+        "Elizabeth Badgett",
+        "Jacquise Purifoy",
+        "Nick Gordon",
+        "Rachel Simone",
+        "Nicholas Calderon",
+        "Tim Moore"
+      ],
+      "moderators": ["Nicholas Calderon", "Tim Moore"],
+      "panelists": [
+        "Elizabeth Badgett",
+        "Jacquise Purifoy",
+        "Nick Gordon",
+        "Rachel Simone"
+      ],
+      "participants": [
+        {
+          "name": "Elizabeth Badgett",
+          "avatar": "https://cdn.sanity.io/images/b18a6pbd/production/3cab778f1c2bc503a58fdeaa1a4b3ae089722ac4-4413x5809.jpg",
+          "isModerator": false,
+          "sortOrder": 0
+        },
+        {
+          "name": "Jacquise Purifoy",
+          "avatar": "https://cdn.sanity.io/images/b18a6pbd/production/3d612e2d99fc14b514cc271085dcc1c63440176f-2160x1440.jpg",
+          "isModerator": false,
+          "sortOrder": 2
+        },
+        {
+          "name": "Nick Gordon",
+          "avatar": "https://cdn.sanity.io/images/b18a6pbd/production/25063a1c9d83aff85371bf0f779c9e9ab461299b-716x466.png",
+          "isModerator": false,
+          "sortOrder": 3
+        },
+        {
+          "name": "Rachel Simone",
+          "avatar": "https://cdn.sanity.io/images/b18a6pbd/production/18d651b7f2f810ca5bc62985a493428fd828a7f9-400x400.webp",
+          "isModerator": false,
+          "sortOrder": 4
+        },
+        {
+          "name": "Nicholas Calderon",
+          "avatar": "https://cdn.sanity.io/images/b18a6pbd/production/f101796e037729bcca947b2aa14012e6acbdf0f5-400x400.jpg",
+          "isModerator": true,
+          "sortOrder": 5
+        },
+        {
+          "name": "Tim Moore",
+          "avatar": "https://cdn.sanity.io/images/b18a6pbd/production/f41fa145e99ecf7d21698adbb6017771647a9335-400x400.webp",
+          "isModerator": true,
+          "sortOrder": 6
+        }
+      ]
     },
     "linkedIn": "https://www.linkedin.com/in/nicholas-gordon-406394bb/"
   },
   {
-    "id": 2025841527,
-    "name": "Nicholas Calderon",
-    "avatar": "https://cdn.sanity.io/images/b18a6pbd/production/ba9d06831ee8de28611079bcde9e126757aedc56-600x900.webp",
-    "bio": "Nicholas Calderon (a.k.a. Nicky Baby) is a Detroit-based Cultural Connector, Creative Producer, Model, and Host working across music, fashion, live events, and community-centered programming. Through Nicky Baby LLC, he produces events, develops creative partnerships, and helps connect artists, organizations, and audiences across Detroit's cultural landscape.\n\nNicholas manages Detroit artist DUANE and collaborates across Detroit's music, nightlife, fashion, and LGBTQ+ communities. Recent highlights include producing and hosting events during Movement Weekend, co-hosting interviews at the 2026 Detroit Auto Show Charity Preview, and modeling in Michigan Fashion Week's Green Label show. A passionate advocate for Detroit's creative ecosystem, he approaches his work through both a local and international lens, championing the idea that some of the world's most exciting culture is happening in Detroit—and that people should experience it here firsthand.",
-    "organization": "WVU Medicine",
-    "position": "Senior Systems Analyst",
+    "id": 1896203958,
+    "name": "Rachel Simone",
+    "avatar": "https://cdn.sanity.io/images/b18a6pbd/production/18d651b7f2f810ca5bc62985a493428fd828a7f9-400x400.webp",
+    "bio": "Rachel Simone, known professionally as Producer Bae, is a Detroit-based Executive Producer, Production Manager, and Media Educator reshaping how women build careers in media. As the Founder of Production Bae, a Creative Accelerator Program, she’s creating pipelines that move women from passion to paycheck—training, staffing, and connecting Detroit talent to real-world opportunities in film, television, and digital production.\n\nRachel’s production work includes work with FOX 2 Detroit, WDIV-Local 4, and The Michigan Chronicle, alongside creative partnerships on major projects like The Randi Rossario Show, OWN Network, Dave Chappelle’s The Closer (Netflix), and Jessica Care Moore’s He Looked Like a Postcard.\n\nRooted in legacy, Rachel comes from Detroit media royalty—her father served as a Director at WDIV Channel 4 for 38 years and worked for the City of Detroit, shaping her vision of storytelling as both craft and community service. She carries that torch forward through her leadership with the Boys & Girls Club, mentorship in Harper Woods, and her role as a Board Member at Detroit School of Arts High School, where she helps young creatives find their voice and their value.\n\nThe Production Bae brand, grounded in The Feminine Lens, reflects the women it serves—rooted, fearless, and unapologetic. Rachel’s work blends power and purpose, helping women not only get on set but own their narrative, build sustainable creative careers, and keep Detroit’s stories in motion.",
+    "organization": "Production Bae Media",
+    "position": "Founder & Executive Producer",
     "isWTM": false,
     "isGDE": false,
+    "isModerator": false,
+    "sortOrder": 4,
     "session": {
       "title": "Innovation Summit Panel Discussion",
       "abstract": "",
@@ -205,9 +450,214 @@
       "track": "Level Up",
       "time": "13:00",
       "room": "2415",
-      "sessionDuration": 60
+      "sessionDuration": 60,
+      "speakers": [
+        "Elizabeth Badgett",
+        "Jacquise Purifoy",
+        "Nick Gordon",
+        "Rachel Simone",
+        "Nicholas Calderon",
+        "Tim Moore"
+      ],
+      "moderators": ["Nicholas Calderon", "Tim Moore"],
+      "panelists": [
+        "Elizabeth Badgett",
+        "Jacquise Purifoy",
+        "Nick Gordon",
+        "Rachel Simone"
+      ],
+      "participants": [
+        {
+          "name": "Elizabeth Badgett",
+          "avatar": "https://cdn.sanity.io/images/b18a6pbd/production/3cab778f1c2bc503a58fdeaa1a4b3ae089722ac4-4413x5809.jpg",
+          "isModerator": false,
+          "sortOrder": 0
+        },
+        {
+          "name": "Jacquise Purifoy",
+          "avatar": "https://cdn.sanity.io/images/b18a6pbd/production/3d612e2d99fc14b514cc271085dcc1c63440176f-2160x1440.jpg",
+          "isModerator": false,
+          "sortOrder": 2
+        },
+        {
+          "name": "Nick Gordon",
+          "avatar": "https://cdn.sanity.io/images/b18a6pbd/production/25063a1c9d83aff85371bf0f779c9e9ab461299b-716x466.png",
+          "isModerator": false,
+          "sortOrder": 3
+        },
+        {
+          "name": "Rachel Simone",
+          "avatar": "https://cdn.sanity.io/images/b18a6pbd/production/18d651b7f2f810ca5bc62985a493428fd828a7f9-400x400.webp",
+          "isModerator": false,
+          "sortOrder": 4
+        },
+        {
+          "name": "Nicholas Calderon",
+          "avatar": "https://cdn.sanity.io/images/b18a6pbd/production/f101796e037729bcca947b2aa14012e6acbdf0f5-400x400.jpg",
+          "isModerator": true,
+          "sortOrder": 5
+        },
+        {
+          "name": "Tim Moore",
+          "avatar": "https://cdn.sanity.io/images/b18a6pbd/production/f41fa145e99ecf7d21698adbb6017771647a9335-400x400.webp",
+          "isModerator": true,
+          "sortOrder": 6
+        }
+      ]
+    },
+    "linkedIn": "https://www.linkedin.com/in/producerbae"
+  },
+  {
+    "id": 2025841527,
+    "name": "Nicholas Calderon",
+    "avatar": "https://cdn.sanity.io/images/b18a6pbd/production/f101796e037729bcca947b2aa14012e6acbdf0f5-400x400.jpg",
+    "bio": "Nicholas Calderon (a.k.a. Nicky Baby) is a Detroit-based Cultural Connector, Creative Producer, Model, and Host working across music, fashion, live events, and community-centered programming. Through Nicky Baby LLC, he produces events, develops creative partnerships, and helps connect artists, organizations, and audiences across Detroit's cultural landscape.\n\nNicholas manages Detroit artist DUANE and collaborates across Detroit's music, nightlife, fashion, and LGBTQ+ communities. Recent highlights include producing and hosting events during Movement Weekend, co-hosting interviews at the 2026 Detroit Auto Show Charity Preview, and modeling in Michigan Fashion Week's Green Label show. A passionate advocate for Detroit's creative ecosystem, he approaches his work through both a local and international lens, championing the idea that some of the world's most exciting culture is happening in Detroit—and that people should experience it here firsthand.",
+    "organization": "Nicky Baby LLC",
+    "position": "Cultural Connector, Creative Producer & Artist Manager & Founder",
+    "isWTM": false,
+    "isGDE": false,
+    "isModerator": true,
+    "sortOrder": 5,
+    "session": {
+      "title": "Innovation Summit Panel Discussion",
+      "abstract": "",
+      "description": "",
+      "tags": ["Level Up"],
+      "track": "Level Up",
+      "time": "13:00",
+      "room": "2415",
+      "sessionDuration": 60,
+      "speakers": [
+        "Elizabeth Badgett",
+        "Jacquise Purifoy",
+        "Nick Gordon",
+        "Rachel Simone",
+        "Nicholas Calderon",
+        "Tim Moore"
+      ],
+      "moderators": ["Nicholas Calderon", "Tim Moore"],
+      "panelists": [
+        "Elizabeth Badgett",
+        "Jacquise Purifoy",
+        "Nick Gordon",
+        "Rachel Simone"
+      ],
+      "participants": [
+        {
+          "name": "Elizabeth Badgett",
+          "avatar": "https://cdn.sanity.io/images/b18a6pbd/production/3cab778f1c2bc503a58fdeaa1a4b3ae089722ac4-4413x5809.jpg",
+          "isModerator": false,
+          "sortOrder": 0
+        },
+        {
+          "name": "Jacquise Purifoy",
+          "avatar": "https://cdn.sanity.io/images/b18a6pbd/production/3d612e2d99fc14b514cc271085dcc1c63440176f-2160x1440.jpg",
+          "isModerator": false,
+          "sortOrder": 2
+        },
+        {
+          "name": "Nick Gordon",
+          "avatar": "https://cdn.sanity.io/images/b18a6pbd/production/25063a1c9d83aff85371bf0f779c9e9ab461299b-716x466.png",
+          "isModerator": false,
+          "sortOrder": 3
+        },
+        {
+          "name": "Rachel Simone",
+          "avatar": "https://cdn.sanity.io/images/b18a6pbd/production/18d651b7f2f810ca5bc62985a493428fd828a7f9-400x400.webp",
+          "isModerator": false,
+          "sortOrder": 4
+        },
+        {
+          "name": "Nicholas Calderon",
+          "avatar": "https://cdn.sanity.io/images/b18a6pbd/production/f101796e037729bcca947b2aa14012e6acbdf0f5-400x400.jpg",
+          "isModerator": true,
+          "sortOrder": 5
+        },
+        {
+          "name": "Tim Moore",
+          "avatar": "https://cdn.sanity.io/images/b18a6pbd/production/f41fa145e99ecf7d21698adbb6017771647a9335-400x400.webp",
+          "isModerator": true,
+          "sortOrder": 6
+        }
+      ]
     },
     "linkedIn": "https://www.linkedin.com/in/nicholasgcalderon"
+  },
+  {
+    "id": 1904586988,
+    "name": "Tim Moore",
+    "avatar": "https://cdn.sanity.io/images/b18a6pbd/production/f41fa145e99ecf7d21698adbb6017771647a9335-400x400.webp",
+    "bio": "Tim Moore is a seasoned entrepreneur with over 35 years of experience in launching, acquiring, growing, and exiting companies within multiple verticals. Mr. Moore has helped implement product success strategies for some of the world's largest companies, such as Google and Telefonica. As CEO of Clixie AI, he oversees strategy, partner platform sales brand awareness. Mr. Moore serves as a mentor and coach to local entrepreneurs and start-ups through the Ross School of Business, University of Michigan.",
+    "organization": "Clixie AI",
+    "position": "CEO",
+    "isWTM": false,
+    "isGDE": false,
+    "isModerator": true,
+    "sortOrder": 6,
+    "session": {
+      "title": "Innovation Summit Panel Discussion",
+      "abstract": "",
+      "description": "",
+      "tags": ["Level Up"],
+      "track": "Level Up",
+      "time": "13:00",
+      "room": "2415",
+      "sessionDuration": 60,
+      "speakers": [
+        "Elizabeth Badgett",
+        "Jacquise Purifoy",
+        "Nick Gordon",
+        "Rachel Simone",
+        "Nicholas Calderon",
+        "Tim Moore"
+      ],
+      "moderators": ["Nicholas Calderon", "Tim Moore"],
+      "panelists": [
+        "Elizabeth Badgett",
+        "Jacquise Purifoy",
+        "Nick Gordon",
+        "Rachel Simone"
+      ],
+      "participants": [
+        {
+          "name": "Elizabeth Badgett",
+          "avatar": "https://cdn.sanity.io/images/b18a6pbd/production/3cab778f1c2bc503a58fdeaa1a4b3ae089722ac4-4413x5809.jpg",
+          "isModerator": false,
+          "sortOrder": 0
+        },
+        {
+          "name": "Jacquise Purifoy",
+          "avatar": "https://cdn.sanity.io/images/b18a6pbd/production/3d612e2d99fc14b514cc271085dcc1c63440176f-2160x1440.jpg",
+          "isModerator": false,
+          "sortOrder": 2
+        },
+        {
+          "name": "Nick Gordon",
+          "avatar": "https://cdn.sanity.io/images/b18a6pbd/production/25063a1c9d83aff85371bf0f779c9e9ab461299b-716x466.png",
+          "isModerator": false,
+          "sortOrder": 3
+        },
+        {
+          "name": "Rachel Simone",
+          "avatar": "https://cdn.sanity.io/images/b18a6pbd/production/18d651b7f2f810ca5bc62985a493428fd828a7f9-400x400.webp",
+          "isModerator": false,
+          "sortOrder": 4
+        },
+        {
+          "name": "Nicholas Calderon",
+          "avatar": "https://cdn.sanity.io/images/b18a6pbd/production/f101796e037729bcca947b2aa14012e6acbdf0f5-400x400.jpg",
+          "isModerator": true,
+          "sortOrder": 5
+        },
+        {
+          "name": "Tim Moore",
+          "avatar": "https://cdn.sanity.io/images/b18a6pbd/production/f41fa145e99ecf7d21698adbb6017771647a9335-400x400.webp",
+          "isModerator": true,
+          "sortOrder": 6
+        }
+      ]
+    },
+    "linkedIn": "https://www.linkedin.com/in/tim-moore-7b00332"
   },
   {
     "id": 1507404901,
@@ -218,6 +668,8 @@
     "position": "Manager of Community Relations Corporate Government Affairs, Chief Strategist",
     "isWTM": false,
     "isGDE": false,
+    "isModerator": false,
+    "sortOrder": 0,
     "session": {
       "title": "From Code to Context: Leading Innovation Through Perspective",
       "abstract": "",
@@ -226,7 +678,18 @@
       "track": "Level Up",
       "time": "14:00",
       "room": "2415",
-      "sessionDuration": 30
+      "sessionDuration": 30,
+      "speakers": ["Lem Cartman"],
+      "moderators": [],
+      "panelists": ["Lem Cartman"],
+      "participants": [
+        {
+          "name": "Lem Cartman",
+          "avatar": "https://cdn.sanity.io/images/b18a6pbd/production/3351d2d018b9a4653301e99da0b217d2ed6073fe-2400x1600.jpg",
+          "isModerator": false,
+          "sortOrder": 0
+        }
+      ]
     },
     "linkedIn": "https://www.linkedin.com/in/lem-cartman-mha-bshcl-b80920152"
   },
@@ -239,6 +702,8 @@
     "position": "Founder",
     "isWTM": false,
     "isGDE": false,
+    "isModerator": false,
+    "sortOrder": 0,
     "session": {
       "title": "Self Advocacy: Do you have the courage to choose you?",
       "abstract": "",
@@ -247,7 +712,18 @@
       "track": "Level Up",
       "time": "14:30",
       "room": "2415",
-      "sessionDuration": 30
+      "sessionDuration": 30,
+      "speakers": ["Zara Northover"],
+      "moderators": [],
+      "panelists": ["Zara Northover"],
+      "participants": [
+        {
+          "name": "Zara Northover",
+          "avatar": "https://cdn.sanity.io/images/b18a6pbd/production/915192bbb61b02550ae4f1043b171b05a59e4676-1002x638.jpg",
+          "isModerator": false,
+          "sortOrder": 0
+        }
+      ]
     },
     "linkedIn": "https://www.linkedin.com/in/zaranorthover"
   },
@@ -260,6 +736,8 @@
     "position": "Community Relations & Organizing Director",
     "isWTM": false,
     "isGDE": false,
+    "isModerator": false,
+    "sortOrder": 0,
     "session": {
       "title": "Community Solidarity: How do we help ourselves by helping others?",
       "abstract": "",
@@ -268,7 +746,18 @@
       "track": "Level Up",
       "time": "15:00",
       "room": "2515",
-      "sessionDuration": 30
+      "sessionDuration": 30,
+      "speakers": ["Chantel Watkins"],
+      "moderators": [],
+      "panelists": ["Chantel Watkins"],
+      "participants": [
+        {
+          "name": "Chantel Watkins",
+          "avatar": "https://cdn.sanity.io/images/b18a6pbd/production/6ad1571dc0fb4bbfa513836bb2540ac40d157dda-1290x1538.jpg",
+          "isModerator": false,
+          "sortOrder": 0
+        }
+      ]
     }
   },
   {
@@ -280,6 +769,8 @@
     "position": "Founder & CEO",
     "isWTM": false,
     "isGDE": false,
+    "isModerator": false,
+    "sortOrder": 0,
     "session": {
       "title": "CROWNED QLUX: How AI, Allyship, and a Mother’s Love Reimagined Prom Fashion",
       "abstract": "",
@@ -288,7 +779,18 @@
       "track": "Level Up",
       "time": "15:30",
       "room": "2415",
-      "sessionDuration": 30
+      "sessionDuration": 30,
+      "speakers": ["Dichondra Johnson"],
+      "moderators": [],
+      "panelists": ["Dichondra Johnson"],
+      "participants": [
+        {
+          "name": "Dichondra Johnson",
+          "avatar": "https://cdn.sanity.io/images/b18a6pbd/production/cbd5ff4df248b7f6fb9732b7159e3375bb0f48ba-960x958.jpg",
+          "isModerator": false,
+          "sortOrder": 0
+        }
+      ]
     },
     "linkedIn": "https://www.linkedin.com/in/dichondra"
   }
