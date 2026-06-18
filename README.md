@@ -98,7 +98,10 @@ The **import pipeline** (`scripts/sanity-import/`) requires a `.env` file (gitig
 | Command                   | Description                                                   |
 | ------------------------- | ------------------------------------------------------------- |
 | `npm run dev`             | Start the development server via Vite                         |
-| `npm run build`           | Build the project for production                              |
+| `npm run dev:cms`         | Fetch latest Sanity content, then start dev server            |
+| `npm run fetch:event-data`| Pull speakers/sessions from Sanity into `speakers.generated.json` |
+| `npm run studio:dev`      | Start local Sanity Studio at `http://localhost:3333`            |
+| `npm run build`           | Fetch from Sanity, then build for production                  |
 | `npm run preview`         | Create a preview of the production build locally              |
 | `npm run lint`            | Check code for linting errors (includes Tailwind class order) |
 | `npm run lint:fix`        | Automatically fix linting errors                              |
@@ -125,7 +128,26 @@ src/
 
 ## Content pipeline
 
-Speaker, session, and team data is managed in **Sanity Studio** and imported via an automated pipeline:
+Speaker and session data lives in **Sanity Studio** (`production` dataset). The site pulls it at build time — no n8n required for day-to-day edits.
+
+### Edit in Studio (current workflow)
+
+```
+Sanity Studio (local :3333 or pridemi26.sanity.studio)
+        ↓
+npm run fetch:event-data  →  speakers.generated.json
+        ↓
+npm run dev  (or Vercel deploy for production)
+```
+
+| Studio | URL | Command |
+| ------ | --- | ------- |
+| Local | `http://localhost:3333` | `npm run studio:dev` |
+| Cloud | [pridemi26.sanity.studio](https://pridemi26.sanity.studio/) | `cd studio && npm run deploy` |
+
+Both studios edit the **same** cloud dataset. After publishing changes, run `npm run dev:cms` to see them on the local site.
+
+### Bulk import (when n8n is available)
 
 ```
 Google Sheet (speaker data)
