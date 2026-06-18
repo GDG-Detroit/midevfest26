@@ -18,8 +18,8 @@ export const partnersData = {
       id: 1,
       name: 'IBM',
       logo: IBM,
-      desc: 'Little Caesars, headquartered in Detroit, Michigan, was founded by Mike and Marian Ilitch in 1959 and is now the third largest pizza chain in the world with stores in all 50 U.S. states and 27 countries and territories.',
-      url: 'https://littlecaesars.com/en-us/',
+      desc: 'IBM is a global technology company that provides hardware, software, and services to businesses and organizations.',
+      url: 'https://www.ibm.com/us-en',
     },
     {
       id: 2,
