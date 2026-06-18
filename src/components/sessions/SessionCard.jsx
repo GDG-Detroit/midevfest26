@@ -10,10 +10,90 @@ import {
   generateICSFile,
 } from '../../utils/calendarExport'
 
+function formatNameList(names) {
+  if (names.length <= 2) return names.join(' & ')
+  return `${names.slice(0, -1).join(', ')} & ${names[names.length - 1]}`
+}
+
+const participantShape = PropTypes.shape({
+  name: PropTypes.string.isRequired,
+  avatar: PropTypes.string,
+  isModerator: PropTypes.bool,
+  sortOrder: PropTypes.number,
+})
+
+function SessionCredits({ participants }) {
+  const moderators = participants.filter((p) => p.isModerator)
+  const panelists = participants.filter((p) => !p.isModerator)
+  const showModeratorSplit = participants.length > 1 && moderators.length > 0
+
+  if (showModeratorSplit) {
+    return (
+      <div className="mt-1 space-y-1 text-sm text-gray-400">
+        {panelists.length > 0 && (
+          <p>
+            <span className="font-medium text-gray-300">Panelists:</span>{' '}
+            {formatNameList(panelists.map((p) => p.name))}
+          </p>
+        )}
+        {moderators.length > 0 && (
+          <p>
+            <span className="font-medium text-gray-300">Moderators:</span>{' '}
+            {formatNameList(moderators.map((p) => p.name))}
+          </p>
+        )}
+      </div>
+    )
+  }
+
+  return (
+    <p className="mt-1 text-sm text-gray-400">
+      by {formatNameList(participants.map((p) => p.name))}
+    </p>
+  )
+}
+
+SessionCredits.propTypes = {
+  participants: PropTypes.arrayOf(participantShape).isRequired,
+}
+
+function ParticipantAvatar({ participant, sizeClass }) {
+  return (
+    <div className="relative">
+      <div
+        className={`rounded-full bg-gradient-to-br from-iwd-gold-300/80 via-iwd-gold-500/60 to-iwd-gold-300/80 p-[3px] shadow-lg shadow-iwd-gold-500/20 ${
+          participant.isModerator ? 'ring-2 ring-iwd-gold-300/80' : ''
+        }`}
+      >
+        <img
+          src={
+            !participant.avatar
+              ? `https://ui-avatars.com/api/?name=${encodeURIComponent(
+                  participant.name
+                )}&background=random`
+              : participant.avatar
+          }
+          alt={`Headshot of ${participant.name}`}
+          className={`rounded-full object-cover ring-2 ring-iwd-black-950 ${sizeClass}`}
+        />
+      </div>
+      {participant.isModerator && (
+        <span className="absolute -bottom-1 left-1/2 -translate-x-1/2 whitespace-nowrap rounded-full bg-iwd-gold-400 px-1.5 py-0.5 text-[9px] font-bold uppercase tracking-wide text-iwd-black-950">
+          Mod
+        </span>
+      )}
+    </div>
+  )
+}
+
+ParticipantAvatar.propTypes = {
+  participant: participantShape.isRequired,
+  sizeClass: PropTypes.string.isRequired,
+}
+
 function SessionCard({
   sessionId,
-  speakers,
-  speakerAvatars,
+  participants,
   sessionTitle,
   sessionDesc,
   sessionTime,
@@ -70,6 +150,13 @@ function SessionCard({
   const isExpanded = direction === DIRECTION.TOP
   const hasTimeInfo = startTime && endTime
   const hasSessionInfo = hasTimeInfo || sessionRoom
+  const moderators = participants.filter((p) => p.isModerator)
+  const panelists = participants.filter((p) => !p.isModerator)
+  const showModeratorSplit = participants.length > 1 && moderators.length > 0
+  const avatarSizeClass =
+    participants.length >= 3
+      ? 'size-16 sm:size-20'
+      : 'size-20 sm:size-24 md:size-[116px]'
 
   /*
    * Layout: responsive grid with avatar column + content column.
@@ -101,38 +188,51 @@ function SessionCard({
           className="-ml-2 flex flex-1 items-center gap-5 rounded-xl p-2 text-left transition-colors hover:bg-white/[0.02] focus:outline-none focus:ring-2 focus:ring-iwd-gold-400/50"
         >
           <div className="flex w-full min-w-0 flex-col items-start gap-5 text-left lg:flex-row lg:items-center">
-            {speakerAvatars?.length > 0 && (
+            {participants?.length > 0 && (
               <div
-                className={`flex shrink-0 flex-wrap items-center justify-start gap-2 ${
-                  speakerAvatars.length > 2 ? 'order-2 lg:order-1' : ''
+                className={`flex shrink-0 flex-col gap-2 ${
+                  participants.length > 2 ? 'order-2 lg:order-1' : ''
                 }`}
               >
-                {speakerAvatars.map((avatar, index) => (
-                  <div key={index} className="relative">
-                    <div className="rounded-full bg-gradient-to-br from-iwd-gold-300/80 via-iwd-gold-500/60 to-iwd-gold-300/80 p-[3px] shadow-lg shadow-iwd-gold-500/20">
-                      <img
-                        src={
-                          !avatar
-                            ? `https://ui-avatars.com/api/?name=${encodeURIComponent(
-                                speakers[index]
-                              )}&background=random`
-                            : avatar
-                        }
-                        alt={`Headshot of ${speakers[index]}`}
-                        className={`rounded-full object-cover ring-2 ring-iwd-black-950 ${
-                          speakerAvatars.length >= 3
-                            ? 'size-16 sm:size-20'
-                            : 'size-20 sm:size-24 md:size-[116px]'
-                        }`}
-                      />
+                {showModeratorSplit ? (
+                  <>
+                    {panelists.length > 0 && (
+                      <div className="flex flex-wrap items-center justify-start gap-2">
+                        {panelists.map((participant, index) => (
+                          <ParticipantAvatar
+                            key={`panelist-${participant.name}-${index}`}
+                            participant={participant}
+                            sizeClass={avatarSizeClass}
+                          />
+                        ))}
+                      </div>
+                    )}
+                    <div className="flex flex-wrap items-center justify-start gap-2">
+                      {moderators.map((participant, index) => (
+                        <ParticipantAvatar
+                          key={`moderator-${participant.name}-${index}`}
+                          participant={participant}
+                          sizeClass={avatarSizeClass}
+                        />
+                      ))}
                     </div>
+                  </>
+                ) : (
+                  <div className="flex flex-wrap items-center justify-start gap-2">
+                    {participants.map((participant, index) => (
+                      <ParticipantAvatar
+                        key={`${participant.name}-${index}`}
+                        participant={participant}
+                        sizeClass={avatarSizeClass}
+                      />
+                    ))}
                   </div>
-                ))}
+                )}
               </div>
             )}
             <div
               className={`flex w-full min-w-0 flex-1 flex-col justify-center ${
-                speakerAvatars?.length > 2 ? 'order-1 lg:order-2' : ''
+                participants?.length > 2 ? 'order-1 lg:order-2' : ''
               }`}
             >
               {sessionTitle && (
@@ -140,9 +240,7 @@ function SessionCard({
                   {sessionTitle}
                 </h3>
               )}
-              <p className="mt-1 text-sm text-gray-400">
-                by {speakers.join(' & ')}
-              </p>
+              <SessionCredits participants={participants} />
               {hasSessionInfo && (
                 <div className="mt-3 flex flex-wrap items-center gap-2 text-sm">
                   {hasTimeInfo && (
@@ -283,8 +381,7 @@ function SessionCard({
 
 SessionCard.propTypes = {
   sessionId: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
-  speakers: PropTypes.arrayOf(PropTypes.string).isRequired,
-  speakerAvatars: PropTypes.arrayOf(PropTypes.string).isRequired,
+  participants: PropTypes.arrayOf(participantShape).isRequired,
   sessionTitle: PropTypes.string.isRequired,
   sessionDesc: PropTypes.string.isRequired,
   sessionTime: PropTypes.string.isRequired,

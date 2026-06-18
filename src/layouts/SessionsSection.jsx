@@ -198,16 +198,20 @@ const SessionsSection = ({
       (session) => session.sessionTitle === speaker.session.title
     )
 
+    const participant = {
+      name: speaker.name,
+      avatar: speaker.avatar,
+      isModerator: Boolean(speaker.isModerator),
+      sortOrder: speaker.sortOrder ?? 0,
+    }
+
     if (existingSession) {
-      existingSession.speakers.push(speaker.name)
-      existingSession.speakerAvatars.push(speaker.avatar)
+      existingSession.participants.push(participant)
       existingSession.speakerIds.push(Number(speaker.id))
     } else {
       combinedSpeakerData.push({
-        // We'll compute a canonical id (sorted underscore-joined) after collecting all speakers
         speakerIds: [Number(speaker.id)],
-        speakers: [speaker.name],
-        speakerAvatars: [speaker.avatar],
+        participants: [participant],
         sessionTitle: speaker.session.title,
         sessionDesc: speaker.session.description ?? '',
         track: speaker.session.track,
@@ -217,6 +221,13 @@ const SessionsSection = ({
       })
     }
   })
+
+  combinedSpeakerData = combinedSpeakerData.map((session) => ({
+    ...session,
+    participants: [...session.participants].sort(
+      (a, b) => a.sortOrder - b.sortOrder
+    ),
+  }))
 
   // Normalize ids for combined sessions to a canonical stable string (sorted speaker ids)
   combinedSpeakerData = combinedSpeakerData.map((s) => {
@@ -746,8 +757,7 @@ const SessionsSection = ({
                       <li key={item.id} className="w-full">
                         <SessionCard
                           sessionId={item.id}
-                          speakers={item.speakers}
-                          speakerAvatars={item.speakerAvatars}
+                          participants={item.participants}
                           sessionTitle={item.sessionTitle}
                           sessionDesc={item.sessionDesc}
                           sessionTime={item.sessionTime}
@@ -794,12 +804,21 @@ SessionsSection.propTypes = {
       id: PropTypes.number.isRequired,
       name: PropTypes.string.isRequired,
       avatar: PropTypes.string,
+      isModerator: PropTypes.bool,
+      sortOrder: PropTypes.number,
       session: PropTypes.shape({
         title: PropTypes.string,
         description: PropTypes.string,
         track: PropTypes.string,
         time: PropTypes.string,
         room: PropTypes.string,
+        speakers: PropTypes.arrayOf(PropTypes.string),
+        participants: PropTypes.arrayOf(
+          PropTypes.shape({
+            name: PropTypes.string.isRequired,
+            isModerator: PropTypes.bool,
+          })
+        ),
       }).isRequired,
     })
   ).isRequired,

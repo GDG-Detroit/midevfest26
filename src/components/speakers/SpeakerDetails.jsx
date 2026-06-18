@@ -164,6 +164,7 @@ function SpeakerDetails({
   position,
   sessionTitle,
   sessionSpeakers,
+  sessionParticipants,
   sessionDescription,
   tags,
   track,
@@ -486,17 +487,25 @@ function SpeakerDetails({
                         Presenters
                       </p>
                       <div className="flex flex-wrap gap-2 text-sm text-gray-300">
-                        {sessionSpeakers.map((sName, idx) => (
-                          <span
-                            key={idx}
-                            className={
-                              sName === name ? 'font-bold text-white' : ''
-                            }
-                          >
-                            {sName}
-                            {idx < sessionSpeakers.length - 1 ? ' • ' : ''}
-                          </span>
-                        ))}
+                        {(sessionParticipants?.length
+                          ? sessionParticipants
+                          : sessionSpeakers.map((sName) => ({ name: sName }))
+                        ).map((participant, idx, list) => {
+                          const sName = participant.name ?? participant
+                          const isModerator = Boolean(participant.isModerator)
+                          return (
+                            <span
+                              key={`${sName}-${idx}`}
+                              className={
+                                sName === name ? 'font-bold text-white' : ''
+                              }
+                            >
+                              {sName}
+                              {isModerator ? ' (Moderator)' : ''}
+                              {idx < list.length - 1 ? ' • ' : ''}
+                            </span>
+                          )
+                        })}
                       </div>
                     </div>
                   )}
@@ -597,6 +606,12 @@ SpeakerDetails.propTypes = {
   position: PropTypes.string,
   sessionTitle: PropTypes.string,
   sessionSpeakers: PropTypes.arrayOf(PropTypes.string),
+  sessionParticipants: PropTypes.arrayOf(
+    PropTypes.shape({
+      name: PropTypes.string.isRequired,
+      isModerator: PropTypes.bool,
+    })
+  ),
   sessionDescription: PropTypes.string,
   track: PropTypes.string,
   tags: PropTypes.arrayOf(PropTypes.string),
