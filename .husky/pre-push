@@ -1,3 +1,5 @@
+. "$(dirname "$0")/common.sh"
+
 echo "🚀 Running pre-push checks..."
 echo "🔍 Running full accessibility audit..."
 

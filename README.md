@@ -144,11 +144,7 @@ Google Drive folder (headshots)
 ### Import script
 
 ```bash
-# Test import against the development dataset
-npm run import:speakers -- --dataset=development
-
-# Production import
-npm run import:speakers -- --dataset=production
+npm run import:speakers
 ```
 
 Requires `scripts/sanity-import/.env` (gitignored). Copy from `.env.example` and fill in credentials. See `.env.schema` for full documentation of each variable.

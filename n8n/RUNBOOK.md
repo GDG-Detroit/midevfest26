@@ -146,7 +146,7 @@ Fill in these values:
 
 ```bash
 SANITY_PROJECT_ID=                           # from sanity.io/manage → project settings
-SANITY_DATASET=development                   # use "production" for go-live
+SANITY_DATASET=production
 SANITY_API_TOKEN=sk-...                      # the token you just copied
 SANITY_EVENT_YEAR=                           # e.g. 2027
 GOOGLE_APPLICATION_CREDENTIALS=/home/shrinkray/google-sa.json   # server path for manual test
@@ -172,16 +172,16 @@ docker compose down && docker compose up -d
 ```bash
 cd ~/[this-repo]
 node --env-file=scripts/sanity-import/.env \
-  scripts/sanity-import/import-speakers.mjs --dataset=development
+  scripts/sanity-import/import-speakers.mjs
 ```
 
 Expected output:
 
 ```
-Import complete: { speakers: N, sessions: N, unpublished: 0, dataset: 'development' }
+Import complete: { speakers: N, sessions: N, unpublished: 0, dataset: 'production' }
 ```
 
-Check Sanity Studio (development dataset) to confirm speakers and headshots appear correctly.
+Check Sanity Studio to confirm speakers and headshots appear correctly.
 
 > Once the manual test passes, change `GOOGLE_APPLICATION_CREDENTIALS` in `.env` to `/secrets/google-sa.json` (the Docker container path) so n8n workflows use it correctly.
 
@@ -191,15 +191,9 @@ Check Sanity Studio (development dataset) to confirm speakers and headshots appe
 - Rename it (e.g. `Hispanic Heritage — Import speakers to Sanity`)
 - Update the Execute Command node:
   - Working directory: `/opt/[this-repo]`
-  - Arguments: `--env-file=scripts/sanity-import/.env scripts/sanity-import/import-speakers.mjs --dataset=development`
+  - Arguments: `--env-file=scripts/sanity-import/.env scripts/sanity-import/import-speakers.mjs`
 - Update the Vercel deploy hook URL if different
 - Test via **Execute Workflow** → confirm exit code 0
-
-### 9. Run for production
-
-- Change `--dataset=development` to `--dataset=production` in the n8n workflow (or update `.env`)
-- Execute the workflow
-- Confirm the Vercel deploy hook fires and the site rebuilds
 
 ---
 
