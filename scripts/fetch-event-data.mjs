@@ -131,16 +131,16 @@ function buildRow(session, participant) {
 }
 
 function enrichSessionParticipants(rows) {
-  const bySessionTitle = new Map()
+  const bySessionId = new Map()
 
   for (const row of rows) {
-    const title = row.session.title
-    if (!bySessionTitle.has(title)) bySessionTitle.set(title, [])
-    bySessionTitle.get(title).push(row)
+    const sessionId = row._sessionId
+    if (!bySessionId.has(sessionId)) bySessionId.set(sessionId, [])
+    bySessionId.get(sessionId).push(row)
   }
 
   for (const row of rows) {
-    const group = bySessionTitle.get(row.session.title) ?? [row]
+    const group = bySessionId.get(row._sessionId) ?? [row]
     const participants = group
       .map(({ name, avatar, isModerator, sortOrder }) => ({
         name,
