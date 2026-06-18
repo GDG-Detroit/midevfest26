@@ -11,7 +11,7 @@
     },
     {
       "parameters": {
-        "command": "npm run import:speakers -- --dataset=development"
+        "command": "npm run import:speakers"
       },
       "id": "run-import",
       "name": "Run import script",

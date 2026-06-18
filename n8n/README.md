@@ -22,7 +22,7 @@ Heavy lifting lives in **`scripts/sanity-import/import-speakers.mjs`** (versione
 
 ### 1. Sanity
 
-- Project `b18a6pbd`, datasets `development` and `production`
+- Project `b18a6pbd`, **`production`** dataset
 - **2026 Event** document in Studio (year `2026`)
 - Schema deployed: `cd studio && npx sanity schema deploy`
 - API token with **Editor** (or custom role with write + assets):  
@@ -53,11 +53,11 @@ cp scripts/sanity-import/.env.example scripts/sanity-import/.env
 
 ## Environment file
 
-See `scripts/sanity-import/.env.example`. Minimum for a **dev test**:
+See `scripts/sanity-import/.env.example`. Minimum:
 
 ```bash
 SANITY_PROJECT_ID=b18a6pbd
-SANITY_DATASET=development
+SANITY_DATASET=production
 SANITY_API_TOKEN=sk...
 SANITY_EVENT_YEAR=2026
 GOOGLE_APPLICATION_CREDENTIALS=/path/to/service-account.json
@@ -69,7 +69,7 @@ GOOGLE_DRIVE_FOLDER_ID=1xyz...
 Test locally before n8n:
 
 ```bash
-npm run import:speakers -- --dataset=development
+npm run import:speakers
 ```
 
 Sheet columns: [`n8n/sheet-template-speakers.md`](./sheet-template-speakers.md)
@@ -83,31 +83,23 @@ Sheet columns: [`n8n/sheet-template-speakers.md`](./sheet-template-speakers.md)
 - **Manual Trigger** for testing
 - Later: **Webhook** (password-protected) from an admin-only site button
 
-### Node 2 — Set dataset (optional)
+### Node 2 — Set variables (optional)
 
-Use **Edit Fields (Set)** when switching dev vs production:
-
-| Field     | Dev test      | Go live      |
-| --------- | ------------- | ------------ |
-| `dataset` | `development` | `production` |
-
-Pass to Execute Command via env override (see below).
+Use **Edit Fields (Set)** only if you need to override paths or env file location for this host.
 
 ### Node 3 — Execute Command
 
-| Setting           | Value                                          |
-| ----------------- | ---------------------------------------------- |
-| Command           | `npm`                                          |
-| Arguments         | `run import:speakers -- --dataset=development` |
-| Working directory | `/opt/pridemi26`                               |
+| Setting           | Value                 |
+| ----------------- | --------------------- |
+| Command           | `npm`                 |
+| Arguments         | `run import:speakers` |
+| Working directory | `/opt/pridemi26`      |
 
 Or call Node directly:
 
 ```bash
-node --env-file=scripts/sanity-import/.env scripts/sanity-import/import-speakers.mjs --dataset=development
+node --env-file=scripts/sanity-import/.env scripts/sanity-import/import-speakers.mjs
 ```
-
-**Production import:** change `--dataset=production` and use a production `.env` or override `SANITY_DATASET` in n8n credentials.
 
 ### Node 4 — IF (success)
 
@@ -146,15 +138,13 @@ Safe to run repeatedly:
 
 ---
 
-## Test → production checklist
+## Import checklist
 
 1. Create runner sheet from [`sheet-template-speakers.md`](./sheet-template-speakers.md)
-2. Add 2–3 test rows + headshots in Drive
-3. n8n run with `--dataset=development`
-4. Verify in Studio (`pridemi26 (development)`)
-5. Fix sheet / script as needed
-6. Run with `--dataset=production`
-7. Trigger Vercel deploy
+2. Add rows + headshots in Drive
+3. Run `npm run import:speakers` (or n8n workflow)
+4. Verify in Studio (`pridemi26`)
+5. Trigger Vercel deploy
 
 ---
 

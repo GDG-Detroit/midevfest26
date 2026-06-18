@@ -33,38 +33,16 @@ Open the URL shown in the terminal (usually `http://localhost:3333`).
 
 The Studio title shows the active dataset:
 
-- `pridemi26 (development)` — local default
-- `pridemi26` — production
+- `pridemi26` — production (default)
+- `pridemi26 (<name>)` — if you override `SANITY_STUDIO_DATASET`
 
 ---
 
-## Datasets
+## Dataset
 
-| Dataset           | Purpose                                                   |
-| ----------------- | --------------------------------------------------------- |
-| **`development`** | Local Studio + test n8n imports. Safe sandbox.            |
-| **`production`**  | Live site content, production n8n imports, hosted Studio. |
+We use the **`production`** dataset for local Studio, hosted Studio, imports, and the live site.
 
-**Local Studio defaults to `development`** so you do not accidentally edit live content. Configuration is in `env.ts`, overridden by `.env`.
-
-### Create the development dataset (once)
-
-```bash
-cd studio
-npx sanity dataset create development
-```
-
-When prompted for visibility, choose **Private**.
-
-### Optional: copy production into dev
-
-Use when you need realistic data in the sandbox:
-
-```bash
-npx sanity dataset copy production development --replace
-```
-
-`--replace` wipes the dev dataset first.
+Configuration is in `env.ts`, overridden by `.env`.
 
 ---
 
@@ -74,15 +52,13 @@ Copy `.env.example` to `.env` (gitignored):
 
 ```bash
 SANITY_STUDIO_PROJECT_ID=b18a6pbd
-SANITY_STUDIO_DATASET=development
+SANITY_STUDIO_DATASET=production
 ```
 
-| Variable                   | Description                                    |
-| -------------------------- | ---------------------------------------------- |
-| `SANITY_STUDIO_PROJECT_ID` | Sanity project ID                              |
-| `SANITY_STUDIO_DATASET`    | Target dataset (`development` or `production`) |
-
-For **hosted Studio** or **production CLI** commands, set `SANITY_STUDIO_DATASET=production` in [project settings](https://www.sanity.io/manage/project/b18a6pbd) or on the command line.
+| Variable                   | Description                            |
+| -------------------------- | -------------------------------------- |
+| `SANITY_STUDIO_PROJECT_ID` | Sanity project ID                      |
+| `SANITY_STUDIO_DATASET`    | Target dataset (default: `production`) |
 
 ---
 
@@ -120,13 +96,6 @@ Run from `/studio`:
 | `npx sanity dataset list`                                   | List datasets                                          |
 | `npx sanity documents query '*[_type == "speaker"][0...5]'` | Sample GROQ query                                      |
 
-### Production deploy examples
-
-```bash
-SANITY_STUDIO_DATASET=production npx sanity schema deploy
-SANITY_STUDIO_DATASET=production npm run deploy
-```
-
 ---
 
 ## Import workflow (n8n)
@@ -136,15 +105,12 @@ Content is **not** edited in `src/data/` long term. Planned flow:
 ```text
 Runner Google Sheet + Drive headshots
         ↓
-n8n import (development first — verify accuracy)
-        ↓
-n8n import (production — go live)
+n8n import → production dataset
         ↓
 Vercel redeploy → site build fetches Sanity
 ```
 
-- **Test imports** → `development` dataset, verify in Studio
-- **Go live** → `production` dataset, redeploy site
+- **Imports** → `production` dataset, verify in Studio
 - **Urgent fixes** → edit in Studio between imports
 - **Speaker drops** → remove from sheet on next import, or unpublish in Studio
 

@@ -12,5 +12,7 @@ export default defineCliConfig({
      * Learn more at https://www.sanity.io/docs/studio/latest-version-of-sanity#k47faf43faf56
      */
     autoUpdates: true,
+    appId: 'aj9y2tf4rkv6rois3swpx99g',
+    studioHost: 'pridemi26',
   },
 })
