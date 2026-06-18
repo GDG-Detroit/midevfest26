@@ -34,16 +34,13 @@ function Home() {
           <SessionsSection
             speakersData={Speakers2026}
             year={2026}
-            defaultExpanded={false}
+            defaultExpanded={true}
             tracks={['Map', SCHEDULE_TRACK, SESSION_TRACK]}
           />
         </div>
 
         <div id="speakers">
-          <SpeakersSection
-            speakersData={Speakers2026}
-            defaultExpanded={false}
-          />
+          <SpeakersSection speakersData={Speakers2026} defaultExpanded={true} />
         </div>
 
         <div id="about">
