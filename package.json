@@ -9,6 +9,10 @@
   },
   "scripts": {
     "dev": "vite",
+    "dev:cms": "npm run fetch:event-data && npm run dev",
+    "studio:dev": "npm run dev --prefix studio",
+    "prebuild": "node scripts/fetch-event-data.mjs",
+    "fetch:event-data": "node scripts/fetch-event-data.mjs",
     "build": "vite build",
     "lint": "eslint . --ext js,jsx --report-unused-disable-directives --max-warnings 0",
     "lint:fix": "npm run lint -- --fix",

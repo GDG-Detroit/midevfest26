@@ -10,7 +10,8 @@ export const SCHEDULE_TRACK = 'Schedule'
 export const SESSION_TRACK = 'Level Up'
 
 export const VENUE_ROOMS = {
-  LEVEL_UP: 'IBM HQ',
+  LEVEL_UP: 'Rooms 2415 & 2416',
+  KITCHEN: 'Kitchen',
 }
 
 /** Primary room per schedule track. */

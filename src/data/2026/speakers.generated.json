@@ -1,0 +1,202 @@
+[
+  {
+    "id": 116323757,
+    "name": "Nick Gordon",
+    "avatar": "https://cdn.sanity.io/images/b18a6pbd/production/25063a1c9d83aff85371bf0f779c9e9ab461299b-716x466.png",
+    "bio": "I'm a Detroit native and Pershing High alum class of 2013. I attended Baker College of Flint where I earned degrees in Mechanical Technology and Mechanical Engineering with an overall G.P.A of 3.53. I made an unsure pivot into tech through the Apple Developer Academy in 2022 where I successfully completed the program and was offered a full time mentor position. Through mentoring, I eventually supported 500+ learners across development and design.\n\nI love doing volunteer work then I have the capacity, I decided to volunteer as an event coordinator for BlackBoysCodeDetroit. I also did volunteer work for LGBT Detroit where I was on the board for YABA (Young Adult Board of Advisors) where I help spread resources and provide a safe space to the LGBT community.\n \nIn November 2025, I co-founded DevsCreate313, a Detroit-based nonprofit building a real, collaborative tech ecosystem in the city. We've grown to 550+ attendees across monthly meetUps and workshops.\n\nI've published 3 apps on the App Store, spoken at 5 industry conferences, attended tech groUps such as BlackTechSaturdays and TechTownDetroit where I meet founders and aided 4 founders on a paid MVP support. I document my journey openly on social media — the wins, the lessons, the work in progress because that inspires people and it shows that not everything will go perfectly but it's all about consistency and community.\n\nOutside of tech, you'll find me on the riverwalk or belle isle looking at the sunset, logging miles on a jog, watching anime, or  gaming. \n\nAlways curious. Always finding something worth bringing back to the community.",
+    "organization": "Michigan State University ",
+    "position": "Lead Coding Mentor | Co-founder of DevsCreate313",
+    "isWTM": false,
+    "isGDE": false,
+    "session": {
+      "title": "AI Fluency 101: Building Fundamentals to use any AI tool effectively",
+      "abstract": "",
+      "description": "Going over AI Fluency and the 4D framework needed to effectively use various AI tools. Attendees will get entry level knowledge of this framework with the free Anthropic courses they can take to further their knowledge. I will provide examples of how my nonprofit use AI as a tool.",
+      "tags": ["Level Up"],
+      "track": "Level Up",
+      "time": "09:00",
+      "room": "2415",
+      "sessionDuration": 30
+    }
+  },
+  {
+    "id": 803640547,
+    "name": "William Bowen",
+    "avatar": "https://cdn.sanity.io/images/b18a6pbd/production/feaaf2ff238cae420236bd75536af5561cd65bca-400x400.jpg",
+    "bio": "I currently wear multiple professional hats as an IT specialist and a fitness instructor / enthusiast. \n\nOn the IT side I have the responsibly for managing a help desk which involves troubleshooting multiple issues with the Windows operating system, as well as projects that involve using generative AI for scripts and image generation.  Past positions included work as a programmer using C++, Python, HTML 5, Java, and Confusion.  I also have experience teaching networks, network security and software development. This work branches off to work I have done with the National Society of Black Engineers (NSBE), Penguicon, GDG Detroit and other technical organizations including which includes talks and tutorials on technology and computers.\n\nAs a fitness enthusiast I have taught multiple boot camp classes that incorporates both strength and cardio training at different locations.  This has led me to compete in multiple powerlifting meets with UpA and USAPL as well as physique with NPC.   At this time I am also looking at different applications that incorporate fitness.",
+    "organization": "JAC3D G33K Services LLC",
+    "position": "Trainer / Developer",
+    "isWTM": false,
+    "isGDE": false,
+    "session": {
+      "title": "Getting Started with Running AI Models Locally",
+      "abstract": "",
+      "description": "Interested in AI but want total control over your data and hardware? This beginner-friendly session is a practical guide to running local AI models in a Linux environment using accessible applications like Jan and LM Studio. We will cover the essentials of setting Up these platforms, configuring them for Linux, and installing lightweight, free models—such as Google’s Gemma and Ollama integrations—that run smoothly on standard consumer hardware. Participants will leave this session with the knowledge and confidence to run basic prompts completely offline on their own devices.",
+      "tags": ["Level Up"],
+      "track": "Level Up",
+      "time": "09:30",
+      "room": "2415",
+      "sessionDuration": 30
+    }
+  },
+  {
+    "id": 1582695569,
+    "name": "Greg Miller",
+    "avatar": "https://cdn.sanity.io/images/b18a6pbd/production/08b257831f9046d9eb3f59b0dfd9acddd561c1c3-800x800.jpg",
+    "bio": "Greg is a UX Engineer, full-stack developer, GDG Toledo Organizer, and the founder of Shrinkray Interactive. He engineers high-performance digital systems, focusing on core web vitals optimization, AI-driven automation pipelines, and strict WCAG 2.1/2.2 AA compliance. As the Engineering Lead for Compass Detroit, he orchestrates production workflows and continually refines the web delivery and infrastructure of their systems. Raised on a working farm, he brings an uncompromised work ethic to digital stewardship, combining clean frontend design with robust backend automation.",
+    "organization": "Shrinkray Interactive",
+    "position": "UX Engineer & Founder",
+    "isWTM": false,
+    "isGDE": false,
+    "session": {
+      "title": "Eight Surprising Facts about Web Accessibility",
+      "abstract": "",
+      "description": "Digital accessibility often gets reduced to a dry, post-development compliance checklist. While AI tools and automated testing have improved engineering workflows, the web remains plagued by massive, systemic usability issues. In some ways, our reliance on automation has made the user experience worse.\n\nThis session dismantles common misconceptions about digital inclusion by analyzing eight surprising data points and real-world behaviors. Discover the reality of automated testing limitations, the paradox of modern CAPTCHAs, and the impact of stress on interface performance. Attendees will explore how situational constraints and color context shape human interaction with digital systems.\n\nLeave this talk with a fresh awareness of the modern web landscape and a practical mindset for building resilient, high-performance interfaces that work for our visitors in these crazy times.",
+      "tags": ["Level Up"],
+      "track": "Level Up",
+      "time": "10:00",
+      "room": "2415",
+      "sessionDuration": 30
+    }
+  },
+  {
+    "id": 174433687,
+    "name": "Tyler Musgrave",
+    "avatar": "https://cdn.sanity.io/images/b18a6pbd/production/91ac01bfc97b6c9fae9bcf68ac1bdc23f16fc744-4024x6048.jpg",
+    "bio": "Tyler Musgrave, PhD is the founder of the Digital 313 Archive, a Knight Foundation-funded community archive preserving Detroit's digital music and cultural history from 1991 to the present. A researcher, educator, and independent practitioner working at the intersection of information justice and community-controlled technology, Tyler teaches at Wayne State University's School of Information Sciences and has conducted community archiving activations across Detroit neighborhoods. Her work centers data sovereignty — the principle that communities should own and control their own digital histories — and she has developed a community governance model and Ethical Metadata Framework that puts curatorial authority in Detroit residents' hands. Tyler holds a PhD in Information Science from the University of Michigan.",
+    "organization": "Wayne State University",
+    "position": "Assistant Professor",
+    "isWTM": false,
+    "isGDE": false,
+    "session": {
+      "title": "Before It Disappears: Personal Archiving and Preserving Your Digital Life",
+      "abstract": "",
+      "description": "Your photos, your posts, your groUp chats, your memories — they are disappearing. Platforms shut down without warning. Accounts get deleted. The digital life you built online is one server failure away from being gone forever.\n\nThis hands-on workshop teaches Detroit's LGBTQ+ community the basics of personal archiving — how to back Up your phone, download your social media data, and preserve your digital history before it disappears - and given these days of technology, its better to be safe than sorry. Participants will leave with practical tools and a personal archiving plan.\n\nWe will also introduce the Digital 313 Archive — a community-governed archive preserving Detroit's digital music and cultural history. Detroit's LGBTQ+ community has been central to the city's music culture for decades. If you have screenshots, digital flyers, social media posts, or memories from Detroit's music and nightlife scene — we want to preserve them with you, on your terms.\n\nNo technical experience required. Bring your phone.",
+      "tags": ["Level Up"],
+      "track": "Level Up",
+      "time": "10:30",
+      "room": "2415",
+      "sessionDuration": 30
+    }
+  },
+  {
+    "id": 679937089,
+    "name": "Yusuf Ansari",
+    "avatar": "https://cdn.sanity.io/images/b18a6pbd/production/266dd016f96849f3e96460713fd3ac92d5fbdecf-1205x1205.jpg",
+    "bio": "Yusuf Ansari is a technology entrepreneur, AI innovator, and founder focused on transforming how businesses, creators, and brands make content and marketing decisions. He is the founder of Viralizer.AI, an AI-powered content intelligence and commerce platform that predicts social media content viral performance in the first hundreds of views, identifies emerging trends, and helps organizations maximize the return on their marketing investments.\n\nWith a strong background in artificial intelligence, machine learning, and digital media analytics, Yusuf has led the development of proprietary deep reinforced machine learning technologies protected by 5 U.S. patents. His work focuses on solving one of the most challenging problems in digital marketing: predicting the future performance and virality of content at an early stage.\n\nYusuf has collaborated with leading global brands, agencies, and analytics organizations, including Netflix, The Coca-Cola Company, WPP, Dentsu, and Kantar Analytics, helping validate and benchmark AI-driven approaches to content forecasting and audience engagement. His innovations have been recognized internationally, including selection as a finalist by CreatorHQ Dubai StartUp Competition.\n\nThrough Viralizer, Yusuf's mission is to empower creators, brands, agencies, and enterprises with real-time predictive intelligence, enabling them to create better content, reduce marketing waste, and make data-driven decisions before trends become mainstream.\n\nYusuf in the past he has represented US Team to set the Video conferencing standards,  and  he drove as Micron Technology head of Camera Imaging business Sales and Marketing from $0 to $800 Million revenue while selling to all top tech companies like Apple, Google, Microsoft, Samsung, etc.",
+    "organization": "Intuition Intelligence, Inc.",
+    "position": "COO",
+    "isWTM": false,
+    "isGDE": false,
+    "session": {
+      "title": "From 100 Views to Viral Momentum: How Viralizer Uses Reinforced Machine Learning to Transform Detroit’s Creator and Business Ecosystem",
+      "abstract": "",
+      "description": "What if you could predict whether content will succeed when it has only 100 views?\n\nIn this session, Yusuf Ansari, Founder of Viralizer, will share how patented deep reinforced machine learning technology is helping brands, creators, agencies, and media companies make smarter content decisions before campaigns scale. Attendees will learn how Viralizer continuously analyzes global social media trends, audience behavior, and content performance signals to identify opportunities, predict virality, and improve marketing outcomes.\n\nThe presentation will explore how predictive AI is moving beyond traditional analytics to become a decision-making engine for creators and businesses. Through real-world case studies, Yusuf will demonstrate how data-driven content intelligence can reduce risk, increase engagement, and maximize the return on marketing investments.\n\nFeatured use cases include:\n\nHow Pepsi leveraged predictive content intelligence to generate over 23 billion views across campaigns.\nHow Netflix India used AI-powered insights to support the development and promotion of original content for one of the world's largest entertainment markets.\nHow Coke Studio India utilized data-driven audience intelligence to create award-winning campaigns recognized at the Cannes Lions International Festival of Creativity.\n\nDesigned for entrepreneurs, creators, marketers, business leaders, and AI practitioners, this session will provide practical insights into how Detroit's creator economy and business community can leverage predictive AI to compete more effectively, create content with greater confidence, and build viral momentum in an increasingly crowded digital landscape.\n\nAttendees will leave with a deeper understanding of the future of predictive AI, the power of reinforced machine learning, and how emerging technologies can help transform ideas into measurable business impact.",
+      "tags": ["Level Up"],
+      "track": "Level Up",
+      "time": "11:00",
+      "room": "2515",
+      "sessionDuration": 30
+    }
+  },
+  {
+    "id": 19877060,
+    "name": "Shugmi Shumunov",
+    "avatar": "https://cdn.sanity.io/images/b18a6pbd/production/f29eb48c40a810f7fbf7cc285ef11ced9de16eee-3024x4032.jpg",
+    "bio": "Shugmi Shumunov is a full-stack software engineer who views code as a powerful medium for storytelling. Focused on the JavaScript and e-commerce ecosystems, he builds elegant solutions that enable his clients to engage their target demographics\n\nBeyond the terminal, you can find Shugmi lifting weight, exploring the outdoors, and laughing with friends",
+    "organization": "Shumunov Solutions",
+    "position": "Developer & Founder",
+    "isWTM": false,
+    "isGDE": false,
+    "session": {
+      "title": "Coding at the Speed of Thought: Professional Portfolio",
+      "abstract": "",
+      "description": "The traditional gap between a great idea and a deployed project used to be weeks of boilerplate, debugging, and configuration. Today, AI agents are closing that gap entirely.\n\nIn this hands-on workshop, we will explore how to leverage AI agents not just as simple autocomplete tools, but as collaborative engineering partners to build a high-impact professional portfolio from scratch. You’ll learn how to prompt with intent, orchestrate agents for rapid prototyping, and maintain architectural integrity while coding at the speed of thought. Whether you want to showcase your full-stack capabilities or experiment with new tech stacks, this session will transform how you approach building and shipping software.",
+      "tags": ["Level Up"],
+      "track": "Level Up",
+      "time": "11:30",
+      "room": "2415",
+      "sessionDuration": 45
+    }
+  },
+  {
+    "id": 1507404901,
+    "name": "Lem Cartman",
+    "avatar": "https://cdn.sanity.io/images/b18a6pbd/production/3351d2d018b9a4653301e99da0b217d2ed6073fe-2400x1600.jpg",
+    "bio": "Lem Cartman, MHA, is a public speaker, community strategist, healthcare leader, and founder of WE Inc. He currently serves as Manager of Community Relations and Corporate Government Affairs at Henry Ford Health, where he supports community engagement, civic partnerships, workforce initiatives, and strategy connected to the Future of Health, a nearly $3 billion development involving Henry Ford Health, the Detroit Pistons, and Michigan State University.\n\nOriginally from the South Side of Chicago. Lem became the first in his family and one of the first from his neighborhood to attend college, a journey that shaped his commitment to access, representation, and opportunity. Before coming to Detroit, he helped shape one of Chicago’s leading trauma therapy programs for survivors of violence, deepening his understanding of how systems, neighborhoods, and lived experience intersect.\n\nLem is also the Founder and CEO of WE Inc., a cross-sector consulting, media, and social impact company rooted in Ubuntu “I am because we are.” WE Inc. was named a Black Ambition semifinalist for its emerging work around collective impact, youth leadership, immersive empathy-building, and community-centered strategy.\n\nAs a speaker, Lem brings together lived experience, executive exposure, operational strategy, and community-centered leadership. His talks challenge audiences to rethink leadership, creativity, innovation, and impact by leading from where they are. He has been nationally recognized as a 25 Under 25 Legacy Leadership honoree, a Dale Carnegie Highest Achievement Award recipient, a Detroit Regional Chamber Future Leader of Michigan, and the recipient of multiple healthcare leadership awards.",
+    "organization": "Henry Ford Health &* WE Inc",
+    "position": "Manager of Community Relations Corporate Government Affairs, Chief Strategist",
+    "isWTM": false,
+    "isGDE": false,
+    "session": {
+      "title": "From Code to Context: Leading Innovation Through Perspective",
+      "abstract": "",
+      "description": "In tech and innovation spaces, it is easy to focus on the code, the product, the platform, or the technical solution. But the most impactful innovation does not begin with technology alone. It begins with perspective.\n\nThis highly interactive session will redefine leadership and creativity as essential tools for innovation. Participants will explore how the best leaders, builders, designers, and problem-solvers are not simply the ones who follow the blueprint, but the ones who challenge assumptions, reframe problems, and create new ways forward.\n\nUsing the Paperclip Exercise, a hands-on activity designed to unlock nonlinear thinking, attendees will experience firsthand how a simple shift in perspective can lead to more creative problem-solving, stronger collaboration, and more human-centered solutions.\n\nDrawing from Lem Cartman’s work across healthcare, community engagement, civic partnerships, and social impact, this session will connect creative leadership to real-world systems change. Participants will explore how traditional leadership and technical environments can sometimes condition us to think inside the lines, why that limits innovation, and how creativity helps us move from simply building solutions to understanding the people, systems, and communities those solutions are meant to serve.\n\nParticipants will leave with a reframed approach to leadership in tech and innovation, one that prioritizes resourcefulness over resources, agility over authority, curiosity over conformity, and context over assumptions.",
+      "tags": ["Level Up"],
+      "track": "Level Up",
+      "time": "14:00",
+      "room": "2415",
+      "sessionDuration": 30
+    }
+  },
+  {
+    "id": 2141489579,
+    "name": "Zara Northover",
+    "avatar": "https://cdn.sanity.io/images/b18a6pbd/production/915192bbb61b02550ae4f1043b171b05a59e4676-1002x638.jpg",
+    "bio": "Zara Northover is an Olympian, TEDx Speaker, entrepreneur, advocate, and community leader whose work is centered on resilience, purpose, and empowering others to find their voice. A member of Jamaica’s 2008 Olympic Team and a Hall of Fame inductee from Northeastern University, she has built a career spanning sports, business development, marketing, community engagement, and advocacy. As the Founder and CEO of Moving in Faith, a global empowerment brand, Zara inspires individuals to pursue their purpose with courage, perseverance, and faith.\n\nKnown for her courage in standing Up against race discrimination and retaliation, Zara has become a powerful voice for self-advocacy, justice, and resilience. Through her own experiences and her work supporting others, she has helped individuals overcome personal, professional, and systemic obstacles while encouraging them to recognize their worth, use their voice, and keep moving forward. Her journey from the Olympic stage to corporate leadership, entrepreneurship, and advocacy has equipped her with a unique perspective on navigating adversity and creating meaningful change.\n\nDeeply committed to service, Zara serves on the board of the Detroit Phoenix Center and has dedicated countless hours to mentoring youth, supporting nonprofits, and advocating for her community. Through her speaking, writing, and lived experiences, she challenges audiences to embrace self-advocacy, own their value, and have the courage to choose themselves even when it comes at a cost. She is also the future author of The Cost of Justice, a reflection on faith, resilience, and the power of standing for what is right. s",
+    "organization": "Moving In Faith",
+    "position": "Founder",
+    "isWTM": false,
+    "isGDE": false,
+    "session": {
+      "title": "Self Advocacy: Do you have the courage to choose you?",
+      "abstract": "",
+      "description": "Self-Advocacy: Do You Have the Courage to Choose You?\n\nSession Abstract / Description\n\nWhat happens when choosing yourself comes at a cost?\n\nFor many people—especially women, caregivers, leaders, and those from underrepresented communities—self-advocacy can feel uncomfortable, risky, and even selfish. Yet some of life’s most important moments require us to speak Up, set boundaries, pursue opportunities, and stand firm in our values, even when it would be easier to remain silent.\n\nIn this interactive session, Olympian, TEDx Speaker, entrepreneur, and advocate Zara Northover explores the power of self-advocacy through personal stories of resilience, leadership, career transitions, entrepreneurship, and navigating systems not always designed for your success. Participants will examine the fears that often hold them back, learn practical strategies for advocating for themselves with confidence and clarity, and leave with a framework for making courageous decisions aligned with their purpose and goals.\n\nThis session will challenge attendees to ask themselves a powerful question: If not now, when will you choose you?\n\nLearning Outcomes\n\nParticipants will:\n\n* Identify barriers that prevent effective self-advocacy.\n* Learn practical tools for communicating needs, boundaries, and goals with confidence.\n* Develop strategies for navigating adversity while remaining aligned with personal values.\n* Create an action plan for advocating for themselves in their career, business, education, or personal life.\n\nKey Takeaway\n\nParticipants will leave empowered to stop waiting for permission, trust their voice, and take ownership of the next chapter of their lives.",
+      "tags": ["Level Up"],
+      "track": "Level Up",
+      "time": "14:30",
+      "room": "2415",
+      "sessionDuration": 30
+    }
+  },
+  {
+    "id": 1726770922,
+    "name": "Chantel Watkins",
+    "avatar": "https://cdn.sanity.io/images/b18a6pbd/production/6ad1571dc0fb4bbfa513836bb2540ac40d157dda-1290x1538.jpg",
+    "bio": "Chantel Watkins is a community organizer, advocate, poet, and proud mother with more than 16 years of experience building people power across Detroit and beyond. As the current Community Relations and Organizing Director at DABO Detroit, she works at the intersection of community engagement, advocacy, and grassroots organizing, helping connect residents to resources while advancing efforts that create stronger, more equitable communities.\n\nThroughout her career, Chantel has organized around issues including economic justice, voting rights, reproductive freedom, housing, labor rights, LGBTQ+ inclusion, and community empowerment. Her work has centered on ensuring that everyday people, especially those whose voices have too often been overlooked.\n\nA lifelong storyteller, Chantel is also a poet whose words reflect her passion for justice, healing, and human connection. Whether speaking from a stage, facilitating conversations, or organizing in the community, she brings authenticity, compassion, and a deep belief in the power of collective action.\n\nAbove all, Chantel is a mother whose vision for the future is rooted in creating a world where every child and every community has the opportunity to thrive. She believes that when people come together with purpose, courage, and love, they can transform their neighborhoods, their cities, and ultimately the world. Her goal is simple but ambitious: to help make the world glow a little brighter for generations to come.",
+    "organization": "DABO Detroit",
+    "position": "Community Relations & Organizing Director",
+    "isWTM": false,
+    "isGDE": false,
+    "session": {
+      "title": "Community Solidarity: How do we help ourselves by helping others?",
+      "abstract": "",
+      "description": "Interested in AI but want total control over your data and hardware? This beginner-friendly session is a practical guide to running local AI models in a Linux environment using accessible applications like Jan and LM Studio. We will cover the essentials of setting Up these platforms, configuring them for Linux, and installing lightweight, free models—such as Google’s Gemma and Ollama integrations—that run smoothly on standard consumer hardware. Participants will leave this session with the knowledge and confidence to run basic prompts completely offline on their own devices.",
+      "tags": ["Level Up"],
+      "track": "Level Up",
+      "time": "15:00",
+      "room": "2515",
+      "sessionDuration": 30
+    }
+  },
+  {
+    "id": 2053257032,
+    "name": "Dichondra Johnson",
+    "avatar": "https://cdn.sanity.io/images/b18a6pbd/production/cbd5ff4df248b7f6fb9732b7159e3375bb0f48ba-960x958.jpg",
+    "bio": "Dichondra R. Johnson is a doctoral researcher, nonprofit executive, entrepreneur, and community leader whose work sits at the intersection of innovation, equity, education, and economic development. She is the Founder and Principal of DRJ & Associates and the Founder and Executive Director of Women Leaders of Michigan.\n\nA Graduate Student Research Assistant at the University of Michigan-Flint and recipient of the Bowman Anti-Racism Graduate Research Grant, Johnson’s research explores inclusive innovation, ESG governance, and community-centered development. Throughout her career she has helped secure millions of dollars in philanthropic, workforce, and redevelopment investments while supporting nonprofits, municipalities, educational institutions, and entrepreneurs.\n\nAs a parent, advocate, and lifelong learner, Johnson is passionate about exploring how emerging technologies can expand creativity, inclusion, and access. Her conceptual fashion project, CROWNED QLUX, emerged from a personal journey to support her LGBTQ+ teen child and has become an exploration of identity, allyship, artificial intelligence, and self-expression through design.\n\nJohnson holds multiple graduate degrees in business and public administration and is currently pursuing a Doctor of Business Administration degree at the University of Michigan-Flint.",
+    "organization": "DRJ & Associates",
+    "position": "Founder & CEO",
+    "isWTM": false,
+    "isGDE": false,
+    "session": {
+      "title": "CROWNED QLUX: How AI, Allyship, and a Mother’s Love Reimagined Prom Fashion",
+      "abstract": "",
+      "description": "When my child told me they did not want to wear a traditional suit to prom, I found myself asking a question I never expected:\n\nHow do you dress someone when the options available don’t reflect who they are?\n\nWhat began as a mother’s search for the perfect prom outfit became an unexpected journey into artificial intelligence, fashion design, identity, and allyship. Using generative AI, I began creating concepts for gender-fluid formalwear that blended African royalty, European couture, Afrofuturism, and vibrant expressions of individuality. The result was CROWNED QLUX, a conceptual fashion line designed for anyone who wants to be seen beyond traditional expectations.\n\nIn this session, participants will explore how AI can be used as a creative tool for inclusion, empathy, and innovation. Through the lens of parenting an LGBTQ+ child, we will examine how technology helped create new possibilities where none seemed to exist. Attendees will see the evolution from simple prompts to runway-worthy concepts and learn how imagination, allyship, and emerging technology can intersect to create spaces where people feel seen, valued, and celebrated.\n\nThis session is not about fashion. It is about belonging. It is about what happens when we stop asking people to fit into existing boxes and start designing new possibilities together.",
+      "tags": ["Level Up"],
+      "track": "Level Up",
+      "time": "15:30",
+      "room": "2415",
+      "sessionDuration": 30
+    }
+  }
+]

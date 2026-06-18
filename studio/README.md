@@ -2,13 +2,15 @@
 
 TypeScript [Sanity Studio](https://www.sanity.io/docs/sanity-studio) for the [Detroit Pride Innovation Summit](https://pridemi26.vercel.app/) site. It lives in `/studio` beside the Vite/React app and is **not** bundled into the public website.
 
-Organizers and developers manage event content here. The live site reads from Sanity at **build time** (planned). Bulk speaker imports run through **n8n** from the runner’s Google Sheet + Drive headshots.
+Organizers and developers manage event content here. The public site reads speakers and sessions from Sanity at **build time** (`scripts/fetch-event-data.mjs`). Bulk imports via **n8n** are optional; you can also edit directly in Studio.
 
-|                |                                                                                    |
-| -------------- | ---------------------------------------------------------------------------------- |
-| **Project**    | `pridemi26`                                                                        |
-| **Project ID** | `b18a6pbd`                                                                         |
-| **Manage**     | [sanity.io/manage/project/b18a6pbd](https://www.sanity.io/manage/project/b18a6pbd) |
+|                   |                                                                                    |
+| ----------------- | ---------------------------------------------------------------------------------- |
+| **Project**       | `pridemi26`                                                                        |
+| **Project ID**    | `b18a6pbd`                                                                         |
+| **Local Studio**  | `http://localhost:3333` (`npm run studio:dev` from repo root)                      |
+| **Hosted Studio** | [pridemi26.sanity.studio](https://pridemi26.sanity.studio/)                        |
+| **Manage**        | [sanity.io/manage/project/b18a6pbd](https://www.sanity.io/manage/project/b18a6pbd) |
 
 ---
 
@@ -43,6 +45,27 @@ The Studio title shows the active dataset:
 We use the **`production`** dataset for local Studio, hosted Studio, imports, and the live site.
 
 Configuration is in `env.ts`, overridden by `.env`.
+
+**Local Studio and hosted Studio both edit the same cloud Content Lake.** There is no separate “local Sanity database” — `localhost:3333` is just a local UI for the `production` dataset on Sanity’s servers.
+
+---
+
+## Test CMS changes (no n8n required)
+
+Use this workflow while the n8n import pipeline is offline:
+
+1. **Edit content** in either Studio:
+   - Local: `npm run studio:dev` → `http://localhost:3333`
+   - Cloud: [pridemi26.sanity.studio](https://pridemi26.sanity.studio/)
+2. **Publish** speakers and sessions in Studio (unpublished docs are excluded from the site).
+3. **Pull into the site** from the repo root:
+   ```bash
+   npm run fetch:event-data   # refresh speakers.generated.json
+   npm run dev                # or: npm run dev:cms (fetch + dev in one step)
+   ```
+4. Open `http://localhost:5173` and verify the schedule and speaker grid.
+
+Production deploys run `fetch:event-data` automatically via `prebuild` before `vite build`.
 
 ---
 
@@ -98,9 +121,9 @@ Run from `/studio`:
 
 ---
 
-## Import workflow (n8n)
+## Import workflow (n8n — optional)
 
-Content is **not** edited in `src/data/` long term. Planned flow:
+Day-to-day edits can go straight through Studio (see **Test CMS changes** above). For bulk sheet imports when n8n is running:
 
 ```text
 Runner Google Sheet + Drive headshots
@@ -110,9 +133,8 @@ n8n import → production dataset
 Vercel redeploy → site build fetches Sanity
 ```
 
-- **Imports** → `production` dataset, verify in Studio
-- **Urgent fixes** → edit in Studio between imports
-- **Speaker drops** → remove from sheet on next import, or unpublish in Studio
+- **Studio edits** → publish, then `npm run fetch:event-data` locally or redeploy
+- **Sheet imports** → `npm run import:speakers` (see `n8n/RUNBOOK.md`)
 
 Headshots are uploaded to Sanity assets during import (not hotlinked from Drive or Cloudinary).
 
@@ -132,7 +154,7 @@ studio/
 └── .env.example     # Local env template
 ```
 
-The main site (`/src`) will add a Sanity client and fetch layer separately. Studio and the site share the same Sanity **project** but are separate apps.
+The main site (`/src`) fetches speakers and sessions at build time via `scripts/fetch-event-data.mjs`. Studio and the site share the same Sanity **project** but are separate apps.
 
 ---
 
