@@ -191,7 +191,7 @@ export async function fetchEventSpeakers(options = {}) {
 async function writeFormattedJson(filePath, data) {
   const config = await prettier.resolveConfig(filePath)
   const formatted = await prettier.format(JSON.stringify(data), {
-    ...config,
+    ...(config ?? {}),
     filepath: filePath,
     parser: 'json',
   })
