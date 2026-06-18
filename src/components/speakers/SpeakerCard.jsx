@@ -20,6 +20,7 @@ const SpeakerCard = ({
   position,
   sessionDescription,
   sessionSpeakers,
+  sessionParticipants,
   sessionTitle,
   tags,
   track,
@@ -144,6 +145,7 @@ const SpeakerCard = ({
                 position={position}
                 sessionDescription={sessionDescription}
                 sessionSpeakers={sessionSpeakers}
+                sessionParticipants={sessionParticipants}
                 sessionTitle={sessionTitle}
                 tags={tags}
                 track={track}
@@ -173,6 +175,12 @@ SpeakerCard.propTypes = {
   position: PropTypes.string,
   sessionDescription: PropTypes.string,
   sessionSpeakers: PropTypes.arrayOf(PropTypes.string),
+  sessionParticipants: PropTypes.arrayOf(
+    PropTypes.shape({
+      name: PropTypes.string.isRequired,
+      isModerator: PropTypes.bool,
+    })
+  ),
   sessionTitle: PropTypes.string,
   tags: PropTypes.arrayOf(PropTypes.string),
   track: PropTypes.string,

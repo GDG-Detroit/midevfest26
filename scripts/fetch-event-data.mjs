@@ -33,6 +33,7 @@ const SESSIONS_QUERY = `*[_type == "session" && event->year == $year && publishe
   durationMinutes,
   participants[]{
     sortOrder,
+    isModerator,
     speaker->{
       _id,
       "speakerSlug": slug.current,
@@ -104,6 +105,8 @@ function buildRow(session, participant) {
     position: speaker.position ?? '',
     isWTM: Boolean(speaker.isWTM),
     isGDE: Boolean(speaker.isGDE),
+    isModerator: Boolean(participant.isModerator),
+    sortOrder: participant.sortOrder ?? 0,
     session: {
       title: session.title,
       abstract: session.abstract ?? '',
@@ -125,6 +128,39 @@ function buildRow(session, participant) {
   row._featuredSessionId = speaker.featuredSessionId ?? null
 
   return row
+}
+
+function enrichSessionParticipants(rows) {
+  const bySessionId = new Map()
+
+  for (const row of rows) {
+    const sessionId = row._sessionId
+    if (!bySessionId.has(sessionId)) bySessionId.set(sessionId, [])
+    bySessionId.get(sessionId).push(row)
+  }
+
+  for (const row of rows) {
+    const group = bySessionId.get(row._sessionId) ?? [row]
+    const participants = group
+      .map(({ name, avatar, isModerator, sortOrder }) => ({
+        name,
+        avatar,
+        isModerator: Boolean(isModerator),
+        sortOrder: sortOrder ?? 0,
+      }))
+      .sort((a, b) => a.sortOrder - b.sortOrder)
+
+    row.session.speakers = participants.map((p) => p.name)
+    row.session.moderators = participants
+      .filter((p) => p.isModerator)
+      .map((p) => p.name)
+    row.session.panelists = participants
+      .filter((p) => !p.isModerator)
+      .map((p) => p.name)
+    row.session.participants = participants
+  }
+
+  return rows
 }
 
 function prioritizeFeaturedSessions(rows) {
@@ -185,7 +221,7 @@ export async function fetchEventSpeakers(options = {}) {
     }
   }
 
-  return prioritizeFeaturedSessions(rows)
+  return prioritizeFeaturedSessions(enrichSessionParticipants(rows))
 }
 
 async function writeFormattedJson(filePath, data) {
