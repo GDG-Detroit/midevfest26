@@ -10,6 +10,7 @@ import Home from '@/pages/Home'
 import ThemeProvider from '@/components/ui/ThemeContext'
 import ScheduleProvider from '@/components/ui/ScheduleContext'
 import HeroAnimationProvider from '@/components/ui/HeroAnimationProvider'
+import { SpeakersData } from '@/data/2026/speakers'
 
 const CareersHub = lazy(() => import('@/pages/CareersHub'))
 const ConnectionsPage = lazy(() => import('@/pages/Connections'))
@@ -21,7 +22,7 @@ const PlaygroundPage = lazy(() => import('@/pages/PlaygroundPage'))
 function App() {
   return (
     <ThemeProvider>
-      <ScheduleProvider>
+      <ScheduleProvider speakersData={SpeakersData}>
         <HeroAnimationProvider>
           <Router>
             <div role="document">

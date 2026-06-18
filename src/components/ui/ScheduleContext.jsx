@@ -1,10 +1,8 @@
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useMemo } from 'react'
 import PropTypes from 'prop-types'
 import ScheduleContext from '@/contexts/scheduleContextCore'
-import { SpeakersData } from '@/data/2026/speakers'
 
-// Normalize stored IDs to a canonical session id format (sorted underscore-joined ids)
-const canonicalizeSessionId = (sessionId) => {
+function canonicalizeSessionId(sessionId, speakersData) {
   if (!sessionId && sessionId !== 0) return ''
   const asStr = String(sessionId)
   if (asStr.includes('_')) {
@@ -16,23 +14,23 @@ const canonicalizeSessionId = (sessionId) => {
     return parts.join('_')
   }
   const idNum = Number(asStr)
-  const speaker = SpeakersData.find(
+  const speaker = speakersData.find(
     (s) => s.id === idNum || String(s.id) === asStr
   )
   if (!speaker || !speaker.session?.title) return asStr
-  const related = SpeakersData.filter(
-    (s) => s.session?.title === speaker.session.title
-  ).map((s) => Number(s.id))
+  const related = speakersData
+    .filter((s) => s.session?.title === speaker.session.title)
+    .map((s) => Number(s.id))
   related.sort((a, b) => a - b)
   return related.join('_')
 }
 
-const getRepresentativeSpeakerForCanonicalId = (canonicalId) => {
+function getRepresentativeSpeakerForCanonicalId(canonicalId, speakersData) {
   if (!canonicalId) return null
-  // Find any speaker whose canonical id matches
   return (
-    SpeakersData.find((s) => canonicalizeSessionId(s.id) === canonicalId) ||
-    null
+    speakersData.find(
+      (s) => canonicalizeSessionId(s.id, speakersData) === canonicalId
+    ) || null
   )
 }
 
@@ -53,14 +51,16 @@ const buildSessionRange = (time, duration) => {
 const SAVED_SESSIONS_KEY = 'pridemi26_saved_sessions'
 const LEGACY_SAVED_SESSIONS_KEY = 'iwd26_saved_sessions'
 
-export default function ScheduleProvider({ children }) {
+export default function ScheduleProvider({ children, speakersData = [] }) {
   const [savedSessionIds, setSavedSessionIds] = useState(() => {
     try {
       const stored =
         localStorage.getItem(SAVED_SESSIONS_KEY) ??
         localStorage.getItem(LEGACY_SAVED_SESSIONS_KEY)
       const parsed = stored ? JSON.parse(stored) : []
-      return parsed.map((id) => canonicalizeSessionId(id)).filter(Boolean)
+      return parsed
+        .map((id) => canonicalizeSessionId(id, speakersData))
+        .filter(Boolean)
     } catch (e) {
       console.error('Failed to parse saved sessions from localStorage', e)
       return []
@@ -78,22 +78,27 @@ export default function ScheduleProvider({ children }) {
   const [conflictingSessionIds, setConflictingSessionIds] = useState([])
   const [lastConflict, setLastConflict] = useState(null)
 
+  const resolveSpeaker = useMemo(
+    () => (canonicalId) =>
+      getRepresentativeSpeakerForCanonicalId(canonicalId, speakersData),
+    [speakersData]
+  )
+
   const toggleSession = (sessionId) => {
-    const canonicalId = canonicalizeSessionId(sessionId)
+    const canonicalId = canonicalizeSessionId(sessionId, speakersData)
     setSavedSessionIds((prev) => {
       if (prev.includes(canonicalId)) {
         return prev.filter((id) => id !== canonicalId)
       }
 
-      // Check for time conflicts against already saved sessions
-      const rep = getRepresentativeSpeakerForCanonicalId(canonicalId)
+      const rep = resolveSpeaker(canonicalId)
       if (rep?.session?.time && rep.session.time !== 'TBA') {
         const newRange = buildSessionRange(
           rep.session.time,
           rep.session.sessionDuration
         )
         const conflictingSaved = prev.filter((savedId) => {
-          const savedRep = getRepresentativeSpeakerForCanonicalId(savedId)
+          const savedRep = resolveSpeaker(savedId)
           if (!savedRep?.session?.time || savedRep.session.time === 'TBA')
             return false
           const savedRange = buildSessionRange(
@@ -107,7 +112,6 @@ export default function ScheduleProvider({ children }) {
         })
 
         if (conflictingSaved.length > 0) {
-          // Don't auto-add — surface a subtle UI note so the user can choose how to resolve
           setLastConflict({ newId: canonicalId, conflicts: conflictingSaved })
           return prev
         }
@@ -120,7 +124,7 @@ export default function ScheduleProvider({ children }) {
   const clearLastConflict = () => setLastConflict(null)
 
   const addSessionAnyway = (sessionId) => {
-    const canonicalId = canonicalizeSessionId(sessionId)
+    const canonicalId = canonicalizeSessionId(sessionId, speakersData)
     setSavedSessionIds((prev) => {
       if (prev.includes(canonicalId)) return prev
       return [...prev, canonicalId]
@@ -129,12 +133,12 @@ export default function ScheduleProvider({ children }) {
   }
 
   const autoResolveAndAdd = (sessionId) => {
-    const canonicalId = canonicalizeSessionId(sessionId)
+    const canonicalId = canonicalizeSessionId(sessionId, speakersData)
     const conflict = lastConflict || { newId: canonicalId, conflicts: [] }
     const items = [conflict.newId, ...conflict.conflicts]
     const withRanges = items
       .map((id) => {
-        const rep = getRepresentativeSpeakerForCanonicalId(id)
+        const rep = resolveSpeaker(id)
         const range =
           rep?.session?.time && rep.session.time !== 'TBA'
             ? buildSessionRange(rep.session.time, rep.session.sessionDuration)
@@ -159,11 +163,10 @@ export default function ScheduleProvider({ children }) {
     setLastConflict(null)
   }
 
-  // Recompute conflicts whenever saved sessions change
   useEffect(() => {
     const ranges = savedSessionIds
       .map((id) => {
-        const rep = getRepresentativeSpeakerForCanonicalId(id)
+        const rep = resolveSpeaker(id)
         if (!rep || !rep.session?.time || rep.session.time === 'TBA')
           return null
         const r = buildSessionRange(
@@ -186,13 +189,15 @@ export default function ScheduleProvider({ children }) {
       }
     }
     setConflictingSessionIds(Array.from(conflictSet))
-  }, [savedSessionIds])
+  }, [savedSessionIds, resolveSpeaker])
 
   const isSessionSaved = (sessionId) =>
-    savedSessionIds.includes(canonicalizeSessionId(sessionId))
+    savedSessionIds.includes(canonicalizeSessionId(sessionId, speakersData))
 
   const isSessionConflicting = (sessionId) =>
-    conflictingSessionIds.includes(canonicalizeSessionId(sessionId))
+    conflictingSessionIds.includes(
+      canonicalizeSessionId(sessionId, speakersData)
+    )
 
   return (
     <ScheduleContext.Provider
@@ -215,4 +220,5 @@ export default function ScheduleProvider({ children }) {
 
 ScheduleProvider.propTypes = {
   children: PropTypes.node.isRequired,
+  speakersData: PropTypes.arrayOf(PropTypes.object),
 }
