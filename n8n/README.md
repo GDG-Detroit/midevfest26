@@ -7,7 +7,7 @@ Heavy lifting lives in **`scripts/sanity-import/import-speakers.mjs`** (versione
 ```text
 [Manual / Webhook trigger]
         ↓
-[Set variables: dataset, env file path]
+[Set variables: env file path (SANITY_DATASET in .env)]
         ↓
 [Execute Command: npm run import:speakers]
         ↓
