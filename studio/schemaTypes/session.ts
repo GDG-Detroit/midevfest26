@@ -122,9 +122,24 @@ export const session = defineType({
               description: 'Avatar order on session cards (lower first).',
               initialValue: 0,
             }),
+            defineField({
+              name: 'isModerator',
+              title: 'Moderator',
+              type: 'boolean',
+              initialValue: false,
+              description: 'Mark panel moderators — shown separately on session cards.',
+            }),
           ],
           preview: {
-            select: {title: 'speaker.name', media: 'speaker.headshot'},
+            select: {
+              title: 'speaker.name',
+              media: 'speaker.headshot',
+              isModerator: 'isModerator',
+            },
+            prepare: ({title, media, isModerator}) => ({
+              title: isModerator ? `${title ?? 'Speaker'} (Moderator)` : title,
+              media,
+            }),
           },
         }),
       ],

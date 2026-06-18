@@ -69,6 +69,9 @@ function buildSpeakerPatch(row, eventRef, headshotAsset) {
 function buildSessionPatch(slug, rows, eventRef) {
   const primary = rows[0]
   const participantSlugs = [...new Set(rows.map((r) => r.speaker_slug))]
+  const moderatorBySlug = new Map(
+    rows.map((row) => [row.speaker_slug, parseBoolean(row.is_moderator)])
+  )
 
   return {
     _id: sessionDocId(slug),
@@ -90,6 +93,7 @@ function buildSessionPatch(slug, rows, eventRef) {
       _type: 'sessionParticipant',
       speaker: slugRef('speaker', speakerSlug, speakerDocId),
       sortOrder: index,
+      isModerator: moderatorBySlug.get(speakerSlug) ?? false,
     })),
   }
 }
