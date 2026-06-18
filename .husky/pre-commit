@@ -1,5 +1,7 @@
+. "$(dirname "$0")/common.sh"
+
 echo "🔍 Running pre-commit checks..."
 echo "📝 Running lint-staged (ESLint, Accessibility, Prettier)..."
-npx lint-staged
+lint-staged
 
 echo "✅ Pre-commit checks completed successfully!"
