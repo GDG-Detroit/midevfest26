@@ -144,7 +144,7 @@
       "room": "2415",
       "sessionDuration": 60
     },
-    "linkedIn": "http://linkedin.com/in/elizabeth-badgett-aa5920259"
+    "linkedIn": "https://www.linkedin.com/in/elizabeth-badgett-aa5920259"
   },
   {
     "id": 1502828763,
@@ -207,7 +207,7 @@
       "room": "2415",
       "sessionDuration": 60
     },
-    "linkedIn": "http://linkedin.com/in/nicholasgcalderon"
+    "linkedIn": "https://www.linkedin.com/in/nicholasgcalderon"
   },
   {
     "id": 1507404901,
@@ -264,7 +264,7 @@
       "title": "Community Solidarity: How do we help ourselves by helping others?",
       "abstract": "",
       "description": "Interested in AI but want total control over your data and hardware? This beginner-friendly session is a practical guide to running local AI models in a Linux environment using accessible applications like Jan and LM Studio. We will cover the essentials of setting up these platforms, configuring them for Linux, and installing lightweight, free models—such as Google’s Gemma and Ollama integrations—that run smoothly on standard consumer hardware. Participants will leave this session with the knowledge and confidence to run basic prompts completely offline on their own devices.",
-      "tags": ["Level UP"],
+      "tags": ["Level Up"],
       "track": "Level Up",
       "time": "15:00",
       "room": "2515",
