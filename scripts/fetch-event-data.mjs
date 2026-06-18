@@ -7,6 +7,7 @@ import { existsSync, readFileSync } from 'node:fs'
 import { fileURLToPath } from 'node:url'
 import path from 'node:path'
 import { createClient } from '@sanity/client'
+import prettier from 'prettier'
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url))
 const ROOT = path.resolve(__dirname, '..')
@@ -166,7 +167,7 @@ export async function fetchEventSpeakers(options = {}) {
     projectId,
     dataset,
     apiVersion: '2026-06-01',
-    useCdn: true,
+    useCdn: false,
     token: process.env.SANITY_READ_TOKEN || undefined,
   })
 
@@ -187,12 +188,22 @@ export async function fetchEventSpeakers(options = {}) {
   return prioritizeFeaturedSessions(rows)
 }
 
+async function writeFormattedJson(filePath, data) {
+  const config = await prettier.resolveConfig(filePath)
+  const formatted = await prettier.format(JSON.stringify(data), {
+    ...(config ?? {}),
+    filepath: filePath,
+    parser: 'json',
+  })
+  await writeFile(filePath, formatted, 'utf8')
+}
+
 async function main() {
   loadOptionalEnvFile()
   const rows = await fetchEventSpeakers()
   const output = stripInternalFields(rows)
 
-  await writeFile(OUTPUT, `${JSON.stringify(output, null, 2)}\n`, 'utf8')
+  await writeFormattedJson(OUTPUT, output)
 
   console.log(
     `Wrote ${output.length} speaker-session rows to ${path.relative(
