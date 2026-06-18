@@ -95,20 +95,20 @@ The **import pipeline** (`scripts/sanity-import/`) requires a `.env` file (gitig
 
 ## Development Scripts
 
-| Command                   | Description                                                   |
-| ------------------------- | ------------------------------------------------------------- |
-| `npm run dev`             | Start the development server via Vite                         |
-| `npm run dev:cms`         | Fetch latest Sanity content, then start dev server            |
-| `npm run fetch:event-data`| Pull speakers/sessions from Sanity into `speakers.generated.json` |
-| `npm run studio:dev`      | Start local Sanity Studio at `http://localhost:3333`            |
-| `npm run build`           | Fetch from Sanity, then build for production                  |
-| `npm run preview`         | Create a preview of the production build locally              |
-| `npm run lint`            | Check code for linting errors (includes Tailwind class order) |
-| `npm run lint:fix`        | Automatically fix linting errors                              |
-| `npm run format`          | Format code with Prettier                                     |
-| `npm run format:check`    | Check code formatting with Prettier                           |
-| `npm run commitlint`      | Validate commit message format                                |
-| `npm run import:speakers` | Run the Google Sheets → Sanity speaker import script          |
+| Command                    | Description                                                       |
+| -------------------------- | ----------------------------------------------------------------- |
+| `npm run dev`              | Start the development server via Vite                             |
+| `npm run dev:cms`          | Fetch latest Sanity content, then start dev server                |
+| `npm run fetch:event-data` | Pull speakers/sessions from Sanity into `speakers.generated.json` |
+| `npm run studio:dev`       | Start local Sanity Studio at `http://localhost:3333`              |
+| `npm run build`            | Fetch from Sanity, then build for production                      |
+| `npm run preview`          | Create a preview of the production build locally                  |
+| `npm run lint`             | Check code for linting errors (includes Tailwind class order)     |
+| `npm run lint:fix`         | Automatically fix linting errors                                  |
+| `npm run format`           | Format code with Prettier                                         |
+| `npm run format:check`     | Check code formatting with Prettier                               |
+| `npm run commitlint`       | Validate commit message format                                    |
+| `npm run import:speakers`  | Run the Google Sheets → Sanity speaker import script              |
 
 ## Project Structure
 
@@ -140,10 +140,10 @@ npm run fetch:event-data  →  speakers.generated.json
 npm run dev  (or Vercel deploy for production)
 ```
 
-| Studio | URL | Command |
-| ------ | --- | ------- |
-| Local | `http://localhost:3333` | `npm run studio:dev` |
-| Cloud | [pridemi26.sanity.studio](https://pridemi26.sanity.studio/) | `cd studio && npm run deploy` |
+| Studio | URL                                                         | Command                       |
+| ------ | ----------------------------------------------------------- | ----------------------------- |
+| Local  | `http://localhost:3333`                                     | `npm run studio:dev`          |
+| Cloud  | [pridemi26.sanity.studio](https://pridemi26.sanity.studio/) | `cd studio && npm run deploy` |
 
 Both studios edit the **same** cloud dataset. After publishing changes, run `npm run dev:cms` to see them on the local site.
 

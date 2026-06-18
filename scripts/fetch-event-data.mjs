@@ -117,8 +117,7 @@ function prioritizeFeaturedSessions(rows) {
 
   for (const [name, firstIdx] of firstIndexByName) {
     const featuredIdx = result.findIndex(
-      (row) =>
-        row.name === name && row._sessionId === row._featuredSessionId
+      (row) => row.name === name && row._sessionId === row._featuredSessionId
     )
     if (featuredIdx > firstIdx) {
       const [featured] = result.splice(featuredIdx, 1)
@@ -134,10 +133,12 @@ function stripInternalFields(rows) {
 }
 
 export async function fetchEventSpeakers(options = {}) {
-  const projectId = options.projectId ?? readEnv('SANITY_PROJECT_ID', DEFAULT_PROJECT_ID)
+  const projectId =
+    options.projectId ?? readEnv('SANITY_PROJECT_ID', DEFAULT_PROJECT_ID)
   const dataset = options.dataset ?? readEnv('SANITY_DATASET', DEFAULT_DATASET)
   const eventYear = Number(
-    options.eventYear ?? readEnv('SANITY_EVENT_YEAR', String(DEFAULT_EVENT_YEAR))
+    options.eventYear ??
+      readEnv('SANITY_EVENT_YEAR', String(DEFAULT_EVENT_YEAR))
   )
 
   const client = createClient({
@@ -172,7 +173,10 @@ async function main() {
   await writeFile(OUTPUT, `${JSON.stringify(output, null, 2)}\n`, 'utf8')
 
   console.log(
-    `Wrote ${output.length} speaker-session rows to ${path.relative(ROOT, OUTPUT)}`
+    `Wrote ${output.length} speaker-session rows to ${path.relative(
+      ROOT,
+      OUTPUT
+    )}`
   )
 }
 

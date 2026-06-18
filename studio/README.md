@@ -4,13 +4,13 @@ TypeScript [Sanity Studio](https://www.sanity.io/docs/sanity-studio) for the [De
 
 Organizers and developers manage event content here. The public site reads speakers and sessions from Sanity at **build time** (`scripts/fetch-event-data.mjs`). Bulk imports via **n8n** are optional; you can also edit directly in Studio.
 
-|                |                                                                                    |
-| -------------- | ---------------------------------------------------------------------------------- |
-| **Project**    | `pridemi26`                                                                        |
-| **Project ID** | `b18a6pbd`                                                                         |
-| **Local Studio** | `http://localhost:3333` (`npm run studio:dev` from repo root)                    |
-| **Hosted Studio** | [pridemi26.sanity.studio](https://pridemi26.sanity.studio/)                    |
-| **Manage**     | [sanity.io/manage/project/b18a6pbd](https://www.sanity.io/manage/project/b18a6pbd) |
+|                   |                                                                                    |
+| ----------------- | ---------------------------------------------------------------------------------- |
+| **Project**       | `pridemi26`                                                                        |
+| **Project ID**    | `b18a6pbd`                                                                         |
+| **Local Studio**  | `http://localhost:3333` (`npm run studio:dev` from repo root)                      |
+| **Hosted Studio** | [pridemi26.sanity.studio](https://pridemi26.sanity.studio/)                        |
+| **Manage**        | [sanity.io/manage/project/b18a6pbd](https://www.sanity.io/manage/project/b18a6pbd) |
 
 ---
 
