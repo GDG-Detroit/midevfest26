@@ -3,6 +3,7 @@
  * Run before build (or manually via npm run fetch:event-data).
  */
 import { writeFile } from 'node:fs/promises'
+import { existsSync, readFileSync } from 'node:fs'
 import { fileURLToPath } from 'node:url'
 import path from 'node:path'
 import { createClient } from '@sanity/client'
@@ -10,6 +11,7 @@ import { createClient } from '@sanity/client'
 const __dirname = path.dirname(fileURLToPath(import.meta.url))
 const ROOT = path.resolve(__dirname, '..')
 const OUTPUT = path.join(ROOT, 'src/data/2026/speakers.generated.json')
+const OPTIONAL_ENV = path.join(ROOT, 'scripts/sanity-import/.env')
 
 const DEFAULT_PROJECT_ID = 'b18a6pbd'
 const DEFAULT_DATASET = 'production'
@@ -53,6 +55,25 @@ const SESSIONS_QUERY = `*[_type == "session" && event->year == $year && publishe
 function readEnv(name, fallback) {
   const value = process.env[name]?.trim()
   return value || fallback
+}
+
+/** Load scripts/sanity-import/.env when present; never required for public CDN reads. */
+function loadOptionalEnvFile() {
+  if (!existsSync(OPTIONAL_ENV)) return
+
+  for (const line of readFileSync(OPTIONAL_ENV, 'utf8').split('\n')) {
+    const trimmed = line.trim()
+    if (!trimmed || trimmed.startsWith('#')) continue
+
+    const separator = trimmed.indexOf('=')
+    if (separator === -1) continue
+
+    const key = trimmed.slice(0, separator).trim()
+    const value = trimmed.slice(separator + 1).trim()
+    if (key && process.env[key] === undefined) {
+      process.env[key] = value
+    }
+  }
 }
 
 function stableSpeakerSessionId(speakerSlug, sessionSlug) {
@@ -167,6 +188,7 @@ export async function fetchEventSpeakers(options = {}) {
 }
 
 async function main() {
+  loadOptionalEnvFile()
   const rows = await fetchEventSpeakers()
   const output = stripInternalFields(rows)
 
