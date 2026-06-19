@@ -32,8 +32,10 @@ function isValidSvgResponse(contentType, text) {
   const trimmed = text.trim()
   if (!trimmed) return false
 
-  const withoutXmlDecl = trimmed.replace(/^<\?xml[^>]*\?>\s*/i, '')
-  return /^<svg[\s>]/i.test(withoutXmlDecl)
+  const withoutProlog = trimmed
+    .replace(/^<\?xml[^>]*\?>\s*/i, '')
+    .replace(/^<!DOCTYPE[^>]*>\s*/i, '')
+  return /^<svg[\s>]/i.test(withoutProlog)
 }
 
 function getScrollBehavior() {
