@@ -2,24 +2,15 @@
 
 This document defines the color palette for the Detroit Pride Innovation Summit website.
 
-The palette is inspired by the Women Techmakers brand and implemented as semantic Tailwind tokens under the `iwd` namespace. The site ships two switchable themes controlled via CSS custom properties and a `data-theme` attribute on `<html>`.
+The palette is inspired by the Women Techmakers brand and implemented as semantic Tailwind tokens under the `iwd` namespace. The site ships four switchable themes controlled via CSS custom properties and a `data-theme` attribute on `<html>`. The themes and their swatches are defined in `src/constants/ui.js`; the default is **Purple** (set in `src/components/ui/ThemeContext.jsx`).
+
+Each `iwd.gold.*` Tailwind token maps to a `--iwd-accent-*` CSS variable, and each `iwd.black.*` token maps to a `--iwd-dark-*` variable (see `tailwind.config.js`). The tables below show the key accent (`iwd-gold-400`/`700`), darkest surface (`iwd-black-950`), and `focus-ring` values per theme.
 
 ---
 
 ## Themes
 
-### Blue (Default)
-
-Ocean-forward palette. Cool, professional, and aligned with Google/Women Techmakers blue.
-
-| Token         | Hex       | RGB        |
-| ------------- | --------- | ---------- |
-| iwd-gold-400  | `#60a5fa` | 96 165 250 |
-| iwd-gold-700  | `#1d4ed8` | 29 78 216  |
-| iwd-black-950 | `#090e18` | 9 14 24    |
-| focus-ring    | `#1e3a8a` | 30 58 138  |
-
-### Purple
+### Purple (Default)
 
 Violet-forward palette. Bold, empowering, and aligned with the purple theme tradition.
 
@@ -29,6 +20,39 @@ Violet-forward palette. Bold, empowering, and aligned with the purple theme trad
 | iwd-gold-700  | `#7e22ce` | 126 34 206  |
 | iwd-black-950 | `#0d0a16` | 13 10 22    |
 | focus-ring    | `#581c87` | 88 28 135   |
+
+### Blue
+
+Ocean-forward palette. Cool, professional, and aligned with Google/Women Techmakers blue.
+
+| Token         | Hex       | RGB         |
+| ------------- | --------- | ----------- |
+| iwd-gold-400  | `#669df6` | 102 157 246 |
+| iwd-gold-700  | `#1967d2` | 25 103 210  |
+| iwd-black-950 | `#090e18` | 9 14 24     |
+| focus-ring    | `#1a73e8` | 26 115 232  |
+
+### Green
+
+Emerald palette aligned with Google green.
+
+| Token         | Hex       | RGB       |
+| ------------- | --------- | --------- |
+| iwd-gold-400  | `#5cb85c` | 92 184 92 |
+| iwd-gold-700  | `#0b5124` | 11 81 36  |
+| iwd-black-950 | `#09120e` | 9 18 14   |
+| focus-ring    | `#0d652d` | 13 101 45 |
+
+### Gold
+
+Warm yellow/amber palette aligned with Google yellow.
+
+| Token         | Hex       | RGB       |
+| ------------- | --------- | --------- |
+| iwd-gold-400  | `#fabb05` | 250 187 5 |
+| iwd-gold-700  | `#b85c00` | 184 92 0  |
+| iwd-black-950 | `#120e06` | 18 14 6   |
+| focus-ring    | `#e27200` | 226 114 0 |
 
 ---
 
@@ -45,12 +69,12 @@ Violet-forward palette. Bold, empowering, and aligned with the purple theme trad
 
 ## How Theming Works
 
-1. CSS variables defined in `src/index.css` under `:root` / `[data-theme='blue']` and `[data-theme='purple']`
+1. CSS variables defined in `src/index.css` under `:root` (fallback) and one `[data-theme='...']` block per theme (`blue`, `green`, `purple`, `gold`)
 2. Tailwind tokens `iwd.gold.*` and `iwd.black.*` reference these via `rgb(var(--iwd-accent-*) / <alpha-value>)`
-3. React context (`ThemeContext`) sets `data-theme` on `<html>` and persists to `localStorage`
-4. A floating `ThemeSwitcher` button lets visitors toggle
+3. React context (`ThemeContext`) sets `data-theme` on `<html>` and persists to `localStorage` (defaults to `purple`)
+4. A floating `ThemeSwitcher` button lets visitors pick from the swatches in `src/constants/ui.js`
 
-**Adding a new theme:** duplicate a `[data-theme='...']` block in index.css, add the key to the toggle cycle in ThemeContext, done.
+**Adding a new theme:** duplicate a `[data-theme='...']` block in `index.css` and add a matching entry (`id`, `label`, `swatch`, `palette`) to `THEMES` in `src/constants/ui.js`.
 
 ---
 

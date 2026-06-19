@@ -1,13 +1,13 @@
-# Contributing to Black History Month Innovation Summit Website
+# Contributing to the Detroit Pride Innovation Summit Website
 
-Thank you for your interest in contributing to the Black History Month Innovation Summit (BHM-website)! This document provides guidelines and information for contributors.
+Thank you for your interest in contributing to the Detroit Pride Innovation Summit (`pridemi26`)! This document provides guidelines and information for contributors.
 
 ## Getting Started
 
 ### Prerequisites
 
-- Node.js 18 or higher
-- npm or yarn package manager
+- Node.js 22 or higher
+- npm
 - Git
 
 ### Development Setup
@@ -16,8 +16,8 @@ Thank you for your interest in contributing to the Black History Month Innovatio
 2. **Clone your fork** locally:
 
    ```bash
-   git clone https://github.com/YOUR_USERNAME/BHM-website.git
-   cd BHM-website
+   git clone https://github.com/YOUR_USERNAME/pridemi26.git
+   cd pridemi26
    ```
 
 3. **Install dependencies**:
@@ -41,16 +41,16 @@ If **Push** or **Create Pull Request** in GitHub Desktop opens or targets a diff
 1. **Re-add the repo** so GitHub Desktop picks up the correct remote:
 
    - In GitHub Desktop: **File → Remove repository** (removes it from the list only; files stay on disk).
-   - **File → Add Local Repository** and choose this project folder (`BHM-website`).
-   - GitHub Desktop will use the existing Git remotes; pushes and "Create Pull Request" should now target **Compass-Detroit/BHM-website**.
+   - **File → Add Local Repository** and choose this project folder (`pridemi26`).
+   - GitHub Desktop will use the existing Git remotes; pushes and "Create Pull Request" should now target **Compass-Detroit/pridemi26**.
 
 2. **Confirm remotes in Terminal** (optional):
    ```bash
    git remote -v
    ```
-   You should see `origin` (and optionally `upstream`) pointing to `https://github.com/Compass-Detroit/BHM-website.git`. If not:
+   You should see `origin` (and optionally `upstream`) pointing to `https://github.com/Compass-Detroit/pridemi26.git`. If not:
    ```bash
-   git remote set-url origin https://github.com/Compass-Detroit/BHM-website.git
+   git remote set-url origin https://github.com/Compass-Detroit/pridemi26.git
    ```
    Then remove and re-add the repo in GitHub Desktop as in step 1.
 
@@ -63,7 +63,7 @@ All pull requests are automatically checked for:
 - **Code Quality**: ESLint checks for code style and potential errors
 - **Code Formatting**: Prettier ensures consistent code formatting
 - **Build Verification**: Ensures the application builds successfully
-- **Accessibility**: Automated accessibility testing with axe-core and pa11y
+- **Accessibility**: Automated accessibility testing with axe-core against the built site
 - **Security**: npm audit checks for security vulnerabilities
 
 ### Manual Checks
@@ -102,8 +102,8 @@ npm run lint
 # Check formatting
 npm run format:check
 
-# Run accessibility tests
-npm run test:a11y
+# Run accessibility linting
+npm run lint:a11y
 
 # Build the application
 npm run build
@@ -151,7 +151,7 @@ Then create a pull request on GitHub using our PR template.
 
 ## Accessibility Guidelines
 
-We are committed to making the Black History Month Innovation Summit website accessible to everyone. Please ensure:
+We are committed to making the Detroit Pride Innovation Summit website accessible to everyone. Please ensure:
 
 ### Keyboard Navigation
 
@@ -175,11 +175,11 @@ We are committed to making the Black History Month Innovation Summit website acc
 ### Testing Accessibility
 
 ```bash
-# Run automated accessibility tests
-npm run test:a11y
+# Lint JSX for accessibility issues (eslint-plugin-jsx-a11y)
+npm run lint:a11y
 
-# Run pa11y tests
-npm run test:a11y:pa11y
+# Run the full accessibility check (a11y lint + build)
+npm run a11y:check
 ```
 
 ## Code Style Guidelines
@@ -244,7 +244,7 @@ Releases are managed by the maintainers. When your PR is merged:
 
 ## Thank You
 
-Thank you for contributing to the Black History Month Innovation Summit website! Your contributions help make our event more accessible and engaging for the community.
+Thank you for contributing to the Detroit Pride Innovation Summit website! Your contributions help make our event more accessible and engaging for the community.
 
 ---
 
