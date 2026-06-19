@@ -2,7 +2,7 @@
 
 The website for the [Detroit Pride Innovation Summit 2026](https://pridemi26.vercel.app/). Built with Vite, React, and Tailwind CSS.
 
-Organized by **Compass Detroit** in partnership with **GDG Detroit** and **Other Organizations**.
+Organized by **Compass Detroit** in partnership with **GDG Detroit** and community partners (see the Partners section on the site for the full list).
 
 Hero animation is a custom WebGL animation created with Three.js and lil-gui. It is used to create the pride trail effect on the hero section. Author of initial effect attribution: [Sabo Sugi](https://x.com/sabosugi/). Effect enhanced and customized by **[Greg Miller](https://github.com/shrinkray)** for Compass Detroit.
 
@@ -35,13 +35,15 @@ Navigate to `http://localhost:5173`. Customize the port in `vite.config.js` if n
 
 ## Theme Switcher
 
-The site supports two color themes — **Purple** (default) and **Blue**. A floating palette button in the bottom-right lets visitors toggle between them.
+The site supports four color themes — **Purple** (default), **Blue**, **Green**, and **Gold**. A floating palette button in the bottom-right lets visitors switch between them.
 
 Themes work via CSS custom properties defined in `src/index.css`. The `iwd.gold` and `iwd.black` Tailwind tokens reference these variables, so the entire site re-themes instantly with zero component changes.
 
 - Theme preference persists in `localStorage`
+- Theme list and swatches: `src/constants/ui.js`
 - Context: `src/components/ui/ThemeContext.jsx`
 - Toggle UI: `src/components/ui/ThemeSwitcher.jsx`
+- Full palette reference: [`COLOR.MD`](COLOR.MD)
 
 ## Docker
 
