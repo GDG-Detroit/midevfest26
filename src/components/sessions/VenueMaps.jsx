@@ -166,14 +166,15 @@ function VenueMaps() {
         >
           {AREAS.map(({ key, label, sublabel, Icon }) => {
             const isActive = key === active
+            const accessibleName = sublabel ? `${label}, ${sublabel}` : label
             return (
               <button
                 key={key}
                 type="button"
                 onClick={() => toggleArea(key)}
                 aria-pressed={isActive}
-                aria-label={label}
-                title={label}
+                aria-label={accessibleName}
+                title={accessibleName}
                 className={`group/area flex items-center justify-center gap-3 rounded-xl border p-3 font-bold transition-all duration-300 active:scale-95 lg:justify-start lg:p-4 ${
                   isActive
                     ? 'border-iwd-gold-400/60 bg-iwd-gold-400/15 text-iwd-gold-200 shadow-[0_0_14px_rgba(255,208,174,0.25)]'
