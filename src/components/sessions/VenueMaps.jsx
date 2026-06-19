@@ -36,6 +36,12 @@ function isValidSvgResponse(contentType, text) {
   return /^<svg[\s>]/i.test(withoutXmlDecl)
 }
 
+function getScrollBehavior() {
+  return window.matchMedia('(prefers-reduced-motion: reduce)').matches
+    ? 'auto'
+    : 'smooth'
+}
+
 function VenueMaps() {
   const scrollRef = useRef(null)
   const holderRef = useRef(null)
@@ -91,9 +97,6 @@ function VenueMaps() {
   const scrollRegionIntoView = useCallback((shape) => {
     const container = scrollRef.current
     if (!container || !shape) return
-    const prefersReduced = window.matchMedia(
-      '(prefers-reduced-motion: reduce)'
-    ).matches
     const cRect = container.getBoundingClientRect()
     const rRect = shape.getBoundingClientRect()
     const left =
@@ -109,7 +112,7 @@ function VenueMaps() {
     container.scrollTo({
       left,
       top,
-      behavior: prefersReduced ? 'auto' : 'smooth',
+      behavior: getScrollBehavior(),
     })
   }, [])
 
@@ -132,15 +135,16 @@ function VenueMaps() {
     const el = scrollRef.current
     if (!el) return undefined
     const handleKeyDown = (e) => {
+      const scrollBehavior = getScrollBehavior()
       if (e.key === 'Home') {
         e.preventDefault()
-        el.scrollTo({ left: 0, top: 0, behavior: 'smooth' })
+        el.scrollTo({ left: 0, top: 0, behavior: scrollBehavior })
       } else if (e.key === 'End') {
         e.preventDefault()
         el.scrollTo({
           left: el.scrollWidth - el.clientWidth,
           top: el.scrollHeight - el.clientHeight,
-          behavior: 'smooth',
+          behavior: scrollBehavior,
         })
       }
     }
@@ -211,7 +215,7 @@ function VenueMaps() {
           <div className="mb-1 rounded-xl border-4 border-iwd-gold-500">
             <div
               ref={scrollRef}
-              className="scrollbar-visible max-h-[60vh] w-full overflow-auto scroll-smooth rounded-md focus:outline-none focus-visible:ring-2 focus-visible:ring-focus-ring focus-visible:ring-offset-2 focus-visible:ring-offset-iwd-gold-100 lg:max-h-[640px]"
+              className="scrollbar-visible max-h-[60vh] w-full overflow-auto scroll-smooth rounded-md focus:outline-none focus-visible:ring-2 focus-visible:ring-focus-ring focus-visible:ring-offset-2 focus-visible:ring-offset-iwd-gold-100 motion-reduce:scroll-auto lg:max-h-[640px]"
               tabIndex={0}
               role="region"
               aria-label="Scrollable venue map"
