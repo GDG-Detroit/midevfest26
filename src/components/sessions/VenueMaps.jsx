@@ -1,7 +1,5 @@
 import { useCallback, useEffect, useRef, useState } from 'react'
 import { FaChalkboardUser, FaClipboardCheck, FaUtensils } from 'react-icons/fa6'
-
-// TODO: update back webp
 import ibmHqMapUrl from '@/assets/images/maps/map-ibm-hq.svg'
 
 // Each button maps to a highlight region group in map-ibm-hq.svg.
@@ -28,6 +26,16 @@ const AREAS = [
   },
 ]
 
+function isValidSvgResponse(contentType, text) {
+  if (contentType && /text\/html/i.test(contentType)) return false
+
+  const trimmed = text.trim()
+  if (!trimmed) return false
+
+  const withoutXmlDecl = trimmed.replace(/^<\?xml[^>]*\?>\s*/i, '')
+  return /^<svg[\s>]/i.test(withoutXmlDecl)
+}
+
 function VenueMaps() {
   const scrollRef = useRef(null)
   const holderRef = useRef(null)
@@ -38,7 +46,17 @@ function VenueMaps() {
   useEffect(() => {
     let cancelled = false
     fetch(ibmHqMapUrl)
-      .then((res) => res.text())
+      .then(async (res) => {
+        if (!res.ok) {
+          throw new Error(`SVG fetch failed with status ${res.status}`)
+        }
+        const contentType = res.headers.get('content-type') ?? ''
+        const text = await res.text()
+        if (!isValidSvgResponse(contentType, text)) {
+          throw new Error('SVG fetch returned unexpected content')
+        }
+        return text
+      })
       .then((text) => {
         if (!cancelled) setSvgMarkup(text)
       })
