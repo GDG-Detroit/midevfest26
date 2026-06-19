@@ -1,5 +1,39 @@
 [
   {
+    "id": 1711493814,
+    "name": "Jenna Ritten",
+    "avatar": "https://cdn.sanity.io/images/b18a6pbd/production/51cbb57bc205b978ae810f440896d8235d059dc8-400x400.webp",
+    "bio": "Jenna is the visionary behind Detroit's Innovation Summit series and Founding Executive Director of Compass (Collective of Minority Professionals and STEAM Societies), the organization bringing together Michigan's diverse tech talent to combat brain drain and create local opportunities. As Chief Developer Advocate & Architect at IBM Research, she leads IBM's technical community while scaling their global developer ecosystem from 2 million to 9 million members.\n\nA cornerstone of Michigan's tech renaissance, Jenna serves as Co-Leader of Google Developer Group Detroit, lead organizer of Michigan DevFest (1,000+ attendees), and board member of Automation Workz. As a local leader in Michigan's tech ecosystem since 2018, she pioneered hackathon culture in the region by introducing the first hackathons to both the AfroTech Conference in 2023 and Michigan DevFest in 2025, creating hands-on opportunities for developers to showcase their skills and solve real-world challenges.\n\nThrough Compass' partnerships with NSBE Detroit, SHPE Detroit, IBM, Google, DTE Energy, and other leading organizations, Jenna is building bridges between corporate innovation and community empowerment. Her mission: ensuring Michigan's next generation of Black technologists not only have opportunities to excel but can do so without leaving the state they call home.\n\nConnect with Jenna to learn how Compass is transforming Michigan's tech ecosystem, one community at a time.",
+    "organization": "IBM Research",
+    "position": "Chief Developer Advocate & Architect",
+    "isWTM": true,
+    "isGDE": true,
+    "isModerator": false,
+    "sortOrder": 0,
+    "session": {
+      "title": "Welcome & Opening Remarks",
+      "abstract": "",
+      "description": "",
+      "tags": ["Level Up"],
+      "track": "Level Up",
+      "time": "08:45",
+      "room": "2415 & 2416",
+      "sessionDuration": 15,
+      "speakers": ["Jenna Ritten"],
+      "moderators": [],
+      "panelists": ["Jenna Ritten"],
+      "participants": [
+        {
+          "name": "Jenna Ritten",
+          "avatar": "https://cdn.sanity.io/images/b18a6pbd/production/51cbb57bc205b978ae810f440896d8235d059dc8-400x400.webp",
+          "isModerator": false,
+          "sortOrder": 0
+        }
+      ]
+    },
+    "linkedIn": "https://www.linkedin.com/in/jritten"
+  },
+  {
     "id": 116323757,
     "name": "Nick Gordon",
     "avatar": "https://cdn.sanity.io/images/b18a6pbd/production/25063a1c9d83aff85371bf0f779c9e9ab461299b-716x466.png",
