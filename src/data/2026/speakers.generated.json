@@ -19,19 +19,65 @@
       "time": "08:45",
       "room": "2415 & 2416",
       "sessionDuration": 15,
-      "speakers": ["Jenna Ritten"],
+      "speakers": ["Jenna Ritten", "Tim Moore"],
       "moderators": [],
-      "panelists": ["Jenna Ritten"],
+      "panelists": ["Jenna Ritten", "Tim Moore"],
       "participants": [
         {
           "name": "Jenna Ritten",
           "avatar": "https://cdn.sanity.io/images/b18a6pbd/production/51cbb57bc205b978ae810f440896d8235d059dc8-400x400.webp",
           "isModerator": false,
           "sortOrder": 0
+        },
+        {
+          "name": "Tim Moore",
+          "avatar": "https://cdn.sanity.io/images/b18a6pbd/production/f41fa145e99ecf7d21698adbb6017771647a9335-400x400.webp",
+          "isModerator": false,
+          "sortOrder": 2
         }
       ]
     },
     "linkedIn": "https://www.linkedin.com/in/jritten"
+  },
+  {
+    "id": 1960888654,
+    "name": "Tim Moore",
+    "avatar": "https://cdn.sanity.io/images/b18a6pbd/production/f41fa145e99ecf7d21698adbb6017771647a9335-400x400.webp",
+    "bio": "Tim Moore is a seasoned entrepreneur with over 35 years of experience in launching, acquiring, growing, and exiting companies within multiple verticals. Mr. Moore has helped implement product success strategies for some of the world's largest companies, such as Google and Telefonica. As CEO of Clixie AI, he oversees strategy, partner platform sales brand awareness. Mr. Moore serves as a mentor and coach to local entrepreneurs and start-ups through the Ross School of Business, University of Michigan.",
+    "organization": "Clixie AI",
+    "position": "CEO",
+    "isWTM": false,
+    "isGDE": false,
+    "isModerator": false,
+    "sortOrder": 2,
+    "session": {
+      "title": "Welcome & Opening Remarks",
+      "abstract": "",
+      "description": "",
+      "tags": ["Level Up"],
+      "track": "Level Up",
+      "time": "08:45",
+      "room": "2415 & 2416",
+      "sessionDuration": 15,
+      "speakers": ["Jenna Ritten", "Tim Moore"],
+      "moderators": [],
+      "panelists": ["Jenna Ritten", "Tim Moore"],
+      "participants": [
+        {
+          "name": "Jenna Ritten",
+          "avatar": "https://cdn.sanity.io/images/b18a6pbd/production/51cbb57bc205b978ae810f440896d8235d059dc8-400x400.webp",
+          "isModerator": false,
+          "sortOrder": 0
+        },
+        {
+          "name": "Tim Moore",
+          "avatar": "https://cdn.sanity.io/images/b18a6pbd/production/f41fa145e99ecf7d21698adbb6017771647a9335-400x400.webp",
+          "isModerator": false,
+          "sortOrder": 2
+        }
+      ]
+    },
+    "linkedIn": "https://www.linkedin.com/in/tim-moore-7b00332"
   },
   {
     "id": 116323757,
@@ -259,15 +305,16 @@
       "sessionDuration": 60,
       "speakers": [
         "Elizabeth Badgett",
+        "Jazmyn Lee",
         "Jacquise Purifoy",
         "Nick Gordon",
         "Rachel Simone",
-        "Nicholas Calderon",
-        "Tim Moore"
+        "Nicholas Calderon"
       ],
-      "moderators": ["Nicholas Calderon", "Tim Moore"],
+      "moderators": ["Nicholas Calderon"],
       "panelists": [
         "Elizabeth Badgett",
+        "Jazmyn Lee",
         "Jacquise Purifoy",
         "Nick Gordon",
         "Rachel Simone"
@@ -276,6 +323,12 @@
         {
           "name": "Elizabeth Badgett",
           "avatar": "https://cdn.sanity.io/images/b18a6pbd/production/3cab778f1c2bc503a58fdeaa1a4b3ae089722ac4-4413x5809.jpg",
+          "isModerator": false,
+          "sortOrder": 0
+        },
+        {
+          "name": "Jazmyn Lee",
+          "avatar": "https://cdn.sanity.io/images/b18a6pbd/production/ed97888b9c16733bb218da0b5997ecaf25e6b8c2-400x400.webp",
           "isModerator": false,
           "sortOrder": 0
         },
@@ -302,16 +355,87 @@
           "avatar": "https://cdn.sanity.io/images/b18a6pbd/production/f101796e037729bcca947b2aa14012e6acbdf0f5-400x400.jpg",
           "isModerator": true,
           "sortOrder": 5
-        },
-        {
-          "name": "Tim Moore",
-          "avatar": "https://cdn.sanity.io/images/b18a6pbd/production/f41fa145e99ecf7d21698adbb6017771647a9335-400x400.webp",
-          "isModerator": true,
-          "sortOrder": 6
         }
       ]
     },
     "linkedIn": "https://www.linkedin.com/in/elizabeth-badgett-aa5920259"
+  },
+  {
+    "id": 830570617,
+    "name": "Jazmyn Lee",
+    "avatar": "https://cdn.sanity.io/images/b18a6pbd/production/ed97888b9c16733bb218da0b5997ecaf25e6b8c2-400x400.webp",
+    "bio": "Jaz Lee brings nearly 15 years of technology and digital transformation experience to every table, project, or big idea. As the founder of Vetted, a talent and workforce innovation studio, she prepares and places talent with a focus on digital and AI fluency, helping underserved communities access the future of work. As co-founder of GLU, she fosters a vibrant community for professionally established women and non-binary queer people, creating intentional spaces for connection, belonging, and opportunity. As Head of Customer Success and Enablement at ConStrat AI, Jazmyn helps leaders in the built world successfully adopt and leverage technology while advocating for greater representation and visibility for women across the industry. She also serves on the board of the Detroit LGBT Chamber, where she works at the intersection of technology, economic empowerment, and community impact.\n\n",
+    "organization": "VETTED",
+    "position": "Founder",
+    "isWTM": false,
+    "isGDE": false,
+    "isModerator": false,
+    "sortOrder": 0,
+    "session": {
+      "title": "Innovation Summit Panel Discussion",
+      "abstract": "",
+      "description": "",
+      "tags": ["Level Up"],
+      "track": "Level Up",
+      "time": "13:00",
+      "room": "2415",
+      "sessionDuration": 60,
+      "speakers": [
+        "Elizabeth Badgett",
+        "Jazmyn Lee",
+        "Jacquise Purifoy",
+        "Nick Gordon",
+        "Rachel Simone",
+        "Nicholas Calderon"
+      ],
+      "moderators": ["Nicholas Calderon"],
+      "panelists": [
+        "Elizabeth Badgett",
+        "Jazmyn Lee",
+        "Jacquise Purifoy",
+        "Nick Gordon",
+        "Rachel Simone"
+      ],
+      "participants": [
+        {
+          "name": "Elizabeth Badgett",
+          "avatar": "https://cdn.sanity.io/images/b18a6pbd/production/3cab778f1c2bc503a58fdeaa1a4b3ae089722ac4-4413x5809.jpg",
+          "isModerator": false,
+          "sortOrder": 0
+        },
+        {
+          "name": "Jazmyn Lee",
+          "avatar": "https://cdn.sanity.io/images/b18a6pbd/production/ed97888b9c16733bb218da0b5997ecaf25e6b8c2-400x400.webp",
+          "isModerator": false,
+          "sortOrder": 0
+        },
+        {
+          "name": "Jacquise Purifoy",
+          "avatar": "https://cdn.sanity.io/images/b18a6pbd/production/3d612e2d99fc14b514cc271085dcc1c63440176f-2160x1440.jpg",
+          "isModerator": false,
+          "sortOrder": 2
+        },
+        {
+          "name": "Nick Gordon",
+          "avatar": "https://cdn.sanity.io/images/b18a6pbd/production/25063a1c9d83aff85371bf0f779c9e9ab461299b-716x466.png",
+          "isModerator": false,
+          "sortOrder": 3
+        },
+        {
+          "name": "Rachel Simone",
+          "avatar": "https://cdn.sanity.io/images/b18a6pbd/production/18d651b7f2f810ca5bc62985a493428fd828a7f9-400x400.webp",
+          "isModerator": false,
+          "sortOrder": 4
+        },
+        {
+          "name": "Nicholas Calderon",
+          "avatar": "https://cdn.sanity.io/images/b18a6pbd/production/f101796e037729bcca947b2aa14012e6acbdf0f5-400x400.jpg",
+          "isModerator": true,
+          "sortOrder": 5
+        }
+      ]
+    },
+    "linkedIn": "https://www.linkedin.com/in/iamjazlee"
   },
   {
     "id": 1502828763,
@@ -335,15 +459,16 @@
       "sessionDuration": 60,
       "speakers": [
         "Elizabeth Badgett",
+        "Jazmyn Lee",
         "Jacquise Purifoy",
         "Nick Gordon",
         "Rachel Simone",
-        "Nicholas Calderon",
-        "Tim Moore"
+        "Nicholas Calderon"
       ],
-      "moderators": ["Nicholas Calderon", "Tim Moore"],
+      "moderators": ["Nicholas Calderon"],
       "panelists": [
         "Elizabeth Badgett",
+        "Jazmyn Lee",
         "Jacquise Purifoy",
         "Nick Gordon",
         "Rachel Simone"
@@ -352,6 +477,12 @@
         {
           "name": "Elizabeth Badgett",
           "avatar": "https://cdn.sanity.io/images/b18a6pbd/production/3cab778f1c2bc503a58fdeaa1a4b3ae089722ac4-4413x5809.jpg",
+          "isModerator": false,
+          "sortOrder": 0
+        },
+        {
+          "name": "Jazmyn Lee",
+          "avatar": "https://cdn.sanity.io/images/b18a6pbd/production/ed97888b9c16733bb218da0b5997ecaf25e6b8c2-400x400.webp",
           "isModerator": false,
           "sortOrder": 0
         },
@@ -378,12 +509,6 @@
           "avatar": "https://cdn.sanity.io/images/b18a6pbd/production/f101796e037729bcca947b2aa14012e6acbdf0f5-400x400.jpg",
           "isModerator": true,
           "sortOrder": 5
-        },
-        {
-          "name": "Tim Moore",
-          "avatar": "https://cdn.sanity.io/images/b18a6pbd/production/f41fa145e99ecf7d21698adbb6017771647a9335-400x400.webp",
-          "isModerator": true,
-          "sortOrder": 6
         }
       ]
     },
@@ -411,15 +536,16 @@
       "sessionDuration": 60,
       "speakers": [
         "Elizabeth Badgett",
+        "Jazmyn Lee",
         "Jacquise Purifoy",
         "Nick Gordon",
         "Rachel Simone",
-        "Nicholas Calderon",
-        "Tim Moore"
+        "Nicholas Calderon"
       ],
-      "moderators": ["Nicholas Calderon", "Tim Moore"],
+      "moderators": ["Nicholas Calderon"],
       "panelists": [
         "Elizabeth Badgett",
+        "Jazmyn Lee",
         "Jacquise Purifoy",
         "Nick Gordon",
         "Rachel Simone"
@@ -428,6 +554,12 @@
         {
           "name": "Elizabeth Badgett",
           "avatar": "https://cdn.sanity.io/images/b18a6pbd/production/3cab778f1c2bc503a58fdeaa1a4b3ae089722ac4-4413x5809.jpg",
+          "isModerator": false,
+          "sortOrder": 0
+        },
+        {
+          "name": "Jazmyn Lee",
+          "avatar": "https://cdn.sanity.io/images/b18a6pbd/production/ed97888b9c16733bb218da0b5997ecaf25e6b8c2-400x400.webp",
           "isModerator": false,
           "sortOrder": 0
         },
@@ -454,12 +586,6 @@
           "avatar": "https://cdn.sanity.io/images/b18a6pbd/production/f101796e037729bcca947b2aa14012e6acbdf0f5-400x400.jpg",
           "isModerator": true,
           "sortOrder": 5
-        },
-        {
-          "name": "Tim Moore",
-          "avatar": "https://cdn.sanity.io/images/b18a6pbd/production/f41fa145e99ecf7d21698adbb6017771647a9335-400x400.webp",
-          "isModerator": true,
-          "sortOrder": 6
         }
       ]
     },
@@ -487,15 +613,16 @@
       "sessionDuration": 60,
       "speakers": [
         "Elizabeth Badgett",
+        "Jazmyn Lee",
         "Jacquise Purifoy",
         "Nick Gordon",
         "Rachel Simone",
-        "Nicholas Calderon",
-        "Tim Moore"
+        "Nicholas Calderon"
       ],
-      "moderators": ["Nicholas Calderon", "Tim Moore"],
+      "moderators": ["Nicholas Calderon"],
       "panelists": [
         "Elizabeth Badgett",
+        "Jazmyn Lee",
         "Jacquise Purifoy",
         "Nick Gordon",
         "Rachel Simone"
@@ -504,6 +631,12 @@
         {
           "name": "Elizabeth Badgett",
           "avatar": "https://cdn.sanity.io/images/b18a6pbd/production/3cab778f1c2bc503a58fdeaa1a4b3ae089722ac4-4413x5809.jpg",
+          "isModerator": false,
+          "sortOrder": 0
+        },
+        {
+          "name": "Jazmyn Lee",
+          "avatar": "https://cdn.sanity.io/images/b18a6pbd/production/ed97888b9c16733bb218da0b5997ecaf25e6b8c2-400x400.webp",
           "isModerator": false,
           "sortOrder": 0
         },
@@ -530,12 +663,6 @@
           "avatar": "https://cdn.sanity.io/images/b18a6pbd/production/f101796e037729bcca947b2aa14012e6acbdf0f5-400x400.jpg",
           "isModerator": true,
           "sortOrder": 5
-        },
-        {
-          "name": "Tim Moore",
-          "avatar": "https://cdn.sanity.io/images/b18a6pbd/production/f41fa145e99ecf7d21698adbb6017771647a9335-400x400.webp",
-          "isModerator": true,
-          "sortOrder": 6
         }
       ]
     },
@@ -563,15 +690,16 @@
       "sessionDuration": 60,
       "speakers": [
         "Elizabeth Badgett",
+        "Jazmyn Lee",
         "Jacquise Purifoy",
         "Nick Gordon",
         "Rachel Simone",
-        "Nicholas Calderon",
-        "Tim Moore"
+        "Nicholas Calderon"
       ],
-      "moderators": ["Nicholas Calderon", "Tim Moore"],
+      "moderators": ["Nicholas Calderon"],
       "panelists": [
         "Elizabeth Badgett",
+        "Jazmyn Lee",
         "Jacquise Purifoy",
         "Nick Gordon",
         "Rachel Simone"
@@ -580,6 +708,12 @@
         {
           "name": "Elizabeth Badgett",
           "avatar": "https://cdn.sanity.io/images/b18a6pbd/production/3cab778f1c2bc503a58fdeaa1a4b3ae089722ac4-4413x5809.jpg",
+          "isModerator": false,
+          "sortOrder": 0
+        },
+        {
+          "name": "Jazmyn Lee",
+          "avatar": "https://cdn.sanity.io/images/b18a6pbd/production/ed97888b9c16733bb218da0b5997ecaf25e6b8c2-400x400.webp",
           "isModerator": false,
           "sortOrder": 0
         },
@@ -606,92 +740,10 @@
           "avatar": "https://cdn.sanity.io/images/b18a6pbd/production/f101796e037729bcca947b2aa14012e6acbdf0f5-400x400.jpg",
           "isModerator": true,
           "sortOrder": 5
-        },
-        {
-          "name": "Tim Moore",
-          "avatar": "https://cdn.sanity.io/images/b18a6pbd/production/f41fa145e99ecf7d21698adbb6017771647a9335-400x400.webp",
-          "isModerator": true,
-          "sortOrder": 6
         }
       ]
     },
     "linkedIn": "https://www.linkedin.com/in/nicholasgcalderon"
-  },
-  {
-    "id": 1904586988,
-    "name": "Tim Moore",
-    "avatar": "https://cdn.sanity.io/images/b18a6pbd/production/f41fa145e99ecf7d21698adbb6017771647a9335-400x400.webp",
-    "bio": "Tim Moore is a seasoned entrepreneur with over 35 years of experience in launching, acquiring, growing, and exiting companies within multiple verticals. Mr. Moore has helped implement product success strategies for some of the world's largest companies, such as Google and Telefonica. As CEO of Clixie AI, he oversees strategy, partner platform sales brand awareness. Mr. Moore serves as a mentor and coach to local entrepreneurs and start-ups through the Ross School of Business, University of Michigan.",
-    "organization": "Clixie AI",
-    "position": "CEO",
-    "isWTM": false,
-    "isGDE": false,
-    "isModerator": true,
-    "sortOrder": 6,
-    "session": {
-      "title": "Innovation Summit Panel Discussion",
-      "abstract": "",
-      "description": "",
-      "tags": ["Level Up"],
-      "track": "Level Up",
-      "time": "13:00",
-      "room": "2415",
-      "sessionDuration": 60,
-      "speakers": [
-        "Elizabeth Badgett",
-        "Jacquise Purifoy",
-        "Nick Gordon",
-        "Rachel Simone",
-        "Nicholas Calderon",
-        "Tim Moore"
-      ],
-      "moderators": ["Nicholas Calderon", "Tim Moore"],
-      "panelists": [
-        "Elizabeth Badgett",
-        "Jacquise Purifoy",
-        "Nick Gordon",
-        "Rachel Simone"
-      ],
-      "participants": [
-        {
-          "name": "Elizabeth Badgett",
-          "avatar": "https://cdn.sanity.io/images/b18a6pbd/production/3cab778f1c2bc503a58fdeaa1a4b3ae089722ac4-4413x5809.jpg",
-          "isModerator": false,
-          "sortOrder": 0
-        },
-        {
-          "name": "Jacquise Purifoy",
-          "avatar": "https://cdn.sanity.io/images/b18a6pbd/production/3d612e2d99fc14b514cc271085dcc1c63440176f-2160x1440.jpg",
-          "isModerator": false,
-          "sortOrder": 2
-        },
-        {
-          "name": "Nick Gordon",
-          "avatar": "https://cdn.sanity.io/images/b18a6pbd/production/25063a1c9d83aff85371bf0f779c9e9ab461299b-716x466.png",
-          "isModerator": false,
-          "sortOrder": 3
-        },
-        {
-          "name": "Rachel Simone",
-          "avatar": "https://cdn.sanity.io/images/b18a6pbd/production/18d651b7f2f810ca5bc62985a493428fd828a7f9-400x400.webp",
-          "isModerator": false,
-          "sortOrder": 4
-        },
-        {
-          "name": "Nicholas Calderon",
-          "avatar": "https://cdn.sanity.io/images/b18a6pbd/production/f101796e037729bcca947b2aa14012e6acbdf0f5-400x400.jpg",
-          "isModerator": true,
-          "sortOrder": 5
-        },
-        {
-          "name": "Tim Moore",
-          "avatar": "https://cdn.sanity.io/images/b18a6pbd/production/f41fa145e99ecf7d21698adbb6017771647a9335-400x400.webp",
-          "isModerator": true,
-          "sortOrder": 6
-        }
-      ]
-    },
-    "linkedIn": "https://www.linkedin.com/in/tim-moore-7b00332"
   },
   {
     "id": 1507404901,
