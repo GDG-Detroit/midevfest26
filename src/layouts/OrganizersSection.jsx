@@ -28,11 +28,11 @@ function OrganizersSection() {
         </h2>
         <div className="mb-6 h-px w-24 bg-gradient-to-r from-transparent via-iwd-gold-400/50 to-transparent sm:w-32" />
       </div>
-      <p className="mx-auto max-w-4xl text-center font-body text-lg leading-relaxed text-gray-400 text-balance">
+      <p className="mx-auto max-w-4xl text-balance text-center font-body text-lg leading-relaxed text-gray-400">
         Compass organizers are highlighted first, followed by the engineering
         team supporting the event website.
       </p>
-      <div className="mt-10 grid grid-cols-2 gap-4 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5">
+      <div className="mx-auto mt-10 grid max-w-7xl grid-cols-2 gap-4 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5">
         {organizersData.map((organizer) => (
           <DevTeamCard
             key={`org-${organizer.id}`}
@@ -50,7 +50,7 @@ function OrganizersSection() {
       </div>
 
       {/* Dev team immediately after organizers */}
-      <div className="mt-12 grid grid-cols-2 gap-4 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5">
+      <div className="mx-auto mt-12 grid max-w-7xl grid-cols-2 gap-4 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5">
         {teamData
           .filter((m) => m.team === 'devteam')
           .sort((a, b) => a.name.localeCompare(b.name))
