@@ -18,7 +18,7 @@
       "type": "n8n-nodes-base.executeCommand",
       "typeVersion": 1,
       "position": [220, 0],
-      "notes": "Set working directory to your pridemi26 clone. Dataset is read from SANITY_DATASET in scripts/sanity-import/.env (default: production)."
+      "notes": "Set working directory to your midevfest26 clone. Dataset is read from SANITY_DATASET in scripts/sanity-import/.env (default: production)."
     },
     {
       "parameters": {

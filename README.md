@@ -1,10 +1,21 @@
 # Detroit Pride Innovation Summit 2026
 
-The website for the [Detroit Pride Innovation Summit 2026](https://pridemi26.vercel.app/). Built with Vite, React, and Tailwind CSS.
+The website for the [Detroit Pride Innovation Summit 2026](https://midevfest26.vercel.app/). Built with Vite, React, and Tailwind CSS.
 
 Organized by **Compass Detroit** in partnership with **GDG Detroit** and community partners (see the Partners section on the site for the full list).
 
 Hero animation is a custom WebGL animation created with Three.js and lil-gui. It is used to create the pride trail effect on the hero section. Author of initial effect attribution: [Sabo Sugi](https://x.com/sabosugi/). Effect enhanced and customized by **[Greg Miller](https://github.com/shrinkray)** for Compass Detroit.
+
+## Project Lineage
+
+This codebase is cloned and refactored forward across events, carrying tooling and fixes ahead each time:
+
+- **Compass Detroit website** — original base: Tailwind palette/fonts, accessibility docs, lint/format/commit tooling
+- **BHM-website** (Black History Month Innovation Summit) — first fork/rebrand; nav and page restructuring, Pathways dropdown a11y
+- **pridemi26** (Detroit Pride Innovation Summit, June 2026) — second fork/rebrand; four-theme system, SEO (robots/sitemap/OG), WCAG reflow fixes, Sanity CMS import pipeline
+- **midevfest26** (this repo, Michigan DevFest) — current fork; React 19 upgrade, new Sanity instance, Sanity extended to more content areas — carrying the above forward into the new site vision
+
+See `CHANGELOG.md` for the version-by-version detail behind each stage.
 
 ## Quick Start
 
@@ -26,7 +37,7 @@ This project includes VS Code extension recommendations. When you open the proje
 
 ```bash
 git clone <repo-url>
-cd pridemi26
+cd midevfest26
 npm install
 npm run dev
 ```
@@ -59,13 +70,13 @@ This application can be containerized using Docker for easy deployment and consi
 1. Build the Docker image:
 
 ```bash
-docker build -t pridemi26 .
+docker build -t midevfest26 .
 ```
 
 2. Run the container:
 
 ```bash
-docker run -p 3000:3000 pridemi26
+docker run -p 3000:3000 midevfest26
 ```
 
 3. Open your browser and navigate to `http://localhost:3000`
@@ -74,13 +85,13 @@ docker run -p 3000:3000 pridemi26
 
 | Command                                                   | Description                                     |
 | --------------------------------------------------------- | ----------------------------------------------- |
-| `docker build -t pridemi26 .`                             | Build the Docker image                          |
-| `docker run -p 3000:3000 pridemi26`                       | Run the container on port 3000                  |
-| `docker run -d -p 3000:3000 --name pridemi-app pridemi26` | Run container in detached mode with custom name |
-| `docker stop pridemi-app`                                 | Stop the running container                      |
-| `docker rm pridemi-app`                                   | Remove the container                            |
-| `docker images`                                           | List all Docker images                          |
-| `docker rmi pridemi26`                                    | Remove the Docker image                         |
+| `docker build -t midevfest26 .`                                | Build the Docker image                          |
+| `docker run -p 3000:3000 midevfest26`                          | Run the container on port 3000                  |
+| `docker run -d -p 3000:3000 --name midevfest26-app midevfest26` | Run container in detached mode with custom name |
+| `docker stop midevfest26-app`                                  | Stop the running container                      |
+| `docker rm midevfest26-app`                                    | Remove the container                            |
+| `docker images`                                                | List all Docker images                          |
+| `docker rmi midevfest26`                                       | Remove the Docker image                         |
 
 ### Environment Variables
 
@@ -135,7 +146,7 @@ Speaker and session data lives in **Sanity Studio** (`production` dataset). The 
 ### Edit in Studio (current workflow)
 
 ```
-Sanity Studio (local :3333 or pridemi26.sanity.studio)
+Sanity Studio (local :3333 or midevfest26.sanity.studio)
         ↓
 npm run fetch:event-data  →  speakers.generated.json
         ↓
@@ -145,7 +156,7 @@ npm run dev  (or Vercel deploy for production)
 | Studio | URL                                                         | Command                       |
 | ------ | ----------------------------------------------------------- | ----------------------------- |
 | Local  | `http://localhost:3333`                                     | `npm run studio:dev`          |
-| Cloud  | [pridemi26.sanity.studio](https://pridemi26.sanity.studio/) | `cd studio && npm run deploy` |
+| Cloud  | [midevfest26.sanity.studio](https://midevfest26.sanity.studio/) | `cd studio && npm run deploy` |
 
 Both studios edit the **same** cloud dataset. After publishing changes, run `npm run dev:cms` to see them on the local site.
 
@@ -223,8 +234,8 @@ Excluded from the sitemap: `/playground/*` (internal design previews), `/previou
 npm run build
 # confirm dist/robots.txt and dist/sitemap.xml exist
 
-curl https://pridemi26.vercel.app/robots.txt
-curl https://pridemi26.vercel.app/sitemap.xml
+curl https://midevfest26.vercel.app/robots.txt
+curl https://midevfest26.vercel.app/sitemap.xml
 ```
 
 Test link previews with the [Facebook Sharing Debugger](https://developers.facebook.com/tools/debug/) or [LinkedIn Post Inspector](https://www.linkedin.com/post-inspector/).
@@ -404,7 +415,7 @@ Dependency versions: `three`, `lil-gui` (see `package.json`).
 
 ### Issues
 
-This project uses GitHub Issues & GitHub Projects in the [Compass-Detroit/pridemi26](https://github.com/Compass-Detroit/pridemi26) repository for tracking development. Please create an issue if you encounter any problems or have suggestions for improvements.
+This project uses GitHub Issues & GitHub Projects in the [GDG-Detroit/midevfest26](https://github.com/GDG-Detroit/midevfest26) repository for tracking development. Please create an issue if you encounter any problems or have suggestions for improvements.
 
 ### Pull Requests
 

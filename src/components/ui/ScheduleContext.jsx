@@ -48,7 +48,7 @@ const buildSessionRange = (time, duration) => {
   return { start, end }
 }
 
-const SAVED_SESSIONS_KEY = 'pridemi26_saved_sessions'
+const SAVED_SESSIONS_KEY = 'midevfest26_saved_sessions'
 const LEGACY_SAVED_SESSIONS_KEY = 'iwd26_saved_sessions'
 
 export default function ScheduleProvider({ children, speakersData = [] }) {

@@ -16,4 +16,4 @@ export const projectId = trimEnv(process.env.SANITY_STUDIO_PROJECT_ID) ?? DEFAUL
  */
 export const dataset = trimEnv(process.env.SANITY_STUDIO_DATASET) ?? DEFAULT_DATASET
 
-export const studioTitle = dataset === 'production' ? 'pridemi26' : `pridemi26 (${dataset})`
+export const studioTitle = dataset === 'production' ? 'midevfest26' : `midevfest26 (${dataset})`

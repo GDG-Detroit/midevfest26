@@ -39,11 +39,11 @@ Service account needs:
 
 ### 3. Repo on n8n host
 
-Clone `pridemi26` where n8n can run shell commands, e.g. `/opt/pridemi26`:
+Clone `midevfest26` where n8n can run shell commands, e.g. `/opt/midevfest26`:
 
 ```bash
-git clone https://github.com/Compass-Detroit/pridemi26.git /opt/pridemi26
-cd /opt/pridemi26
+git clone https://github.com/GDG-Detroit/midevfest26.git /opt/midevfest26
+cd /opt/midevfest26
 npm ci
 cp scripts/sanity-import/.env.example scripts/sanity-import/.env
 # Edit .env with real IDs and token
@@ -93,7 +93,7 @@ Use **Edit Fields (Set)** only if you need to override paths or env file locatio
 | ----------------- | --------------------- |
 | Command           | `npm`                 |
 | Arguments         | `run import:speakers` |
-| Working directory | `/opt/pridemi26`      |
+| Working directory | `/opt/midevfest26`      |
 
 Or call Node directly:
 
@@ -143,7 +143,7 @@ Safe to run repeatedly:
 1. Create runner sheet from [`sheet-template-speakers.md`](./sheet-template-speakers.md)
 2. Add rows + headshots in Drive
 3. Run `npm run import:speakers` (or n8n workflow)
-4. Verify in Studio (`pridemi26`)
+4. Verify in Studio (`midevfest26`)
 5. Trigger Vercel deploy
 
 ---

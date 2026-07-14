@@ -1,6 +1,6 @@
 # Contributing to the Detroit Pride Innovation Summit Website
 
-Thank you for your interest in contributing to the Detroit Pride Innovation Summit (`pridemi26`)! This document provides guidelines and information for contributors.
+Thank you for your interest in contributing to the Detroit Pride Innovation Summit (`midevfest26`)! This document provides guidelines and information for contributors.
 
 ## Getting Started
 
@@ -16,8 +16,8 @@ Thank you for your interest in contributing to the Detroit Pride Innovation Summ
 2. **Clone your fork** locally:
 
    ```bash
-   git clone https://github.com/YOUR_USERNAME/pridemi26.git
-   cd pridemi26
+   git clone https://github.com/YOUR_USERNAME/midevfest26.git
+   cd midevfest26
    ```
 
 3. **Install dependencies**:
@@ -41,16 +41,16 @@ If **Push** or **Create Pull Request** in GitHub Desktop opens or targets a diff
 1. **Re-add the repo** so GitHub Desktop picks up the correct remote:
 
    - In GitHub Desktop: **File → Remove repository** (removes it from the list only; files stay on disk).
-   - **File → Add Local Repository** and choose this project folder (`pridemi26`).
-   - GitHub Desktop will use the existing Git remotes; pushes and "Create Pull Request" should now target **Compass-Detroit/pridemi26**.
+   - **File → Add Local Repository** and choose this project folder (`midevfest26`).
+   - GitHub Desktop will use the existing Git remotes; pushes and "Create Pull Request" should now target **GDG-Detroit/midevfest26**.
 
 2. **Confirm remotes in Terminal** (optional):
    ```bash
    git remote -v
    ```
-   You should see `origin` (and optionally `upstream`) pointing to `https://github.com/Compass-Detroit/pridemi26.git`. If not:
+   You should see `origin` (and optionally `upstream`) pointing to `https://github.com/GDG-Detroit/midevfest26.git`. If not:
    ```bash
-   git remote set-url origin https://github.com/Compass-Detroit/pridemi26.git
+   git remote set-url origin https://github.com/GDG-Detroit/midevfest26.git
    ```
    Then remove and re-add the repo in GitHub Desktop as in step 1.
 

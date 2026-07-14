@@ -13,6 +13,6 @@ export default defineCliConfig({
      */
     autoUpdates: true,
     appId: 'aj9y2tf4rkv6rois3swpx99g',
-    studioHost: 'pridemi26',
+    studioHost: 'midevfest26',
   },
 })

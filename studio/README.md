@@ -1,15 +1,15 @@
-# pridemi26 Sanity Studio
+# midevfest26 Sanity Studio
 
-TypeScript [Sanity Studio](https://www.sanity.io/docs/sanity-studio) for the [Detroit Pride Innovation Summit](https://pridemi26.vercel.app/) site. It lives in `/studio` beside the Vite/React app and is **not** bundled into the public website.
+TypeScript [Sanity Studio](https://www.sanity.io/docs/sanity-studio) for the [Detroit Pride Innovation Summit](https://midevfest26.vercel.app/) site. It lives in `/studio` beside the Vite/React app and is **not** bundled into the public website.
 
 Organizers and developers manage event content here. The public site reads speakers and sessions from Sanity at **build time** (`scripts/fetch-event-data.mjs`). Bulk imports via **n8n** are optional; you can also edit directly in Studio.
 
 |                   |                                                                                    |
 | ----------------- | ---------------------------------------------------------------------------------- |
-| **Project**       | `pridemi26`                                                                        |
+| **Project**       | `midevfest26`                                                                        |
 | **Project ID**    | `b18a6pbd`                                                                         |
 | **Local Studio**  | `http://localhost:3333` (`npm run studio:dev` from repo root)                      |
-| **Hosted Studio** | [pridemi26.sanity.studio](https://pridemi26.sanity.studio/)                        |
+| **Hosted Studio** | [midevfest26.sanity.studio](https://midevfest26.sanity.studio/)                        |
 | **Manage**        | [sanity.io/manage/project/b18a6pbd](https://www.sanity.io/manage/project/b18a6pbd) |
 
 ---
@@ -35,8 +35,8 @@ Open the URL shown in the terminal (usually `http://localhost:3333`).
 
 The Studio title shows the active dataset:
 
-- `pridemi26` — production (default)
-- `pridemi26 (<name>)` — if you override `SANITY_STUDIO_DATASET`
+- `midevfest26` — production (default)
+- `midevfest26 (<name>)` — if you override `SANITY_STUDIO_DATASET`
 
 ---
 
@@ -56,7 +56,7 @@ Use this workflow while the n8n import pipeline is offline:
 
 1. **Edit content** in either Studio:
    - Local: `npm run studio:dev` → `http://localhost:3333`
-   - Cloud: [pridemi26.sanity.studio](https://pridemi26.sanity.studio/)
+   - Cloud: [midevfest26.sanity.studio](https://midevfest26.sanity.studio/)
 2. **Publish** speakers and sessions in Studio (unpublished docs are excluded from the site).
 3. **Pull into the site** from the repo root:
    ```bash

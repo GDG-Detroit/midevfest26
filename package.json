@@ -1,11 +1,11 @@
 {
-  "name": "pridemi26",
+  "name": "midevfest26",
   "private": true,
   "version": "0.1.0",
   "type": "module",
   "repository": {
     "type": "git",
-    "url": "https://github.com/Compass-Detroit/pridemi26.git"
+    "url": "https://github.com/Compass-Detroit/midevfest26.git"
   },
   "scripts": {
     "dev": "vite",
@@ -79,5 +79,5 @@
   "overrides": {
     "@babel/core": "^7.29.0"
   },
-  "description": "Detroit Pride Innovation Summit 2026 website"
+  "description": "GDG Detroit DevFest 2026 website"
 }
