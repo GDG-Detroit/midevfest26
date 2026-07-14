@@ -29,3 +29,6 @@ scripts/sanity-import/.env
 
 # Reference materials (PDFs, brand guides, old site snapshots)
 .reference/
+
+# Local skill cache (mirrors installed Claude skills, not repo content)
+.claude/skills/
