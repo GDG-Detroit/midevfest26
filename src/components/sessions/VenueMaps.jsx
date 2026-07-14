@@ -13,19 +13,25 @@ import {
 import lcMapUrl from '@/assets/images/maps/lcMap.svg'
 
 // Each button maps to a highlight region group in lcMap.svg.
-// Text labels live in separate *-GROUP ids (RESTROOMS-GROUP, KITCHEN-GROUP, etc.).
+// Text labels live in separate *-GROUP ids (PIZZATREAT, HOTNREADY, etc.).
 const AREAS = [
   {
-    key: 'volunteers',
-    label: 'Volunteers',
-    regionId: 'VOLUNTEERS',
-    Icon: FaHandHoldingHeart,
+    key: 'checkin',
+    label: 'Check-In',
+    regionId: 'CHECKINLABEL',
+    Icon: FaClipboardCheck,
   },
   {
-    key: 'speakers',
-    label: 'Speakers',
-    regionId: 'SPEAKERS',
-    Icon: FaMicrophone,
+    key: 'yoga',
+    label: 'Yoga',
+    regionId: 'YOGA',
+    Icon: FaSpa,
+  },
+  {
+    key: 'food',
+    label: 'Food',
+    regionId: 'FOOD',
+    Icon: FaUtensils,
   },
   {
     key: 'pizzatreat',
@@ -58,22 +64,10 @@ const AREAS = [
     Icon: FaFilm,
   },
   {
-    key: 'yoga',
-    label: 'Yoga',
-    regionId: 'YOGA',
-    Icon: FaSpa,
-  },
-  {
-    key: 'food',
-    label: 'Food',
-    regionId: 'FOOD',
-    Icon: FaUtensils,
-  },
-  {
-    key: 'checkin',
-    label: 'Check-In',
-    regionId: 'CHECKINLABEL',
-    Icon: FaClipboardCheck,
+    key: 'careers',
+    label: 'Careers',
+    regionId: 'CAREERS',
+    Icon: FaBriefcase,
   },
   {
     key: 'booths',
@@ -81,11 +75,18 @@ const AREAS = [
     regionId: 'BOOTHS',
     Icon: FaStore,
   },
+
   {
-    key: 'careers',
-    label: 'Careers',
-    regionId: 'CAREERS',
-    Icon: FaBriefcase,
+    key: 'volunteers',
+    label: 'Volunteers',
+    regionId: 'VOLUNTEERS',
+    Icon: FaHandHoldingHeart,
+  },
+  {
+    key: 'speakers',
+    label: 'Speakers',
+    regionId: 'SPEAKERS',
+    Icon: FaMicrophone,
   },
 ]
 
@@ -116,6 +117,7 @@ function VenueMaps() {
   // Load the SVG as inline markup so its named regions become targetable DOM.
   useEffect(() => {
     let cancelled = false
+    console.log('VenueMaps: starting fetch of SVG from', lcMapUrl)
     fetch(lcMapUrl)
       .then(async (res) => {
         if (!res.ok) {
@@ -123,6 +125,9 @@ function VenueMaps() {
         }
         const contentType = res.headers.get('content-type') ?? ''
         const text = await res.text()
+        console.log(
+          `VenueMaps: fetch succeeded. Content-type="${contentType}", size=${text.length} bytes`
+        )
         if (!isValidSvgResponse(contentType, text)) {
           throw new Error('SVG fetch returned unexpected content')
         }
@@ -131,7 +136,8 @@ function VenueMaps() {
       .then((text) => {
         if (!cancelled) setSvgMarkup(text)
       })
-      .catch(() => {
+      .catch((err) => {
+        console.error('VenueMaps: error loading inline SVG', err)
         if (!cancelled) setSvgMarkup(null)
       })
     return () => {
@@ -141,10 +147,33 @@ function VenueMaps() {
 
   const getRegionShapes = useCallback((regionId) => {
     const holder = holderRef.current
-    if (!holder) return []
-    const group = holder.querySelector(`#${CSS.escape(regionId)}`)
-    if (!group) return []
-    return Array.from(group.querySelectorAll('rect, path'))
+    if (!holder) {
+      console.warn('getRegionShapes: holderRef.current is null')
+      return []
+    }
+    const element = holder.querySelector(`#${CSS.escape(regionId)}`)
+    if (!element) {
+      console.warn(
+        `getRegionShapes: Element with id="${regionId}" not found in holder`
+      )
+      return []
+    }
+    if (element.matches('rect, path')) {
+      console.log(`getRegionShapes: Found leaf shape for ${regionId}`, element)
+      return [element]
+    }
+    const firstShape = element.querySelector('rect, path')
+    if (firstShape) {
+      console.log(
+        `getRegionShapes: Found nested shape for ${regionId}`,
+        firstShape
+      )
+      return [firstShape]
+    }
+    console.warn(
+      `getRegionShapes: Group with id="${regionId}" contains no rect or path elements`
+    )
+    return []
   }, [])
 
   // Prime highlight shapes once the inline SVG is in the DOM.
@@ -169,14 +198,8 @@ function VenueMaps() {
       cRect.left +
       container.scrollLeft -
       (container.clientWidth - rRect.width) / 2
-    const top =
-      rRect.top -
-      cRect.top +
-      container.scrollTop -
-      (container.clientHeight - rRect.height) / 2
     container.scrollTo({
       left,
-      top,
       behavior: getScrollBehavior(),
     })
   }, [])
@@ -203,12 +226,11 @@ function VenueMaps() {
       const scrollBehavior = getScrollBehavior()
       if (e.key === 'Home') {
         e.preventDefault()
-        el.scrollTo({ left: 0, top: 0, behavior: scrollBehavior })
+        el.scrollTo({ left: 0, behavior: scrollBehavior })
       } else if (e.key === 'End') {
         e.preventDefault()
         el.scrollTo({
           left: el.scrollWidth - el.clientWidth,
-          top: el.scrollHeight - el.clientHeight,
           behavior: scrollBehavior,
         })
       }
@@ -277,10 +299,10 @@ function VenueMaps() {
 
         {/* Map */}
         <div className="min-w-0 flex-1">
-          <div className="mb-1 rounded-xl border-4 border-iwd-gold-500">
+          <div className="mb-1 rounded-xl border-4 border-iwd-gold-500 bg-white">
             <div
               ref={scrollRef}
-              className="scrollbar-visible max-h-[60vh] w-full overflow-auto scroll-smooth rounded-md focus:outline-none focus-visible:ring-2 focus-visible:ring-focus-ring focus-visible:ring-offset-2 focus-visible:ring-offset-iwd-gold-100 motion-reduce:scroll-auto lg:max-h-[640px]"
+              className="scrollbar-visible w-full overflow-x-auto overflow-y-hidden scroll-smooth rounded-md focus:outline-none focus-visible:ring-2 focus-visible:ring-focus-ring focus-visible:ring-offset-2 focus-visible:ring-offset-iwd-gold-100 motion-reduce:scroll-auto"
               tabIndex={0}
               role="region"
               aria-label="Scrollable venue map"
@@ -295,7 +317,7 @@ function VenueMaps() {
                 <img
                   src={lcMapUrl}
                   alt="Venue floor plan"
-                  className="block w-full"
+                  className="block h-[573px] w-[2092px] max-w-none"
                   loading="lazy"
                 />
               )}
