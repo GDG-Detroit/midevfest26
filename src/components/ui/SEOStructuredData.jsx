@@ -19,10 +19,10 @@ const SEOStructuredData = memo(({ speakersData = [] }) => {
     'eventAttendanceMode': 'https://schema.org/OfflineEventAttendanceMode',
     'location': {
       '@type': 'Place',
-      'name': 'IBM HQ Detroit',
+      'name': 'Little Caesars Global Resource Center',
       'address': {
         '@type': 'PostalAddress',
-        'streetAddress': '39555 Orchard Hill Pl',
+        'streetAddress': '2125 Woodward Ave',
         'addressLocality': 'Detroit',
         'addressRegion': 'MI',
         'postalCode': '48201',

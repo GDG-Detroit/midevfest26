@@ -117,7 +117,6 @@ function VenueMaps() {
   // Load the SVG as inline markup so its named regions become targetable DOM.
   useEffect(() => {
     let cancelled = false
-    console.log('VenueMaps: starting fetch of SVG from', lcMapUrl)
     fetch(lcMapUrl)
       .then(async (res) => {
         if (!res.ok) {
@@ -125,9 +124,6 @@ function VenueMaps() {
         }
         const contentType = res.headers.get('content-type') ?? ''
         const text = await res.text()
-        console.log(
-          `VenueMaps: fetch succeeded. Content-type="${contentType}", size=${text.length} bytes`
-        )
         if (!isValidSvgResponse(contentType, text)) {
           throw new Error('SVG fetch returned unexpected content')
         }
@@ -159,15 +155,10 @@ function VenueMaps() {
       return []
     }
     if (element.matches('rect, path')) {
-      console.log(`getRegionShapes: Found leaf shape for ${regionId}`, element)
       return [element]
     }
     const firstShape = element.querySelector('rect, path')
     if (firstShape) {
-      console.log(
-        `getRegionShapes: Found nested shape for ${regionId}`,
-        firstShape
-      )
       return [firstShape]
     }
     console.warn(

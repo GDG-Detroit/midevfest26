@@ -50,6 +50,9 @@ const VENUE_IMAGES = [
 
 const AUTOPLAY_INTERVAL = 5000
 
+const VENUE_GOOGLE_MAPS_URL =
+  'https://www.google.com/maps/place/Little+Caesars+Corporate+Office/data=!4m2!3m1!1s0x0:0x14096f8dc7a099f3?sa=X&ved=1t:2428&ictx=111'
+
 function LocationSection() {
   const [activeImg, setActiveImg] = useState(0)
   const [isPlaying, setIsPlaying] = useState(true)
@@ -166,7 +169,7 @@ function LocationSection() {
             </p>
             <div className="flex flex-wrap gap-3">
               <a
-                href="https://www.google.com/maps/place/Little+Caesars+Corporate+Office/data=!4m2!3m1!1s0x0:0x14096f8dc7a099f3?sa=X&ved=1t:2428&ictx=111"
+                href={VENUE_GOOGLE_MAPS_URL}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center gap-2 rounded-lg border border-iwd-gold-500/30 bg-iwd-gold-500/10 px-4 py-2 text-sm font-semibold text-iwd-gold-300 transition-colors hover:bg-iwd-gold-500/20"
@@ -343,7 +346,7 @@ function LocationSection() {
             </div>
             <div className="mt-4 flex flex-wrap gap-3">
               <a
-                href="https://www.google.com/maps/place/Little+Caesars+Corporate+Office/data=!4m2!3m1!1s0x0:0x14096f8dc7a099f3?sa=X&ved=1t:2428&ictx=111"
+                href={VENUE_GOOGLE_MAPS_URL}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center gap-2 rounded-lg border border-iwd-gold-500/30 bg-iwd-gold-500/10 px-4 py-2 text-sm font-semibold text-iwd-gold-300 transition-colors hover:bg-iwd-gold-500/20"

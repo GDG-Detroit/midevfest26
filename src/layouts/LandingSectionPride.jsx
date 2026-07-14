@@ -81,9 +81,9 @@ function PrideHeroForeground() {
 
         {/* Description */}
         <p className="mx-auto mt-6 max-w-xl font-body text-base leading-relaxed text-white">
-          A day of learning, building, and connecting innovators and
-          Detroit&apos;s tech ecosystem — hosted at Little Casears Resource
-          Center with workshops, talks, and community.
+          A day of learning, building, and connecting for innovators across
+          Detroit&apos;s tech ecosystem — hosted at Little Caesars Global
+          Resource Center with workshops, talks, and community.
         </p>
 
         {/* Footer links */}
