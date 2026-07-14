@@ -1,28 +1,91 @@
 import { useCallback, useEffect, useRef, useState } from 'react'
-import { FaChalkboardUser, FaClipboardCheck, FaUtensils } from 'react-icons/fa6'
-import ibmHqMapUrl from '@/assets/images/maps/map-ibm-hq.svg'
+import {
+  FaBriefcase,
+  FaClipboardCheck,
+  FaFilm,
+  FaHandHoldingHeart,
+  FaMicrophone,
+  FaPizzaSlice,
+  FaSpa,
+  FaStore,
+  FaUtensils,
+} from 'react-icons/fa6'
+import lcMapUrl from '@/assets/images/maps/lcMap.svg'
 
-// Each button maps to a highlight region group in map-ibm-hq.svg.
+// Each button maps to a highlight region group in lcMap.svg.
 // Text labels live in separate *-GROUP ids (RESTROOMS-GROUP, KITCHEN-GROUP, etc.).
 const AREAS = [
   {
-    key: 'classroom',
-    label: 'Classroom',
-    sublabel: 'Level Up · Rooms 2415 & 2416',
-    regionId: 'LEVEL-UP-CLASSROM',
-    Icon: FaChalkboardUser,
+    key: 'volunteers',
+    label: 'Volunteers',
+    regionId: 'VOLUNTEERS',
+    Icon: FaHandHoldingHeart,
   },
   {
-    key: 'kitchen',
-    label: 'Kitchen',
-    regionId: 'KITCHEN',
+    key: 'speakers',
+    label: 'Speakers',
+    regionId: 'SPEAKERS',
+    Icon: FaMicrophone,
+  },
+  {
+    key: 'pizzatreat',
+    label: 'Pizza Treat',
+    regionId: 'PIZZATREAT',
+    Icon: FaPizzaSlice,
+  },
+  {
+    key: 'pizzapizza',
+    label: 'Pizza Pizza',
+    regionId: 'PIZZAPIZZA',
+    Icon: FaPizzaSlice,
+  },
+  {
+    key: 'hotnready',
+    label: 'Hot-N-Ready',
+    regionId: 'HOTNREADY',
+    Icon: FaPizzaSlice,
+  },
+  {
+    key: 'reservenready',
+    label: 'Reserve-N-Ready',
+    regionId: 'RESERVENREADY',
+    Icon: FaPizzaSlice,
+  },
+  {
+    key: 'familytheater',
+    label: 'Family Theater',
+    regionId: 'FAMILYTHEATER',
+    Icon: FaFilm,
+  },
+  {
+    key: 'yoga',
+    label: 'Yoga',
+    regionId: 'YOGA',
+    Icon: FaSpa,
+  },
+  {
+    key: 'food',
+    label: 'Food',
+    regionId: 'FOOD',
     Icon: FaUtensils,
   },
   {
     key: 'checkin',
     label: 'Check-In',
-    regionId: 'CHECKIN',
+    regionId: 'CHECKINLABEL',
     Icon: FaClipboardCheck,
+  },
+  {
+    key: 'booths',
+    label: 'Booths',
+    regionId: 'BOOTHS',
+    Icon: FaStore,
+  },
+  {
+    key: 'careers',
+    label: 'Careers',
+    regionId: 'CAREERS',
+    Icon: FaBriefcase,
   },
 ]
 
@@ -53,7 +116,7 @@ function VenueMaps() {
   // Load the SVG as inline markup so its named regions become targetable DOM.
   useEffect(() => {
     let cancelled = false
-    fetch(ibmHqMapUrl)
+    fetch(lcMapUrl)
       .then(async (res) => {
         if (!res.ok) {
           throw new Error(`SVG fetch failed with status ${res.status}`)
@@ -230,7 +293,7 @@ function VenueMaps() {
                 />
               ) : (
                 <img
-                  src={ibmHqMapUrl}
+                  src={lcMapUrl}
                   alt="Venue floor plan"
                   className="block w-full"
                   loading="lazy"
