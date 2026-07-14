@@ -19,6 +19,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Changed
 
+- **React 19 upgrade**:
+  - `react` / `react-dom` 18.2 → 19.2
+  - `vite` 4.4 → 8.1
+  - swapped `@vitejs/plugin-react-swc` for `@vitejs/plugin-react`
+  - `esbuild` 0.19 → 0.28
+  - added `@babel/core` override (`^7.29.0`)
+  - `vite.config.js`: enabled `legacy.inconsistentCjsInterop` (Rolldown's stricter CJS interop otherwise mis-imports `react-fast-marquee`)
+  - `.eslintrc.cjs`: bumped React version setting to 19.2
 - **Rebrand to Detroit Pride Innovation Summit**: repurposed from the Black History Month Innovation Summit to the Detroit Pride Innovation Summit; renamed the project/repository to `pridemi26` and updated README, CONTRIBUTING, ACCESSIBILITY, COLOR, and SECURITY docs accordingly
 - **Theme system**: shipped four switchable color themes (Purple default, Blue, Green, Gold) via `iwd` Tailwind tokens and `data-theme`; updated `COLOR.MD` to match
 - Open Graph and Twitter/X card meta tags in `index.html` — aligned to `pridemi26.vercel.app` (replaced legacy `iwdsummit.com` URLs)

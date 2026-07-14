@@ -1,5 +1,5 @@
 import { defineConfig } from 'vite'
-import react from '@vitejs/plugin-react-swc'
+import react from '@vitejs/plugin-react'
 import path from 'path'
 import svgr from '@svgr/rollup'
 
@@ -11,6 +11,11 @@ export default defineConfig({
       '@assets': path.resolve(__dirname, './src/assets'),
       '@components': path.resolve(__dirname, './src/components'),
     },
+  },
+  // react-fast-marquee is legacy CJS (`exports.default =`, no `__esModule` flag);
+  // Rolldown's stricter interop otherwise imports it as the whole exports object.
+  legacy: {
+    inconsistentCjsInterop: true,
   },
   plugins: [
     svgr({

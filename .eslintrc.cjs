@@ -18,7 +18,7 @@ module.exports = {
   ],
   parserOptions: { ecmaVersion: 'latest', sourceType: 'module' },
   settings: {
-    react: { version: '18.2' },
+    react: { version: '19.2' },
     tailwindcss: {
       config: 'tailwind.config.js',
       callees: ['classnames', 'clsx', 'ctl', 'cn'],
