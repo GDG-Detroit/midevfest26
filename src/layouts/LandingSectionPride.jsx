@@ -11,7 +11,7 @@ const HERO_DESKTOP_MEDIA = '(min-width: 1500px)'
 
 const HERO_LINKS = [
   { href: '#partners', label: 'Call for Sponsors' },
-  { href: '#about', label: 'About the Summit' },
+  { href: '#about', label: 'About the DevFest' },
   { href: '#schedule', label: 'Schedule' },
 ]
 
@@ -25,8 +25,8 @@ function PrideHeroForeground() {
       >
         {/* Top metadata */}
         <p className="font-body text-[10px] font-semibold uppercase tracking-[0.35em] text-white/55 sm:text-xs">
-          Detroit &middot; IBM HQ &middot; 2026 &middot; Powered by Compass
-          Detroit &amp; IBM
+          Detroit &middot; LCRC &middot; 2026 <br /> Powered by Compass Detroit
+          &amp; Little Caesars
         </p>
 
         {/* Main title */}
@@ -74,16 +74,16 @@ function PrideHeroForeground() {
         {/* Venue callout */}
         <p className="mt-6 font-body text-[11px] uppercase tracking-[0.2em] text-white/90 sm:text-xs">
           Venue:{' '}
-          <span className="inline-block rounded border border-iwd-gold-400 bg-white/[0.04] px-2 py-0.5 font-semibold tracking-[0.15em] text-iwd-gold-300">
-            IBM HQ
+          <span className="inline-block rounded border border-iwd-gold-400 bg-white/[0.04] px-2 py-0.5 font-semibold uppercase tracking-[0.15em] text-iwd-gold-300">
+            Little Caesars Global Resource Center
           </span>
         </p>
 
         {/* Description */}
         <p className="mx-auto mt-6 max-w-xl font-body text-base leading-relaxed text-white">
-          A day of learning, building, and connecting for LGBTQ+ innovators and
-          allies in Detroit&apos;s tech ecosystem — hosted at IBM HQ with
-          workshops, talks, and community.
+          A day of learning, building, and connecting innovators and
+          Detroit&apos;s tech ecosystem — hosted at Little Casears Resource
+          Center with workshops, talks, and community.
         </p>
 
         {/* Footer links */}
