@@ -110,7 +110,7 @@ export const generateOutlookCalendarLink = (session) => {
     const params = new URLSearchParams({
       path: '/calendar/action/compose',
       rru: 'addevent',
-      subject: event.title || 'Pride Innovation Summit Session',
+      subject: event.title || 'Michigan DevFest Session',
       body: event.description || '',
       startdt: startDate.toISOString(),
       enddt: endDate.toISOString(),
@@ -142,9 +142,7 @@ const buildICSContent = (sessions) => {
         'BEGIN:VEVENT',
         `UID:${escapeICS(uid)}`,
         `DTSTAMP:${now}`,
-        `SUMMARY:${escapeICS(
-          session.title || 'Pride Innovation Summit Session'
-        )}`,
+        `SUMMARY:${escapeICS(session.title || 'Michigan DevFest Session')}`,
         `DESCRIPTION:${escapeICS(session.description || '')}`,
         `DTSTART:${start}`,
         `DTEND:${end}`,
@@ -159,7 +157,7 @@ const buildICSContent = (sessions) => {
     'VERSION:2.0',
     'CALSCALE:GREGORIAN',
     'METHOD:PUBLISH',
-    'PRODID:-//Compass Detroit//Pride Innovation Summit 2026//EN',
+    'PRODID:-//Compass Detroit//Michigan DevFest 2026//EN',
     ...events,
     'END:VCALENDAR',
   ].join('\r\n')
@@ -185,8 +183,8 @@ export const generateICSFile = (sessions, options = {}) => {
   const extension = options.extension === 'ical' ? 'ical' : 'ics'
   const defaultFilename =
     validCount > 1
-      ? `pride-innovation-summit-2026-full-schedule.${extension}`
-      : `pride-innovation-summit-2026-session.${extension}`
+      ? `michigan-devfest-2026-full-schedule.${extension}`
+      : `michigan-devfest-2026-session.${extension}`
 
   const filename = options.filename || defaultFilename
   const content = buildICSContent(events)

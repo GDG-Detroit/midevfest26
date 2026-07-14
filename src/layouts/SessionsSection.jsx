@@ -144,9 +144,7 @@ const trackDescriptions = {
         id="map-heading"
         className="mx-auto mb-4 text-center text-xl font-normal text-white sm:text-2xl "
       >
-        <span className="font-bold">
-          Detroit Pride Innovation Summit Venue Guide
-        </span>
+        <span className="font-bold">Michigan DevFest Venue Guide</span>
       </h3>
       <p className="mb-6 max-w-4xl text-pretty text-center text-base text-gray-400">
         Use this guide to navigate the venue and find session locations.

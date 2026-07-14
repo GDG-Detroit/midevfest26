@@ -1,7 +1,7 @@
 {
-  "name": "Detroit Pride Innovation Summit",
-  "short_name": "Pride Summit",
-  "description": "Detroit Pride Innovation Summit — celebrating innovation, empowerment, and community.",
+  "name": "Michigan DevFest",
+  "short_name": "DevFest",
+  "description": "Michigan DevFest — celebrating innovation, empowerment, and community.",
   "start_url": "/",
   "scope": "/",
   "display": "standalone",

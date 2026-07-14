@@ -32,16 +32,16 @@ function PrideHeroForeground() {
         {/* Main title */}
         <h1
           id="pride-hero-title"
-          className="font-heading mt-6 text-3xl font-black uppercase leading-[1.05] tracking-tight text-white sm:mt-8 sm:text-4xl md:text-5xl lg:text-[3.25rem]"
+          className="mt-6 font-heading text-3xl font-black uppercase leading-[1.05] tracking-tight text-white sm:mt-8 sm:text-4xl md:text-5xl lg:text-[3.25rem]"
         >
-          Detroit Pride{' '}
-          <span className="mt-2 block text-xl normal-case text-iwd-gold-400 font-heading sm:text-2xl md:text-3xl lg:text-4xl">
-            Innovation Summit
+          Michigan{' '}
+          <span className="mt-2 block font-heading text-xl normal-case text-iwd-gold-400 sm:text-2xl md:text-3xl lg:text-4xl">
+            DevFest
           </span>
         </h1>
 
         {/* Subheading */}
-        <p className="font-body mt-5 text-xs font-semibold uppercase tracking-[0.3em] text-iwd-gold-300/90 sm:text-sm">
+        <p className="mt-5 font-body text-xs font-semibold uppercase tracking-[0.3em] text-iwd-gold-300/90 sm:text-sm">
           Registration opens soon
         </p>
 
@@ -52,7 +52,7 @@ function PrideHeroForeground() {
             label="Register Now"
             target="_blank"
             rel="noopener noreferrer"
-            ariaLabel="Register for the Detroit Pride Innovation Summit (link coming soon)"
+            ariaLabel="Register for Michigan DevFest (link coming soon)"
             className="w-full min-w-48 sm:w-auto"
             icon={<FaArrowRight />}
             iconPosition="right"
@@ -64,7 +64,7 @@ function PrideHeroForeground() {
             variant="secondary"
             target="_blank"
             rel="noopener noreferrer"
-            ariaLabel="Become a sponsor for the Detroit Pride Innovation Summit"
+            ariaLabel="Become a sponsor for Michigan DevFest"
             className="w-full min-w-48 border-iwd-gold-400/40 text-white sm:w-auto dark:border-iwd-gold-400/40 dark:text-white dark:hover:text-white"
             icon={<FaArrowRight />}
             iconPosition="right"
@@ -72,7 +72,7 @@ function PrideHeroForeground() {
         </div>
 
         {/* Venue callout */}
-        <p className="font-body mt-6 text-[11px] uppercase tracking-[0.2em] text-white/90 sm:text-xs">
+        <p className="mt-6 font-body text-[11px] uppercase tracking-[0.2em] text-white/90 sm:text-xs">
           Venue:{' '}
           <span className="inline-block rounded border border-iwd-gold-400 bg-white/[0.04] px-2 py-0.5 font-semibold tracking-[0.15em] text-iwd-gold-300">
             IBM HQ
@@ -80,7 +80,7 @@ function PrideHeroForeground() {
         </p>
 
         {/* Description */}
-        <p className="font-body mx-auto mt-6 max-w-xl text-base leading-relaxed text-white">
+        <p className="mx-auto mt-6 max-w-xl font-body text-base leading-relaxed text-white">
           A day of learning, building, and connecting for LGBTQ+ innovators and
           allies in Detroit&apos;s tech ecosystem — hosted at IBM HQ with
           workshops, talks, and community.

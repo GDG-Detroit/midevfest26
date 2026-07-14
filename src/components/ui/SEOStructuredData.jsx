@@ -9,9 +9,9 @@ const SEOStructuredData = memo(({ speakersData = [] }) => {
   const eventData = {
     '@context': 'https://schema.org',
     '@type': 'Event',
-    'name': 'Detroit Pride Innovation Summit 2026',
+    'name': 'Michigan DevFest 2026',
     'description':
-      'Celebrating innovation, empowerment, and community at the Detroit Pride Innovation Summit 2026 in Detroit.',
+      'Celebrating innovation, empowerment, and community at Michigan DevFest 2026 in Detroit.',
     'image': 'https://midevfest26.vercel.app/social-card.jpg',
     'startDate': '2026-06-20T08:00:00-04:00',
     'endDate': '2026-06-20T17:00:00-04:00',

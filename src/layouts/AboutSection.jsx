@@ -2,7 +2,7 @@ function AboutSection() {
   return (
     <section
       id="about"
-      className="relative overflow-hidden bg-iwd-surface-raised dark:bg-iwd-black-950 px-6 py-24 sm:px-10 sm:py-32 md:px-14 lg:px-16"
+      className="bg-iwd-surface-raised relative overflow-hidden px-6 py-24 sm:px-10 sm:py-32 md:px-14 lg:px-16 dark:bg-iwd-black-950"
       aria-labelledby="about-heading"
     >
       {/* Subtle gradient accent */}
@@ -38,18 +38,18 @@ function AboutSection() {
           </span>
         </h2>
 
-        <p className="font-body text-left text-lg leading-relaxed text-gray-400">
-          The Detroit Pride Innovation Summit brings together technologists,
-          creators, leaders, and allies for a day of learning, building, and
-          empowering women across Detroit&apos;s tech ecosystem.
+        <p className="text-left font-body text-lg leading-relaxed text-gray-400">
+          Michigan DevFest brings together technologists, creators, leaders, and
+          allies for a day of learning, building, and empowering women across
+          Detroit&apos;s tech ecosystem.
         </p>
-        <p className="mt-6 font-body text-left text-lg leading-relaxed text-gray-400">
+        <p className="mt-6 text-left font-body text-lg leading-relaxed text-gray-400">
           Hosted by Compass Detroit in partnership with GDG Detroit and Women
           Techmakers, this summit features keynotes, hands-on workshops, career
           panels, and community-driven sessions designed to inspire the next
           generation of innovators.
         </p>
-        <p className="mt-6 font-body text-left text-lg leading-relaxed text-gray-400 text-pretty">
+        <p className="mt-6 text-pretty text-left font-body text-lg leading-relaxed text-gray-400">
           Whether you&apos;re a seasoned engineer, a student exploring your
           first hackathon, a founder building something bold, or an ally
           championing representation —{' '}
