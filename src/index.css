@@ -314,8 +314,10 @@
 }
 .venue-map-region.is-active {
   fill: rgb(var(--iwd-accent-500) / 0.3) !important;
-  stroke: rgb(var(--iwd-accent-400) / 0.4) !important; /* Very subtle, thin outline instead of thick stroke */
-  stroke-width: 2px !important;
+  stroke: rgb(var(--iwd-accent-400)) !important;
+  stroke-width: 10px !important;
+  paint-order: stroke !important;
+  filter: drop-shadow(0 0 10px rgb(var(--iwd-accent-400) / 0.6)) !important;
 }
 @media (prefers-reduced-motion: reduce) {
   .venue-map-region {

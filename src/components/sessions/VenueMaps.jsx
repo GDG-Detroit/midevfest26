@@ -176,18 +176,6 @@ function VenueMaps() {
     return []
   }, [])
 
-  // Prime highlight shapes once the inline SVG is in the DOM.
-  useEffect(() => {
-    if (!svgMarkup) return
-    AREAS.forEach(({ regionId }) => {
-      getRegionShapes(regionId).forEach((shape) => {
-        shape.classList.add('venue-map-region')
-        // Authored shapes carry inline fill:none; clear so CSS drives the fill.
-        shape.style.fill = ''
-      })
-    })
-  }, [svgMarkup, getRegionShapes])
-
   const scrollRegionIntoView = useCallback((shape) => {
     const container = scrollRef.current
     if (!container || !shape) return
@@ -211,6 +199,10 @@ function VenueMaps() {
     AREAS.forEach(({ key, regionId }) => {
       const isActive = key === active
       getRegionShapes(regionId).forEach((shape) => {
+        // Ensure the base class and style cleanup are always applied
+        shape.classList.add('venue-map-region')
+        shape.style.fill = ''
+
         shape.classList.toggle('is-active', isActive)
         if (isActive && !activeShape) activeShape = shape
       })
@@ -238,6 +230,22 @@ function VenueMaps() {
     el.addEventListener('keydown', handleKeyDown)
     return () => el.removeEventListener('keydown', handleKeyDown)
   }, [svgMarkup])
+
+  // Handle clicking off of the buttons to deactivate
+  useEffect(() => {
+    const handleClickOutside = (e) => {
+      if (!active) return
+      // If the click is not on one of our map buttons, clear the active selection
+      const clickedMapButton = e.target
+        .closest('button')
+        ?.classList.contains('group/area')
+      if (!clickedMapButton) {
+        setActive(null)
+      }
+    }
+    document.addEventListener('click', handleClickOutside)
+    return () => document.removeEventListener('click', handleClickOutside)
+  }, [active])
 
   const toggleArea = (key) => setActive((cur) => (cur === key ? null : key))
 
