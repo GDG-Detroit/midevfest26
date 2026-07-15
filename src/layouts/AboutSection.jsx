@@ -1,3 +1,15 @@
+import RevolvingWord from '@/components/ui/RevolvingWord'
+
+const BUILD_WORDS = ['Apps', 'Tools', 'Products', 'Startups', 'Experiences']
+
+/** "apps, tools, ..., and experiences" — keeps the sr-only fallback in sync with BUILD_WORDS. */
+function formatWordListForScreenReaders(words) {
+  const lower = words.map((word) => word.toLowerCase())
+  if (lower.length <= 1) return lower.join('')
+  if (lower.length === 2) return `${lower[0]} and ${lower[1]}`
+  return `${lower.slice(0, -1).join(', ')}, and ${lower[lower.length - 1]}`
+}
+
 function AboutSection() {
   return (
     <section
@@ -22,7 +34,7 @@ function AboutSection() {
         <div className="mb-5 flex items-center justify-center gap-4">
           <div className="h-px w-10 bg-gradient-to-r from-transparent to-iwd-gold-400/40 sm:w-14" />
           <span className="font-body text-[10px] font-semibold uppercase tracking-[0.4em] text-iwd-gold-400 sm:text-xs">
-            About the Summit
+            About the DevFest
           </span>
           <div className="h-px w-10 bg-gradient-to-l from-transparent to-iwd-gold-400/40 sm:w-14" />
         </div>
@@ -31,28 +43,33 @@ function AboutSection() {
           id="about-heading"
           className="mb-12 font-heading text-3xl font-black leading-tight text-white sm:text-4xl lg:text-5xl"
         >
-          Where Innovation
+          Where Detroit
           <br />
           <span className="bg-gradient-to-r from-iwd-gold-200 via-iwd-gold-400 to-iwd-gold-200 bg-clip-text text-transparent">
-            Meets Empowerment
+            Builds <RevolvingWord words={BUILD_WORDS} /> with AI
+          </span>
+          <span className="sr-only">
+            {' '}
+            ({formatWordListForScreenReaders(BUILD_WORDS)})
           </span>
         </h2>
 
         <p className="text-left font-body text-lg leading-relaxed text-gray-400">
-          Michigan DevFest brings together technologists, creators, leaders, and
-          allies for a day of learning, building, and empowering women across
-          Detroit&apos;s tech ecosystem.
+          Michigan DevFest brings together developers, builders, and tech
+          enthusiasts for a day of hands-on learning with the latest from Google
+          — Gemini, Android, Cloud, and beyond — across Detroit&apos;s tech
+          ecosystem.
         </p>
         <p className="mt-6 text-left font-body text-lg leading-relaxed text-gray-400">
-          Hosted by Compass Detroit in partnership with GDG Detroit and Women
-          Techmakers, this summit features keynotes, hands-on workshops, career
-          panels, and community-driven sessions designed to inspire the next
-          generation of innovators.
+          Hosted by GDG Detroit in partnership with Compass Detroit and Women
+          Techmakers, this DevFest features keynotes, hands-on workshops,
+          codelabs, and community-driven sessions designed to help you build
+          with the newest tools before anyone else does.
         </p>
         <p className="mt-6 text-pretty text-left font-body text-lg leading-relaxed text-gray-400">
-          Whether you&apos;re a seasoned engineer, a student exploring your
-          first hackathon, a founder building something bold, or an ally
-          championing representation —{' '}
+          Whether you&apos;re a seasoned engineer, a student writing your first
+          line of code, a founder shipping something bold, or a hobbyist chasing
+          curiosity —{' '}
           <span className="font-bold text-iwd-gold-300">you belong here.</span>
         </p>
       </div>

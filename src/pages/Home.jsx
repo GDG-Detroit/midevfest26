@@ -3,7 +3,6 @@ import LandingSectionHero from '@/layouts/LandingSectionHero'
 import LocationSection from '@/layouts/LocationSection'
 import AboutSection from '@/layouts/AboutSection'
 import AttendeeSection from '@/layouts/AttendeeSection'
-import BreakPatternSection from '@/layouts/BreakPatternSection'
 import SEOStructuredData from '@/components/ui/SEOStructuredData'
 import SessionsSection from '@/layouts/SessionsSection'
 import SpeakersSection from '@/layouts/SpeakersSection'
@@ -34,13 +33,13 @@ function Home() {
           tracks={['Map', SCHEDULE_TRACK, SESSION_TRACK]}
         />
 
-        <SpeakersSection speakersData={Speakers2026} defaultExpanded={true} />
+        <SpeakersSection speakersData={Speakers2026} defaultExpanded={false} />
 
         <AboutSection />
 
         <MembersSection />
+
         <AttendeeSection />
-        <BreakPatternSection />
 
         <JobBoardSection />
 
