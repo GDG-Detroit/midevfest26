@@ -417,9 +417,11 @@ function Navbar() {
           )
         })}
       </ul>
-      <div className="flex w-full justify-center border-t border-white/10 p-6 pb-[10vh] md:hidden">
-        <ThemeSwitcher dropdownUp />
-      </div>
+      {import.meta.env.DEV && (
+        <div className="flex w-full justify-center border-t border-white/10 p-6 pb-[10vh] md:hidden">
+          <ThemeSwitcher dropdownUp />
+        </div>
+      )}
     </div>
   )
 
@@ -469,10 +471,12 @@ function Navbar() {
           {/* Desktop Navigation */}
           <div className="hidden min-[1500px]:block">{desktopNavList}</div>
 
-          {/* Theme Switcher (Hidden on Mobile) */}
-          <div className="hidden md:block">
-            <ThemeSwitcher />
-          </div>
+          {/* Theme Switcher (dev only, hidden on mobile) */}
+          {import.meta.env.DEV && (
+            <div className="hidden md:block">
+              <ThemeSwitcher />
+            </div>
+          )}
 
           {/* Mobile NavBar Hamburger Button */}
           <button

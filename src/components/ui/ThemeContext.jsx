@@ -19,7 +19,11 @@ function writeStorage(key, value) {
 }
 
 export default function ThemeProvider({ children }) {
-  const [theme, setTheme] = useState(() => readStorage('iwd-theme', 'purple'))
+  // Theme switching is a dev-only tool. In production the site is locked to
+  // gold regardless of any theme previously saved to localStorage.
+  const [theme, setTheme] = useState(() =>
+    import.meta.env.DEV ? readStorage('iwd-theme', 'gold') : 'gold'
+  )
   const mode = 'dark'
 
   useEffect(() => {
