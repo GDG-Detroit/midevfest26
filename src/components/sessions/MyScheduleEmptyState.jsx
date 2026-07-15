@@ -7,7 +7,7 @@ const MyScheduleEmptyState = ({ onExplore }) => {
       <div className="space-y-4">
         <div className="mx-auto flex size-20 items-center justify-center rounded-full border border-white/10 bg-white/5 shadow-inner">
           <svg
-            className="size-10 text-gray-400"
+            className="size-10 text-pretty text-gray-400"
             fill="none"
             viewBox="0 0 24 24"
             stroke="currentColor"
@@ -23,7 +23,7 @@ const MyScheduleEmptyState = ({ onExplore }) => {
         <h3 className="text-3xl font-bold tracking-tight text-white">
           Your schedule is waiting
         </h3>
-        <p className="mx-auto max-w-xl text-base text-gray-400">
+        <p className="mx-auto max-w-xl text-pretty text-base text-gray-200">
           Create a personalized itinerary for the summit. Here is how to get
           started:
         </p>
@@ -52,7 +52,7 @@ const MyScheduleEmptyState = ({ onExplore }) => {
           <h4 className="mb-2 text-lg font-semibold text-white">
             1. Explore Tracks
           </h4>
-          <p className="text-sm text-gray-400">
+          <p className="text-pretty text-sm text-gray-200">
             Browse through our specialized stages ranging from Build with AI to
             Leadership.
           </p>
@@ -78,7 +78,7 @@ const MyScheduleEmptyState = ({ onExplore }) => {
           <h4 className="mb-2 text-lg font-semibold text-white">
             2. Add Sessions
           </h4>
-          <p className="text-sm text-gray-400">
+          <p className="text-pretty text-sm text-gray-200">
             Click the favorite `Bookmark` button on any session to pin it
             directly to your personal schedule.
           </p>
@@ -104,7 +104,7 @@ const MyScheduleEmptyState = ({ onExplore }) => {
           <h4 className="mb-2 text-lg font-semibold text-white">
             3. Export Agenda
           </h4>
-          <p className="text-sm text-gray-400">
+          <p className="text-pretty text-sm text-gray-200">
             Download your schedule to your calendar and never miss an important
             talk.
           </p>

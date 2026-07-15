@@ -146,7 +146,7 @@ const trackDescriptions = {
       >
         <span className="font-bold">Michigan DevFest Venue Guide</span>
       </h3>
-      <p className="mb-6 max-w-4xl text-pretty text-center text-base text-gray-400">
+      <p className="mb-6 max-w-4xl text-pretty text-center text-base text-gray-200">
         Use this guide to navigate the venue and find session locations.
       </p>
     </>

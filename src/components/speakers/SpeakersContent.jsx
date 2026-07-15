@@ -62,7 +62,7 @@ const SpeakersContent = ({ year, defaultExpanded }) => {
       }`}
     >
       <div className="mx-auto mt-6 max-w-4xl text-left">
-        <p className="text-base leading-[1.9] text-gray-400 md:text-lg dark:text-gray-400">
+        <p className="text-base leading-[1.9] text-gray-400 md:text-lg dark:text-gray-200">
           Join us for engaging and inspiring talks from industry leaders,
           innovators, and experts who are shaping the future of technology. Our
           speakers bring real-world experience and cutting-edge insights across
