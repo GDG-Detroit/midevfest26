@@ -126,7 +126,7 @@ function ActivityCard({
                   className={`size-6 transition-transform ${
                     isSaved
                       ? 'scale-110 text-iwd-gold-400'
-                      : 'text-pretty text-gray-200 light:hover:text-gray-700 dark:hover:text-white'
+                      : 'text-gray-200 light:hover:text-gray-700 dark:hover:text-white'
                   }`}
                   fill={isSaved ? 'currentColor' : 'none'}
                   stroke="currentColor"

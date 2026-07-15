@@ -291,7 +291,7 @@ function SpeakerDetails({
     : sessionDescription
 
   return (
-    <div className="bg-iwd-surface-raised relative mt-8 max-h-[90vh] w-full max-w-4xl overflow-y-auto overflow-x-hidden rounded-3xl shadow-2xl ring-1 ring-white/10 dark:bg-iwd-black-950">
+    <div className="bg-iwd-surface-raised relative max-h-[90vh] w-full max-w-4xl overflow-y-auto overflow-x-hidden rounded-3xl shadow-2xl ring-1 ring-white/10 dark:bg-iwd-black-950">
       <div className="relative px-8 py-12 text-white" style={heroStyle}>
         <div className="absolute inset-0 bg-gradient-to-b from-white/20 via-white/10 to-transparent mix-blend-soft-light"></div>
         <div className="absolute inset-0 bg-gradient-to-t from-black/45 via-black/20 to-transparent"></div>
@@ -344,7 +344,8 @@ function SpeakerDetails({
               <span className="inline-flex items-center gap-2 rounded-full border border-white/30 bg-black/30 px-3 py-1 text-white">
                 <img
                   src={GDEIcon}
-                  alt="GDE Logo"
+                  alt=""
+                  aria-hidden="true"
                   className="size-5 shrink-0"
                   loading="lazy"
                   width={20}
@@ -357,7 +358,8 @@ function SpeakerDetails({
               <span className="inline-flex items-center gap-2 rounded-full border border-white/30 bg-black/30 px-3 py-1 text-white">
                 <img
                   src={WTMLogo}
-                  alt="WTM Logo"
+                  alt=""
+                  aria-hidden="true"
                   className="size-4 shrink-0"
                   loading="lazy"
                   width={16}

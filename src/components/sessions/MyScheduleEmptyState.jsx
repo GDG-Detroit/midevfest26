@@ -7,7 +7,7 @@ const MyScheduleEmptyState = ({ onExplore }) => {
       <div className="space-y-4">
         <div className="mx-auto flex size-20 items-center justify-center rounded-full border border-white/10 bg-white/5 shadow-inner">
           <svg
-            className="size-10 text-pretty text-gray-400"
+            className="size-10 text-gray-400"
             fill="none"
             viewBox="0 0 24 24"
             stroke="currentColor"
