@@ -1,7 +1,7 @@
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react'
 import { FaBars, FaXmark } from 'react-icons/fa6'
 import { Link, useLocation } from 'react-router-dom'
-import CompassDetroitLogo from './ui/CompassDetroitLogo'
+import GdgDetroitLogo from './ui/GdgDetroitLogo'
 import ThemeSwitcher from './ui/ThemeSwitcher'
 import { sections } from '@/data/2026/navigation'
 import useTheme from '@/hooks/useTheme'
@@ -417,9 +417,11 @@ function Navbar() {
           )
         })}
       </ul>
-      <div className="flex w-full justify-center border-t border-white/10 p-6 pb-[10vh] md:hidden">
-        <ThemeSwitcher dropdownUp />
-      </div>
+      {import.meta.env.DEV && (
+        <div className="flex w-full justify-center border-t border-white/10 p-6 pb-[10vh] md:hidden">
+          <ThemeSwitcher dropdownUp />
+        </div>
+      )}
     </div>
   )
 
@@ -455,7 +457,7 @@ function Navbar() {
           onClick={handleHomeNavigation}
           aria-label="Go to home page"
         >
-          <CompassDetroitLogo
+          <GdgDetroitLogo
             textColor={
               isLightMode && !(activeLink === 'landing' && isHomePage)
                 ? '#374151'
@@ -469,10 +471,12 @@ function Navbar() {
           {/* Desktop Navigation */}
           <div className="hidden min-[1500px]:block">{desktopNavList}</div>
 
-          {/* Theme Switcher (Hidden on Mobile) */}
-          <div className="hidden md:block">
-            <ThemeSwitcher />
-          </div>
+          {/* Theme Switcher (dev only, hidden on mobile) */}
+          {import.meta.env.DEV && (
+            <div className="hidden md:block">
+              <ThemeSwitcher />
+            </div>
+          )}
 
           {/* Mobile NavBar Hamburger Button */}
           <button
