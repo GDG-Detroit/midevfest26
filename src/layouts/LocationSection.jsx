@@ -51,7 +51,7 @@ const VENUE_IMAGES = [
 const AUTOPLAY_INTERVAL = 5000
 
 const VENUE_GOOGLE_MAPS_URL =
-  'https://www.google.com/maps/place/Little+Caesars+Corporate+Office/data=!4m2!3m1!1s0x0:0x14096f8dc7a099f3?sa=X&ved=1t:2428&ictx=111'
+  'https://www.google.com/maps/search/?api=1&query=2125+Woodward+Ave,+Detroit,+MI+48201'
 
 function LocationSection() {
   const [activeImg, setActiveImg] = useState(0)

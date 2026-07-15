@@ -13,8 +13,8 @@ const SEOStructuredData = memo(({ speakersData = [] }) => {
     'description':
       'Celebrating innovation, empowerment, and community at Michigan DevFest 2026 in Detroit.',
     'image': 'https://midevfest26.vercel.app/social-card.jpg',
-    'startDate': '2026-06-20T08:00:00-04:00',
-    'endDate': '2026-06-20T17:00:00-04:00',
+    'startDate': '2026-03-28T08:00:00-04:00',
+    'endDate': '2026-03-28T17:00:00-04:00',
     'eventStatus': 'https://schema.org/EventScheduled',
     'eventAttendanceMode': 'https://schema.org/OfflineEventAttendanceMode',
     'location': {
