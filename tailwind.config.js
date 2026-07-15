@@ -140,9 +140,23 @@ export default {
           '0%, 100%': { transform: 'translateY(-5%)' },
           '50%': { transform: 'translateY(0)' },
         },
+        'word-cycle-in': {
+          '0%': {
+            transform: 'translateY(0.4em)',
+            opacity: '0',
+            filter: 'blur(4px)',
+          },
+          '100%': {
+            transform: 'translateY(0)',
+            opacity: '1',
+            filter: 'blur(0)',
+          },
+        },
       },
       animation: {
         'bounce-subtle': 'bounce-subtle 3s ease-in-out infinite',
+        'word-cycle-in':
+          'word-cycle-in 0.5s cubic-bezier(0.16, 1, 0.3, 1) both',
       },
     },
   },

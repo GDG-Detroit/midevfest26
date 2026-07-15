@@ -1,3 +1,7 @@
+import RevolvingWord from '@/components/ui/RevolvingWord'
+
+const BUILD_WORDS = ['Apps', 'Tools', 'Products', 'Startups', 'Experiences']
+
 function AboutSection() {
   return (
     <section
@@ -34,7 +38,11 @@ function AboutSection() {
           Where Detroit
           <br />
           <span className="bg-gradient-to-r from-iwd-gold-200 via-iwd-gold-400 to-iwd-gold-200 bg-clip-text text-transparent">
-            Builds with AI
+            Builds <RevolvingWord words={BUILD_WORDS} /> with AI
+          </span>
+          <span className="sr-only">
+            {' '}
+            (apps, tools, products, startups, and experiences)
           </span>
         </h2>
 
