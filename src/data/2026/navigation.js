@@ -8,7 +8,7 @@ export const sections = [
   { id: 'membership', text: 'Membership' },
   { id: 'jobboard', text: 'Job Board' },
   { id: 'partners', text: 'Partners' },
-  { id: 'team', text: 'Pride Team' },
+  { id: 'team', text: 'DevFest Team' },
   { to: '/past-events', text: 'Past Events' },
 ]
 
