@@ -16,9 +16,9 @@ const DEFAULT_CONFIG = {
   speed: 0.7,
 
   // Placeholder palette from the source pen — TODO: swap for brand colors.
-  color1: '#5900ff',
-  color2: '#ff4000',
-  color3: '#007bff',
+  color1: '#0084ff',
+  color2: '#8b7404',
+  color3: '#ffdd00',
 
   globalRotX: 0.1,
   globalRotY: 0.03,
