@@ -2,6 +2,14 @@ import RevolvingWord from '@/components/ui/RevolvingWord'
 
 const BUILD_WORDS = ['Apps', 'Tools', 'Products', 'Startups', 'Experiences']
 
+/** "apps, tools, ..., and experiences" — keeps the sr-only fallback in sync with BUILD_WORDS. */
+function formatWordListForScreenReaders(words) {
+  const lower = words.map((word) => word.toLowerCase())
+  if (lower.length <= 1) return lower.join('')
+  if (lower.length === 2) return `${lower[0]} and ${lower[1]}`
+  return `${lower.slice(0, -1).join(', ')}, and ${lower[lower.length - 1]}`
+}
+
 function AboutSection() {
   return (
     <section
@@ -42,7 +50,7 @@ function AboutSection() {
           </span>
           <span className="sr-only">
             {' '}
-            (apps, tools, products, startups, and experiences)
+            ({formatWordListForScreenReaders(BUILD_WORDS)})
           </span>
         </h2>
 
