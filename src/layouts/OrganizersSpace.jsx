@@ -72,7 +72,7 @@ const TeamCard = memo(
                 href={linkedin}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="rounded-lg bg-white/5 p-2 text-gray-900 dark:text-white/50 transition-all hover:bg-[#0077b5] hover:text-gray-900"
+                className="rounded-lg bg-white/5 p-2 text-gray-900 transition-all hover:bg-[#0077b5] hover:text-gray-900 dark:text-white/50"
               >
                 <FaLinkedin className="size-4" />
               </a>
@@ -82,7 +82,7 @@ const TeamCard = memo(
                 href={github}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="rounded-lg bg-white/5 p-2 text-gray-900 dark:text-white/50 transition-all hover:bg-[#333] hover:text-gray-900"
+                className="rounded-lg bg-white/5 p-2 text-gray-900 transition-all hover:bg-[#333] hover:text-gray-900 dark:text-white/50"
               >
                 <FaGithub className="size-4" />
               </a>
@@ -124,7 +124,7 @@ export default function OrganizersSpace() {
   return (
     <section
       id="organizers-space"
-      className="relative overflow-hidden bg-iwd-surface-raised dark:bg-iwd-black-900 py-32 sm:py-48"
+      className="bg-iwd-surface-raised relative overflow-hidden py-32 sm:py-48 dark:bg-iwd-black-900"
     >
       {/* Dynamic Background Glows */}
       <div
@@ -150,7 +150,7 @@ export default function OrganizersSpace() {
               Space
             </span>
           </h2>
-          <p className="mt-8 max-w-2xl font-body text-lg leading-relaxed text-gray-900 dark:text-white/40 sm:text-xl">
+          <p className="mt-8 max-w-2xl font-body text-lg leading-relaxed text-gray-900 sm:text-xl dark:text-white/40">
             Meet the visionary organizers and technical contributors working to
             break the pattern in Detroit.
           </p>

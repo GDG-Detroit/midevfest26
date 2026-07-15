@@ -4,7 +4,7 @@ import { FaClock } from 'react-icons/fa6'
 const NoSessionsAvailable = ({ currentSession }) => {
   return (
     <li className="w-full">
-      <div className="rounded-xl border-2 border-dashed border-white/20 bg-iwd-surface-raised dark:bg-iwd-black-950 p-8 text-center shadow-md md:p-12">
+      <div className="bg-iwd-surface-raised rounded-xl border-2 border-dashed border-white/20 p-8 text-center shadow-md md:p-12 dark:bg-iwd-black-950">
         <div className="mb-4 flex justify-center">
           <div className="rounded-full bg-primary-900 p-4">
             <FaClock className="size-12 text-white" aria-hidden="true" />

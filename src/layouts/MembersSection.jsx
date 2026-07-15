@@ -25,7 +25,7 @@ const MembersSection = () => {
             </span>
           </h2>
           <div className="mx-auto mb-6 h-px w-24 bg-gradient-to-r from-transparent via-iwd-gold-400/50 to-transparent sm:w-32" />
-          <p className="mx-auto max-w-2xl font-body text-lg leading-relaxed text-gray-400 text-pretty">
+          <p className="mx-auto max-w-2xl text-pretty font-body text-lg leading-relaxed text-gray-400">
             Join Compass Detroit and connect with STEAM learners and
             professionals across the region. Membership is free and open to
             anyone who wants to learn, share, and grow.

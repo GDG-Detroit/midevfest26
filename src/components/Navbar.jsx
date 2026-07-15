@@ -362,7 +362,7 @@ function Navbar() {
           <h2 className="font-heading text-sm font-black uppercase tracking-[0.2em] text-iwd-gold-300">
             Run of show
           </h2>
-          <p className="font-body mt-1 text-xs text-white/50">
+          <p className="mt-1 font-body text-xs text-white/50">
             Summit day at a glance
           </p>
           <NavRunOfShow onViewFullSchedule={handleViewFullSchedule} />
