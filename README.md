@@ -83,15 +83,15 @@ docker run -p 3000:3000 midevfest26
 
 ### Docker Commands
 
-| Command                                                   | Description                                     |
-| --------------------------------------------------------- | ----------------------------------------------- |
-| `docker build -t midevfest26 .`                                | Build the Docker image                          |
-| `docker run -p 3000:3000 midevfest26`                          | Run the container on port 3000                  |
+| Command                                                         | Description                                     |
+| --------------------------------------------------------------- | ----------------------------------------------- |
+| `docker build -t midevfest26 .`                                 | Build the Docker image                          |
+| `docker run -p 3000:3000 midevfest26`                           | Run the container on port 3000                  |
 | `docker run -d -p 3000:3000 --name midevfest26-app midevfest26` | Run container in detached mode with custom name |
-| `docker stop midevfest26-app`                                  | Stop the running container                      |
-| `docker rm midevfest26-app`                                    | Remove the container                            |
-| `docker images`                                                | List all Docker images                          |
-| `docker rmi midevfest26`                                       | Remove the Docker image                         |
+| `docker stop midevfest26-app`                                   | Stop the running container                      |
+| `docker rm midevfest26-app`                                     | Remove the container                            |
+| `docker images`                                                 | List all Docker images                          |
+| `docker rmi midevfest26`                                        | Remove the Docker image                         |
 
 ### Environment Variables
 
@@ -153,9 +153,9 @@ npm run fetch:event-data  →  speakers.generated.json
 npm run dev  (or Vercel deploy for production)
 ```
 
-| Studio | URL                                                         | Command                       |
-| ------ | ----------------------------------------------------------- | ----------------------------- |
-| Local  | `http://localhost:3333`                                     | `npm run studio:dev`          |
+| Studio | URL                                                             | Command                       |
+| ------ | --------------------------------------------------------------- | ----------------------------- |
+| Local  | `http://localhost:3333`                                         | `npm run studio:dev`          |
 | Cloud  | [midevfest26.sanity.studio](https://midevfest26.sanity.studio/) | `cd studio && npm run deploy` |
 
 Both studios edit the **same** cloud dataset. After publishing changes, run `npm run dev:cms` to see them on the local site.

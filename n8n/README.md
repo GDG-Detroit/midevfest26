@@ -93,7 +93,7 @@ Use **Edit Fields (Set)** only if you need to override paths or env file locatio
 | ----------------- | --------------------- |
 | Command           | `npm`                 |
 | Arguments         | `run import:speakers` |
-| Working directory | `/opt/midevfest26`      |
+| Working directory | `/opt/midevfest26`    |
 
 Or call Node directly:
 
