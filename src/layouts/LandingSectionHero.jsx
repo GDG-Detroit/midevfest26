@@ -4,10 +4,13 @@ import { FaArrowRight } from 'react-icons/fa6'
 import CTAButton from '@/components/ui/CTAButton'
 import useHeroAnimation from '@/hooks/useHeroAnimation'
 import heroTrails from '@/assets/images/hero/hero-trails.webp'
-import heroTrailsFull from '@/assets/images/hero/hero-trails.png'
+import heroTrailsFull from '@/assets/images/hero/hero-trails.webp'
+import heroTrailsMobile from '@/assets/images/hero/hero-trails-x1350.webp'
 
 /** Matches Navbar / HeroAnimationProvider desktop breakpoint. */
 const HERO_DESKTOP_MEDIA = '(min-width: 1500px)'
+/** Portrait crop swaps in below the desktop breakpoint, down to small phones. */
+const HERO_MOBILE_MEDIA = '(max-width: 767px)'
 
 const HERO_LINKS = [
   { href: '#partners', label: 'Call for Sponsors' },
@@ -112,6 +115,7 @@ function PrideHeroStaticBackground() {
     <div className="absolute inset-0 z-0 bg-black" aria-hidden="true">
       <picture className="block size-full">
         <source media={HERO_DESKTOP_MEDIA} srcSet={heroTrailsFull} />
+        <source media={HERO_MOBILE_MEDIA} srcSet={heroTrailsMobile} />
         <img
           src={heroTrails}
           alt=""
