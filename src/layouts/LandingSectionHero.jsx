@@ -24,17 +24,17 @@ function PrideHeroForeground() {
       <div
         className="bg-pride-hero-glass mx-auto w-full max-w-3xl rounded-2xl px-6 py-10 text-center sm:px-10 sm:py-12"
         role="group"
-        aria-labelledby="pride-hero-title"
+        aria-labelledby="main-heading"
       >
         {/* Top metadata */}
-        <p className="font-body text-[10px] font-semibold uppercase tracking-[0.35em] text-white/55 sm:text-xs">
+        <p className="font-body text-[10px] font-semibold uppercase tracking-[0.35em] text-white/75 sm:text-xs">
           Detroit &middot; LCRC &middot; 2026 <br /> Powered by Compass Detroit
           &amp; Little Caesars
         </p>
 
         {/* Main title */}
         <h1
-          id="pride-hero-title"
+          id="main-heading"
           className="mt-6 font-heading text-3xl font-black uppercase leading-[1.05] tracking-tight text-white sm:mt-8 sm:text-4xl md:text-5xl lg:text-[3.25rem]"
         >
           Michigan{' '}
@@ -44,7 +44,7 @@ function PrideHeroForeground() {
         </h1>
 
         {/* Subheading */}
-        <p className="mt-5 font-body text-xs font-semibold uppercase tracking-[0.3em] text-iwd-gold-300/90 sm:text-sm">
+        <p className="mt-5 font-body text-xs font-semibold uppercase tracking-[0.3em] text-iwd-gold-300/90 sm:text-base">
           Registration opens soon
         </p>
 
@@ -90,19 +90,19 @@ function PrideHeroForeground() {
         </p>
 
         {/* Footer links */}
-        <nav
-          className="mt-8 flex flex-wrap items-center justify-center gap-3"
-          aria-label="Hero quick links"
-        >
-          {HERO_LINKS.map((link) => (
-            <a
-              key={link.href}
-              href={link.href}
-              className="rounded-full border border-iwd-gold-400/30 bg-white/[0.03] px-4 py-2 font-body text-[10px] font-semibold uppercase tracking-[0.18em] text-white/80 transition-colors hover:border-iwd-gold-400/50 hover:bg-white/[0.06] hover:text-white sm:text-[11px]"
-            >
-              {link.label}
-            </a>
-          ))}
+        <nav className="mt-8" aria-label="Hero quick links">
+          <ul className="flex flex-wrap items-center justify-center gap-3">
+            {HERO_LINKS.map((link) => (
+              <li key={link.href}>
+                <a
+                  href={link.href}
+                  className="rounded-full border border-iwd-gold-400/30 bg-white/[0.03] px-4 py-2 font-body text-[10px] font-semibold uppercase tracking-[0.18em] text-white/80 transition-colors hover:border-iwd-gold-400/50 hover:bg-white/[0.06] hover:text-white sm:text-[11px]"
+                >
+                  {link.label}
+                </a>
+              </li>
+            ))}
+          </ul>
         </nav>
       </div>
     </div>

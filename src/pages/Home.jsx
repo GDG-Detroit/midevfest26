@@ -21,47 +21,32 @@ function Home() {
   return (
     <PageLayout>
       <SEOStructuredData speakersData={Speakers2026} />
-      <h1 id="main-heading" className="sr-only">
-        Michigan DevFest {currentYear}
-      </h1>
 
       <LandingSectionHero />
 
       <div className="bg-iwd-surface-raised relative z-10 py-0 dark:bg-iwd-black-950">
         <LocationSection />
 
-        <div id="schedule">
-          <SessionsSection
-            speakersData={Speakers2026}
-            year={2026}
-            defaultExpanded={true}
-            tracks={['Map', SCHEDULE_TRACK, SESSION_TRACK]}
-          />
-        </div>
+        <SessionsSection
+          speakersData={Speakers2026}
+          year={2026}
+          defaultExpanded={true}
+          tracks={['Map', SCHEDULE_TRACK, SESSION_TRACK]}
+        />
 
-        <div id="speakers">
-          <SpeakersSection speakersData={Speakers2026} defaultExpanded={true} />
-        </div>
+        <SpeakersSection speakersData={Speakers2026} defaultExpanded={true} />
 
-        <div id="about">
-          <AboutSection />
-        </div>
+        <AboutSection />
 
         <MembersSection />
         <AttendeeSection />
         <BreakPatternSection />
 
-        <div id="jobboard">
-          <JobBoardSection />
-        </div>
+        <JobBoardSection />
 
-        <div id="partners">
-          <PartnersSection partnersData={partnersData} year={currentYear} />
-        </div>
+        <PartnersSection partnersData={partnersData} year={currentYear} />
 
-        <div id="team">
-          <OrganizersSection />
-        </div>
+        <OrganizersSection />
       </div>
     </PageLayout>
   )

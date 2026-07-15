@@ -22,16 +22,6 @@ const DevTeamCard = ({
             className="absolute top-[28px] w-[160px] rotate-45"
             style={{ right: '-42px' }}
           >
-            {/* These "Fold Shadows" create the wrap-around illusion */}
-            <div
-              className="absolute z-[-1] size-2 rotate-45 bg-amber-900"
-              style={{ bottom: '-3px', left: '30px' }}
-            />
-            <div
-              className="absolute z-[-1] size-2 rotate-45 bg-amber-900"
-              style={{ bottom: '-3px', right: '30px' }}
-            />
-
             <div className="relative border-y border-white/10 bg-gradient-to-r from-amber-600 via-amber-400 to-amber-600 py-1.5 shadow-md">
               <div className="text-center text-[10px] font-black uppercase tracking-[0.2em] text-amber-950/80">
                 {badge}
@@ -53,10 +43,10 @@ const DevTeamCard = ({
       {/* Info */}
       <div className="absolute inset-x-0 bottom-0 translate-y-full border-t border-white/[0.06] bg-slate-900/90 p-3 text-center backdrop-blur-md transition-transform duration-300 ease-out group-focus-within:translate-y-0 group-hover:translate-y-0">
         <h3 className="text-sm font-semibold text-white">{name}</h3>
-        <p className="mt-0.5 text-xs text-gray-400">
+        <p className="mt-0.5 text-xs text-gray-200">
           {organization || university}
         </p>
-        <p className="text-xs text-gray-500">{position}</p>
+        <p className="text-xs text-gray-100">{position}</p>
         <div className="mt-1.5 flex items-center justify-center gap-2">
           {linkedin && <LinkedInHandle handle={linkedin} absolute={false} />}
           <GithubHandle handle={github} absolute={false} />

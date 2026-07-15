@@ -3,8 +3,6 @@ import {
   FaBriefcase,
   FaClipboardCheck,
   FaFilm,
-  FaHandHoldingHeart,
-  FaMicrophone,
   FaPizzaSlice,
   FaSpa,
   FaStore,
@@ -38,24 +36,28 @@ const AREAS = [
     label: 'Pizza Treat',
     regionId: 'PIZZATREAT',
     Icon: FaPizzaSlice,
+    badge: 'PT',
   },
   {
     key: 'pizzapizza',
     label: 'Pizza Pizza',
     regionId: 'PIZZAPIZZA',
     Icon: FaPizzaSlice,
+    badge: 'PP',
   },
   {
     key: 'hotnready',
     label: 'Hot-N-Ready',
     regionId: 'HOTNREADY',
     Icon: FaPizzaSlice,
+    badge: 'HR',
   },
   {
     key: 'reservenready',
     label: 'Reserve-N-Ready',
     regionId: 'RESERVENREADY',
     Icon: FaPizzaSlice,
+    badge: 'RR',
   },
   {
     key: 'familytheater',
@@ -74,19 +76,6 @@ const AREAS = [
     label: 'Booths',
     regionId: 'BOOTHS',
     Icon: FaStore,
-  },
-
-  {
-    key: 'volunteers',
-    label: 'Volunteers',
-    regionId: 'VOLUNTEERS',
-    Icon: FaHandHoldingHeart,
-  },
-  {
-    key: 'speakers',
-    label: 'Speakers',
-    regionId: 'SPEAKERS',
-    Icon: FaMicrophone,
   },
 ]
 
@@ -254,7 +243,7 @@ function VenueMaps() {
           aria-label="Highlight a venue area"
           className="flex shrink-0 flex-row flex-wrap justify-center gap-2 lg:w-72 lg:flex-col lg:justify-start"
         >
-          {AREAS.map(({ key, label, sublabel, Icon }) => {
+          {AREAS.map(({ key, label, sublabel, Icon, badge }) => {
             const isActive = key === active
             const accessibleName = sublabel ? `${label}, ${sublabel}` : label
             return (
@@ -265,7 +254,7 @@ function VenueMaps() {
                 aria-pressed={isActive}
                 aria-label={accessibleName}
                 title={accessibleName}
-                className={`group/area flex items-center justify-center gap-3 rounded-xl border p-3 font-bold transition-all duration-300 active:scale-95 lg:justify-start lg:p-4 ${
+                className={`group/area relative flex items-center justify-center gap-3 rounded-xl border p-3 font-bold transition-all duration-300 active:scale-95 lg:justify-start lg:p-4 ${
                   isActive
                     ? 'border-iwd-gold-400/60 bg-iwd-gold-400/15 text-iwd-gold-200 shadow-[0_0_14px_rgba(255,208,174,0.25)]'
                     : 'border-white/10 bg-white/[0.03] text-white hover:border-iwd-gold-400/30 hover:bg-iwd-gold-400/10'
@@ -291,6 +280,11 @@ function VenueMaps() {
                     </span>
                   )}
                 </span>
+                {badge && (
+                  <span className="absolute -right-1 -top-1 flex h-4 min-w-[16px] items-center justify-center rounded bg-iwd-gold-400 px-1 font-mono text-[8px] font-black uppercase text-black ring-1 ring-black/20 lg:hidden">
+                    {badge}
+                  </span>
+                )}
               </button>
             )
           })}
@@ -322,10 +316,6 @@ function VenueMaps() {
               )}
             </div>
           </div>
-
-          <p className="py-2 text-center text-sm font-bold dark:text-neutral-50">
-            Tap an area to highlight it on the map. Tap again to clear.
-          </p>
 
           <p className="sr-only" role="status" aria-live="polite">
             {activeLabel

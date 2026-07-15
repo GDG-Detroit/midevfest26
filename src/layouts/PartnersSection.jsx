@@ -54,7 +54,7 @@ const PartnersSection = ({ partnersData = {}, year }) => {
 
       <div className="mx-auto mt-2 max-w-4xl text-center">
         <p className="text-balance font-body text-lg leading-relaxed text-gray-400">
-          Compass Detroit wouldn&apos;t be possible without the support of our
+          GDG Detroit wouldn&apos;t be possible without the support of our
           amazing partners. Thank you for helping us create an unforgettable
           experience for the tech community.
         </p>

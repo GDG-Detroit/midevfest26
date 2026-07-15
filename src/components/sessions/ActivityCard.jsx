@@ -62,7 +62,7 @@ function ActivityCard({
               </h3>
             )}
             {(content || cta) && (
-              <div className="mt-1.5 text-sm text-gray-400">
+              <div className="mt-1.5 text-pretty text-sm text-gray-200">
                 {content && <span>{content} </span>}
                 {cta?.url && cta?.text && (
                   <a
@@ -126,7 +126,7 @@ function ActivityCard({
                   className={`size-6 transition-transform ${
                     isSaved
                       ? 'scale-110 text-iwd-gold-400'
-                      : 'text-gray-400 light:hover:text-gray-700 dark:hover:text-white'
+                      : 'text-gray-200 light:hover:text-gray-700 dark:hover:text-white'
                   }`}
                   fill={isSaved ? 'currentColor' : 'none'}
                   stroke="currentColor"

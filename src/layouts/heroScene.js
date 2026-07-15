@@ -1,7 +1,7 @@
 /**
  * Hero WebGL background — raymarched "Holo Blinds" interference pattern.
  * Original shader concept: Sabo Sugi (https://codepen.io/sabosugi/pen/azpNzMG)
- * Site integration and adaptations: Greg Miller / Compass Detroit.
+ * Site integration and adaptations: Greg Miller / GDG Detroit & Compass Detroit.
  *
  * Colors below are carried over from the source pen as placeholders —
  * swap `color1`/`color2`/`color3` for the final brand palette.

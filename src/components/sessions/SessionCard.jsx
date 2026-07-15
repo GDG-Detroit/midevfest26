@@ -29,7 +29,7 @@ function SessionCredits({ participants }) {
 
   if (showModeratorSplit) {
     return (
-      <div className="mt-1 space-y-1 text-sm text-gray-400">
+      <div className="mt-1 space-y-1 text-pretty text-sm text-gray-200">
         {panelists.length > 0 && (
           <p>
             <span className="font-medium text-gray-300">Panelists:</span>{' '}
@@ -47,7 +47,7 @@ function SessionCredits({ participants }) {
   }
 
   return (
-    <p className="mt-1 text-sm text-gray-400">
+    <p className="mt-1 text-pretty text-sm text-gray-200">
       by {formatNameList(participants.map((p) => p.name))}
     </p>
   )
@@ -282,7 +282,7 @@ function SessionCard({
           {sessionDesc && (
             <div className="flex size-8 shrink-0 items-center justify-center rounded-full border border-white/[0.06] bg-white/[0.04] transition-colors duration-300 group-hover/card:border-white/10 md:size-9">
               <IoChevronDown
-                className={`size-4 text-gray-400 transition-transform duration-300 ease-out md:size-5 ${
+                className={`size-4 text-gray-200 transition-transform duration-300 ease-out md:size-5 ${
                   direction === DIRECTION.TOP && '-scale-y-100'
                 }`}
               />

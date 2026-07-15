@@ -59,7 +59,7 @@ const MembersSection = () => {
               <h3 className="mb-2 font-heading text-lg font-bold text-iwd-gold-300">
                 {item.title}
               </h3>
-              <p className="text-sm leading-relaxed text-gray-200">
+              <p className="text-lg leading-relaxed text-gray-400">
                 {item.desc}
               </p>
             </div>

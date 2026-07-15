@@ -34,7 +34,7 @@ function Footer() {
               <Link
                 key={section.id}
                 to={`/#${section.id}`}
-                className="rounded-md px-2.5 py-1 text-sm text-gray-300 transition-all duration-200 hover:bg-white/[0.04] hover:text-iwd-gold-300 hover:no-underline"
+                className="rounded-md px-2.5 py-1 text-base text-gray-300 transition-all duration-200 hover:bg-white/[0.04] hover:text-iwd-gold-300 hover:no-underline"
               >
                 {section.text}
               </Link>
@@ -43,13 +43,13 @@ function Footer() {
             <Link
               key={link.to}
               to={link.to}
-              className="rounded-md px-2.5 py-1 text-sm text-gray-300 transition-all duration-200 hover:bg-white/[0.04] hover:text-gray-200 hover:no-underline"
+              className="rounded-md px-2.5 py-1 text-base text-gray-300 transition-all duration-200 hover:bg-white/[0.04] hover:text-iwd-gold-300 hover:no-underline"
             >
               {link.text}
             </Link>
           ))}
         </div>
-        <p className="mt-4 pr-0 font-body text-xs uppercase tracking-[0.15em] text-gray-400 md:mt-0 md:border-r md:border-white/[0.06] md:pr-4">
+        <p className="mt-4 pr-0 text-base font-bold uppercase tracking-[0.15em] text-gray-400 md:mt-0 md:border-r md:border-white/[0.06] md:pr-4">
           © {new Date().getFullYear()} Compass Detroit
         </p>
       </div>

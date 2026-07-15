@@ -113,7 +113,7 @@ function LocationSection() {
         <div className="flex flex-col items-center space-y-6">
           <div className="flex items-center justify-center gap-4">
             <div className="h-px w-10 bg-gradient-to-r from-transparent to-iwd-gold-400/40 sm:w-14" />
-            <span className="font-body text-[10px] font-semibold uppercase tracking-[0.4em] text-iwd-gold-400/50 sm:text-xs">
+            <span className="font-body text-[10px] font-semibold uppercase tracking-[0.4em] text-iwd-gold-400 sm:text-xs">
               Venue & Travel
             </span>
             <div className="h-px w-10 bg-gradient-to-l from-transparent to-iwd-gold-400/40 sm:w-14" />
@@ -146,7 +146,7 @@ function LocationSection() {
             <p className="font-orbitron text-lg font-semibold tracking-wide text-iwd-gold-300">
               March 28, 2026
             </p>
-            <p className="mt-2 text-gray-400">
+            <p className="mt-2 text-base font-bold text-gray-400">
               Doors Open 8:00 AM <br /> Sessions to 5:00 PM
             </p>
           </div>
@@ -164,7 +164,7 @@ function LocationSection() {
             <p className="mb-2 text-2xl font-bold text-white">
               Little Caesars Global Resource Center
             </p>
-            <p className="mb-4 text-lg text-gray-300">
+            <p className="mb-4 text-lg font-bold text-gray-400">
               2125 Woodward Ave, Detroit, MI 48201
             </p>
             <div className="flex flex-wrap gap-3">
@@ -172,7 +172,7 @@ function LocationSection() {
                 href={VENUE_GOOGLE_MAPS_URL}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 rounded-lg border border-iwd-gold-500/30 bg-iwd-gold-500/10 px-4 py-2 text-sm font-semibold text-iwd-gold-300 transition-colors hover:bg-iwd-gold-500/20"
+                className="inline-flex items-center gap-2 rounded-lg border border-iwd-gold-500/30 bg-iwd-gold-500/10 px-4 py-2 text-base font-semibold text-iwd-gold-300 transition-colors hover:bg-iwd-gold-500/20"
               >
                 <FaMap className="size-4" /> Open in Google Maps
               </a>
@@ -349,7 +349,7 @@ function LocationSection() {
                 href={VENUE_GOOGLE_MAPS_URL}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 rounded-lg border border-iwd-gold-500/30 bg-iwd-gold-500/10 px-4 py-2 text-sm font-semibold text-iwd-gold-300 transition-colors hover:bg-iwd-gold-500/20"
+                className="inline-flex items-center gap-2 rounded-lg border border-iwd-gold-500/30 bg-iwd-gold-500/10 px-4 py-2 text-base font-semibold text-iwd-gold-300 transition-colors hover:bg-iwd-gold-500/20"
               >
                 <FaMap className="size-4" /> Open in Google Maps
               </a>
@@ -381,7 +381,7 @@ function LocationSection() {
                   <strong className="mb-1 block text-white">
                     Fox Garage (Recommended)
                   </strong>
-                  <p className="text-sm leading-relaxed text-gray-400">
+                  <p className="text-base leading-relaxed text-gray-400">
                     Adjacent at 50 W Montcalm St. Most convenient for a quick
                     walk to the entrance.
                   </p>
@@ -395,7 +395,7 @@ function LocationSection() {
                   <strong className="mb-1 block text-white">
                     Opera House Garage
                   </strong>
-                  <p className="text-sm leading-relaxed text-gray-400">
+                  <p className="text-base leading-relaxed text-gray-400">
                     Located at 1601 Broadway St. Short walk through District
                     Detroit.
                   </p>
@@ -409,7 +409,7 @@ function LocationSection() {
                   <strong className="mb-1 block text-white">
                     Comerica Park Lots
                   </strong>
-                  <p className="text-sm leading-relaxed text-gray-400">
+                  <p className="text-base leading-relaxed text-gray-400">
                     Various lots along Witherell St and Montcalm St.
                   </p>
                 </div>
@@ -422,7 +422,7 @@ function LocationSection() {
                   <strong className="mb-1 block text-white">
                     MGM Grand Garage (Free)
                   </strong>
-                  <p className="text-sm leading-relaxed text-gray-400">
+                  <p className="text-base leading-relaxed text-gray-400">
                     Free parking available at MGM Grand Detroit. A scenic ~12
                     min walk to the venue.
                   </p>
@@ -434,7 +434,7 @@ function LocationSection() {
           {/* Entrance Card */}
           <div className="group rounded-2xl border border-white/[0.06] bg-white/[0.02] p-8 backdrop-blur-sm transition-all duration-300 hover:border-white/[0.12] hover:bg-white/[0.04]">
             <h3 className="mb-3 text-xl font-semibold text-white">Entrance</h3>
-            <p className="text-sm leading-relaxed text-gray-400">
+            <p className="text-lg leading-relaxed text-gray-400">
               Enter through the main front doors on Woodward Avenue. Check-in is
               located in the main lobby. Have your registration QR code ready.
             </p>

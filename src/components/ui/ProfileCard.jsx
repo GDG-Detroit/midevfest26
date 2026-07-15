@@ -153,7 +153,7 @@ const ProfileCard = ({
   const renderButton = onViewDetails && (
     <button
       type="button"
-      className={`my-3 inline-flex items-center whitespace-nowrap rounded-lg px-4 py-2 text-sm font-medium shadow-md transition-colors focus:outline-none focus:ring-2 focus:ring-focus-ring focus:ring-offset-2 ${speakerDetailColors}`}
+      className={`my-3 inline-flex items-center whitespace-nowrap rounded-lg px-4 py-2 text-sm font-bold shadow-md transition-colors focus:outline-none focus:ring-2 focus:ring-focus-ring focus:ring-offset-2 ${speakerDetailColors}`}
       onClick={onViewDetails}
       aria-label={`View details for ${name}`}
     >
@@ -215,13 +215,13 @@ const ProfileCard = ({
           {organization && (
             <div className="mt-1 flex items-center gap-2">
               <div className="h-px w-4 bg-iwd-gold-400/50" />
-              <p className="text-xs font-bold uppercase tracking-widest text-iwd-gold-300/80">
+              <p className="text-xs font-bold uppercase tracking-widest text-iwd-gold-300">
                 {organization}
               </p>
             </div>
           )}
           {position && (
-            <p className="mt-2 line-clamp-1 text-xs font-medium text-white/50">
+            <p className="mt-2 line-clamp-1 text-sm font-bold text-white/80">
               {position}
             </p>
           )}
