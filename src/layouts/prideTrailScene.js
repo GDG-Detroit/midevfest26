@@ -602,7 +602,7 @@ export function createPrideTrailScene(container, options = {}) {
     import('lil-gui').then(({ default: GUI }) => setupGUI(GUI)).catch(() => {})
   }
 
-  // One static frame; loop starts via setPlaying() from LandingSectionPride.
+  // One static frame; loop starts via setPlaying() from LandingSectionHero.
   composer.render()
 
   return {

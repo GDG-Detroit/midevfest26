@@ -127,10 +127,10 @@ function PrideHeroStaticBackground() {
 }
 
 /**
- * Hero section with the animated pride trail WebGL background.
+ * Hero section with the animated WebGL background.
  * Optional `children` render below the built-in foreground card.
  */
-function LandingSectionPride({
+function LandingSectionHero({
   children,
   className = '',
   showDebugGUI = import.meta.env.DEV,
@@ -243,10 +243,10 @@ function LandingSectionPride({
   )
 }
 
-LandingSectionPride.propTypes = {
+LandingSectionHero.propTypes = {
   children: PropTypes.node,
   className: PropTypes.string,
   showDebugGUI: PropTypes.bool,
 }
 
-export default LandingSectionPride
+export default LandingSectionHero
