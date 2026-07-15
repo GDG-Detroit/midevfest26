@@ -53,7 +53,7 @@ const PartnersSection = ({ partnersData = {}, year }) => {
       </div>
 
       <div className="mx-auto mt-2 max-w-4xl text-center">
-        <p className="text-balance font-body text-lg leading-relaxed text-gray-100">
+        <p className="text-balance font-body text-lg leading-relaxed text-gray-400">
           GDG Detroit wouldn&apos;t be possible without the support of our
           amazing partners. Thank you for helping us create an unforgettable
           experience for the tech community.

@@ -146,7 +146,7 @@ function LocationSection() {
             <p className="font-orbitron text-lg font-semibold tracking-wide text-iwd-gold-300">
               March 28, 2026
             </p>
-            <p className="mt-2 text-gray-400">
+            <p className="mt-2 text-base font-bold text-gray-400">
               Doors Open 8:00 AM <br /> Sessions to 5:00 PM
             </p>
           </div>
@@ -164,7 +164,7 @@ function LocationSection() {
             <p className="mb-2 text-2xl font-bold text-white">
               Little Caesars Global Resource Center
             </p>
-            <p className="mb-4 text-lg text-gray-400">
+            <p className="mb-4 text-lg font-bold text-gray-400">
               2125 Woodward Ave, Detroit, MI 48201
             </p>
             <div className="flex flex-wrap gap-3">
@@ -434,7 +434,7 @@ function LocationSection() {
           {/* Entrance Card */}
           <div className="group rounded-2xl border border-white/[0.06] bg-white/[0.02] p-8 backdrop-blur-sm transition-all duration-300 hover:border-white/[0.12] hover:bg-white/[0.04]">
             <h3 className="mb-3 text-xl font-semibold text-white">Entrance</h3>
-            <p className="text-base leading-relaxed text-gray-400">
+            <p className="text-lg leading-relaxed text-gray-400">
               Enter through the main front doors on Woodward Avenue. Check-in is
               located in the main lobby. Have your registration QR code ready.
             </p>
