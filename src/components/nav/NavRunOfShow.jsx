@@ -36,11 +36,11 @@ export default function NavRunOfShow({ onViewFullSchedule }) {
             <p className="font-body text-[10px] font-semibold uppercase tracking-[0.12em] text-iwd-gold-400">
               {formatTimeRange(item.time, item.timeEnd)}
             </p>
-            <p className="font-heading mt-0.5 text-sm font-bold leading-snug text-white">
+            <p className="mt-0.5 font-heading text-sm font-bold leading-snug text-white">
               {item.title}
             </p>
             {item.room ? (
-              <p className="font-body mt-0.5 text-[11px] text-white/45">
+              <p className="mt-0.5 font-body text-[11px] text-white/45">
                 {item.room}
               </p>
             ) : null}

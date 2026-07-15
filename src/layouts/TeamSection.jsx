@@ -65,7 +65,7 @@ const TeamSection = ({ teamData, year }) => {
   return (
     <section
       id="leadership"
-      className="relative bg-iwd-surface-raised dark:bg-iwd-black-900 px-8 py-24 sm:px-10 md:px-14 lg:px-16"
+      className="bg-iwd-surface-raised relative px-8 py-24 sm:px-10 md:px-14 lg:px-16 dark:bg-iwd-black-900"
     >
       <SectionSkipLink href="#page-footer">Skip to footer</SectionSkipLink>
       <div className="flex w-full justify-center pt-0">
@@ -202,7 +202,7 @@ const TeamSection = ({ teamData, year }) => {
                   {/* Button positioned relative to card */}
                   {dev.bio && (
                     <button
-                      className="absolute -bottom-4 left-1/2 -translate-x-1/2 rounded-full border border-iwd-gold-400/30 bg-iwd-surface-raised dark:bg-iwd-black-950 px-6 py-2 text-[10px] font-black uppercase tracking-[0.2em] text-iwd-gold-400 shadow-[0_4px_20px_rgba(0,0,0,0.4)] transition-all duration-300 hover:scale-110 hover:border-iwd-gold-400 hover:bg-iwd-gold-400 hover:text-iwd-black-950 hover:shadow-iwd-gold-500/20 active:scale-95"
+                      className="bg-iwd-surface-raised absolute -bottom-4 left-1/2 -translate-x-1/2 rounded-full border border-iwd-gold-400/30 px-6 py-2 text-[10px] font-black uppercase tracking-[0.2em] text-iwd-gold-400 shadow-[0_4px_20px_rgba(0,0,0,0.4)] transition-all duration-300 hover:scale-110 hover:border-iwd-gold-400 hover:bg-iwd-gold-400 hover:text-iwd-black-950 hover:shadow-iwd-gold-500/20 active:scale-95 dark:bg-iwd-black-950"
                       onClick={() =>
                         setSelectedBio({ name: dev.name, bio: dev.bio })
                       }
@@ -232,7 +232,7 @@ const TeamSection = ({ teamData, year }) => {
         >
           <div
             ref={modalRef}
-            className="relative max-w-lg rounded-lg bg-iwd-surface-raised dark:bg-iwd-black-950 p-6 shadow-xl ring-1 ring-white/10"
+            className="bg-iwd-surface-raised relative max-w-lg rounded-lg p-6 shadow-xl ring-1 ring-white/10 dark:bg-iwd-black-950"
             role="dialog"
             aria-modal="true"
             aria-labelledby="modal-title"

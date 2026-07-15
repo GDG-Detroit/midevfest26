@@ -295,25 +295,29 @@
 /* ─── Venue map: interactive area highlights ─── */
 .venue-map-svg svg {
   display: block;
-  width: 100%;
-  height: auto;
+  width: 2092px;
+  height: 573px;
+  max-width: none;
 }
 .venue-map-region {
-  fill: transparent;
-  stroke: transparent;
-  stroke-width: 14px;
-  rx: 16px;
-  ry: 16px;
-  pointer-events: none;
+  fill: transparent !important;
+  stroke: transparent !important;
+  stroke-width: 14px !important;
+  rx: 16px !important;
+  ry: 16px !important;
+  pointer-events: none !important;
+  fill-opacity: 1 !important;
+  stroke-opacity: 1 !important;
   transition:
     fill 0.35s ease,
     stroke 0.35s ease;
 }
 .venue-map-region.is-active {
-  fill: rgb(var(--iwd-accent-500) / 0.18);
-  stroke: rgb(var(--iwd-accent-400));
-  paint-order: stroke;
-  filter: drop-shadow(0 0 10px rgb(var(--iwd-accent-400) / 0.45));
+  fill: rgb(var(--iwd-accent-500) / 0.3) !important;
+  stroke: rgb(var(--iwd-accent-400)) !important;
+  stroke-width: 10px !important;
+  paint-order: stroke !important;
+  filter: drop-shadow(0 0 10px rgb(var(--iwd-accent-400) / 0.6)) !important;
 }
 @media (prefers-reduced-motion: reduce) {
   .venue-map-region {

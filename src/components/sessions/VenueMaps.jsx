@@ -1,28 +1,92 @@
 import { useCallback, useEffect, useRef, useState } from 'react'
-import { FaChalkboardUser, FaClipboardCheck, FaUtensils } from 'react-icons/fa6'
-import ibmHqMapUrl from '@/assets/images/maps/map-ibm-hq.svg'
+import {
+  FaBriefcase,
+  FaClipboardCheck,
+  FaFilm,
+  FaHandHoldingHeart,
+  FaMicrophone,
+  FaPizzaSlice,
+  FaSpa,
+  FaStore,
+  FaUtensils,
+} from 'react-icons/fa6'
+import lcMapUrl from '@/assets/images/maps/lcMap.svg'
 
-// Each button maps to a highlight region group in map-ibm-hq.svg.
-// Text labels live in separate *-GROUP ids (RESTROOMS-GROUP, KITCHEN-GROUP, etc.).
+// Each button maps to a highlight region group in lcMap.svg.
+// Text labels live in separate *-GROUP ids (PIZZATREAT, HOTNREADY, etc.).
 const AREAS = [
-  {
-    key: 'classroom',
-    label: 'Classroom',
-    sublabel: 'Level Up · Rooms 2415 & 2416',
-    regionId: 'LEVEL-UP-CLASSROM',
-    Icon: FaChalkboardUser,
-  },
-  {
-    key: 'kitchen',
-    label: 'Kitchen',
-    regionId: 'KITCHEN',
-    Icon: FaUtensils,
-  },
   {
     key: 'checkin',
     label: 'Check-In',
-    regionId: 'CHECKIN',
+    regionId: 'CHECKINLABEL',
     Icon: FaClipboardCheck,
+  },
+  {
+    key: 'yoga',
+    label: 'Yoga',
+    regionId: 'YOGA',
+    Icon: FaSpa,
+  },
+  {
+    key: 'food',
+    label: 'Food',
+    regionId: 'FOOD',
+    Icon: FaUtensils,
+  },
+  {
+    key: 'pizzatreat',
+    label: 'Pizza Treat',
+    regionId: 'PIZZATREAT',
+    Icon: FaPizzaSlice,
+  },
+  {
+    key: 'pizzapizza',
+    label: 'Pizza Pizza',
+    regionId: 'PIZZAPIZZA',
+    Icon: FaPizzaSlice,
+  },
+  {
+    key: 'hotnready',
+    label: 'Hot-N-Ready',
+    regionId: 'HOTNREADY',
+    Icon: FaPizzaSlice,
+  },
+  {
+    key: 'reservenready',
+    label: 'Reserve-N-Ready',
+    regionId: 'RESERVENREADY',
+    Icon: FaPizzaSlice,
+  },
+  {
+    key: 'familytheater',
+    label: 'Family Theater',
+    regionId: 'FAMILYTHEATER',
+    Icon: FaFilm,
+  },
+  {
+    key: 'careers',
+    label: 'Careers',
+    regionId: 'CAREERS',
+    Icon: FaBriefcase,
+  },
+  {
+    key: 'booths',
+    label: 'Booths',
+    regionId: 'BOOTHS',
+    Icon: FaStore,
+  },
+
+  {
+    key: 'volunteers',
+    label: 'Volunteers',
+    regionId: 'VOLUNTEERS',
+    Icon: FaHandHoldingHeart,
+  },
+  {
+    key: 'speakers',
+    label: 'Speakers',
+    regionId: 'SPEAKERS',
+    Icon: FaMicrophone,
   },
 ]
 
@@ -53,7 +117,7 @@ function VenueMaps() {
   // Load the SVG as inline markup so its named regions become targetable DOM.
   useEffect(() => {
     let cancelled = false
-    fetch(ibmHqMapUrl)
+    fetch(lcMapUrl)
       .then(async (res) => {
         if (!res.ok) {
           throw new Error(`SVG fetch failed with status ${res.status}`)
@@ -68,7 +132,8 @@ function VenueMaps() {
       .then((text) => {
         if (!cancelled) setSvgMarkup(text)
       })
-      .catch(() => {
+      .catch((err) => {
+        console.error('VenueMaps: error loading inline SVG', err)
         if (!cancelled) setSvgMarkup(null)
       })
     return () => {
@@ -78,23 +143,29 @@ function VenueMaps() {
 
   const getRegionShapes = useCallback((regionId) => {
     const holder = holderRef.current
-    if (!holder) return []
-    const group = holder.querySelector(`#${CSS.escape(regionId)}`)
-    if (!group) return []
-    return Array.from(group.querySelectorAll('rect, path'))
+    if (!holder) {
+      console.warn('getRegionShapes: holderRef.current is null')
+      return []
+    }
+    const element = holder.querySelector(`#${CSS.escape(regionId)}`)
+    if (!element) {
+      console.warn(
+        `getRegionShapes: Element with id="${regionId}" not found in holder`
+      )
+      return []
+    }
+    if (element.matches('rect, path')) {
+      return [element]
+    }
+    const firstShape = element.querySelector('rect, path')
+    if (firstShape) {
+      return [firstShape]
+    }
+    console.warn(
+      `getRegionShapes: Group with id="${regionId}" contains no rect or path elements`
+    )
+    return []
   }, [])
-
-  // Prime highlight shapes once the inline SVG is in the DOM.
-  useEffect(() => {
-    if (!svgMarkup) return
-    AREAS.forEach(({ regionId }) => {
-      getRegionShapes(regionId).forEach((shape) => {
-        shape.classList.add('venue-map-region')
-        // Authored shapes carry inline fill:none; clear so CSS drives the fill.
-        shape.style.fill = ''
-      })
-    })
-  }, [svgMarkup, getRegionShapes])
 
   const scrollRegionIntoView = useCallback((shape) => {
     const container = scrollRef.current
@@ -106,14 +177,8 @@ function VenueMaps() {
       cRect.left +
       container.scrollLeft -
       (container.clientWidth - rRect.width) / 2
-    const top =
-      rRect.top -
-      cRect.top +
-      container.scrollTop -
-      (container.clientHeight - rRect.height) / 2
     container.scrollTo({
       left,
-      top,
       behavior: getScrollBehavior(),
     })
   }, [])
@@ -125,6 +190,10 @@ function VenueMaps() {
     AREAS.forEach(({ key, regionId }) => {
       const isActive = key === active
       getRegionShapes(regionId).forEach((shape) => {
+        // Ensure the base class and style cleanup are always applied
+        shape.classList.add('venue-map-region')
+        shape.style.fill = ''
+
         shape.classList.toggle('is-active', isActive)
         if (isActive && !activeShape) activeShape = shape
       })
@@ -140,12 +209,11 @@ function VenueMaps() {
       const scrollBehavior = getScrollBehavior()
       if (e.key === 'Home') {
         e.preventDefault()
-        el.scrollTo({ left: 0, top: 0, behavior: scrollBehavior })
+        el.scrollTo({ left: 0, behavior: scrollBehavior })
       } else if (e.key === 'End') {
         e.preventDefault()
         el.scrollTo({
           left: el.scrollWidth - el.clientWidth,
-          top: el.scrollHeight - el.clientHeight,
           behavior: scrollBehavior,
         })
       }
@@ -153,6 +221,22 @@ function VenueMaps() {
     el.addEventListener('keydown', handleKeyDown)
     return () => el.removeEventListener('keydown', handleKeyDown)
   }, [svgMarkup])
+
+  // Handle clicking off of the buttons to deactivate
+  useEffect(() => {
+    const handleClickOutside = (e) => {
+      if (!active) return
+      // If the click is not on one of our map buttons, clear the active selection
+      const clickedMapButton = e.target
+        .closest('button')
+        ?.classList.contains('group/area')
+      if (!clickedMapButton) {
+        setActive(null)
+      }
+    }
+    document.addEventListener('click', handleClickOutside)
+    return () => document.removeEventListener('click', handleClickOutside)
+  }, [active])
 
   const toggleArea = (key) => setActive((cur) => (cur === key ? null : key))
 
@@ -214,10 +298,10 @@ function VenueMaps() {
 
         {/* Map */}
         <div className="min-w-0 flex-1">
-          <div className="mb-1 rounded-xl border-4 border-iwd-gold-500">
+          <div className="mb-1 rounded-xl border-4 border-iwd-gold-500 bg-white">
             <div
               ref={scrollRef}
-              className="scrollbar-visible max-h-[60vh] w-full overflow-auto scroll-smooth rounded-md focus:outline-none focus-visible:ring-2 focus-visible:ring-focus-ring focus-visible:ring-offset-2 focus-visible:ring-offset-iwd-gold-100 motion-reduce:scroll-auto lg:max-h-[640px]"
+              className="scrollbar-visible w-full overflow-x-auto overflow-y-hidden scroll-smooth rounded-md focus:outline-none focus-visible:ring-2 focus-visible:ring-focus-ring focus-visible:ring-offset-2 focus-visible:ring-offset-iwd-gold-100 motion-reduce:scroll-auto"
               tabIndex={0}
               role="region"
               aria-label="Scrollable venue map"
@@ -230,9 +314,9 @@ function VenueMaps() {
                 />
               ) : (
                 <img
-                  src={ibmHqMapUrl}
+                  src={lcMapUrl}
                   alt="Venue floor plan"
-                  className="block w-full"
+                  className="block h-[573px] w-[2092px] max-w-none"
                   loading="lazy"
                 />
               )}

@@ -136,7 +136,7 @@ const EventCard = ({
           alignRight
             ? 'right-0 top-full mr-4 mt-2'
             : 'left-0 top-full ml-4 mt-2'
-        } w-full max-w-72 rounded-lg border border-white/10 bg-iwd-surface-raised dark:bg-iwd-black-900 p-4 shadow-xl`}
+        } bg-iwd-surface-raised w-full max-w-72 rounded-lg border border-white/10 p-4 shadow-xl dark:bg-iwd-black-900`}
       >
         <div className="text-base leading-relaxed text-gray-300">
           {description}

@@ -56,7 +56,7 @@ const MuralItem = memo(({ quote, name, title, image, isLarge }) => {
           <cite className="font-heading text-xl font-black uppercase not-italic tracking-widest text-iwd-gold-300 transition-colors group-hover:text-white">
             {name}
           </cite>
-          <span className="text-xs font-bold uppercase tracking-[0.3em] text-gray-900 dark:text-white/40 group-hover:text-iwd-gold-400">
+          <span className="text-xs font-bold uppercase tracking-[0.3em] text-gray-900 group-hover:text-iwd-gold-400 dark:text-white/40">
             {title}
           </span>
         </div>
@@ -109,7 +109,7 @@ export default function InspirationalMural() {
   return (
     <section
       id="inspirational-mural"
-      className="relative overflow-hidden bg-iwd-surface-raised dark:bg-iwd-black-950 py-32 sm:py-48"
+      className="bg-iwd-surface-raised relative overflow-hidden py-32 sm:py-48 dark:bg-iwd-black-950"
     >
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
         <div className="mb-24 flex flex-col items-center text-center">
@@ -154,7 +154,7 @@ export default function InspirationalMural() {
           <div className="mt-20 flex justify-center">
             <button
               onClick={() => setShowAll(false)}
-              className="group flex items-center gap-3 font-heading text-sm font-black uppercase tracking-widest text-gray-900 dark:text-white/30 transition-colors hover:text-gray-900"
+              className="group flex items-center gap-3 font-heading text-sm font-black uppercase tracking-widest text-gray-900 transition-colors hover:text-gray-900 dark:text-white/30"
             >
               <FaChevronDown className="size-4 rotate-180" />
               Show Less

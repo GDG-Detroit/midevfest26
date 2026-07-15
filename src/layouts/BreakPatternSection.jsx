@@ -37,7 +37,7 @@ export default function BreakPatternSection() {
   return (
     <section
       ref={sectionRef}
-      className="relative overflow-hidden bg-iwd-surface-raised dark:bg-iwd-black-950 py-24 lg:py-32"
+      className="bg-iwd-surface-raised relative overflow-hidden py-24 lg:py-32 dark:bg-iwd-black-950"
     >
       {/* Decorative background elements */}
       <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-iwd-gold-400/20 to-transparent" />
@@ -90,7 +90,7 @@ export default function BreakPatternSection() {
                 {[1, 2, 3, 4, 5].map((i) => (
                   <div
                     key={i}
-                    className="size-14 overflow-hidden rounded-full border-2 border-iwd-black-900 bg-iwd-surface-raised dark:bg-iwd-black-800 shadow-xl ring-2 ring-iwd-gold-400/20 transition-transform hover:-translate-y-1"
+                    className="bg-iwd-surface-raised size-14 overflow-hidden rounded-full border-2 border-iwd-black-900 shadow-xl ring-2 ring-iwd-gold-400/20 transition-transform hover:-translate-y-1 dark:bg-iwd-black-800"
                   >
                     <div className="size-full bg-gradient-to-br from-iwd-gold-300/40 via-iwd-gold-500/20 to-iwd-gold-300/40" />
                   </div>

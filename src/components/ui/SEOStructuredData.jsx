@@ -9,20 +9,20 @@ const SEOStructuredData = memo(({ speakersData = [] }) => {
   const eventData = {
     '@context': 'https://schema.org',
     '@type': 'Event',
-    'name': 'Detroit Pride Innovation Summit 2026',
+    'name': 'Michigan DevFest 2026',
     'description':
-      'Celebrating innovation, empowerment, and community at the Detroit Pride Innovation Summit 2026 in Detroit.',
+      'Celebrating innovation, empowerment, and community at Michigan DevFest 2026 in Detroit.',
     'image': 'https://midevfest26.vercel.app/social-card.jpg',
-    'startDate': '2026-06-20T08:00:00-04:00',
-    'endDate': '2026-06-20T17:00:00-04:00',
+    'startDate': '2026-03-28T08:00:00-04:00',
+    'endDate': '2026-03-28T17:00:00-04:00',
     'eventStatus': 'https://schema.org/EventScheduled',
     'eventAttendanceMode': 'https://schema.org/OfflineEventAttendanceMode',
     'location': {
       '@type': 'Place',
-      'name': 'IBM HQ Detroit',
+      'name': 'Little Caesars Global Resource Center',
       'address': {
         '@type': 'PostalAddress',
-        'streetAddress': '39555 Orchard Hill Pl',
+        'streetAddress': '2125 Woodward Ave',
         'addressLocality': 'Detroit',
         'addressRegion': 'MI',
         'postalCode': '48201',

@@ -29,7 +29,7 @@ const PastEventsSection = () => {
   return (
     <section
       id="past-events"
-      className="relative overflow-hidden bg-iwd-surface-raised dark:bg-iwd-black-950 py-24 sm:py-32"
+      className="bg-iwd-surface-raised relative overflow-hidden py-24 sm:py-32 dark:bg-iwd-black-950"
     >
       {/* Hand-drawn style background accents */}
       <div className="pointer-events-none absolute inset-0 opacity-20">
@@ -89,7 +89,7 @@ const PastEventsSection = () => {
               key={event.year}
               className="group relative flex flex-col items-start rounded-3xl border border-white/10 bg-white/[0.02] p-8 transition-all duration-500 hover:bg-white/[0.04]"
             >
-              <div className="absolute -top-6 left-8 flex h-12 w-16 -skew-x-12 items-center justify-center rounded-xl border border-white/10 bg-iwd-surface-raised dark:bg-iwd-black-900 text-2xl font-black text-iwd-gold-400 shadow-2xl transition-transform group-hover:skew-x-0">
+              <div className="bg-iwd-surface-raised absolute -top-6 left-8 flex h-12 w-16 -skew-x-12 items-center justify-center rounded-xl border border-white/10 text-2xl font-black text-iwd-gold-400 shadow-2xl transition-transform group-hover:skew-x-0 dark:bg-iwd-black-900">
                 {event.year}
               </div>
               <div className="mt-6">
@@ -106,11 +106,11 @@ const PastEventsSection = () => {
 
               {/* Hand-drawn 'connector' line */}
               <div className="relative mt-8 h-px w-full bg-gradient-to-r from-iwd-gold-400/20 via-iwd-gold-400/40 to-transparent">
-                <div className="absolute -right-1 -top-1 size-2 rounded-full border border-iwd-gold-400/40 bg-iwd-surface-raised dark:bg-iwd-black-950" />
+                <div className="bg-iwd-surface-raised absolute -right-1 -top-1 size-2 rounded-full border border-iwd-gold-400/40 dark:bg-iwd-black-950" />
               </div>
 
               <div className="mt-6 flex items-center gap-x-4">
-                <button className="text-xs font-black uppercase tracking-widest text-gray-900 dark:text-white/50 transition-colors hover:text-gray-900">
+                <button className="text-xs font-black uppercase tracking-widest text-gray-900 transition-colors hover:text-gray-900 dark:text-white/50">
                   View Gallery →
                 </button>
               </div>

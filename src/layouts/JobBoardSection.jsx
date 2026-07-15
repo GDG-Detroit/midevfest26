@@ -39,7 +39,7 @@ const JobBoardSection = ({ year = new Date().getFullYear() }) => {
         <div className="mx-auto mb-8 h-px w-24 bg-gradient-to-r from-transparent via-iwd-gold-400/50 to-transparent sm:w-32" />
 
         <div className="mx-auto max-w-4xl">
-          <p className="text-center font-body text-lg leading-relaxed text-gray-400 text-balance">
+          <p className="text-balance text-center font-body text-lg leading-relaxed text-gray-400">
             This job board is made possible by our generous sponsors, ranging
             from local Detroit organizations and regional companies to some of
             the world&apos;s best global tech companies. They voluntarily
