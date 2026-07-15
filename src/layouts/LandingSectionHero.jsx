@@ -166,10 +166,10 @@ function LandingSectionHero({
 
     const onVisibilityChange = () => syncPlayback()
 
-    import('./prideTrailScene').then(({ createPrideTrailScene }) => {
+    import('./heroScene').then(({ createHeroScene }) => {
       if (cancelled) return
 
-      scene = createPrideTrailScene(host, { showDebugGUI })
+      scene = createHeroScene(host, { showDebugGUI })
       sceneRef.current = scene
 
       if (heroEl) {

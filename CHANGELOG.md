@@ -19,6 +19,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Changed
 
+- **Hero background swap**: replaced the "pride trail" WebGL animation with a raymarched "Holo Blinds" shader (source concept: [Sabo Sugi](https://codepen.io/sabosugi/pen/azpNzMG)); `src/layouts/prideTrailScene.js` renamed to `heroScene.js`, `LandingSectionPride.jsx` renamed to `LandingSectionHero.jsx`; pause/play behavior unchanged; colors are placeholder pending brand palette; static poster fallback images still show the old effect and need regenerating
 - **React 19 upgrade**:
   - `react` / `react-dom` 18.2 → 19.2
   - `vite` 4.4 → 8.1
