@@ -192,6 +192,7 @@ export function createHeroScene(container, options = {}) {
   let gui = null
   let animationId = null
   let isPlaying = true
+  let elapsedTime = 0
   const clock = new THREE.Clock()
 
   function getSize() {
@@ -270,14 +271,26 @@ export function createHeroScene(container, options = {}) {
       return
     }
     animationId = requestAnimationFrame(animate)
-    uniforms.iTime.value = clock.getElapsedTime()
+    // Accumulate elapsed time from per-frame deltas rather than reading
+    // clock.getElapsedTime() directly. The clock keeps ticking in real time
+    // even while rAF is stopped, so a naive elapsed-time read would jump
+    // forward by however long playback was paused (tab hidden / hero
+    // scrolled out of view). Priming the clock in setPlaying() below keeps
+    // this delta small across a pause/resume cycle.
+    elapsedTime += clock.getDelta()
+    uniforms.iTime.value = elapsedTime
     renderFrame()
   }
 
   function setPlaying(playing) {
     isPlaying = playing
     if (playing) {
-      if (animationId === null) animate()
+      if (animationId === null) {
+        // Discard the delta that accumulated while paused so the shader
+        // resumes from where it left off instead of jumping ahead.
+        clock.getDelta()
+        animate()
+      }
     } else if (animationId !== null) {
       cancelAnimationFrame(animationId)
       animationId = null
