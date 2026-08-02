@@ -1,251 +1,83 @@
-# Contributing to the Detroit Pride Innovation Summit Website
+# Working on this repo
 
-Thank you for your interest in contributing to the Detroit Pride Innovation Summit (`midevfest26`)! This document provides guidelines and information for contributors.
+Notes for whoever is working on `midevfest26` — currently a two-person team, so this
+is a working reference rather than an onboarding guide.
 
-## Getting Started
+## Setup
 
-### Prerequisites
-
-- Node.js 22 or higher
-- npm
-- Git
-
-### Development Setup
-
-1. **Fork the repository** on GitHub
-2. **Clone your fork** locally:
-
-   ```bash
-   git clone https://github.com/YOUR_USERNAME/midevfest26.git
-   cd midevfest26
-   ```
-
-3. **Install dependencies**:
-
-   ```bash
-   npm install
-   ```
-
-4. **Start the development server**:
-
-   ```bash
-   npm run dev
-   ```
-
-5. **Open your browser** and navigate to `http://localhost:5173`
-
-### GitHub Desktop: Push/PR goes to wrong org or repo
-
-If **Push** or **Create Pull Request** in GitHub Desktop opens or targets a different organization or repository:
-
-1. **Re-add the repo** so GitHub Desktop picks up the correct remote:
-
-   - In GitHub Desktop: **File → Remove repository** (removes it from the list only; files stay on disk).
-   - **File → Add Local Repository** and choose this project folder (`midevfest26`).
-   - GitHub Desktop will use the existing Git remotes; pushes and "Create Pull Request" should now target **GDG-Detroit/midevfest26**.
-
-2. **Confirm remotes in Terminal** (optional):
-   ```bash
-   git remote -v
-   ```
-   You should see `origin` (and optionally `upstream`) pointing to `https://github.com/GDG-Detroit/midevfest26.git`. If not:
-   ```bash
-   git remote set-url origin https://github.com/GDG-Detroit/midevfest26.git
-   ```
-   Then remove and re-add the repo in GitHub Desktop as in step 1.
-
-## Code Quality Standards
-
-### Automated Checks
-
-All pull requests are automatically checked for:
-
-- **Code Quality**: ESLint checks for code style and potential errors
-- **Code Formatting**: Prettier ensures consistent code formatting
-- **Build Verification**: Ensures the application builds successfully
-- **Accessibility**: Automated accessibility testing with axe-core against the built site
-- **Security**: npm audit checks for security vulnerabilities
-
-### Manual Checks
-
-Before submitting a PR, please ensure:
-
-- [ ] Code follows the project's coding standards
-- [ ] All automated checks pass
-- [ ] Code is properly commented where necessary
-- [ ] No console.log statements left in the code
-- [ ] Error handling is implemented where appropriate
-
-## Development Workflow
-
-### 1. Create a Branch
+Node 22+ and npm.
 
 ```bash
-git checkout -b feature/your-feature-name
-# or
-git checkout -b fix/your-bug-fix
+npm install
+npm run dev          # http://localhost:5173
+npm run dev:cms      # pull content from Sanity first, then dev
+npm run studio:dev   # Sanity Studio
 ```
 
-### 2. Make Your Changes
-
-- Write clean, readable code
-- Follow the existing code style
-- Add comments for complex logic
-- Test your changes locally
-
-### 3. Test Your Changes
+## Before pushing
 
 ```bash
-# Run linting
-npm run lint
-
-# Check formatting
-npm run format:check
-
-# Run accessibility linting
-npm run lint:a11y
-
-# Build the application
-npm run build
+npm run lint          # ESLint, includes jsx-a11y rules
+npm run format:check  # Prettier
+npm run build         # runs fetch-event-data via prebuild
 ```
 
-### 4. Commit Your Changes
+`pre-commit` runs lint-staged (ESLint + Prettier on staged files). CI runs lint,
+format check, build, an axe accessibility pass against the built site, and an npm
+audit.
 
-We use conventional commits. Your commit message should follow this format:
+## Commits
+
+Conventional commits, enforced by commitlint on `commit-msg`.
 
 ```
 type(scope): description
-
-[optional body]
-
-[optional footer]
 ```
 
-**Types:**
-
-- `feat`: New feature
-- `fix`: Bug fix
-- `docs`: Documentation changes
-- `style`: Code style changes (formatting, etc.)
-- `refactor`: Code refactoring
-- `test`: Adding or updating tests
-- `chore`: Maintenance tasks
-- `ci`: CI/CD changes
-- `build`: Build system changes
-
-**Examples:**
+Types: `feat`, `fix`, `docs`, `style`, `refactor`, `test`, `chore`, `ci`, `build`,
+`perf`, `revert`. Subject in lower case, no trailing period, 100 chars max.
 
 ```bash
 git commit -m "feat(speakers): add speaker bio modal"
-git commit -m "fix(navbar): resolve mobile menu accessibility issue"
-git commit -m "docs(readme): update installation instructions"
+git commit -m "fix(navbar): resolve mobile menu focus trap"
 ```
 
-### 5. Push and Create Pull Request
+This feeds `CHANGELOG.md` — keep it accurate.
+
+## Accessibility
+
+The `jsx-a11y` rules live in `.eslintrc.cjs` and run as part of `npm run lint`, so
+accessibility failures surface as lint errors rather than a separate step. CI runs
+axe against the built site on every PR.
+
+`ACCESSIBILITY.md` documents the decisions behind the current implementation, and
+`CONTRAST-ANALYSIS.md` covers the palette. Read those before changing colors or
+interaction patterns — a lot of the current markup is deliberate.
+
+## Content vs. code
+
+Event content (speakers, sessions, team) lives in Sanity and is pulled into
+`src/data/<year>/speakers.generated.json` at build time by
+`scripts/fetch-event-data.mjs`. Don't hand-edit generated files.
+
+Static content still in JS — partners, job board, navigation, venues, activities —
+lives in `src/data/<year>/`. See the `sanity-content-migration` skill in
+`.claude/skills/` for how to move a type into the CMS.
+
+## GitHub Desktop pushes to the wrong repo
+
+If Push or Create Pull Request targets the wrong org, the remote is stale:
 
 ```bash
-git push origin feature/your-feature-name
+git remote -v            # confirm origin points where you expect
+git remote set-url origin <correct-url>
 ```
 
-Then create a pull request on GitHub using our PR template.
+Then in GitHub Desktop: **File → Remove repository** (list only, files stay), then
+**File → Add Local Repository** and re-select the folder.
 
-## Accessibility Guidelines
+## Skills
 
-We are committed to making the Detroit Pride Innovation Summit website accessible to everyone. Please ensure:
-
-### Keyboard Navigation
-
-- All interactive elements are keyboard accessible
-- Focus indicators are visible and clear
-- Tab order is logical and intuitive
-
-### Screen Reader Support
-
-- Images have appropriate alt text
-- Form labels are properly associated
-- Headings follow a logical hierarchy
-- Interactive elements have descriptive names
-
-### Visual Design
-
-- Color contrast meets WCAG AA standards (4.5:1 for normal text)
-- Text can be resized up to 200% without loss of functionality
-- Information is not conveyed by color alone
-
-### Testing Accessibility
-
-```bash
-# Lint JSX for accessibility issues (eslint-plugin-jsx-a11y)
-npm run lint:a11y
-
-# Run the full accessibility check (a11y lint + build)
-npm run a11y:check
-```
-
-## Code Style Guidelines
-
-### JavaScript/React
-
-- Use functional components with hooks
-- Use meaningful variable and function names
-- Keep components small and focused
-- Use PropTypes for prop validation
-- Follow the existing ESLint configuration
-
-### CSS/Styling
-
-- Use Tailwind CSS for styling
-- Follow the existing design system
-- Use semantic HTML elements
-- Keep styles organized and maintainable
-
-### File Organization
-
-- Keep related files together
-- Use descriptive file and folder names
-- Follow the existing project structure
-
-## Pull Request Process
-
-1. **Use the PR template** - Fill out all relevant sections
-2. **Ensure all checks pass** - The CI pipeline must pass before merging
-3. **Request reviews** - Tag appropriate reviewers
-4. **Address feedback** - Respond to review comments promptly
-5. **Keep PRs focused** - One feature or fix per PR
-6. **Write clear descriptions** - Explain what changed and why
-
-## Issue Reporting
-
-When reporting issues, please use our issue templates:
-
-- **Bug Report**: For reporting bugs and issues
-- **Feature Request**: For suggesting new features
-- **Accessibility Issue**: For reporting accessibility problems
-
-## Community Guidelines
-
-- Be respectful and inclusive
-- Help others learn and grow
-- Provide constructive feedback
-- Follow the [GDG Code of Conduct](https://developers.google.com/community/gdg/code-of-conduct)
-
-## Getting Help
-
-- **GitHub Discussions**: For general questions and discussions
-- **Issues**: For bug reports and feature requests
-
-## Release Process
-
-Releases are managed by the maintainers. When your PR is merged:
-
-1. The changes are automatically deployed
-2. You'll be credited in the release notes
-3. The website will be updated with your contributions
-
-## Thank You
-
-Thank you for contributing to the Detroit Pride Innovation Summit website! Your contributions help make our event more accessible and engaging for the community.
-
----
-
-**Note**: This project is maintained by the Compass Detroit team. For questions about the project or this contributing guide, please open an issue or start a discussion.
+`.claude/skills/` holds repo-specific playbooks — event rebrands, React/Vite major
+upgrades, Sanity migration, the multi-year archive, track and venue config, and
+speaker intake. Check there before rediscovering something the hard way.
