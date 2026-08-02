@@ -144,9 +144,27 @@ function LocationSection() {
               <h3 className="text-xl font-semibold text-white">When</h3>
             </div>
             <p className="font-orbitron text-lg font-semibold tracking-wide text-iwd-gold-300">
-              March 28, 2026
+              November 13-14, 2026
             </p>
-            <p className="mt-2 text-base font-bold text-gray-400">
+            <div className="mt-4 space-y-3">
+              <div className="flex flex-col border-l-2 border-iwd-gold-400/50 pl-3">
+                <span className="text-xs font-bold uppercase tracking-wider text-iwd-gold-400">
+                  November 13
+                </span>
+                <span className="text-base font-semibold text-white">
+                  AI Hackathon
+                </span>
+              </div>
+              <div className="flex flex-col border-l-2 border-iwd-gold-400/50 pl-3">
+                <span className="text-xs font-bold uppercase tracking-wider text-iwd-gold-400">
+                  November 14
+                </span>
+                <span className="text-base font-semibold text-white">
+                  DevFest
+                </span>
+              </div>
+            </div>
+            <p className="mt-4 text-base font-bold text-gray-400">
               Doors Open 8:00 AM <br /> Sessions to 5:00 PM
             </p>
           </div>

@@ -39,7 +39,7 @@ function PrideHeroForeground() {
         >
           Michigan{' '}
           <span className="mt-2 block font-heading text-xl normal-case text-iwd-gold-400 sm:text-2xl md:text-3xl lg:text-4xl">
-            DevFest
+            DevFest &amp; AI Hackathon
           </span>
         </h1>
 
