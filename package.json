@@ -5,7 +5,7 @@
   "type": "module",
   "repository": {
     "type": "git",
-    "url": "https://github.com/Compass-Detroit/midevfest26.git"
+    "url": "https://github.com/GDG-Detroit/midevfest26.git"
   },
   "scripts": {
     "dev": "vite",
