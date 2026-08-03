@@ -14,6 +14,7 @@ function ActivityCard({
   time,
   timeEnd,
   room,
+  isArchived = false,
 }) {
   const { isSessionSaved, toggleSession } = useSchedule()
   const isSaved = activityId ? isSessionSaved(activityId) : false
@@ -110,7 +111,7 @@ function ActivityCard({
               )}
             </div>
           </div>
-          {activityId && (
+          {activityId && !isArchived && (
             <div className="ml-4 flex items-center justify-center">
               <button
                 onClick={(e) => {
@@ -160,6 +161,8 @@ ActivityCard.propTypes = {
   time: PropTypes.string.isRequired,
   timeEnd: PropTypes.string,
   room: PropTypes.string,
+  /** Archive years are over, so the save control is not rendered. */
+  isArchived: PropTypes.bool,
 }
 
 export default ActivityCard

@@ -158,6 +158,7 @@ const SessionsSection = ({
   year = new Date().getFullYear(),
   tracks = [],
   defaultExpanded = true,
+  isArchived = false,
 }) => {
   const [activeTab, setActiveTab] = useState(0)
   const [isExpanded, setIsExpanded] = useState(defaultExpanded)
@@ -178,10 +179,21 @@ const SessionsSection = ({
   } = useSchedule()
 
   const tracksWithoutMap = tracks.filter((t) => t !== 'Map')
+  // A finished event cannot be planned for, so archive years drop the tab
+  // entirely rather than showing one that can only ever be empty.
+  const scheduleTab = isArchived ? [] : ['My Schedule']
   const tabs = tracks.includes('Map')
-    ? ['Map', 'My Schedule', ...tracksWithoutMap]
-    : ['My Schedule', ...tracks]
+    ? ['Map', ...scheduleTab, ...tracksWithoutMap]
+    : [...scheduleTab, ...tracks]
   const currentSession = tabs[activeTab]
+
+  // Derived, not positional: Map and My Schedule are each conditional, so any
+  // hardcoded index is wrong for some combination of them. -1 when absent, and
+  // every control using these is gated on the same condition that adds the tab.
+  const myScheduleIndex = tabs.indexOf('My Schedule')
+  const firstTrackIndex = tabs.findIndex(
+    (tab) => tab !== 'Map' && tab !== 'My Schedule'
+  )
 
   const toggleExpanded = () => {
     setIsExpanded(!isExpanded)
@@ -326,6 +338,9 @@ const SessionsSection = ({
   }, [activeTab])
 
   const activateTab = (index, moveFocusToPanel = false) => {
+    // Indices are derived from `tabs`, so a miss means the caller asked for a
+    // tab this configuration does not have. Ignore rather than blanking the panel.
+    if (index < 0 || index >= tabs.length) return
     setActiveTab(index)
     if (moveFocusToPanel) {
       requestAnimationFrame(() => {
@@ -535,6 +550,7 @@ const SessionsSection = ({
         <div className="mx-auto flex w-full max-w-7xl flex-col gap-8 lg:flex-row lg:items-start">
           {/* Left Sidebar: My Schedule (Visible on Desktop when not already viewing My Schedule tab) */}
           {isExpanded &&
+            !isArchived &&
             currentSession !== 'My Schedule' &&
             currentSession !== 'Map' && (
               <aside className="hidden w-full shrink-0 flex-col gap-6 lg:flex lg:w-80">
@@ -585,7 +601,7 @@ const SessionsSection = ({
                         ))}
                       {savedSessionIds.length > 5 && (
                         <button
-                          onClick={() => activateTab(0)}
+                          onClick={() => activateTab(myScheduleIndex)}
                           className="mt-2 text-left text-[10px] font-black uppercase tracking-widest text-gray-900 transition-all hover:text-black dark:text-white/30 dark:hover:text-gray-900"
                         >
                           + {savedSessionIds.length - 5} more in my schedule
@@ -614,7 +630,7 @@ const SessionsSection = ({
                   )}
 
                   <button
-                    onClick={() => activateTab(0)}
+                    onClick={() => activateTab(myScheduleIndex)}
                     className="mt-6 w-full rounded-lg border border-iwd-gold-400/20 bg-iwd-gold-400/5 py-3 text-[10px] font-black uppercase tracking-[0.2em] text-iwd-gold-400 transition-all hover:bg-iwd-gold-400 hover:text-iwd-black-950"
                   >
                     Manage Full Schedule
@@ -635,25 +651,27 @@ const SessionsSection = ({
               isExpanded ? 'opacity-100' : 'max-h-0 opacity-0'
             } transition-all duration-500`}
           >
-            {lastConflict && currentSession !== 'My Schedule' && (
-              <div className="mb-4 rounded-md border border-yellow-400/30 bg-yellow-400/10 p-3 text-sm text-yellow-100">
-                <div className="flex flex-wrap items-center justify-between gap-3">
-                  <div>
-                    <strong>Schedule conflict detected</strong>
-                    <div className="text-xs text-yellow-100/80">
-                      A saved session overlaps with another. Review and resolve
-                      it in My Schedule.
+            {lastConflict &&
+              !isArchived &&
+              currentSession !== 'My Schedule' && (
+                <div className="mb-4 rounded-md border border-yellow-400/30 bg-yellow-400/10 p-3 text-sm text-yellow-100">
+                  <div className="flex flex-wrap items-center justify-between gap-3">
+                    <div>
+                      <strong>Schedule conflict detected</strong>
+                      <div className="text-xs text-yellow-100/80">
+                        A saved session overlaps with another. Review and
+                        resolve it in My Schedule.
+                      </div>
                     </div>
+                    <button
+                      onClick={() => activateTab(myScheduleIndex)}
+                      className="rounded border border-yellow-300/40 px-3 py-1 text-xs font-semibold"
+                    >
+                      Open My Schedule
+                    </button>
                   </div>
-                  <button
-                    onClick={() => activateTab(0)}
-                    className="rounded border border-yellow-300/40 px-3 py-1 text-xs font-semibold"
-                  >
-                    Open My Schedule
-                  </button>
                 </div>
-              </div>
-            )}
+              )}
             {currentSession === 'Map' ? (
               <VenueMaps />
             ) : hasContentForTrack ? (
@@ -761,6 +779,7 @@ const SessionsSection = ({
                           sessionTime={item.sessionTime}
                           sessionRoom={item.sessionRoom}
                           sessionDuration={item.sessionDuration}
+                          isArchived={isArchived}
                         />
                       </li>
                     ) : (
@@ -773,6 +792,7 @@ const SessionsSection = ({
                           time={item.time}
                           timeEnd={item.timeEnd}
                           room={item.room}
+                          isArchived={isArchived}
                         />
                       </li>
                     )
@@ -781,10 +801,7 @@ const SessionsSection = ({
               </>
             ) : currentSession === 'My Schedule' ? (
               <MyScheduleEmptyState
-                onExplore={() => {
-                  const firstTrackIndex = tabs.includes('Map') ? 2 : 1
-                  activateTab(firstTrackIndex)
-                }}
+                onExplore={() => activateTab(firstTrackIndex)}
               />
             ) : (
               <TrackEmptyState />
@@ -823,6 +840,12 @@ SessionsSection.propTypes = {
   year: PropTypes.number,
   tracks: PropTypes.arrayOf(PropTypes.string),
   defaultExpanded: PropTypes.bool,
+  /**
+   * Renders the section as a historical record. Hides the My Schedule tab, the
+   * sidebar and the conflict banner, and tells each card to swap its save and
+   * calendar-export controls for static text.
+   */
+  isArchived: PropTypes.bool,
 }
 
 export default SessionsSection

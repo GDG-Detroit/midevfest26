@@ -4,6 +4,7 @@ import {
   Route,
   BrowserRouter as Router,
   Routes,
+  useParams,
 } from 'react-router-dom'
 
 import Home from '@/pages/Home'
@@ -16,7 +17,18 @@ const CareersHub = lazy(() => import('@/pages/CareersHub'))
 const ConnectionsPage = lazy(() => import('@/pages/Connections'))
 const MediaPage = lazy(() => import('@/pages/Media'))
 const PreviousEvents = lazy(() => import('@/pages/PreviousEvents'))
+const PreviousEvent = lazy(() => import('@/pages/PreviousEvent'))
 const NotFound = lazy(() => import('@/pages/NotFound'))
+
+/**
+ * The legacy site published archive years under /previous-events/:year. Keep
+ * those URLs working, carrying the year across rather than dumping every inbound
+ * link on the index.
+ */
+const RedirectToArchivedYear = () => {
+  const { year } = useParams()
+  return <Navigate to={`/past-events/${year}`} replace />
+}
 
 function App() {
   return (
@@ -47,8 +59,16 @@ function App() {
                   <Route path="/media" element={<MediaPage />} />
                   <Route path="/past-events" element={<PreviousEvents />} />
                   <Route
+                    path="/past-events/:year"
+                    element={<PreviousEvent />}
+                  />
+                  <Route
                     path="/previous-events"
                     element={<Navigate to="/past-events" replace />}
+                  />
+                  <Route
+                    path="/previous-events/:year"
+                    element={<RedirectToArchivedYear />}
                   />
                   <Route path="*" element={<NotFound />} />
                 </Routes>
