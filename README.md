@@ -1,10 +1,8 @@
-# Detroit Pride Innovation Summit 2026
+# Michigan DevFest 2026
 
-The website for the [Detroit Pride Innovation Summit 2026](https://midevfest26.vercel.app/). Built with Vite, React, and Tailwind CSS.
+The website for the [Michigan DevFest 2026](https://midevfest26.vercel.app/). Built with Vite, React, and Tailwind CSS.
 
-Organized by **Compass Detroit** in partnership with **GDG Detroit** and community partners (see the Partners section on the site for the full list).
-
-Hero animation is a custom WebGL raymarched shader ("Holo Blinds") built with Three.js and lil-gui. Author of initial effect attribution: [Sabo Sugi](https://codepen.io/sabosugi/pen/azpNzMG). Effect enhanced and customized by **[Greg Miller](https://github.com/shrinkray)** for Compass Detroit.
+Organized by **GDG Detroit** and community partners (see the Partners section on the site for the full list).
 
 ## Project Lineage
 
@@ -13,7 +11,7 @@ This codebase is cloned and refactored forward across events, carrying tooling a
 - **Compass Detroit website** — original base: Tailwind palette/fonts, accessibility docs, lint/format/commit tooling
 - **BHM-website** (Black History Month Innovation Summit) — first fork/rebrand; nav and page restructuring, Pathways dropdown a11y
 - **pridemi26** (Detroit Pride Innovation Summit, June 2026) — second fork/rebrand; four-theme system, SEO (robots/sitemap/OG), WCAG reflow fixes, Sanity CMS import pipeline
-- **midevfest26** (this repo, Michigan DevFest) — current fork; React 19 upgrade, new Sanity instance, Sanity extended to more content areas — carrying the above forward into the new site vision
+- **midevfest26** (this repo, Michigan DevFest, November 2026) — current fork; React 19 upgrade, new Sanity instance, Sanity extended to more content areas — carrying the above forward into the new site vision
 
 See `CHANGELOG.md` for the version-by-version detail behind each stage.
 
@@ -217,7 +215,7 @@ Search engines and social platforms read static files and `index.html` directly 
 - `/media`
 - `/past-events`
 
-Excluded from the sitemap: `/playground/*` (internal design previews), `/previous-events` (redirect), and 404 routes.
+Excluded from the sitemap: `/previous-events` (redirect), and 404 routes.
 
 **When you add a public page**, add a `<url>` entry to `public/sitemap.xml` and bump `<lastmod>`.
 

@@ -53,7 +53,8 @@ import { GOLD_PRIMARY_LIGHT_HOVER } from '@/constants/goldPrimaryButtonLightHove
  * - Automatically announces "(opens in new tab)" for links opening in new windows
  * - Includes visible focus indicators for keyboard navigation (WCAG 2.4.7)
  * - Supports custom ARIA labels for enhanced screen reader experience
- * - Uses semantic HTML <a> tag for proper link behavior
+ * - Uses a semantic <a> when given an `href`, and a <button> when not, so
+ *   on-page actions are not announced as links
  * - Maintains proper contrast ratios for both variants (WCAG 2.1 AA)
  *
  * @design
@@ -64,6 +65,7 @@ import { GOLD_PRIMARY_LIGHT_HOVER } from '@/constants/goldPrimaryButtonLightHove
 
 function CTAButton({
   href,
+  onClick,
   label,
   children,
   variant = 'primary',
@@ -74,6 +76,10 @@ function CTAButton({
   className = '',
   ariaLabel,
 }) {
+  // Actions that stay on the page (a calendar download, say) have no URL to
+  // link to. Rendering those as a <button> keeps the semantics honest rather
+  // than pointing an <a> at "#".
+  const isLink = Boolean(href)
   const buttonText = label || children
   const buttonRef = useRef(null)
   const [position, setPosition] = useState({ x: 0, y: 0 })
@@ -95,7 +101,9 @@ function CTAButton({
   const getAriaLabel = () => {
     if (ariaLabel) return ariaLabel
 
-    if (target === '_blank') {
+    // `target` defaults to '_blank', so only consult it when this really is a
+    // link — a <button> must not announce "opens in new tab".
+    if (isLink && target === '_blank') {
       const text = typeof buttonText === 'string' ? buttonText : 'Link'
       return `${text} (opens in new tab)`
     }
@@ -113,13 +121,16 @@ function CTAButton({
   const baseStyles =
     'group relative flex items-center justify-center rounded-lg px-8 py-4 font-medium transition-all duration-500 ease-out hover:cursor-pointer focus:outline-none focus:ring-2 focus:ring-focus-ring focus:ring-offset-2 focus:ring-offset-black whitespace-nowrap'
 
+  const Element = isLink ? 'a' : 'button'
+  const elementProps = isLink
+    ? { href, target, rel }
+    : { type: 'button', onClick }
+
   return (
-    <a
+    <Element
       ref={buttonRef}
-      href={href}
-      target={target}
+      {...elementProps}
       className={`${baseStyles} ${variantStyles[variant]} ${className}`}
-      rel={rel}
       aria-label={getAriaLabel()}
       onMouseMove={handleMouseMove}
       onMouseLeave={handleMouseLeave}
@@ -145,13 +156,18 @@ function CTAButton({
           </span>
         )}
       </span>
-    </a>
+    </Element>
   )
 }
 
 CTAButton.propTypes = {
-  /** The URL the button links to (required) */
-  href: PropTypes.string.isRequired,
+  /**
+   * The URL the button links to. Omit it to render a <button> instead of an
+   * <a> — pair that with `onClick` for on-page actions like a file download.
+   */
+  href: PropTypes.string,
+  /** Click handler for the <button> form (ignored when `href` is set) */
+  onClick: PropTypes.func,
   /** Button text as a prop (alternative to using children) */
   label: PropTypes.string,
   /** Button text/content as children (alternative to using label prop) */

@@ -1,5 +1,7 @@
 {
   "iis.configDir": "",
+  "typescript.tsdk": "studio/node_modules/typescript/lib",
+  "typescript.enablePromptUseWorkspaceTsdk": true,
   "eslint.validate": ["javascript", "javascriptreact"],
   "editor.formatOnSave": true,
   "editor.defaultFormatter": "esbenp.prettier-vscode",

@@ -1,16 +1,16 @@
 # midevfest26 Sanity Studio
 
-TypeScript [Sanity Studio](https://www.sanity.io/docs/sanity-studio) for the [Detroit Pride Innovation Summit](https://midevfest26.vercel.app/) site. It lives in `/studio` beside the Vite/React app and is **not** bundled into the public website.
+TypeScript [Sanity Studio](https://www.sanity.io/docs/sanity-studio) for the [Michigan DevFest](https://midevfest26.vercel.app/) site. It lives in `/studio` beside the Vite/React app and is **not** bundled into the public website.
 
 Organizers and developers manage event content here. The public site reads speakers and sessions from Sanity at **build time** (`scripts/fetch-event-data.mjs`). Bulk imports via **n8n** are optional; you can also edit directly in Studio.
 
 |                   |                                                                                    |
 | ----------------- | ---------------------------------------------------------------------------------- |
 | **Project**       | `midevfest26`                                                                      |
-| **Project ID**    | `b18a6pbd`                                                                         |
+| **Project ID**    | `5qtiaw9u`                                                                         |
 | **Local Studio**  | `http://localhost:3333` (`npm run studio:dev` from repo root)                      |
 | **Hosted Studio** | [midevfest26.sanity.studio](https://midevfest26.sanity.studio/)                    |
-| **Manage**        | [sanity.io/manage/project/b18a6pbd](https://www.sanity.io/manage/project/b18a6pbd) |
+| **Manage**        | [sanity.io/manage/project/5qtiaw9u](https://www.sanity.io/manage/project/5qtiaw9u) |
 
 ---
 
@@ -74,7 +74,7 @@ Production deploys run `fetch:event-data` automatically via `prebuild` before `v
 Copy `.env.example` to `.env` (gitignored):
 
 ```bash
-SANITY_STUDIO_PROJECT_ID=b18a6pbd
+SANITY_STUDIO_PROJECT_ID=5qtiaw9u
 SANITY_STUDIO_DATASET=production
 ```
 
@@ -89,12 +89,12 @@ SANITY_STUDIO_DATASET=production
 
 Schemas live in `schemaTypes/`:
 
-| Document         | Description                                                                                     |
-| ---------------- | ----------------------------------------------------------------------------------------------- |
-| **`event`**      | One per summit year (e.g. Detroit Pride Innovation Summit 2026). Anchors speakers and sessions. |
-| **`speaker`**    | Person: name, bio, org, headshot, badges (WTM/GDE), optional social links.                      |
-| **`session`**    | Talk or panel: title, track, time, room, description, `participants[]` → speaker refs.          |
-| **`teamMember`** | Organizers and dev team: headshot, role, org, bio, `teamGroup` (`compass`, `devteam`, etc.).    |
+| Document         | Description                                                                                  |
+| ---------------- | -------------------------------------------------------------------------------------------- |
+| **`event`**      | One per summit year (e.g. Michigan DevFest 2026). Anchors speakers and sessions.             |
+| **`speaker`**    | Person: name, bio, org, headshot, badges (WTM/GDE), optional social links.                   |
+| **`session`**    | Talk or panel: title, track, time, room, description, `participants[]` → speaker refs.       |
+| **`teamMember`** | Organizers and dev team: headshot, role, org, bio, `teamGroup` (`compass`, `devteam`, etc.). |
 
 **Panels:** multiple speakers on one session card share the same session title. The runner sheet uses one row per speaker per session; n8n groups by title.
 

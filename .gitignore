@@ -15,6 +15,10 @@ dist-ssr
 # Sanity import secrets
 scripts/sanity-import/.env
 
+# Headshots staged for import. Re-fetch with extract-devfest-2025.mjs's documented
+# tarball step; once uploaded, Sanity's CDN is the source of truth.
+scripts/sanity-import/assets/
+
 # Editor directories and files
 .vscode/*
 !.vscode/extensions.json

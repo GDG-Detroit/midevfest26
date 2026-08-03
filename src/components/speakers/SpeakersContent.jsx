@@ -28,8 +28,8 @@ const SpeakersContent = ({ year, defaultExpanded }) => {
       <button
         aria-label={
           isExpanded
-            ? `Collapse ${year} Compass Detroit Speakers`
-            : `Expand ${year} Compass Detroit Speakers`
+            ? `Collapse ${year} Michigan DevFest Speakers`
+            : `Expand ${year} Michigan DevFest Speakers`
         }
         onClick={toggleExpanded}
         className="absolute left-0 top-3 cursor-pointer items-center text-white transition-colors hover:text-gray-400 sm:top-4"

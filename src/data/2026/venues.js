@@ -9,6 +9,23 @@ export const SCHEDULE_TRACK = 'Schedule'
 /** Single session track for 2026 — all speaker sessions and activities use this. */
 export const SESSION_TRACK = 'Level Up'
 
+/**
+ * Tracks of the 2025 program, which stands in as placeholder content until the
+ * 2026 program is confirmed. The schedule renders one tab per track, so these
+ * have to be listed for last year's sessions to be reachable at all.
+ *
+ * Remove this and go back to SESSION_TRACK once 2026 sessions are in the CMS.
+ */
+export const PLACEHOLDER_TRACKS_2025 = [
+  'Level Up',
+  'Leadership',
+  'Hackathon',
+  'Innovation',
+  'Build with AI',
+  'Tech+Design',
+  'Workshops',
+]
+
 export const VENUE_ROOMS = {
   LEVEL_UP: 'Rooms 2415 & 2416',
   KITCHEN: 'Kitchen',

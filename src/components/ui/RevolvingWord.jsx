@@ -46,7 +46,7 @@ function RevolvingWord({ words, interval = DEFAULT_INTERVAL, className = '' }) {
 
   return (
     <span
-      className={`inline-block overflow-hidden align-bottom ${className}`}
+      className={`inline-block overflow-hidden align-bottom text-iwd-gold-50 ${className}`}
       aria-hidden="true"
     >
       <span

@@ -14,11 +14,13 @@ const ROOT = path.resolve(__dirname, '..')
 const OUTPUT = path.join(ROOT, 'src/data/2026/speakers.generated.json')
 const OPTIONAL_ENV = path.join(ROOT, 'scripts/sanity-import/.env')
 
-const DEFAULT_PROJECT_ID = 'b18a6pbd'
+const DEFAULT_PROJECT_ID = '5qtiaw9u'
 const DEFAULT_DATASET = 'production'
 const DEFAULT_EVENT_YEAR = 2026
 const DEFAULT_TRACK = 'Level Up'
-const DEFAULT_ROOM = 'IBM HQ'
+// Empty rather than a venue name: the UI hides the room chip when it is blank,
+// which is the right outcome for sessions whose room is not yet assigned.
+const DEFAULT_ROOM = ''
 
 const SESSIONS_QUERY = `*[_type == "session" && event->year == $year && published == true] | order(startTime asc, title asc) {
   _id,
