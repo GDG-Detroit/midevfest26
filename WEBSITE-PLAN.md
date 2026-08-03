@@ -88,13 +88,13 @@ settling before the program firms up.
 
 Firm dates aren't realistic yet, and I'd rather not invent them. The sequence is:
 
-| Stage | What happens | Timing |
-|---|---|---|
-| 1 | Load 2025 program into the new CMS | Near term |
-| 2 | Publish the site with 2025 content and 2026 venue | Shortly after |
-| 3 | Speaker pipeline opens (CFP or invitations) | Around September |
-| 4 | Replace 2025 entries with confirmed 2026 speakers | Rolling, as confirmed |
-| 5 | Schedule and room assignments finalized | Closer to the event |
+| Stage | What happens                                      | Timing                |
+| ----- | ------------------------------------------------- | --------------------- |
+| 1     | Load 2025 program into the new CMS                | Near term             |
+| 2     | Publish the site with 2025 content and 2026 venue | Shortly after         |
+| 3     | Speaker pipeline opens (CFP or invitations)       | Around September      |
+| 4     | Replace 2025 entries with confirmed 2026 speakers | Rolling, as confirmed |
+| 5     | Schedule and room assignments finalized           | Closer to the event   |
 
 Stages 4 and 5 are ongoing content work, not development work. Once the site is
 published, adding a speaker takes minutes and doesn't require me.
