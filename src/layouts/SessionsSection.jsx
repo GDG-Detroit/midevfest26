@@ -187,6 +187,14 @@ const SessionsSection = ({
     : [...scheduleTab, ...tracks]
   const currentSession = tabs[activeTab]
 
+  // Derived, not positional: Map and My Schedule are each conditional, so any
+  // hardcoded index is wrong for some combination of them. -1 when absent, and
+  // every control using these is gated on the same condition that adds the tab.
+  const myScheduleIndex = tabs.indexOf('My Schedule')
+  const firstTrackIndex = tabs.findIndex(
+    (tab) => tab !== 'Map' && tab !== 'My Schedule'
+  )
+
   const toggleExpanded = () => {
     setIsExpanded(!isExpanded)
     setDirection(isExpanded ? DIRECTION.BOTTOM : DIRECTION.TOP)
@@ -330,6 +338,9 @@ const SessionsSection = ({
   }, [activeTab])
 
   const activateTab = (index, moveFocusToPanel = false) => {
+    // Indices are derived from `tabs`, so a miss means the caller asked for a
+    // tab this configuration does not have. Ignore rather than blanking the panel.
+    if (index < 0 || index >= tabs.length) return
     setActiveTab(index)
     if (moveFocusToPanel) {
       requestAnimationFrame(() => {
@@ -590,7 +601,7 @@ const SessionsSection = ({
                         ))}
                       {savedSessionIds.length > 5 && (
                         <button
-                          onClick={() => activateTab(0)}
+                          onClick={() => activateTab(myScheduleIndex)}
                           className="mt-2 text-left text-[10px] font-black uppercase tracking-widest text-gray-900 transition-all hover:text-black dark:text-white/30 dark:hover:text-gray-900"
                         >
                           + {savedSessionIds.length - 5} more in my schedule
@@ -619,7 +630,7 @@ const SessionsSection = ({
                   )}
 
                   <button
-                    onClick={() => activateTab(0)}
+                    onClick={() => activateTab(myScheduleIndex)}
                     className="mt-6 w-full rounded-lg border border-iwd-gold-400/20 bg-iwd-gold-400/5 py-3 text-[10px] font-black uppercase tracking-[0.2em] text-iwd-gold-400 transition-all hover:bg-iwd-gold-400 hover:text-iwd-black-950"
                   >
                     Manage Full Schedule
@@ -653,7 +664,7 @@ const SessionsSection = ({
                       </div>
                     </div>
                     <button
-                      onClick={() => activateTab(0)}
+                      onClick={() => activateTab(myScheduleIndex)}
                       className="rounded border border-yellow-300/40 px-3 py-1 text-xs font-semibold"
                     >
                       Open My Schedule
@@ -790,10 +801,7 @@ const SessionsSection = ({
               </>
             ) : currentSession === 'My Schedule' ? (
               <MyScheduleEmptyState
-                onExplore={() => {
-                  const firstTrackIndex = tabs.includes('Map') ? 2 : 1
-                  activateTab(firstTrackIndex)
-                }}
+                onExplore={() => activateTab(firstTrackIndex)}
               />
             ) : (
               <TrackEmptyState />
