@@ -19,13 +19,24 @@ export function createSanityClient({ projectId, dataset, token }) {
   })
 }
 
-export const speakerDocId = (slug) => `speaker-${slug}`
-export const sessionDocId = (slug) => `session-${slug}`
+/**
+ * Document IDs are derived from the slug so imports are idempotent.
+ *
+ * `namespace` scopes an ID to one event, which is what lets the same person
+ * appear under more than one event — the 2025 archive and the 2026 placeholder
+ * program are the same 47 humans, and without a namespace the second import
+ * would overwrite the first and move its event reference. Omit it to keep the
+ * original unnamespaced IDs (the live event, written by import-speakers.mjs).
+ */
+export const speakerDocId = (slug, namespace) =>
+  namespace ? `speaker-${namespace}-${slug}` : `speaker-${slug}`
+export const sessionDocId = (slug, namespace) =>
+  namespace ? `session-${namespace}-${slug}` : `session-${slug}`
 
-export function slugRef(type, slug, idFn) {
+export function slugRef(type, slug, idFn, namespace) {
   return {
     _type: 'reference',
-    _ref: idFn(slug),
+    _ref: idFn(slug, namespace),
     _weak: true,
   }
 }
