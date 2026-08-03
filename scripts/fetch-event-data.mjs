@@ -2,7 +2,7 @@
  * Fetch published speakers/sessions from Sanity and write frontend-ready JSON.
  * Run before build (or manually via npm run fetch:event-data).
  */
-import { writeFile } from 'node:fs/promises'
+import { mkdir, writeFile } from 'node:fs/promises'
 import { existsSync, readFileSync } from 'node:fs'
 import { fileURLToPath } from 'node:url'
 import path from 'node:path'
@@ -11,8 +11,21 @@ import prettier from 'prettier'
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url))
 const ROOT = path.resolve(__dirname, '..')
-const OUTPUT = path.join(ROOT, 'src/data/2026/speakers.generated.json')
 const OPTIONAL_ENV = path.join(ROOT, 'scripts/sanity-import/.env')
+
+/** Where a given year's generated rows live. */
+const outputFor = (year) =>
+  path.join(ROOT, `src/data/${year}/speakers.generated.json`)
+
+/** Every event in the dataset, newest first — drives the archive. */
+const EVENTS_QUERY = `*[_type == "event" && defined(year)] | order(year desc){
+  year,
+  title,
+  "slug": slug.current
+}`
+
+/** Manifest of known events, so a new year in Sanity appears without a code edit. */
+const EVENTS_OUTPUT = path.join(ROOT, 'src/data/events.generated.json')
 
 const DEFAULT_PROJECT_ID = '5qtiaw9u'
 const DEFAULT_DATASET = 'production'
@@ -192,23 +205,24 @@ function stripInternalFields(rows) {
   return rows.map(({ _sessionId, _featuredSessionId, ...row }) => row)
 }
 
+function createSanityReadClient(options = {}) {
+  return createClient({
+    projectId:
+      options.projectId ?? readEnv('SANITY_PROJECT_ID', DEFAULT_PROJECT_ID),
+    dataset: options.dataset ?? readEnv('SANITY_DATASET', DEFAULT_DATASET),
+    apiVersion: '2026-06-01',
+    useCdn: false,
+    token: process.env.SANITY_READ_TOKEN || undefined,
+  })
+}
+
 export async function fetchEventSpeakers(options = {}) {
-  const projectId =
-    options.projectId ?? readEnv('SANITY_PROJECT_ID', DEFAULT_PROJECT_ID)
-  const dataset = options.dataset ?? readEnv('SANITY_DATASET', DEFAULT_DATASET)
   const eventYear = Number(
     options.eventYear ??
       readEnv('SANITY_EVENT_YEAR', String(DEFAULT_EVENT_YEAR))
   )
 
-  const client = createClient({
-    projectId,
-    dataset,
-    apiVersion: '2026-06-01',
-    useCdn: false,
-    token: process.env.SANITY_READ_TOKEN || undefined,
-  })
-
+  const client = createSanityReadClient(options)
   const sessions = await client.fetch(SESSIONS_QUERY, { year: eventYear })
 
   const rows = []
@@ -236,18 +250,89 @@ async function writeFormattedJson(filePath, data) {
   await writeFile(filePath, formatted, 'utf8')
 }
 
+/**
+ * The passthrough module each year's components import. Kept generated so a new
+ * archive year needs no hand-written file — adding the event in Sanity is enough.
+ */
+const passthroughModule = (year) => `/**
+ * Speaker + session rows for ${year}.
+ * Generated from Sanity before each build — see scripts/fetch-event-data.mjs.
+ */
+import speakersGenerated from './speakers.generated.json'
+
+export const SpeakersData = speakersGenerated
+`
+
+/**
+ * Rows are speaker-session pairs, so a speaker on two sessions appears twice and
+ * a panel repeats its session once per participant. Both counts dedupe.
+ *
+ * Derived here rather than in the browser so the archive index can render counts
+ * from a small manifest instead of bundling every year's speaker bios.
+ */
+function deriveMetadata(rows) {
+  const speakers = new Set()
+  const sessions = new Set()
+  const tracks = new Set()
+
+  for (const row of rows) {
+    if (row.name) speakers.add(row.name)
+    if (row.session?.title) sessions.add(row.session.title)
+    if (row.session?.track) tracks.add(row.session.track)
+  }
+
+  return {
+    speakerCount: speakers.size,
+    sessionCount: sessions.size,
+    tracks: [...tracks].sort(),
+  }
+}
+
+async function writeYear(year) {
+  const rows = await fetchEventSpeakers({ eventYear: year })
+  const output = stripInternalFields(rows)
+  const target = outputFor(year)
+
+  await mkdir(path.dirname(target), { recursive: true })
+  await writeFormattedJson(target, output)
+
+  // Only create the passthrough when absent: 2026's is hand-maintained and may
+  // pick up per-year tweaks the generated template does not know about.
+  const modulePath = path.join(path.dirname(target), 'speakers.js')
+  if (!existsSync(modulePath)) {
+    await writeFile(modulePath, passthroughModule(year), 'utf8')
+  }
+
+  const metadata = deriveMetadata(output)
+  console.log(
+    `  ${year}: ${output.length} rows, ${metadata.speakerCount} speakers, ` +
+      `${metadata.sessionCount} sessions -> ${path.relative(ROOT, target)}`
+  )
+  return { rowCount: output.length, ...metadata }
+}
+
 async function main() {
   loadOptionalEnvFile()
-  const rows = await fetchEventSpeakers()
-  const output = stripInternalFields(rows)
 
-  await writeFormattedJson(OUTPUT, output)
+  const client = createSanityReadClient()
+  const events = await client.fetch(EVENTS_QUERY)
+  if (!events?.length) throw new Error('No event documents found in Sanity')
+
+  const years = events.map((event) => event.year)
+  console.log(`Fetching ${years.length} event year(s): ${years.join(', ')}`)
+
+  let total = 0
+  const manifest = []
+  for (const event of events) {
+    const stats = await writeYear(event.year)
+    total += stats.rowCount
+    manifest.push({ ...event, ...stats })
+  }
+
+  await writeFormattedJson(EVENTS_OUTPUT, manifest)
 
   console.log(
-    `Wrote ${output.length} speaker-session rows to ${path.relative(
-      ROOT,
-      OUTPUT
-    )}`
+    `Wrote ${total} speaker-session rows across ${years.length} year(s)`
   )
 }
 

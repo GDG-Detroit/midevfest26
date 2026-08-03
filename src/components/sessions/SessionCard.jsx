@@ -99,6 +99,7 @@ function SessionCard({
   sessionTime,
   sessionRoom,
   sessionDuration = 60, // Duration in minutes
+  isArchived = false,
 }) {
   const [direction, setDirection] = useState(DIRECTION.BOTTOM)
   const { isSessionSaved, toggleSession, isSessionConflicting } = useSchedule()
@@ -291,7 +292,7 @@ function SessionCard({
         </button>
 
         <div className="ml-4 flex items-center gap-3">
-          {sessionId && (
+          {sessionId && !isArchived && (
             <button
               onClick={(e) => {
                 e.stopPropagation()
@@ -338,41 +339,58 @@ function SessionCard({
           <p className="mb-6 whitespace-pre-wrap text-gray-300">
             {sessionDesc}
           </p>
-          <div className="flex flex-wrap items-center gap-3">
-            <span className="min-w-[120px] text-xs font-semibold uppercase tracking-wider text-gray-500">
-              Export to Calendar:
-            </span>
-            <a
-              href={generateOutlookCalendarLink({
-                title: sessionTitle,
-                description: sessionDesc,
-                time: sessionTime,
-                room: sessionRoom,
-                sessionDuration,
-              })}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="rounded-md border border-white/10 bg-white/5 px-3 py-1.5 text-xs font-semibold text-white transition-colors hover:bg-white/10"
-              onClick={(e) => e.stopPropagation()}
-            >
-              Outlook
-            </a>
-            <button
-              onClick={(e) => {
-                e.stopPropagation()
-                generateICSFile({
+          {isArchived ? (
+            /*
+             * A session that already happened cannot be added to a calendar, so
+             * the export controls give way to the same facts as plain text —
+             * a record of when and where it ran, with nothing to click.
+             */
+            <p className="text-xs font-semibold uppercase tracking-wider text-gray-500">
+              {[
+                hasTimeInfo ? `${startTime} - ${endTime}` : startTime,
+                sessionDuration ? `${sessionDuration} min` : '',
+                sessionRoom,
+              ]
+                .filter(Boolean)
+                .join(' · ')}
+            </p>
+          ) : (
+            <div className="flex flex-wrap items-center gap-3">
+              <span className="min-w-[120px] text-xs font-semibold uppercase tracking-wider text-gray-500">
+                Export to Calendar:
+              </span>
+              <a
+                href={generateOutlookCalendarLink({
                   title: sessionTitle,
                   description: sessionDesc,
                   time: sessionTime,
                   room: sessionRoom,
                   sessionDuration,
-                })
-              }}
-              className="rounded-md border border-white/10 bg-white/5 px-3 py-1.5 text-xs font-semibold text-white transition-colors hover:bg-white/10"
-            >
-              ICS File
-            </button>
-          </div>
+                })}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="rounded-md border border-white/10 bg-white/5 px-3 py-1.5 text-xs font-semibold text-white transition-colors hover:bg-white/10"
+                onClick={(e) => e.stopPropagation()}
+              >
+                Outlook
+              </a>
+              <button
+                onClick={(e) => {
+                  e.stopPropagation()
+                  generateICSFile({
+                    title: sessionTitle,
+                    description: sessionDesc,
+                    time: sessionTime,
+                    room: sessionRoom,
+                    sessionDuration,
+                  })
+                }}
+                className="rounded-md border border-white/10 bg-white/5 px-3 py-1.5 text-xs font-semibold text-white transition-colors hover:bg-white/10"
+              >
+                ICS File
+              </button>
+            </div>
+          )}
         </div>
       )}
     </div>
@@ -387,6 +405,12 @@ SessionCard.propTypes = {
   sessionTime: PropTypes.string.isRequired,
   sessionRoom: PropTypes.string.isRequired,
   sessionDuration: PropTypes.number, // Duration in minutes
+  /**
+   * Renders the card as a historical record: the save control and the calendar
+   * export controls are replaced by static text, since a finished session can
+   * neither be planned for nor added to a calendar.
+   */
+  isArchived: PropTypes.bool,
 }
 
 export default SessionCard

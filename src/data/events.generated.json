@@ -1,0 +1,54 @@
+[
+  {
+    "slug": "michigan-devfest-2026",
+    "title": "Michigan DevFest 2026",
+    "year": 2026,
+    "rowCount": 54,
+    "speakerCount": 47,
+    "sessionCount": 41,
+    "tracks": [
+      "Build with AI",
+      "Hackathon",
+      "Innovation",
+      "Leadership",
+      "Level Up",
+      "Tech+Design",
+      "Workshops"
+    ]
+  },
+  {
+    "slug": "michigan-devfest-2025",
+    "title": "Michigan DevFest 2025",
+    "year": 2025,
+    "rowCount": 54,
+    "speakerCount": 47,
+    "sessionCount": 41,
+    "tracks": [
+      "Build with AI",
+      "Hackathon",
+      "Innovation",
+      "Leadership",
+      "Level Up",
+      "Tech+Design",
+      "Workshops"
+    ]
+  },
+  {
+    "slug": "michigan-devfest-2024",
+    "title": "Michigan DevFest 2024",
+    "year": 2024,
+    "rowCount": 29,
+    "speakerCount": 28,
+    "sessionCount": 27,
+    "tracks": ["AI/ML", "Fullstack", "Miscellaneous", "Mobile"]
+  },
+  {
+    "slug": "michigan-devfest-2023",
+    "title": "Michigan DevFest 2023",
+    "year": 2023,
+    "rowCount": 31,
+    "speakerCount": 31,
+    "sessionCount": 28,
+    "tracks": ["AI/ML", "Fullstack", "Miscellaneous", "Mobile"]
+  }
+]
