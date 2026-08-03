@@ -7,10 +7,10 @@ Organizers and developers manage event content here. The public site reads speak
 |                   |                                                                                    |
 | ----------------- | ---------------------------------------------------------------------------------- |
 | **Project**       | `midevfest26`                                                                      |
-| **Project ID**    | `b18a6pbd`                                                                         |
+| **Project ID**    | `5qtiaw9u`                                                                         |
 | **Local Studio**  | `http://localhost:3333` (`npm run studio:dev` from repo root)                      |
 | **Hosted Studio** | [midevfest26.sanity.studio](https://midevfest26.sanity.studio/)                    |
-| **Manage**        | [sanity.io/manage/project/b18a6pbd](https://www.sanity.io/manage/project/b18a6pbd) |
+| **Manage**        | [sanity.io/manage/project/5qtiaw9u](https://www.sanity.io/manage/project/5qtiaw9u) |
 
 ---
 
@@ -74,7 +74,7 @@ Production deploys run `fetch:event-data` automatically via `prebuild` before `v
 Copy `.env.example` to `.env` (gitignored):
 
 ```bash
-SANITY_STUDIO_PROJECT_ID=b18a6pbd
+SANITY_STUDIO_PROJECT_ID=5qtiaw9u
 SANITY_STUDIO_DATASET=production
 ```
 

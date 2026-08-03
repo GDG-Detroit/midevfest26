@@ -1,4 +1,4 @@
-const DEFAULT_PROJECT_ID = 'b18a6pbd'
+const DEFAULT_PROJECT_ID = '5qtiaw9u'
 const DEFAULT_DATASET = 'production'
 
 function trimEnv(value: string | undefined): string | undefined {
