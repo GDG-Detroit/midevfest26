@@ -1,7 +1,8 @@
 import { useEffect, useRef } from 'react'
 import PropTypes from 'prop-types'
-import { FaArrowRight } from 'react-icons/fa6'
+import { FaArrowRight, FaRegCalendarPlus } from 'react-icons/fa6'
 import CTAButton from '@/components/ui/CTAButton'
+import { generateICSFile } from '@/utils/calendarExport'
 import useHeroAnimation from '@/hooks/useHeroAnimation'
 import heroTrails from '@/assets/images/hero/hero-trails.webp'
 import heroTrailsFull from '@/assets/images/hero/hero-trails.webp'
@@ -18,6 +19,27 @@ const HERO_LINKS = [
   { href: '#about', label: 'About the DevFest' },
   { href: '#schedule', label: 'Schedule' },
 ]
+
+/**
+ * Save-the-date calendar entries, one per event day.
+ *
+ * Registration isn't open, so the hero has no URL to send anyone to — a
+ * calendar download gives the primary CTA something real to do in the meantime
+ * and can't rot the way a placeholder link does.
+ *
+ * `timezoneOffset` is set explicitly because calendarExport defaults to -04:00
+ * (EDT), and these dates fall after DST ends on 2026-11-01, so Detroit is on
+ * EST. Inheriting the default would shift every entry an hour early.
+ */
+const SAVE_THE_DATE = ['2026-11-13', '2026-11-14'].map((eventDate, index) => ({
+  title: `Michigan DevFest & AI Hackathon (Day ${index + 1})`,
+  description:
+    'Michigan DevFest & AI Hackathon at the Little Caesars Regional Center, Detroit. Full schedule and registration to be announced.',
+  location: 'Little Caesars Regional Center (LCRC), Detroit, MI',
+  time: '9:00 am - 5:00 pm',
+  eventDate,
+  timezoneOffset: '-05:00',
+}))
 
 function HeroForeground() {
   return (
@@ -65,13 +87,15 @@ function HeroForeground() {
             {/* Primary CTAs */}
             <div className="mt-8 flex flex-col items-center justify-center gap-4 sm:flex-row sm:gap-5 md:justify-start">
               <CTAButton
-                href="https://bit.ly/pride-summit-26"
-                label="Register Now"
-                target="_blank"
-                rel="noopener noreferrer"
-                ariaLabel="Register for Michigan DevFest (link coming soon)"
+                onClick={() =>
+                  generateICSFile(SAVE_THE_DATE, {
+                    filename: 'michigan-devfest-2026-save-the-date.ics',
+                  })
+                }
+                label="Save the Date"
+                ariaLabel="Download a calendar reminder for Michigan DevFest, November 13 to 14, 2026"
                 className="w-full min-w-48 sm:w-auto"
-                icon={<FaArrowRight />}
+                icon={<FaRegCalendarPlus />}
                 iconPosition="right"
               />
 
