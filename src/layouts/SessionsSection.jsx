@@ -394,7 +394,7 @@ const SessionsSection = ({
           <h2 className="mb-5 font-heading text-3xl font-bold text-white sm:text-4xl lg:text-5xl ">
             {year}{' '}
             <span className="bg-gradient-to-r from-iwd-gold-300 via-iwd-gold-400 to-iwd-gold-300 bg-clip-text text-transparent">
-              Schedule
+              Schedule Review
             </span>
           </h2>
           <div className="mx-auto h-px w-24 bg-gradient-to-r from-transparent via-iwd-gold-400/50 to-transparent sm:w-32" />
