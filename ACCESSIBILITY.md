@@ -17,11 +17,11 @@ We follow the [Web Content Accessibility Guidelines (WCAG) 2.1](https://www.w3.o
 We use `eslint-plugin-jsx-a11y` to catch accessibility issues during development:
 
 ```bash
-# Run accessibility linting
-npm run lint:a11y
+# Accessibility rules run as part of the normal lint
+npm run lint
 ```
 
-**Configuration**: `.eslintrc.a11y.cjs`
+**Configuration**: `.eslintrc.cjs` (the `jsx-a11y` rules and component mappings)
 
 **Key Rules**:
 
@@ -203,10 +203,10 @@ These styles live in `src/index.css` (`.nav-menu-expanded` and the reflow media 
 
 ### 1. Static Analysis
 
-Run accessibility linting before committing:
+Run linting before committing — accessibility rules are included:
 
 ```bash
-npm run lint:a11y
+npm run lint
 ```
 
 ### 2. Runtime Testing
@@ -234,26 +234,25 @@ Accessibility testing is integrated into our git workflow:
 
 **Pre-commit Hook** (`.husky/pre-commit`):
 
-- Runs `lint-staged` which includes accessibility checks
+- Runs `lint-staged` — ESLint (including `jsx-a11y`) and Prettier on staged files
 - Automatically fixes issues where possible
 - Prevents commits with accessibility violations
 
-**Pre-push Hook** (`.husky/pre-push`):
+**CI** (`.github/workflows/ci.yml`):
 
-- Runs full accessibility audit on all files
-- Blocks push if accessibility issues are found
-- Provides clear error messages and guidance
+- The `accessibility-check` job runs axe-core against the built site on every PR
+- This is the authoritative check — it tests rendered output, not just source
 
 #### Available Scripts
 
 ```bash
-# Run full accessibility check (linting + automated testing)
-npm run a11y:check
+# Lint, including accessibility rules
+npm run lint
 
-# Run accessibility checks on staged files only
-npm run a11y:check:staged
+# Lint and auto-fix
+npm run lint:fix
 
-# Run lint-staged (includes accessibility checks)
+# Run lint-staged manually
 npx lint-staged
 ```
 
@@ -292,7 +291,7 @@ npx lint-staged
 If you encounter accessibility issues or need guidance:
 
 1. Check the browser console for axe-core warnings
-2. Run `npm run lint:a11y` to see ESLint accessibility errors
+2. Run `npm run lint` to see ESLint accessibility errors
 3. Consult the resources above
 4. Test with actual assistive technologies
 5. Ask for help from team members familiar with accessibility

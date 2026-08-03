@@ -23,7 +23,7 @@ them in one PR.
   - `studio/sanity.cli.ts` (`studioHost`), `studio/env.ts` (`studioTitle`)
   - `index.html` (canonical, OG, Twitter meta)
   - `public/robots.txt`, `public/sitemap.xml`
-  - `README.md`, `CONTRIBUTING.md`, `SECURITY.md`, `.github/ISSUE_TEMPLATE/config.yml`
+  - `README.md`, `CONTRIBUTING.md`, `SECURITY.md`
   - `Dockerfile` + Docker commands in README
   - localStorage keys (e.g. `ScheduleContext.jsx` — new key, not a rename;
     don't migrate old event's saved data into a new event's dataset)
@@ -67,6 +67,6 @@ them in one PR.
 ## 8. Verify
 
 - [ ] `npm run build` succeeds
-- [ ] `npm run lint` / `npm run lint:a11y` clean
+- [ ] `npm run lint` clean (includes a11y rules)
 - [ ] Spot-check rewritten URLs resolve
 - [ ] `git remote -v` points to the new repo

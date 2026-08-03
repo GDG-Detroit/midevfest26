@@ -67,7 +67,7 @@ since light accent text on a light background is the highest-risk combination.
 ## Tooling
 
 - **Chrome DevTools** color picker (live contrast ratio + AA/AAA badges)
-- **axe DevTools** browser extension and the CI axe-core check (`npm run a11y:check`)
+- **axe DevTools** browser extension and the CI axe-core job
 - **WebAIM Contrast Checker**: https://webaim.org/resources/contrastchecker/
 
 ## References
