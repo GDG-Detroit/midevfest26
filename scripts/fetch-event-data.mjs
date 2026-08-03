@@ -103,6 +103,25 @@ function stableSpeakerSessionId(speakerSlug, sessionSlug) {
   return Math.abs(hash) || 1
 }
 
+/**
+ * Pad single-digit hours to two digits ("9:30" -> "09:30"), including both ends
+ * of a range ("9:30 - 13:00").
+ *
+ * date-fns parses either form, so this is consistency rather than a fix — but
+ * ordering elsewhere is string-based (the GROQ `order(startTime asc)` above, and
+ * normalizeSortTime in SessionsSection), and there "9:30" sorts after "13:30".
+ * Anything the CMS or a legacy import produces gets normalized here, at the one
+ * boundary where the site's data is written.
+ */
+function normalizeTimeString(value) {
+  if (typeof value !== 'string') return value
+
+  return value
+    .split('-')
+    .map((part) => part.trim().replace(/^(\d):(\d{2})$/, '0$1:$2'))
+    .join(' - ')
+}
+
 function buildRow(session, participant) {
   const speaker = participant.speaker
   if (!speaker?.published) return null
@@ -128,7 +147,7 @@ function buildRow(session, participant) {
       description: session.description ?? session.abstract ?? '',
       tags: session.tags?.length ? session.tags : [DEFAULT_TRACK],
       track: session.track || DEFAULT_TRACK,
-      time: session.startTime || 'TBA',
+      time: normalizeTimeString(session.startTime) || 'TBA',
       room: session.room || DEFAULT_ROOM,
       sessionDuration: session.durationMinutes ?? 60,
     },
