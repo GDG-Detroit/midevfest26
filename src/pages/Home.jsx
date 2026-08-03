@@ -10,7 +10,7 @@ import PartnersSection from '@/layouts/PartnersSection'
 import JobBoardSection from '@/layouts/JobBoardSection'
 import OrganizersSection from '@/layouts/OrganizersSection'
 import { SpeakersData as Speakers2026 } from '@/data/2026/speakers'
-import { SESSION_TRACK, SCHEDULE_TRACK } from '@/data/2026/venues'
+import { PLACEHOLDER_TRACKS_2025, SCHEDULE_TRACK } from '@/data/2026/venues'
 import { partnersData } from '@/data/2026/partners'
 
 import MembersSection from '@/layouts/MembersSection'
@@ -26,14 +26,24 @@ function Home() {
       <div className="bg-iwd-surface-raised relative z-10 py-0 dark:bg-iwd-black-950">
         <LocationSection />
 
+        {/*
+          Schedule and speakers show the 2025 program until 2026 is confirmed, so
+          both are labelled 2025. The venue map is hidden because those sessions
+          ran at MotorCity Casino, not at this year's venue — location, parking,
+          and dates above are 2026's and stay as they are.
+        */}
         <SessionsSection
           speakersData={Speakers2026}
-          year={2026}
+          year={2025}
           defaultExpanded={true}
-          tracks={['Map', SCHEDULE_TRACK, SESSION_TRACK]}
+          tracks={[SCHEDULE_TRACK, ...PLACEHOLDER_TRACKS_2025]}
         />
 
-        <SpeakersSection speakersData={Speakers2026} defaultExpanded={false} />
+        <SpeakersSection
+          speakersData={Speakers2026}
+          year={2025}
+          defaultExpanded={false}
+        />
 
         <AboutSection />
 
