@@ -10,7 +10,7 @@ export const event = defineType({
       title: 'Title',
       type: 'string',
       validation: (rule) => rule.required(),
-      description: 'e.g. Detroit Pride Innovation Summit 2026',
+      description: 'e.g. Michigan DevFest 2026',
     }),
     defineField({
       name: 'year',

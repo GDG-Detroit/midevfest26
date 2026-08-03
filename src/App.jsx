@@ -17,7 +17,6 @@ const ConnectionsPage = lazy(() => import('@/pages/Connections'))
 const MediaPage = lazy(() => import('@/pages/Media'))
 const PreviousEvents = lazy(() => import('@/pages/PreviousEvents'))
 const NotFound = lazy(() => import('@/pages/NotFound'))
-const PlaygroundPage = lazy(() => import('@/pages/PlaygroundPage'))
 
 function App() {
   return (
@@ -51,7 +50,6 @@ function App() {
                     path="/previous-events"
                     element={<Navigate to="/past-events" replace />}
                   />
-                  <Route path="/playground/*" element={<PlaygroundPage />} />
                   <Route path="*" element={<NotFound />} />
                 </Routes>
               </Suspense>
