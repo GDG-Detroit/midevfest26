@@ -1,8 +1,8 @@
 # Pride Innovation Summit Color System
 
-This document defines the color palette for the Detroit Pride Innovation Summit website.
+This document defines the color palette for the Michigan DevFest website.
 
-The palette is inspired by the Women Techmakers brand and implemented as semantic Tailwind tokens under the `iwd` namespace. The site ships four switchable themes controlled via CSS custom properties and a `data-theme` attribute on `<html>`. The themes and their swatches are defined in `src/constants/ui.js`; the default is **Purple** (set in `src/components/ui/ThemeContext.jsx`).
+The palette is inspired by the Women Techmakers brand and implemented as semantic Tailwind tokens under the `iwd` namespace. The site ships four switchable themes controlled via CSS custom properties and a `data-theme` attribute on `<html>`. The themes and their swatches are defined in `src/constants/ui.js`; the default is **Gold** (set in `src/components/ui/ThemeContext.jsx`).
 
 Each `iwd.gold.*` Tailwind token maps to a `--iwd-accent-*` CSS variable, and each `iwd.black.*` token maps to a `--iwd-dark-*` variable (see `tailwind.config.js`). The tables below show the key accent (`iwd-gold-400`/`700`), darkest surface (`iwd-black-950`), and `focus-ring` values per theme.
 
