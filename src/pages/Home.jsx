@@ -21,6 +21,9 @@ const EVENT_YEAR = 2026
 /**
  * The program actually on display. Once the 2026 lineup is confirmed in the
  * CMS, set this to EVENT_YEAR and drop <PlaceholderProgramNotice />.
+ * `isArchived={PROGRAM_YEAR < EVENT_YEAR}` below flips with it: placeholder
+ * years stay read-only (no save / calendar export); the live year gets the
+ * interactive buttons back automatically.
  */
 const PROGRAM_YEAR = 2025
 
@@ -40,7 +43,8 @@ function Home() {
           both are labelled 2025 and the notice above them says so outright. The
           venue map is hidden because those sessions ran at MotorCity Casino, not
           at this year's venue — location, parking, and dates above are 2026's
-          and stay as they are.
+          and stay as they are. isArchived drops save/export controls so the
+          placeholder year reads as a record, not a plan-able schedule.
         */}
         <PlaceholderProgramNotice
           programYear={PROGRAM_YEAR}
@@ -52,6 +56,7 @@ function Home() {
           year={PROGRAM_YEAR}
           defaultExpanded={true}
           tracks={[SCHEDULE_TRACK, ...PLACEHOLDER_TRACKS_2025]}
+          isArchived={PROGRAM_YEAR < EVENT_YEAR}
         />
 
         <SpeakersSection
