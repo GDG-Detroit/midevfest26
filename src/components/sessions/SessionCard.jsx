@@ -154,23 +154,58 @@ function SessionCard({
   const moderators = participants.filter((p) => p.isModerator)
   const panelists = participants.filter((p) => !p.isModerator)
   const showModeratorSplit = participants.length > 1 && moderators.length > 0
+  // 4+ speakers stack (avatars above text) so a long panelist strip can't
+  // crush copy. Headshot size stays the same as other multi-speaker cards;
+  // avatars wrap left-aligned.
+  const isLargePanel = participants.length >= 4
   const avatarSizeClass =
     participants.length >= 3
       ? 'size-16 sm:size-20'
       : 'size-20 sm:size-24 md:size-[116px]'
+  const avatarRowClass = 'flex flex-wrap items-start justify-start gap-2'
+
+  const avatarRows = showModeratorSplit ? (
+    <>
+      {panelists.length > 0 && (
+        <div className={avatarRowClass}>
+          {panelists.map((participant, index) => (
+            <ParticipantAvatar
+              key={`panelist-${participant.name}-${index}`}
+              participant={participant}
+              sizeClass={avatarSizeClass}
+            />
+          ))}
+        </div>
+      )}
+      <div className={avatarRowClass}>
+        {moderators.map((participant, index) => (
+          <ParticipantAvatar
+            key={`moderator-${participant.name}-${index}`}
+            participant={participant}
+            sizeClass={avatarSizeClass}
+          />
+        ))}
+      </div>
+    </>
+  ) : (
+    <div className={avatarRowClass}>
+      {participants.map((participant, index) => (
+        <ParticipantAvatar
+          key={`${participant.name}-${index}`}
+          participant={participant}
+          sizeClass={avatarSizeClass}
+        />
+      ))}
+    </div>
+  )
 
   /*
-   * Layout: responsive grid with avatar column + content column.
-   * Breakpoints: xs=400px, sm=640px, md=768px, lg=1024px, xl=1280px, 2xl=1536px
-   *
-   * Single avatar: xs and below = stacked (content first, avatar below); 401px+ = two columns
-   * 2 avatars: md+ = two columns, first column width = 120px + 80px * count
-   * 3+ avatars: lg+ = two columns; >3 avatars = wrap at lg (360px cap), no wrap at xl; below lg = stacked (content first, avatars below)
-   * Second column = minmax(0,1fr) to use remaining space; lg+ grid gets flex-1 to fill button
+   * Layout: avatar column + content column for 1–3 speakers (unchanged).
+   * 4+ speakers: stacked avatars (left-aligned, wrapping) → title → credits → time.
    */
   return (
     <div className="group/card rounded-2xl border border-white/[0.06] bg-white/[0.02] shadow-lg backdrop-blur-sm transition-all duration-300 hover:border-white/[0.12] hover:bg-white/[0.04] hover:shadow-xl hover:shadow-black/20">
-      <div className="flex w-full items-center justify-between p-4 md:px-8 lg:px-14">
+      <div className="flex w-full min-w-0 items-start justify-between gap-2 p-4 md:gap-3 md:px-8 lg:px-14">
         <button
           onClick={() => sessionDesc && toggle()}
           aria-expanded={sessionDesc ? isExpanded : undefined}
@@ -186,68 +221,47 @@ function SessionCard({
                 } session details for ${sessionTitle}`
               : `Session: ${sessionTitle}`
           }
-          className="-ml-2 flex flex-1 items-center gap-5 rounded-xl p-2 text-left transition-colors hover:bg-white/[0.02] focus:outline-none focus:ring-2 focus:ring-iwd-gold-400/50"
+          className="-ml-2 flex min-w-0 flex-1 items-start gap-3 rounded-xl p-2 text-left transition-colors hover:bg-white/[0.02] focus:outline-none focus:ring-2 focus:ring-iwd-gold-400/50 md:gap-5"
         >
-          <div className="flex w-full min-w-0 flex-col items-start gap-5 text-left lg:flex-row lg:items-center">
+          <div
+            className={`flex w-full min-w-0 flex-col items-start gap-4 text-left ${
+              isLargePanel ? '' : 'lg:flex-row lg:items-center lg:gap-5'
+            }`}
+          >
             {participants?.length > 0 && (
               <div
-                className={`flex shrink-0 flex-col gap-2 ${
-                  participants.length > 2 ? 'order-2 lg:order-1' : ''
+                className={`flex min-w-0 flex-col gap-2 ${
+                  isLargePanel
+                    ? 'w-full'
+                    : participants.length > 2
+                      ? 'order-2 shrink-0 lg:order-1'
+                      : 'shrink-0'
                 }`}
               >
-                {showModeratorSplit ? (
-                  <>
-                    {panelists.length > 0 && (
-                      <div className="flex flex-wrap items-center justify-start gap-2">
-                        {panelists.map((participant, index) => (
-                          <ParticipantAvatar
-                            key={`panelist-${participant.name}-${index}`}
-                            participant={participant}
-                            sizeClass={avatarSizeClass}
-                          />
-                        ))}
-                      </div>
-                    )}
-                    <div className="flex flex-wrap items-center justify-start gap-2">
-                      {moderators.map((participant, index) => (
-                        <ParticipantAvatar
-                          key={`moderator-${participant.name}-${index}`}
-                          participant={participant}
-                          sizeClass={avatarSizeClass}
-                        />
-                      ))}
-                    </div>
-                  </>
-                ) : (
-                  <div className="flex flex-wrap items-center justify-start gap-2">
-                    {participants.map((participant, index) => (
-                      <ParticipantAvatar
-                        key={`${participant.name}-${index}`}
-                        participant={participant}
-                        sizeClass={avatarSizeClass}
-                      />
-                    ))}
-                  </div>
-                )}
+                {avatarRows}
               </div>
             )}
             <div
               className={`flex w-full min-w-0 flex-1 flex-col justify-center ${
-                participants?.length > 2 ? 'order-1 lg:order-2' : ''
+                isLargePanel
+                  ? ''
+                  : participants?.length > 2
+                    ? 'order-1 lg:order-2'
+                    : ''
               }`}
             >
               {sessionTitle && (
-                <h3 className="text-base font-semibold text-white md:text-xl ">
+                <h3 className="text-pretty text-base font-semibold text-white md:text-xl">
                   {sessionTitle}
                 </h3>
               )}
               <SessionCredits participants={participants} />
               {hasSessionInfo && (
-                <div className="mt-3 flex flex-wrap items-center gap-2 text-sm">
+                <div className="mt-3 flex max-w-full flex-wrap items-center gap-2 text-sm">
                   {hasTimeInfo && (
-                    <span className="inline-flex items-center gap-1.5 rounded-lg border border-white/[0.06] bg-white/[0.04] px-3 py-1.5 font-medium text-iwd-gold-300 backdrop-blur-sm">
+                    <span className="inline-flex max-w-full items-center gap-1.5 rounded-lg border border-white/[0.06] bg-white/[0.04] px-3 py-1.5 font-medium text-iwd-gold-300 backdrop-blur-sm">
                       <svg
-                        className="size-3.5 opacity-60"
+                        className="size-3.5 shrink-0 opacity-60"
                         fill="none"
                         viewBox="0 0 24 24"
                         stroke="currentColor"
@@ -262,9 +276,9 @@ function SessionCard({
                     </span>
                   )}
                   {sessionRoom && (
-                    <span className="inline-flex items-center gap-1.5 rounded-lg border border-white/[0.06] bg-white/[0.04] px-3 py-1.5 text-sm text-gray-300 backdrop-blur-sm">
+                    <span className="inline-flex max-w-full items-center gap-1.5 rounded-lg border border-white/[0.06] bg-white/[0.04] px-3 py-1.5 text-sm text-gray-300 backdrop-blur-sm">
                       <svg
-                        className="size-3.5 opacity-60"
+                        className="size-3.5 shrink-0 opacity-60"
                         fill="none"
                         viewBox="0 0 24 24"
                         stroke="currentColor"
@@ -273,7 +287,7 @@ function SessionCard({
                         <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" />
                         <circle cx="12" cy="10" r="3" />
                       </svg>
-                      {sessionRoom}
+                      <span className="min-w-0 break-words">{sessionRoom}</span>
                     </span>
                   )}
                 </div>
@@ -281,7 +295,7 @@ function SessionCard({
             </div>
           </div>
           {sessionDesc && (
-            <div className="flex size-8 shrink-0 items-center justify-center rounded-full border border-white/[0.06] bg-white/[0.04] transition-colors duration-300 group-hover/card:border-white/10 md:size-9">
+            <div className="mt-0.5 flex size-8 shrink-0 items-center justify-center rounded-full border border-white/[0.06] bg-white/[0.04] transition-colors duration-300 group-hover/card:border-white/10 md:size-9">
               <IoChevronDown
                 className={`size-4 text-gray-200 transition-transform duration-300 ease-out md:size-5 ${
                   direction === DIRECTION.TOP && '-scale-y-100'
@@ -291,7 +305,7 @@ function SessionCard({
           )}
         </button>
 
-        <div className="ml-4 flex items-center gap-3">
+        <div className="ml-4 flex shrink-0 items-start gap-3 pt-0.5">
           {sessionId && !isArchived && (
             <button
               onClick={(e) => {
@@ -345,7 +359,7 @@ function SessionCard({
              * the export controls give way to the same facts as plain text —
              * a record of when and where it ran, with nothing to click.
              */
-            <p className="text-xs font-semibold uppercase tracking-wider text-gray-500">
+            <p className="text-base font-semibold uppercase tracking-wider text-gray-500">
               {[
                 hasTimeInfo ? `${startTime} - ${endTime}` : startTime,
                 sessionDuration ? `${sessionDuration} min` : '',
