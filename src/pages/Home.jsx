@@ -44,7 +44,7 @@ function Home() {
           venue map is hidden because those sessions ran at MotorCity Casino, not
           at this year's venue — location, parking, and dates above are 2026's
           and stay as they are. isArchived drops save/export controls so the
-          placeholder year reads as a record, not a plan-able schedule.
+          placeholder year reads as a record, not a planable schedule.
         */}
         <PlaceholderProgramNotice
           programYear={PROGRAM_YEAR}

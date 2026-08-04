@@ -204,7 +204,7 @@ function SessionCard({
    * 4+ speakers: stacked avatars (left-aligned, wrapping) → title → credits → time.
    */
   return (
-    <div className="group/card overflow-hidden rounded-2xl border border-white/[0.06] bg-white/[0.02] shadow-lg backdrop-blur-sm transition-all duration-300 hover:border-white/[0.12] hover:bg-white/[0.04] hover:shadow-xl hover:shadow-black/20">
+    <div className="group/card rounded-2xl border border-white/[0.06] bg-white/[0.02] shadow-lg backdrop-blur-sm transition-all duration-300 hover:border-white/[0.12] hover:bg-white/[0.04] hover:shadow-xl hover:shadow-black/20">
       <div className="flex w-full min-w-0 items-start justify-between gap-2 p-4 md:gap-3 md:px-8 lg:px-14">
         <button
           onClick={() => sessionDesc && toggle()}
