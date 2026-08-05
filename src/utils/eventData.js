@@ -39,7 +39,12 @@ const loaderByYear = new Map(
  */
 const EVENT_DETAILS = {
   2026: { date: 'November 13-14, 2026', location: 'LCRC, Detroit' },
-  2025: { date: 'November 2025', location: 'MotorCity Casino, Detroit' },
+  2025: {
+    date: 'November 2025',
+    location: 'MotorCity Casino, Detroit',
+    notice:
+      'This site earned a Silver ADDY Award for Website Design in 2026, recognizing creative excellence and professional strength.',
+  },
   2024: { date: 'November 2024', location: 'Detroit, MI' },
   2023: { date: 'November 2023', location: 'Detroit, MI' },
 }

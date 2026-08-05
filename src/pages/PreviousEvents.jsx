@@ -138,6 +138,14 @@ const PreviousEvents = () => {
                       {[event.date, event.location].filter(Boolean).join(' • ')}
                     </p>
                   )}
+                  {event.notice && (
+                    <p
+                      role="note"
+                      className="mb-4 border-l-2 border-iwd-gold-400/50 pl-3 font-body text-sm leading-relaxed text-iwd-gold-300"
+                    >
+                      {event.notice}
+                    </p>
+                  )}
                   {event.tracks.length > 0 && (
                     <p className="mb-6 text-sm leading-relaxed text-gray-200">
                       {event.sessionCount} sessions across {event.tracks.length}{' '}
