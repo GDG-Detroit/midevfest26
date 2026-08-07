@@ -42,8 +42,8 @@ const EVENT_DETAILS = {
   2025: {
     date: 'November 2025',
     location: 'MotorCity Casino, Detroit',
-    notice:
-      'This site earned a Silver ADDY Award for Website Design in 2026, recognizing creative excellence and professional strength.',
+    notice: 'This site earned a Silver ADDY Award for Website Design in 2026',
+    attendees: '> 600',
   },
   2024: { date: 'November 2024', location: 'Detroit, MI' },
   2023: { date: 'November 2023', location: 'Detroit, MI' },
