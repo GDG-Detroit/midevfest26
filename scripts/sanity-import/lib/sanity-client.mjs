@@ -32,6 +32,8 @@ export const speakerDocId = (slug, namespace) =>
   namespace ? `speaker-${namespace}-${slug}` : `speaker-${slug}`
 export const sessionDocId = (slug, namespace) =>
   namespace ? `session-${namespace}-${slug}` : `session-${slug}`
+export const teamMemberDocId = (slug, namespace) =>
+  namespace ? `team-${namespace}-${slug}` : `team-${slug}`
 
 export function slugRef(type, slug, idFn, namespace) {
   return {

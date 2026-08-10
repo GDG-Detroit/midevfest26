@@ -22,7 +22,8 @@
     "preview": "vite preview",
     "prepare": "husky",
     "audit": "npm audit --audit-level moderate",
-    "import:speakers": "node scripts/sanity-import/import-speakers.mjs"
+    "import:speakers": "node scripts/sanity-import/import-speakers.mjs",
+    "import:team": "node scripts/sanity-import/import-team.mjs"
   },
   "lint-staged": {
     "*.{js,jsx}": [

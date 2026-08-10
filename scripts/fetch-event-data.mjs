@@ -17,6 +17,9 @@ const OPTIONAL_ENV = path.join(ROOT, 'scripts/sanity-import/.env')
 const outputFor = (year) =>
   path.join(ROOT, `src/data/${year}/speakers.generated.json`)
 
+const teamOutputFor = (year) =>
+  path.join(ROOT, `src/data/${year}/team.generated.json`)
+
 /** Every event in the dataset, newest first — drives the archive. */
 const EVENTS_QUERY = `*[_type == "event" && defined(year)] | order(year desc){
   year,
@@ -69,6 +72,21 @@ const SESSIONS_QUERY = `*[_type == "session" && event->year == $year && publishe
   }
 }`
 
+const TEAM_QUERY = `*[_type == "teamMember" && event->year == $year && published == true] | order(sortOrder asc, name asc) {
+  "slug": slug.current,
+  name,
+  role,
+  "team": teamGroup,
+  organization,
+  university,
+  bio,
+  commits,
+  linkedIn,
+  twitter,
+  github,
+  "avatar": headshot.asset->url
+}`
+
 function readEnv(name, fallback) {
   const value = process.env[name]?.trim()
   return value || fallback
@@ -93,14 +111,22 @@ function loadOptionalEnvFile() {
   }
 }
 
-function stableSpeakerSessionId(speakerSlug, sessionSlug) {
-  const input = `${speakerSlug}::${sessionSlug}`
+/**
+ * Numeric id derived from a slug. The site uses these only as React keys, but
+ * they have to stay stable across builds so a re-fetch does not remount every
+ * card — hence a hash of the slug rather than an array index.
+ */
+function stableId(input) {
   let hash = 0
   for (let i = 0; i < input.length; i += 1) {
     hash = (hash << 5) - hash + input.charCodeAt(i)
     hash |= 0
   }
   return Math.abs(hash) || 1
+}
+
+function stableSpeakerSessionId(speakerSlug, sessionSlug) {
+  return stableId(`${speakerSlug}::${sessionSlug}`)
 }
 
 /**
@@ -259,6 +285,44 @@ export async function fetchEventSpeakers(options = {}) {
   return prioritizeFeaturedSessions(enrichSessionParticipants(rows))
 }
 
+/**
+ * Team rows in the flat shape the layouts already consume. Note `linkedin`
+ * lowercase: the schema field is `linkedIn`, but OrganizersSection, TeamSection
+ * and DevTeamSection all read `member.linkedin`, so the rename happens here
+ * rather than across four components.
+ */
+export async function fetchEventTeam(options = {}) {
+  const eventYear = Number(
+    options.eventYear ??
+      readEnv('SANITY_EVENT_YEAR', String(DEFAULT_EVENT_YEAR))
+  )
+
+  const client = createSanityReadClient(options)
+  const members = await client.fetch(TEAM_QUERY, { year: eventYear })
+
+  return members
+    .filter((member) => member.slug && member.name && member.team)
+    .map((member) => {
+      const row = {
+        id: stableId(`team::${member.slug}`),
+        name: member.name,
+        role: member.role ?? '',
+        team: member.team,
+        organization: member.organization ?? '',
+        university: member.university ?? '',
+        avatar: member.avatar ?? '',
+      }
+
+      if (member.bio) row.bio = member.bio
+      if (member.commits != null) row.commits = member.commits
+      if (member.linkedIn) row.linkedin = member.linkedIn
+      if (member.twitter) row.twitter = member.twitter
+      if (member.github) row.github = member.github
+
+      return row
+    })
+}
+
 async function writeFormattedJson(filePath, data) {
   const config = await prettier.resolveConfig(filePath)
   const formatted = await prettier.format(JSON.stringify(data), {
@@ -280,6 +344,15 @@ const passthroughModule = (year) => `/**
 import speakersGenerated from './speakers.generated.json'
 
 export const SpeakersData = speakersGenerated
+`
+
+const teamPassthroughModule = (year) => `/**
+ * Team roster for ${year}.
+ * Generated from Sanity before each build — see scripts/fetch-event-data.mjs.
+ */
+import teamGenerated from './team.generated.json'
+
+export const teamData = teamGenerated
 `
 
 /**
@@ -305,6 +378,30 @@ function deriveMetadata(rows) {
     sessionCount: sessions.size,
     tracks: [...tracks].sort(),
   }
+}
+
+/**
+ * Only the live event has a team roster today, so a year with no team documents
+ * writes nothing rather than littering the archive years with empty files. A
+ * past year that later gets team members in Sanity picks this up on its own.
+ */
+async function writeTeamYear(year) {
+  const rows = await fetchEventTeam({ eventYear: year })
+  if (rows.length === 0) return 0
+
+  const target = teamOutputFor(year)
+  await mkdir(path.dirname(target), { recursive: true })
+  await writeFormattedJson(target, rows)
+
+  const modulePath = path.join(path.dirname(target), 'team.js')
+  if (!existsSync(modulePath)) {
+    await writeFile(modulePath, teamPassthroughModule(year), 'utf8')
+  }
+
+  console.log(
+    `  ${year}: ${rows.length} team members -> ${path.relative(ROOT, target)}`
+  )
+  return rows.length
 }
 
 async function writeYear(year) {
@@ -341,9 +438,11 @@ async function main() {
   console.log(`Fetching ${years.length} event year(s): ${years.join(', ')}`)
 
   let total = 0
+  let teamTotal = 0
   const manifest = []
   for (const event of events) {
     const stats = await writeYear(event.year)
+    teamTotal += await writeTeamYear(event.year)
     total += stats.rowCount
     manifest.push({ ...event, ...stats })
   }
@@ -351,7 +450,8 @@ async function main() {
   await writeFormattedJson(EVENTS_OUTPUT, manifest)
 
   console.log(
-    `Wrote ${total} speaker-session rows across ${years.length} year(s)`
+    `Wrote ${total} speaker-session rows and ${teamTotal} team members ` +
+      `across ${years.length} year(s)`
   )
 }
 
