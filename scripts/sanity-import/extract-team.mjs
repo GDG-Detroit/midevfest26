@@ -65,12 +65,20 @@ function toCommitCount(value) {
   return Number.isFinite(n) && n >= 0 ? Math.trunc(n) : undefined
 }
 
-function buildRow(member, index) {
+/**
+ * `name`, `team` and `avatar` used to pass through raw while the social fields
+ * went through cleanText. A roster is arbitrary literal data — the parser will
+ * hand back whatever the source wrote — so a numeric name reached Sanity as a
+ * number in a string field, and a non-string avatar crashed the importer on
+ * `.trim()`. Every field now goes through the same coercion the social ones
+ * always did.
+ */
+function buildRow(member, index, { name, teamGroup }) {
   return {
-    slug: slugify(member.name),
-    name: member.name,
-    role: member.role ?? '',
-    team_group: member.team ?? '',
+    slug: slugify(name),
+    name,
+    role: cleanText(member.role) ?? '',
+    team_group: teamGroup,
     organization: cleanText(member.organization),
     university: cleanText(member.university),
     bio: cleanText(member.bio),
@@ -80,7 +88,7 @@ function buildRow(member, index) {
     github: cleanText(member.github),
     // Source order is the intended display order within a group.
     sort_order: index,
-    headshot_path: member.avatar,
+    headshot_path: cleanText(member.avatar) ?? '',
   }
 }
 
@@ -141,16 +149,29 @@ export async function extractTeam({ sourcePath, outPath }) {
   const seen = new Set()
 
   teamData.forEach((member, index) => {
-    if (!member?.name) {
-      warnings.push(`Skipped record without a name at index ${index}`)
-      return
-    }
-    if (!member.team) {
-      warnings.push(`${member.name}: no team group, skipped`)
+    // Truthiness is not enough: `name: 42` and `team: {}` are both truthy and
+    // both produce a row the importer cannot use.
+    const name = cleanText(member?.name)
+    if (!name) {
+      warnings.push(
+        `Skipped record at index ${index}: name is missing or not a string`
+      )
       return
     }
 
-    const row = buildRow(member, index)
+    const teamGroup = cleanText(member.team)
+    if (!teamGroup) {
+      warnings.push(`${name}: team group is missing or not a string, skipped`)
+      return
+    }
+
+    // Not fatal — the member imports without a headshot rather than being
+    // dropped — but silence here is how a bad path reaches the importer.
+    if (member.avatar != null && cleanText(member.avatar) === undefined) {
+      warnings.push(`${name}: avatar is not a string, ignored`)
+    }
+
+    const row = buildRow(member, index, { name, teamGroup })
     if (seen.has(row.slug)) {
       warnings.push(`${member.name}: duplicate slug "${row.slug}", skipped`)
       return

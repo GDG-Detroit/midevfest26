@@ -53,23 +53,89 @@ function isRemoteAsset(value) {
   return /^https?:\/\//i.test(value)
 }
 
-/**
- * Reject rows the schema would not accept. Sanity's `options.list` only
- * constrains the Studio dropdown — the write API happily stores anything — so
- * without this check a typo'd group reaches the dataset and then vanishes from
- * the site with no error at any layer.
- */
-function assertKnownGroups(rows) {
-  const offenders = rows
-    .filter((row) => !isKnownTeamGroup(row.team_group))
-    .map((row) => `${row.name} (${row.slug}): "${row.team_group ?? ''}"`)
+/** Fields that must be a non-empty string for a row to be usable. */
+const REQUIRED_STRINGS = ['slug', 'name', 'team_group']
+/** Fields that may be absent, but must be strings when present. */
+const OPTIONAL_STRINGS = [
+  'role',
+  'organization',
+  'university',
+  'bio',
+  'linkedin',
+  'twitter',
+  'github',
+  'headshot_path',
+]
 
-  if (offenders.length === 0) return
+/**
+ * Reject rows the schema would not accept.
+ *
+ * Two failure modes, both reached from the same place. Sanity's `options.list`
+ * only constrains the Studio dropdown — the write API stores anything — so a
+ * typo'd group lands in the dataset and then vanishes from the site with no
+ * error at any layer. And the content lake is schemaless at the API level, so a
+ * numeric `name` is stored as a number in a string field; the Studio flags it
+ * only after the fact, and the site renders it.
+ *
+ * The seed JSON is committed and hand-editable, so validating during extraction
+ * is not enough — rows can arrive here without passing through that script at
+ * all. This is the last gate before the mutation.
+ */
+function assertValidRows(rows) {
+  const problems = []
+
+  rows.forEach((row, index) => {
+    const label = typeof row?.name === 'string' ? row.name : `row ${index}`
+
+    if (row == null || typeof row !== 'object') {
+      problems.push(`row ${index}: not an object`)
+      return
+    }
+
+    for (const field of REQUIRED_STRINGS) {
+      const value = row[field]
+      if (typeof value !== 'string' || value.trim() === '') {
+        problems.push(
+          `${label}: "${field}" must be a non-empty string, got ` +
+            `${JSON.stringify(value)}`
+        )
+      }
+    }
+
+    for (const field of OPTIONAL_STRINGS) {
+      const value = row[field]
+      if (value != null && typeof value !== 'string') {
+        problems.push(
+          `${label}: "${field}" must be a string when present, got ` +
+            `${JSON.stringify(value)}`
+        )
+      }
+    }
+
+    if (row.commits != null && !Number.isFinite(row.commits)) {
+      problems.push(
+        `${label}: "commits" must be a number, got ${JSON.stringify(
+          row.commits
+        )}`
+      )
+    }
+
+    if (
+      typeof row.team_group === 'string' &&
+      !isKnownTeamGroup(row.team_group)
+    ) {
+      problems.push(
+        `${label}: team group "${row.team_group}" is not one of ` +
+          TEAM_GROUPS.join(', ')
+      )
+    }
+  })
+
+  if (problems.length === 0) return
 
   throw new Error(
-    `${offenders.length} row(s) have a team group the schema does not define.\n` +
-      `  Valid groups: ${TEAM_GROUPS.join(', ')}\n` +
-      offenders.map((o) => `    ${o}`).join('\n')
+    `${problems.length} problem(s) in the source rows:\n` +
+      problems.map((p) => `    ${p}`).join('\n')
   )
 }
 
@@ -157,9 +223,9 @@ export async function importTeam(options = {}) {
     throw new Error(`No rows found in ${rowsPath}`)
   }
 
-  // Before anything touches the dataset: bad groups are a source-data problem,
-  // and importing half a roster before noticing helps nobody.
-  assertKnownGroups(rows)
+  // Before anything touches the dataset: malformed rows are a source-data
+  // problem, and importing half a roster before noticing helps nobody.
+  assertValidRows(rows)
 
   const eventRef = await resolveEventRef(client, {
     eventId: options.eventId,
