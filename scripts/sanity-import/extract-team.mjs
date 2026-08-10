@@ -21,6 +21,10 @@
  *   node scripts/sanity-import/extract-team.mjs \
  *     --source=/tmp/team.js \
  *     --out=scripts/sanity-import/data/team-2026.json
+ *
+ * Any record dropped for missing data fails the run and writes nothing, because
+ * importing a short roster unpublishes the people it left out. --allow-skipped
+ * proceeds anyway when the drops are intended.
  */
 import { mkdir, readFile, writeFile } from 'node:fs/promises'
 import path from 'node:path'
@@ -93,10 +97,11 @@ function buildRow(member, index, { name, teamGroup, role }) {
 }
 
 function parseArgs(argv) {
-  const options = {}
+  const options = { flags: new Set() }
   for (const arg of argv.slice(2)) {
     const match = /^--([^=]+)=(.*)$/.exec(arg)
     if (match) options[match[1]] = match[2]
+    else if (arg.startsWith('--')) options.flags.add(arg.slice(2))
   }
   return options
 }
@@ -120,7 +125,7 @@ function assertNotGenerated(source, sourcePath) {
   )
 }
 
-export async function extractTeam({ sourcePath, outPath }) {
+export async function extractTeam({ sourcePath, outPath, allowSkipped }) {
   const source = await readFile(sourcePath, 'utf8')
   assertNotGenerated(source, sourcePath)
 
@@ -146,6 +151,10 @@ export async function extractTeam({ sourcePath, outPath }) {
 
   const rows = []
   const warnings = []
+  // Records dropped entirely, kept apart from field-level warnings: a dropped
+  // record is a person missing from the roster, which the importer cannot tell
+  // apart from a deliberate removal.
+  const skipped = []
   const seen = new Set()
 
   teamData.forEach((member, index) => {
@@ -153,15 +162,13 @@ export async function extractTeam({ sourcePath, outPath }) {
     // both produce a row the importer cannot use.
     const name = cleanText(member?.name)
     if (!name) {
-      warnings.push(
-        `Skipped record at index ${index}: name is missing or not a string`
-      )
+      skipped.push(`record at index ${index}: name is missing or not a string`)
       return
     }
 
     const teamGroup = cleanText(member.team)
     if (!teamGroup) {
-      warnings.push(`${name}: team group is missing or not a string, skipped`)
+      skipped.push(`${name}: team group is missing or not a string`)
       return
     }
 
@@ -171,7 +178,7 @@ export async function extractTeam({ sourcePath, outPath }) {
     // role is a gap in the source that someone has to fill in.
     const role = cleanText(member.role)
     if (!role) {
-      warnings.push(`${name}: role is missing or blank, skipped`)
+      skipped.push(`${name}: role is missing or blank`)
       return
     }
 
@@ -183,7 +190,7 @@ export async function extractTeam({ sourcePath, outPath }) {
 
     const row = buildRow(member, index, { name, teamGroup, role })
     if (seen.has(row.slug)) {
-      warnings.push(`${member.name}: duplicate slug "${row.slug}", skipped`)
+      skipped.push(`${member.name}: duplicate slug "${row.slug}"`)
       return
     }
 
@@ -191,10 +198,26 @@ export async function extractTeam({ sourcePath, outPath }) {
     rows.push(row)
   })
 
+  // Writing a knowingly incomplete seed is the dangerous outcome. The importer
+  // has no way to tell "this person was dropped by a validation gap" from "this
+  // person left the team", so it soft-unpublishes them either way — a missing
+  // role in the source quietly removes someone from the live site. Fail before
+  // the file exists, and make continuing an explicit choice.
+  if (skipped.length > 0 && !allowSkipped) {
+    throw new Error(
+      `${skipped.length} record(s) were dropped, so the roster would be ` +
+        `incomplete:\n` +
+        skipped.map((s) => `    ${s}`).join('\n') +
+        `\n\n  Importing this seed would unpublish those people from the ` +
+        `site.\n  Fix the source, or pass --allow-skipped if the drops are ` +
+        `intended.`
+    )
+  }
+
   await mkdir(path.dirname(outPath), { recursive: true })
   await writeFile(outPath, `${JSON.stringify(rows, null, 2)}\n`, 'utf8')
 
-  return { rows, warnings }
+  return { rows, warnings, skipped }
 }
 
 async function main() {
@@ -215,9 +238,14 @@ async function main() {
   const sourcePath = path.resolve(ROOT, options.source)
   const outPath = path.resolve(ROOT, options.out ?? DEFAULT_OUT)
 
-  const { rows, warnings } = await extractTeam({ sourcePath, outPath })
+  const { rows, warnings, skipped } = await extractTeam({
+    sourcePath,
+    outPath,
+    allowSkipped: options.flags.has('allow-skipped'),
+  })
 
   for (const warning of warnings) console.warn(`  warning: ${warning}`)
+  for (const drop of skipped) console.warn(`  DROPPED: ${drop}`)
 
   const groups = new Map()
   for (const row of rows) {
