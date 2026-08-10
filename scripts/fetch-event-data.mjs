@@ -8,6 +8,10 @@ import { fileURLToPath } from 'node:url'
 import path from 'node:path'
 import { createClient } from '@sanity/client'
 import prettier from 'prettier'
+import {
+  RENDERED_TEAM_GROUPS,
+  isRenderedTeamGroup,
+} from './sanity-import/lib/team-groups.mjs'
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url))
 const ROOT = path.resolve(__dirname, '..')
@@ -388,6 +392,20 @@ function deriveMetadata(rows) {
 async function writeTeamYear(year) {
   const rows = await fetchEventTeam({ eventYear: year })
   if (rows.length === 0) return 0
+
+  // Published, valid, and invisible: the Studio offers groups the site has no
+  // section for. Say so here rather than letting an organizer wonder why the
+  // person they just added never showed up.
+  const unrendered = rows.filter((row) => !isRenderedTeamGroup(row.team))
+  if (unrendered.length > 0) {
+    console.warn(
+      `  warning: ${unrendered.length} team member(s) are in a group the site ` +
+        `does not render (it shows ${RENDERED_TEAM_GROUPS.join(' and ')}):`
+    )
+    for (const row of unrendered) {
+      console.warn(`    ${row.name} — ${row.team}`)
+    }
+  }
 
   const target = teamOutputFor(year)
   await mkdir(path.dirname(target), { recursive: true })

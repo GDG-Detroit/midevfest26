@@ -89,8 +89,28 @@ function parseArgs(argv) {
   return options
 }
 
+/**
+ * team.js is a passthrough for Sanity-generated data now. Re-extracting it
+ * would yield rows whose avatars are CDN URLs rather than files, and feeding
+ * those to the importer would blank every headshot it "cannot find". Detect it
+ * from the source text, before evaluation — the generated-JSON import is the
+ * unambiguous signature, and inlineImageImports would otherwise mangle it into
+ * a string and fail with something unhelpful.
+ */
+function assertNotGenerated(source, sourcePath) {
+  if (!/from\s+'[^']*\.generated\.json'/.test(source)) return
+
+  throw new Error(
+    `${path.relative(ROOT, sourcePath)} already reads from Sanity — it is a ` +
+      `passthrough for generated data.\n` +
+      '  There is nothing to extract: the roster lives in the CMS. Edit it in ' +
+      'Studio,\n  or point --source at a hand-authored roster from git history.'
+  )
+}
+
 export async function extractTeam({ sourcePath, outPath }) {
   const source = await readFile(sourcePath, 'utf8')
+  assertNotGenerated(source, sourcePath)
 
   // Evaluate from a data: URL so no rewritten file is left behind and no
   // bundler alias needs resolving.
@@ -101,6 +121,15 @@ export async function extractTeam({ sourcePath, outPath }) {
 
   if (!Array.isArray(teamData)) {
     throw new Error('Source module did not export a teamData array')
+  }
+
+  // Second net, for a source that dodges the passthrough check above but still
+  // carries Sanity URLs instead of file paths.
+  if (teamData.some((member) => /^https?:\/\//i.test(member?.avatar ?? ''))) {
+    throw new Error(
+      `${path.relative(ROOT, sourcePath)} has CDN URLs for avatars, not file ` +
+        `paths — it is already Sanity-sourced and cannot be extracted.`
+    )
   }
 
   const rows = []
