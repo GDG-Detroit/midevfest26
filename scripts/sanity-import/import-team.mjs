@@ -19,7 +19,7 @@
  *   node --env-file=scripts/sanity-import/.env \
  *     scripts/sanity-import/import-team.mjs --event-year=2026
  */
-import { readFile } from 'node:fs/promises'
+import { readFile, realpath } from 'node:fs/promises'
 import path from 'node:path'
 import { fileURLToPath } from 'node:url'
 import {
@@ -51,6 +51,55 @@ function requireEnv(name) {
  */
 function isRemoteAsset(value) {
   return /^https?:\/\//i.test(value)
+}
+
+/** Absolute path every headshot must resolve inside. */
+const ASSET_ROOT = path.resolve(ROOT, ASSET_BASE)
+
+/**
+ * Headshot paths come from row data, and row data is a JSON file anyone can
+ * edit — so they are untrusted input to `readFile` and then to `uploadImage`.
+ * Sanity serves assets from a public CDN, which turns "read any local file"
+ * into "publish any local file". `../` chains, absolute paths, and symlinks
+ * out of the tree are all rejected rather than clamped.
+ */
+function assertContainedAssetPath(assetPath, label) {
+  if (path.isAbsolute(assetPath)) {
+    throw new Error(
+      `${label}: headshot path must be relative to ${ASSET_BASE}/, got an ` +
+        `absolute path (${assetPath})`
+    )
+  }
+
+  const resolved = path.resolve(ASSET_ROOT, assetPath)
+  const relative = path.relative(ASSET_ROOT, resolved)
+
+  if (relative.startsWith('..') || path.isAbsolute(relative)) {
+    throw new Error(
+      `${label}: headshot path escapes ${ASSET_BASE}/ (${assetPath})`
+    )
+  }
+
+  return resolved
+}
+
+/**
+ * Containment has to be rechecked after following symlinks: a link inside src/
+ * pointing anywhere is still a read of that target. Only meaningful once the
+ * file exists, so a missing path falls through to the normal "missing
+ * headshot" handling.
+ */
+async function assertContainedRealPath(resolved, label) {
+  const real = await realpath(resolved).catch(() => null)
+  if (real === null) return
+
+  const relative = path.relative(ASSET_ROOT, real)
+  if (relative.startsWith('..') || path.isAbsolute(relative)) {
+    throw new Error(
+      `${label}: headshot path resolves outside ${ASSET_BASE}/ through a ` +
+        `symlink (${real})`
+    )
+  }
 }
 
 /** Fields that must be a non-empty string for a row to be usable. */
@@ -258,7 +307,8 @@ export async function importTeam(options = {}) {
       // Already a Sanity asset; keep whatever the document has.
       preservedHeadshots.push(`${row.name} (remote URL in source)`)
     } else if (assetPath) {
-      const absolute = path.resolve(ROOT, ASSET_BASE, assetPath)
+      const absolute = assertContainedAssetPath(assetPath, row.name)
+      await assertContainedRealPath(absolute, row.name)
       const filename = path.basename(assetPath)
 
       if (!imageCache.has(assetPath)) {

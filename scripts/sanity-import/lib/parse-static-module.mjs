@@ -44,10 +44,11 @@ function fail(node, message) {
 /**
  * Evaluate a node that must be a plain data literal.
  *
- * `bindings` resolves bare identifiers — image imports rewritten to path
- * strings, and any top-level const literals the source declares.
+ * `resolve` turns a bare identifier into a value — an import binding, or another
+ * top-level const in the same file. It is a callback rather than a Map so that
+ * consts can reference each other regardless of declaration order.
  */
-function literalValue(node, bindings) {
+function literalValue(node, resolve) {
   switch (node.type) {
     case 'Literal':
       return node.value
@@ -65,7 +66,7 @@ function literalValue(node, bindings) {
         if (element.type === 'SpreadElement') {
           fail(element, 'Spread is not allowed in a data literal')
         }
-        return literalValue(element, bindings)
+        return literalValue(element, resolve)
       })
 
     case 'ObjectExpression': {
@@ -79,7 +80,7 @@ function literalValue(node, bindings) {
         }
         const key =
           prop.key.type === 'Identifier' ? prop.key.name : prop.key.value
-        out[key] = literalValue(prop.value, bindings)
+        out[key] = literalValue(prop.value, resolve)
       }
       return out
     }
@@ -89,7 +90,7 @@ function literalValue(node, bindings) {
       if (node.operator !== '-' && node.operator !== '+') {
         fail(node, `Unary operator "${node.operator}" is not allowed`)
       }
-      const value = literalValue(node.argument, bindings)
+      const value = literalValue(node.argument, resolve)
       if (typeof value !== 'number') {
         fail(node, 'Unary +/- is only allowed on numbers')
       }
@@ -97,10 +98,7 @@ function literalValue(node, bindings) {
     }
 
     case 'Identifier':
-      if (!bindings.has(node.name)) {
-        fail(node, `Unresolved identifier "${node.name}"`)
-      }
-      return bindings.get(node.name)
+      return resolve(node)
 
     default:
       fail(node, `${node.type} is not a data literal`)
@@ -109,12 +107,20 @@ function literalValue(node, bindings) {
 }
 
 /**
- * Parse `source` and return the value of `export const <exportName> = ...`.
+ * Parse `source` and return the value exported as `exportName`.
  *
- * `resolveImport(specifier, localName)` maps each import to the value its
- * binding should carry — the extract scripts use it to turn a bundler-aliased
- * image import into the path string the row needs. Return `undefined` to leave
- * a binding unresolved, which makes any use of it an error.
+ * Both `export const x = ...` and `const x = ...; export { x }` are supported,
+ * including aliases (`export { data as SpeakersData }`). The export-list form is
+ * ordinary ESM that the old `import()` path handled, so failing on it would have
+ * been a silent narrowing of what these extractors accept.
+ *
+ * `resolveImport(specifier, localName)` maps a **default** import to the value
+ * its binding should carry — the extract scripts use it to turn a bundler-aliased
+ * image import into a path string. Namespace (`import * as x`) and named
+ * (`import { x }`) specifiers are deliberately not bound: they do not denote the
+ * module's default value, and binding them anyway produced a plausible-looking
+ * but wrong path. Referencing one is an "unresolved identifier" error rather
+ * than a quietly incorrect row.
  */
 export function readExportedLiteral(source, exportName, options = {}) {
   const { resolveImport } = options
@@ -130,9 +136,12 @@ export function readExportedLiteral(source, exportName, options = {}) {
     throw new Error(`Could not parse source as an ES module: ${error.message}`)
   }
 
-  const bindings = new Map()
-  let found
-  let seen = false
+  /** local name -> value, from default imports. */
+  const importBindings = new Map()
+  /** local name -> init AST node, from any top-level const. */
+  const constNodes = new Map()
+  /** exported name -> local name. */
+  const exportedToLocal = new Map()
 
   for (const node of program.body) {
     if (!ALLOWED_TOP_LEVEL.has(node.type)) {
@@ -145,21 +154,31 @@ export function readExportedLiteral(source, exportName, options = {}) {
 
     if (node.type === 'ImportDeclaration') {
       for (const spec of node.specifiers) {
+        if (spec.type !== 'ImportDefaultSpecifier') continue
         const value = resolveImport?.(node.source.value, spec.local.name)
-        if (value !== undefined) bindings.set(spec.local.name, value)
+        if (value !== undefined) importBindings.set(spec.local.name, value)
       }
       continue
     }
 
-    // `export const x = ...` and a bare `const x = ...` are both declarations;
-    // the export just wraps one.
+    // `export { teamData }` / `export { data as SpeakersData }` carry no
+    // declaration — the binding they name is declared elsewhere in the file.
+    if (node.type === 'ExportNamedDeclaration' && !node.declaration) {
+      for (const spec of node.specifiers ?? []) {
+        if (spec.local?.type !== 'Identifier') continue
+        const exported =
+          spec.exported.type === 'Identifier'
+            ? spec.exported.name
+            : spec.exported.value
+        exportedToLocal.set(exported, spec.local.name)
+      }
+      continue
+    }
+
     const declaration =
       node.type === 'ExportNamedDeclaration' ? node.declaration : node
 
-    if (!declaration || declaration.type !== 'VariableDeclaration') {
-      if (node.type === 'ExportNamedDeclaration') continue
-      fail(node, `Unexpected ${node.type} at the top level`)
-    }
+    if (!declaration || declaration.type !== 'VariableDeclaration') continue
 
     for (const declarator of declaration.declarations) {
       if (declarator.id.type !== 'Identifier') {
@@ -167,29 +186,44 @@ export function readExportedLiteral(source, exportName, options = {}) {
       }
       if (!declarator.init) continue
 
-      const name = declarator.id.name
-      const isTarget =
-        name === exportName && node.type === 'ExportNamedDeclaration'
-
-      // Only the target export has to be a literal. Other top-level consts are
-      // resolved lazily so an unrelated non-literal const is not fatal.
-      if (isTarget) {
-        found = literalValue(declarator.init, bindings)
-        seen = true
-        continue
-      }
-
-      try {
-        bindings.set(name, literalValue(declarator.init, bindings))
-      } catch {
-        // Unusable as a binding; only an error if something references it.
+      constNodes.set(declarator.id.name, declarator.init)
+      if (node.type === 'ExportNamedDeclaration') {
+        exportedToLocal.set(declarator.id.name, declarator.id.name)
       }
     }
   }
 
-  if (!seen) {
+  const localName = exportedToLocal.get(exportName)
+  if (!localName) {
     throw new Error(`Source does not export a const named "${exportName}"`)
   }
 
-  return found
+  const target = constNodes.get(localName)
+  if (!target) {
+    throw new Error(
+      `"${exportName}" is exported but "${localName}" is not a const in this file`
+    )
+  }
+
+  // Evaluated lazily so consts may reference each other in any order; the
+  // in-progress set turns a cycle into an error instead of a stack overflow.
+  const inProgress = new Set()
+  const resolve = (identifierNode) => {
+    const name = identifierNode.name
+    if (importBindings.has(name)) return importBindings.get(name)
+    if (!constNodes.has(name)) {
+      fail(identifierNode, `Unresolved identifier "${name}"`)
+    }
+    if (inProgress.has(name)) {
+      fail(identifierNode, `Circular reference through "${name}"`)
+    }
+    inProgress.add(name)
+    try {
+      return literalValue(constNodes.get(name), resolve)
+    } finally {
+      inProgress.delete(name)
+    }
+  }
+
+  return literalValue(target, resolve)
 }
