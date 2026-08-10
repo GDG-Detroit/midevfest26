@@ -1,20 +1,26 @@
 /**
- * Extract the hand-authored team roster into a seed file for import-team.mjs.
+ * Extract a hand-authored team roster into a seed file for import-team.mjs.
  *
- * Source: src/data/2026/team.js — a plain ESM module whose headshots are
+ * A source is a plain ESM module exporting `teamData`, whose headshots are
  * bundler-aliased `import` statements (`@/data/2026/assets/...`). Same trick as
  * extract-devfest-2025.mjs: rewrite each image import into a path string, then
  * evaluate the module, rather than pattern-matching the source.
  *
- * Run this once, before team.js becomes a passthrough for the generated JSON —
- * afterwards the seed file, not team.js, is what import-team.mjs reads, so the
- * import stays re-runnable against an empty dataset.
- *
  * `star` and `topContributor` are dropped: nothing under src/ reads either one.
  *
- * Usage:
- *   node scripts/sanity-import/extract-team.mjs
- *   node scripts/sanity-import/extract-team.mjs --source=... --out=...
+ * --source is REQUIRED and has no default on purpose. This is a one-shot
+ * migration tool: it ran once against the 2026 roster to produce
+ * data/team-2026.json, and then team.js became a passthrough for Sanity data.
+ * Defaulting to team.js would mean the documented command could only ever fail,
+ * so the path has to be named deliberately.
+ *
+ * The 2026 seed is already committed — you want this only when migrating a new
+ * event's hand-authored roster, or rebuilding the seed from git history:
+ *
+ *   git show <pre-migration-ref>:src/data/2026/team.js > /tmp/team.js
+ *   node scripts/sanity-import/extract-team.mjs \
+ *     --source=/tmp/team.js \
+ *     --out=scripts/sanity-import/data/team-2026.json
  */
 import { mkdir, readFile, writeFile } from 'node:fs/promises'
 import path from 'node:path'
@@ -23,7 +29,6 @@ import { fileURLToPath } from 'node:url'
 const __dirname = path.dirname(fileURLToPath(import.meta.url))
 const ROOT = path.resolve(__dirname, '../..')
 
-const DEFAULT_SOURCE = 'src/data/2026/team.js'
 const DEFAULT_OUT = 'scripts/sanity-import/data/team-2026.json'
 
 const IMPORT_RE = /^import\s+(\w+)\s+from\s+'([^']+)'\s*$/gm
@@ -164,7 +169,20 @@ export async function extractTeam({ sourcePath, outPath }) {
 
 async function main() {
   const options = parseArgs(process.argv)
-  const sourcePath = path.resolve(ROOT, options.source ?? DEFAULT_SOURCE)
+
+  if (!options.source) {
+    throw new Error(
+      'A --source is required; there is no default.\n' +
+        '  This is a one-shot migration tool and the 2026 seed is already ' +
+        'committed\n  at scripts/sanity-import/data/team-2026.json. Point ' +
+        "--source at a hand-authored\n  roster — a new event's team.js, or " +
+        "2026's from before the migration:\n\n" +
+        '    git show <pre-migration-ref>:src/data/2026/team.js > /tmp/team.js\n' +
+        '    node scripts/sanity-import/extract-team.mjs --source=/tmp/team.js'
+    )
+  }
+
+  const sourcePath = path.resolve(ROOT, options.source)
   const outPath = path.resolve(ROOT, options.out ?? DEFAULT_OUT)
 
   const { rows, warnings } = await extractTeam({ sourcePath, outPath })
