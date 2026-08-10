@@ -4,8 +4,8 @@
  * Source: GDG-Detroit/devfest-website@2025 — src/data/2025/speakers.js, a plain
  * ESM module whose speaker records reference headshots through bundler-aliased
  * `import` statements (`@/assets/...`). It cannot be imported across repos as-is,
- * so we rewrite each image import into a filename string and then evaluate the
- * module, rather than pattern-matching 130KB of source.
+ * so it is parsed to an AST and read as data, rather than pattern-matching 130KB
+ * of source or executing another repository's file.
  *
  * Output: a flat row per speaker-session pair, matching the column names
  * import-speakers.mjs already expects from the Google Sheet, so the same import
@@ -19,11 +19,10 @@
 import { mkdir, readFile, writeFile } from 'node:fs/promises'
 import path from 'node:path'
 import { fileURLToPath } from 'node:url'
+import { readExportedLiteral } from './lib/parse-static-module.mjs'
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url))
 const ROOT = path.resolve(__dirname, '../..')
-
-const IMPORT_RE = /^import\s+(\w+)\s+from\s+'([^']+)'\s*$/gm
 
 /**
  * Speakers whose source headshot is too small to render well on a speaker card.
@@ -34,20 +33,12 @@ const HEADSHOT_OVERRIDES = {
   'jenna-ritten': 'assets/images/speakers/Jenna_Ritten.png',
 }
 
-/** Rewrite `import X from '@/assets/a/b.png'` into `const X = 'a/b.png'`. */
-function inlineImageImports(source) {
-  const assetPaths = new Map()
-
-  const rewritten = source.replace(IMPORT_RE, (_match, binding, importPath) => {
-    // Strip the bundler alias so what remains is repo-relative under src/.
-    const repoPath = importPath
-      .replace(/^@\/?/, '')
-      .replace(/^assets\//, 'assets/')
-    assetPaths.set(binding, repoPath)
-    return `const ${binding} = ${JSON.stringify(repoPath)}`
-  })
-
-  return { rewritten, assetPaths }
+/**
+ * `import X from '@/assets/a/b.png'` resolves to the repo-relative path under
+ * src/, which is what the extracted rows carry.
+ */
+function resolveImageImport(specifier) {
+  return specifier.replace(/^@\/?/, '')
 }
 
 function slugify(value) {
@@ -169,14 +160,13 @@ function toRow(speaker, sessionSlug) {
 
 export async function extract({ sourcePath, outPath }) {
   const source = await readFile(sourcePath, 'utf8')
-  const { rewritten, assetPaths } = inlineImageImports(source)
 
-  // Evaluate the rewritten module from a data: URL so nothing is written to the
-  // legacy repo and no bundler aliases need resolving.
-  const moduleUrl = `data:text/javascript;base64,${Buffer.from(
-    rewritten
-  ).toString('base64')}`
-  const { SpeakersData } = await import(moduleUrl)
+  // Parsed, never executed — see lib/parse-static-module.mjs. This extractor is
+  // pointed at *another repository's* data file, so evaluating it would run
+  // that repo's code with the privileges of whoever is doing the migration.
+  const SpeakersData = readExportedLiteral(source, 'SpeakersData', {
+    resolveImport: resolveImageImport,
+  })
 
   if (!Array.isArray(SpeakersData)) {
     throw new Error('Source module did not export a SpeakersData array')

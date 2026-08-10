@@ -25,21 +25,20 @@
 import { mkdir, readFile, writeFile } from 'node:fs/promises'
 import path from 'node:path'
 import { fileURLToPath } from 'node:url'
+import { readExportedLiteral } from './lib/parse-static-module.mjs'
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url))
 const ROOT = path.resolve(__dirname, '../..')
 
 const DEFAULT_OUT = 'scripts/sanity-import/data/team-2026.json'
 
-const IMPORT_RE = /^import\s+(\w+)\s+from\s+'([^']+)'\s*$/gm
-
-/** Rewrite `import X from '@/data/...webp'` into `const X = 'data/...webp'`. */
-function inlineImageImports(source) {
-  return source.replace(IMPORT_RE, (_match, binding, importPath) => {
-    // Strip the bundler alias; what remains is relative to src/.
-    const srcRelative = importPath.replace(/^@\//, '')
-    return `const ${binding} = ${JSON.stringify(srcRelative)}`
-  })
+/**
+ * Headshots arrive as bundler-aliased image imports. The row wants the path,
+ * so each import binding resolves to its specifier with the alias stripped —
+ * what remains is relative to src/.
+ */
+function resolveImageImport(specifier) {
+  return specifier.replace(/^@\//, '')
 }
 
 function slugify(value) {
@@ -117,12 +116,12 @@ export async function extractTeam({ sourcePath, outPath }) {
   const source = await readFile(sourcePath, 'utf8')
   assertNotGenerated(source, sourcePath)
 
-  // Evaluate from a data: URL so no rewritten file is left behind and no
-  // bundler alias needs resolving.
-  const moduleUrl = `data:text/javascript;base64,${Buffer.from(
-    inlineImageImports(source)
-  ).toString('base64')}`
-  const { teamData } = await import(moduleUrl)
+  // Parsed, never executed — see lib/parse-static-module.mjs. A roster is data,
+  // and running it would hand arbitrary top-level code the Node privileges of
+  // whoever is doing the migration.
+  const teamData = readExportedLiteral(source, 'teamData', {
+    resolveImport: resolveImageImport,
+  })
 
   if (!Array.isArray(teamData)) {
     throw new Error('Source module did not export a teamData array')
