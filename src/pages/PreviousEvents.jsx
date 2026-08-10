@@ -91,8 +91,8 @@ const PreviousEvents = () => {
               </span>
             </h1>
             <div className="mx-auto mb-6 h-px w-24 bg-gradient-to-r from-transparent via-iwd-gold-400/50 to-transparent sm:w-32" />
-            <p className="mx-auto max-w-2xl font-body text-base italic leading-relaxed text-gray-400">
-              A &quot;no-tech&quot; look at the stories that brought us here.
+            <p className="mx-auto max-w-2xl font-body text-xl italic leading-relaxed text-gray-300">
+              A look at the stories that brought us here.
             </p>
           </div>
 
@@ -144,6 +144,11 @@ const PreviousEvents = () => {
                       className="mb-4 border-l-2 border-iwd-gold-400/50 pl-3 font-body text-sm leading-relaxed text-iwd-gold-300"
                     >
                       {event.notice}
+                    </p>
+                  )}
+                  {event.attendees && (
+                    <p className="my-2 text-xs uppercase tracking-widest text-gray-300">
+                      Attendees: {event.attendees}
                     </p>
                   )}
                   {event.tracks.length > 0 && (
@@ -205,7 +210,7 @@ const PreviousEvents = () => {
 
           {/* Footer CTA */}
           <div className="mt-24 text-center">
-            <p className="mb-8 font-body text-lg italic text-gray-400">
+            <p className="mb-8 font-body text-xl italic text-gray-300">
               Build the future with us.
             </p>
             <a

@@ -29,6 +29,7 @@ import path from 'node:path'
 import { fileURLToPath } from 'node:url'
 import {
   createSanityClient,
+  fetchStoredHeadshots,
   imageFieldFromAsset,
   parseTags,
   sessionDocId,
@@ -53,8 +54,13 @@ function rowKey(row) {
   return `${row.speaker_slug}::${row.session_slug}`
 }
 
+/**
+ * `existing` is the stored headshot for this document. createOrReplace drops
+ * every omitted field, so a source image that cannot be read must inherit the
+ * stored asset rather than blanking it.
+ */
 function buildSpeakerPatch(row, eventRef, headshotAsset, options) {
-  const { namespace, includeEmail } = options
+  const { namespace, includeEmail, existing } = options
 
   const patch = {
     _id: speakerDocId(row.speaker_slug, namespace),
@@ -69,7 +75,7 @@ function buildSpeakerPatch(row, eventRef, headshotAsset, options) {
     isGDE: Boolean(row.isGDE),
     published: true,
     importKey: rowKey(row),
-    headshotFilename: row.headshot_filename || '',
+    headshotFilename: row.headshot_filename || existing?.headshotFilename || '',
   }
 
   if (row.linkedIn) patch.linkedIn = row.linkedIn
@@ -78,7 +84,11 @@ function buildSpeakerPatch(row, eventRef, headshotAsset, options) {
   if (row.mastodon) patch.mastodon = row.mastodon
   if (row.website) patch.website = row.website
   if (includeEmail && row.email) patch.email = row.email
-  if (headshotAsset) patch.headshot = imageFieldFromAsset(headshotAsset)
+
+  const headshot = headshotAsset
+    ? imageFieldFromAsset(headshotAsset)
+    : existing?.headshot
+  if (headshot) patch.headshot = headshot
 
   return patch
 }
@@ -214,15 +224,31 @@ export async function importStaticProgram(options = {}) {
   }
 
   const missingHeadshots = []
+  const preservedHeadshots = []
   const imageCache = new Map()
   const mutations = []
+
+  // Stored headshots for everyone about to be replaced, so a missing source
+  // file falls back to the existing asset rather than deleting it.
+  const storedHeadshots = await fetchStoredHeadshots(
+    client,
+    [...speakersBySlug.keys()].map((slug) => speakerDocId(slug, namespace))
+  )
 
   for (const row of speakersBySlug.values()) {
     let headshotAsset = null
     const filename = row.headshot_filename?.trim()
+    const existing = storedHeadshots.get(
+      speakerDocId(row.speaker_slug, namespace)
+    )
+
+    // Whether a fresh asset is obtainable, independent of whether this run
+    // uploads it. A dry run resolves nothing, so asking `headshotAsset` here
+    // would report every speaker as preserved and tell you nothing.
+    const willResolve = Boolean(filename && availableAssets.has(filename))
 
     if (filename) {
-      if (!availableAssets.has(filename)) {
+      if (!willResolve) {
         missingHeadshots.push(`${row.name} (${filename})`)
       } else if (!dryRun) {
         if (!imageCache.has(filename)) {
@@ -233,10 +259,15 @@ export async function importStaticProgram(options = {}) {
       }
     }
 
+    if (!willResolve && existing?.headshot) {
+      preservedHeadshots.push(row.name)
+    }
+
     mutations.push({
       createOrReplace: buildSpeakerPatch(row, eventRef, headshotAsset, {
         namespace,
         includeEmail,
+        existing,
       }),
     })
   }
@@ -273,6 +304,7 @@ export async function importStaticProgram(options = {}) {
     sessions: sessionsBySlug.size,
     headshots: imageCache.size,
     missingHeadshots,
+    preservedHeadshots,
     willUnpublish: [
       ...staleSpeakers.map((d) => `speaker: ${d.name}`),
       ...staleSessions.map((d) => `session: ${d.title}`),
@@ -331,6 +363,12 @@ if (isMain) {
           `  missing headshot files (${result.missingHeadshots.length}):`
         )
         for (const m of result.missingHeadshots) console.warn(`    ${m}`)
+      }
+      if (result.preservedHeadshots.length > 0) {
+        console.log(
+          `  kept the stored headshot for ${result.preservedHeadshots.length}:`
+        )
+        for (const p of result.preservedHeadshots) console.log(`    ${p}`)
       }
       if (result.willUnpublish.length > 0) {
         const verb = result.dryRun ? 'would be unpublished' : 'unpublished'

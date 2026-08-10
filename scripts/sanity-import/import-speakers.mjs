@@ -1,6 +1,7 @@
 import { fileURLToPath } from 'url'
 import {
   createSanityClient,
+  fetchStoredHeadshots,
   imageFieldFromAsset,
   parseBoolean,
   parseNumber,
@@ -41,7 +42,13 @@ function validateRow(row, index) {
   }
 }
 
-function buildSpeakerPatch(row, eventRef, headshotAsset) {
+/**
+ * `existing` is the document's currently stored headshot, used when Drive did
+ * not hand back a fresh one. createOrReplace drops every omitted field, so
+ * without this a Drive hiccup — a renamed file, a revoked folder share — would
+ * wipe the stored image for every speaker in the sheet.
+ */
+function buildSpeakerPatch(row, eventRef, headshotAsset, existing) {
   const patch = {
     _id: speakerDocId(row.speaker_slug),
     _type: 'speaker',
@@ -55,13 +62,17 @@ function buildSpeakerPatch(row, eventRef, headshotAsset) {
     isGDE: parseBoolean(row.isGDE),
     published: true,
     importKey: rowKey(row),
-    headshotFilename: row.headshot_filename || '',
+    headshotFilename: row.headshot_filename || existing?.headshotFilename || '',
   }
 
   if (row.linkedIn) patch.linkedIn = row.linkedIn
   if (row.twitter) patch.twitter = row.twitter
   if (row.github) patch.github = row.github
-  if (headshotAsset) patch.headshot = imageFieldFromAsset(headshotAsset)
+
+  const headshot = headshotAsset
+    ? imageFieldFromAsset(headshotAsset)
+    : existing?.headshot
+  if (headshot) patch.headshot = headshot
 
   return patch
 }
@@ -155,9 +166,19 @@ export async function importSpeakersFromSheet(options = {}) {
     sessionSlugs.add(row.session_slug)
   }
 
+  // Stored headshots for everyone about to be replaced, so a Drive miss falls
+  // back to the existing asset rather than deleting it.
+  const storedHeadshots = await fetchStoredHeadshots(
+    client,
+    [...speakersBySlug.keys()].map((slug) => speakerDocId(slug))
+  )
+
+  let preservedHeadshots = 0
+
   for (const row of speakersBySlug.values()) {
     let headshotAsset = null
     const filename = row.headshot_filename?.trim()
+    const existing = storedHeadshots.get(speakerDocId(row.speaker_slug))
 
     if (filename) {
       if (!imageCache.has(filename)) {
@@ -176,9 +197,35 @@ export async function importSpeakersFromSheet(options = {}) {
       headshotAsset = imageCache.get(filename)
     }
 
+    if (!headshotAsset && existing?.headshot) {
+      preservedHeadshots += 1
+      console.warn(`  keeping the stored headshot for ${row.name}`)
+    }
+
     mutations.push({
-      createOrReplace: buildSpeakerPatch(row, eventRef, headshotAsset),
+      createOrReplace: buildSpeakerPatch(
+        row,
+        eventRef,
+        headshotAsset,
+        existing
+      ),
     })
+  }
+
+  // A run where Drive hands back nothing at all is almost always a folder
+  // rename or a revoked share, not 47 simultaneously deleted files. Say so
+  // loudly: without the fallback above this was the shape that wiped every
+  // headshot in the dataset.
+  if (speakersBySlug.size > 0 && imageCache.size > 0) {
+    const resolved = [...imageCache.values()].filter(Boolean).length
+    if (resolved === 0) {
+      console.warn(
+        `\n  WARNING: Drive returned no images for any of ${imageCache.size} ` +
+          `filename(s).\n  Check the folder id and that the service account ` +
+          `still has access.\n  Stored headshots were preserved, not ` +
+          `overwritten.\n`
+      )
+    }
   }
 
   const sessionsBySlug = new Map()

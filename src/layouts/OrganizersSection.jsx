@@ -51,9 +51,15 @@ function OrganizersSection() {
 
       {/* Dev team immediately after organizers */}
       <div className="mx-auto mt-12 grid max-w-7xl grid-cols-2 gap-4 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5">
+        {/*
+          No re-sort here: the generated roster already arrives ordered by
+          sortOrder then name (see TEAM_QUERY in scripts/fetch-event-data.mjs).
+          Sorting alphabetically again discarded the CMS sort order for this
+          group only, while the organizers above kept theirs — so the Studio
+          field silently did nothing for dev team members.
+        */}
         {teamData
           .filter((m) => m.team === 'devteam')
-          .sort((a, b) => a.name.localeCompare(b.name))
           .map((dev) => (
             <DevTeamCard
               key={`dev-${dev.id}`}

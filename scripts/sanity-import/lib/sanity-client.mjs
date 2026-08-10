@@ -32,6 +32,8 @@ export const speakerDocId = (slug, namespace) =>
   namespace ? `speaker-${namespace}-${slug}` : `speaker-${slug}`
 export const sessionDocId = (slug, namespace) =>
   namespace ? `session-${namespace}-${slug}` : `session-${slug}`
+export const teamMemberDocId = (slug, namespace) =>
+  namespace ? `team-${namespace}-${slug}` : `team-${slug}`
 
 export function slugRef(type, slug, idFn, namespace) {
   return {
@@ -43,6 +45,29 @@ export function slugRef(type, slug, idFn, namespace) {
 
 export async function uploadImage(client, buffer, filename) {
   return client.assets.upload('image', buffer, { filename })
+}
+
+/**
+ * Headshots already stored on the documents an import is about to replace.
+ *
+ * These imports use createOrReplace, which drops every field the replacement
+ * omits. Since a patch only sets `headshot` when a fresh asset was resolved, a
+ * source image that cannot be read — a renamed Drive file, a revoked folder
+ * share, a missing local file — would otherwise erase a perfectly good stored
+ * image. Feed the result to the patch builder so an unresolvable image inherits
+ * what is already there instead of blanking it.
+ *
+ * Returns a Map of document id -> {headshot, headshotFilename}.
+ */
+export async function fetchStoredHeadshots(client, ids) {
+  if (!ids || ids.length === 0) return new Map()
+
+  const docs = await client.fetch(
+    `*[_id in $ids]{_id, headshot, headshotFilename}`,
+    { ids }
+  )
+
+  return new Map(docs.map((doc) => [doc._id, doc]))
 }
 
 export function imageFieldFromAsset(asset) {

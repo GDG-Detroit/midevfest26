@@ -202,7 +202,7 @@ Check Sanity Studio to confirm speakers and headshots appear correctly.
 ```
 ~/
   google-sa.json              ← shared service account key (all events)
-  midevfest26/                  ← Pride Innovation Summit
+  midevfest26/                ← Michigan DevFest
     scripts/sanity-import/.env
   hispanicmi26/               ← Hispanic Heritage Summit
     scripts/sanity-import/.env

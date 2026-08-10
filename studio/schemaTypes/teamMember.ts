@@ -1,11 +1,21 @@
 import {defineField, defineType} from 'sanity'
 
+/**
+ * Only groups the site actually renders belong here.
+ *
+ * Home.jsx mounts OrganizersSection, which filters to these two. Offering a
+ * group with no section is a trap: the choice saves cleanly, validates, and
+ * then the person never appears anywhere, with no error at any layer. This list
+ * previously carried 'facilitator', 'board' and 'marketing' for sections that
+ * do not exist.
+ *
+ * Adding a group is a two-step change, in this order: build and mount the
+ * section, then add the option here and to RENDERED_TEAM_GROUPS in
+ * scripts/sanity-import/lib/team-groups.mjs.
+ */
 const TEAM_GROUP_OPTIONS = [
   {title: 'Compass organizers', value: 'compass'},
   {title: 'Dev team', value: 'devteam'},
-  {title: 'Facilitators', value: 'facilitator'},
-  {title: 'Board', value: 'board'},
-  {title: 'Marketing', value: 'marketing'},
 ]
 
 const TEAM_GROUP_LABELS: Record<string, string> = Object.fromEntries(
