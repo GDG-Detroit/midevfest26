@@ -391,11 +391,21 @@ function deriveMetadata(rows) {
  */
 async function writeTeamYear(year) {
   const rows = await fetchEventTeam({ eventYear: year })
-  if (rows.length === 0) return 0
+  const target = teamOutputFor(year)
 
-  // Published, valid, and invisible: the Studio offers groups the site has no
-  // section for. Say so here rather than letting an organizer wonder why the
-  // person they just added never showed up.
+  // A year that has never had team data gets no files at all — that keeps the
+  // archive years (which render no team section) free of empty artifacts.
+  //
+  // But once the file exists it tracks the dataset unconditionally, including
+  // all the way down to []. Skipping the write when Sanity returns nothing
+  // would freeze the last good roster on disk, and since team.js imports that
+  // file statically, unpublishing every member would leave them rendering in
+  // production with no way to take them down.
+  if (rows.length === 0 && !existsSync(target)) return 0
+
+  // Published, valid, and invisible: a group the site has no section for. Say
+  // so here rather than letting an organizer wonder why the person they just
+  // added never showed up.
   const unrendered = rows.filter((row) => !isRenderedTeamGroup(row.team))
   if (unrendered.length > 0) {
     console.warn(
@@ -407,13 +417,21 @@ async function writeTeamYear(year) {
     }
   }
 
-  const target = teamOutputFor(year)
   await mkdir(path.dirname(target), { recursive: true })
   await writeFormattedJson(target, rows)
 
   const modulePath = path.join(path.dirname(target), 'team.js')
   if (!existsSync(modulePath)) {
     await writeFile(modulePath, teamPassthroughModule(year), 'utf8')
+  }
+
+  if (rows.length === 0) {
+    console.warn(
+      `  warning: ${year} has no published team members — wrote an empty ` +
+        `roster to ${path.relative(ROOT, target)}. The team section will be ` +
+        `empty on the built site.`
+    )
+    return 0
   }
 
   console.log(
