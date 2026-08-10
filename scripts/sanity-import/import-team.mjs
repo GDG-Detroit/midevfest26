@@ -103,10 +103,9 @@ async function assertContainedRealPath(resolved, label) {
 }
 
 /** Fields that must be a non-empty string for a row to be usable. */
-const REQUIRED_STRINGS = ['slug', 'name', 'team_group']
+const REQUIRED_STRINGS = ['slug', 'name', 'team_group', 'role']
 /** Fields that may be absent, but must be strings when present. */
 const OPTIONAL_STRINGS = [
-  'role',
   'organization',
   'university',
   'bio',
@@ -212,7 +211,7 @@ function buildTeamMemberPatch(
     event: eventRef,
     name: row.name,
     slug: { _type: 'slug', current: row.slug },
-    role: row.role || 'Organizer',
+    role: row.role,
     teamGroup: row.team_group,
     sortOrder: row.sort_order ?? 0,
     published: true,

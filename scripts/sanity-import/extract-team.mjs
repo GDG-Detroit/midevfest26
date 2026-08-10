@@ -2,9 +2,9 @@
  * Extract a hand-authored team roster into a seed file for import-team.mjs.
  *
  * A source is a plain ESM module exporting `teamData`, whose headshots are
- * bundler-aliased `import` statements (`@/data/2026/assets/...`). Same trick as
- * extract-devfest-2025.mjs: rewrite each image import into a path string, then
- * evaluate the module, rather than pattern-matching the source.
+ * bundler-aliased `import` statements (`@/data/2026/assets/...`). Same approach
+ * as extract-devfest-2025.mjs: parse to an AST and read the export as data,
+ * rather than pattern-matching the source or executing it.
  *
  * `star` and `topContributor` are dropped: nothing under src/ reads either one.
  *
@@ -73,11 +73,11 @@ function toCommitCount(value) {
  * `.trim()`. Every field now goes through the same coercion the social ones
  * always did.
  */
-function buildRow(member, index, { name, teamGroup }) {
+function buildRow(member, index, { name, teamGroup, role }) {
   return {
     slug: slugify(name),
     name,
-    role: cleanText(member.role) ?? '',
+    role,
     team_group: teamGroup,
     organization: cleanText(member.organization),
     university: cleanText(member.university),
@@ -165,13 +165,23 @@ export async function extractTeam({ sourcePath, outPath }) {
       return
     }
 
+    // The schema marks role required and the card always renders it, so an
+    // absent one used to be backfilled as "Organizer" downstream — inventing a
+    // job title for a real person and publishing it. Skip instead: a missing
+    // role is a gap in the source that someone has to fill in.
+    const role = cleanText(member.role)
+    if (!role) {
+      warnings.push(`${name}: role is missing or blank, skipped`)
+      return
+    }
+
     // Not fatal — the member imports without a headshot rather than being
     // dropped — but silence here is how a bad path reaches the importer.
     if (member.avatar != null && cleanText(member.avatar) === undefined) {
       warnings.push(`${name}: avatar is not a string, ignored`)
     }
 
-    const row = buildRow(member, index, { name, teamGroup })
+    const row = buildRow(member, index, { name, teamGroup, role })
     if (seen.has(row.slug)) {
       warnings.push(`${member.name}: duplicate slug "${row.slug}", skipped`)
       return

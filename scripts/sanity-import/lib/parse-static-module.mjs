@@ -35,6 +35,12 @@ const ALLOWED_TOP_LEVEL = new Set([
   'EmptyStatement',
 ])
 
+/**
+ * Storage key for an anonymous `export default`. Not a valid JS identifier, so
+ * it can never collide with a binding the source declares.
+ */
+const DEFAULT_EXPORT_KEY = '*default*'
+
 function fail(node, message) {
   const at = node?.loc?.start
   const where = at ? ` (line ${at.line}, column ${at.column})` : ''
@@ -161,6 +167,20 @@ export function readExportedLiteral(source, exportName, options = {}) {
       continue
     }
 
+    // `export default [...]` has no name to bind, so it is filed under a key
+    // that cannot collide with a real identifier and reached by asking for
+    // "default". Allowing the node at the top level without mapping it here
+    // made every default-exported roster report itself as missing.
+    if (node.type === 'ExportDefaultDeclaration') {
+      if (node.declaration.type === 'Identifier') {
+        exportedToLocal.set('default', node.declaration.name)
+      } else {
+        constNodes.set(DEFAULT_EXPORT_KEY, node.declaration)
+        exportedToLocal.set('default', DEFAULT_EXPORT_KEY)
+      }
+      continue
+    }
+
     // `export { teamData }` / `export { data as SpeakersData }` carry no
     // declaration — the binding they name is declared elsewhere in the file.
     if (node.type === 'ExportNamedDeclaration' && !node.declaration) {
@@ -201,7 +221,9 @@ export function readExportedLiteral(source, exportName, options = {}) {
   const target = constNodes.get(localName)
   if (!target) {
     throw new Error(
-      `"${exportName}" is exported but "${localName}" is not a const in this file`
+      localName === DEFAULT_EXPORT_KEY
+        ? `"${exportName}" is exported but is not a data literal`
+        : `"${exportName}" is exported but "${localName}" is not a const in this file`
     )
   }
 
