@@ -1,4 +1,4 @@
-# n8n import setup — Pride Innovation Summit
+# n8n import setup — Michigan DevFest
 
 Orchestrates **Google Sheet + Drive → Sanity → optional Vercel redeploy**.
 
