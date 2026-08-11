@@ -16,6 +16,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - WCAG 1.4.10 Reflow: media query at `max-width: 480px` and `max-height: 400px` to un-stick the header (`position: absolute`) and reduce padding so content is not blocked at high zoom or small viewports
 - `n8n/RUNBOOK.md` — step-by-step import pipeline runbook covering first-time server setup, per-event checklist, "what lives where" reference table, and troubleshooting guide; designed to travel with every cloned repo
 - `.env.schema` — varlock schema documenting all import script environment variables with `@required` and `@sensitive` annotations
+- `pnpm-workspace.yaml` (root and `studio/`) — all pnpm configuration, including the `@babel/core` override and the `allowBuilds` list of packages permitted to run install scripts
+- `docker/nginx.conf` — static serving config with SPA fallback, immutable caching for hashed assets, and `no-cache` on `index.html`
+- `CLAUDE.md` — working notes for AI coding agents: content data flow, generated-file rules, pnpm gotchas
+- `.claude/settings.json` — shared agent permissions, with a deny list covering `scripts/sanity-import/.env`, service-account keys, and any `npm install`
+- README **Getting access** section — what a new contributor needs to request, and what the clone alone can do without it
+- `src/contexts/speakerContextCore.js` — bare speaker context, matching the existing `*ContextCore` pattern
+- `package.json`: `packageManager` pinned to `pnpm@11.21.0`, and an `engines` floor of Node `>=22.12.0` — the strictest constraint in the locked graph, carried by `vite`, `rolldown`, and `@vitejs/plugin-react` (`^20.19.0 || >=22.12.0`)
 
 ### Changed
 
@@ -32,9 +39,24 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - **Theme system**: shipped four switchable color themes (Purple default, Blue, Green, Gold) via `iwd` Tailwind tokens and `data-theme`; updated `COLOR.MD` to match
 - Open Graph and Twitter/X card meta tags in `index.html` — aligned to `pridemi26.vercel.app` (replaced legacy `iwdsummit.com` URLs)
 - **Navbar**: Removed pathway/route-link logic; Navbar now only shows section (anchor) links; route links like Previous Events remain in Footer only
+- **Migrated from npm to pnpm 11**: root and `studio/` remain two independent installs with separate lockfiles, deliberately not a workspace
+  - both `package-lock.json` files replaced by `pnpm-lock.yaml`
+  - pnpm 11 reads no configuration from `package.json`, so the `@babel/core` override moved to `pnpm-workspace.yaml`; left in place it is ignored silently ([pnpm#11536](https://github.com/pnpm/pnpm/issues/11536))
+  - the orphaned `allowScripts` block — `@lavamoat/allow-scripts` syntax with lavamoat never installed, enforcing nothing — became a real `allowBuilds` list
+  - dependency install scripts are now blocked by default, and `minimumReleaseAge` defaults to 24h, so freshly published versions cannot enter a build
+  - husky hooks, CI, and all docs switched to `pnpm run`; note `pnpm run deploy` is required in `studio/`, since bare `pnpm deploy` hits pnpm's own built-in
+  - a fresh resolution moved several ranges: `prettier` 3.1 → 3.9, `eslint-plugin-react-refresh` 0.4.4 → 0.4.26, `tailwindcss` 3.4.18 → 3.4.19
+- **Docker image rebuilt as multi-stage**: runtime is now `nginx-unprivileged` serving static files instead of Node running `vite preview`. Removes the global `npm install -g serve@14`, which floated within 14.x and sat outside the audited lockfile graph even though `serve@14.2.6` was already pinned there
+- **Prettier reformat** under 3.9, which changed how multi-value CSS declarations wrap; lockfiles added to `.prettierignore`
+- `n8n/README.md` and `n8n/RUNBOOK.md`: added an explicit `corepack` step to provision pnpm 11 — `nvm` supplies node and npm only, and the `packageManager` field is metadata, not an installer
 
 ### Fixed
 
+- **Deep links rendered a blank page.** `vite.config.js` used a relative `base: './'`, so `index.html` referenced `./assets/index-<hash>.js`. On a nested route such as `/previous-events/2025` the browser resolved that against the current path, requested `/previous-events/assets/index-<hash>.js`, and the SPA fallback returned `index.html` with `Content-Type: text/html` — which the browser refuses to execute as a module script. Client-side navigation masked it entirely; only direct visits, refreshes, and shared links broke. Now `base: '/'`. Affected every route below the root: `/past-events/:year`, `/previous-events/:year`, and the flat routes on refresh
+- `package.json` — `import:speakers` and `import:team` never loaded `scripts/sanity-import/.env`, so both exited on the first `requireEnv()` call before importing anything. Both now pass `--env-file-if-exists`, which tolerates a missing file so the script's own error message survives
+- `.eslintrc.cjs` — `settings.tailwindcss.config` is now an absolute path. `eslint-plugin-tailwindcss` derives its package-resolution directory from `dirname()` of that value, and the relative form yielded `'.'`, which resolved from the plugin's own nested location and failed with "Could not resolve tailwindcss"
+- `src/components/speakers/SpeakerContext.jsx` — exported both a context and a component, which breaks Fast Refresh; the context moved to `src/contexts/speakerContextCore.js`
+- `.husky/commit-msg` — dropped the npm-style `--` separator, which pnpm forwards rather than strips, causing commitlint to lint the entire commit history instead of the message being written
 - `scripts/sanity-import/import-speakers.mjs` — corrected import paths from `./sanity-client.mjs` and `./google.mjs` to `./lib/sanity-client.mjs` and `./lib/google.mjs` (files live in `lib/` subdirectory)
 - `scripts/sanity-import/lib/google.mjs` — added `supportsAllDrives: true` and `includeItemsFromAllDrives: true` to Drive API calls so the import works with Google Workspace Shared Drives, not just personal Drive
 
