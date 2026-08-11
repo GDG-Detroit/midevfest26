@@ -5,7 +5,7 @@
  * URL and `import()` it. That evaluates the module: any top-level statement in
  * the file runs with full Node privileges — fs, child_process, network — before
  * a single row is validated. For a roster that came out of this repo's own git
- * history that is no worse than `npm run build`, which already executes the same
+ * history that is no worse than `pnpm run build`, which already executes the same
  * file. It stops being equivalent when the source is another repository's
  * data file (extract-devfest-2025.mjs is built to do exactly that) and the
  * machine running it holds a Sanity write token and Google service-account

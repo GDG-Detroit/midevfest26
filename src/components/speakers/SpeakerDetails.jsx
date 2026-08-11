@@ -12,7 +12,7 @@ import WTMLogo from '@/assets/images/icons/wtm.svg'
 import { FaInstagram, FaMastodon } from 'react-icons/fa6'
 
 import colors from 'tailwindcss/colors'
-import { SpeakerContext } from './SpeakerContext'
+import SpeakerContext from '@/contexts/speakerContextCore'
 
 // Convert Tailwind hex to rgba for gradients/patterns (Tailwind v3.4 default palette)
 const hexToRgba = (hex, alpha) => {

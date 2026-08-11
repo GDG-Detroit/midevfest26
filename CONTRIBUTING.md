@@ -1,29 +1,30 @@
 # Working on this repo
 
-Notes for whoever is working on `midevfest26` — currently a two-person team, so this
-is a working reference rather than an onboarding guide.
+Notes for whoever is working on `midevfest26`. Start with **Getting access** in
+`README.md` if you need to change content or deploy — the clone alone runs the site but
+can't touch Sanity, Vercel, or the import pipeline.
 
 ## Setup
 
-Node 22+ and npm.
+Node 22+ and pnpm 11+.
 
 ```bash
-npm install
-npm run dev          # http://localhost:5173
-npm run dev:cms      # pull content from Sanity first, then dev
-npm run studio:dev   # Sanity Studio
+pnpm install
+pnpm run dev          # http://localhost:5173
+pnpm run dev:cms      # pull content from Sanity first, then dev
+pnpm run studio:dev   # Sanity Studio
 ```
 
 ## Before pushing
 
 ```bash
-npm run lint          # ESLint, includes jsx-a11y rules
-npm run format:check  # Prettier
-npm run build         # runs fetch-event-data via prebuild
+pnpm run lint          # ESLint, includes jsx-a11y rules
+pnpm run format:check  # Prettier
+pnpm run build         # runs fetch-event-data via prebuild
 ```
 
 `pre-commit` runs lint-staged (ESLint + Prettier on staged files). CI runs lint,
-format check, build, an axe accessibility pass against the built site, and an npm
+format check, build, an axe accessibility pass against the built site, and a pnpm
 audit.
 
 ## Commits
@@ -46,7 +47,7 @@ This feeds `CHANGELOG.md` — keep it accurate.
 
 ## Accessibility
 
-The `jsx-a11y` rules live in `.eslintrc.cjs` and run as part of `npm run lint`, so
+The `jsx-a11y` rules live in `.eslintrc.cjs` and run as part of `pnpm run lint`, so
 accessibility failures surface as lint errors rather than a separate step. CI runs
 axe against the built site on every PR.
 

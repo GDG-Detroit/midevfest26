@@ -9,21 +9,21 @@
   },
   "scripts": {
     "dev": "vite",
-    "dev:cms": "npm run fetch:event-data && npm run dev",
-    "studio:dev": "npm run dev --prefix studio",
+    "dev:cms": "pnpm run fetch:event-data && pnpm run dev",
+    "studio:dev": "pnpm --dir studio run dev",
     "prebuild": "node scripts/fetch-event-data.mjs",
     "fetch:event-data": "node scripts/fetch-event-data.mjs",
     "build": "vite build",
     "lint": "eslint . --ext js,jsx --report-unused-disable-directives --max-warnings 0",
-    "lint:fix": "npm run lint -- --fix",
+    "lint:fix": "pnpm run lint --fix",
     "format": "prettier --write .",
     "format:check": "prettier --check .",
     "commitlint": "commitlint --edit",
     "preview": "vite preview",
     "prepare": "husky",
-    "audit": "npm audit --audit-level moderate",
-    "import:speakers": "node scripts/sanity-import/import-speakers.mjs",
-    "import:team": "node scripts/sanity-import/import-team.mjs"
+    "audit": "pnpm audit --audit-level moderate",
+    "import:speakers": "node --env-file-if-exists=scripts/sanity-import/.env scripts/sanity-import/import-speakers.mjs",
+    "import:team": "node --env-file-if-exists=scripts/sanity-import/.env scripts/sanity-import/import-team.mjs"
   },
   "lint-staged": {
     "*.{js,jsx}": [
@@ -73,14 +73,9 @@
     "tailwindcss": "^3.4.18",
     "vite": "^8.1.4"
   },
-  "overrides": {
-    "@babel/core": "^7.29.0"
-  },
   "description": "GDG Detroit DevFest 2026 website",
-  "allowScripts": {
-    "@vercel/speed-insights@1.2.0": true,
-    "chromedriver@140.0.3": true,
-    "esbuild@0.28.1": true,
-    "fsevents@2.3.3": true
+  "packageManager": "pnpm@11.21.0",
+  "engines": {
+    "node": ">=22.12.0"
   }
 }

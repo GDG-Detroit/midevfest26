@@ -36,3 +36,5 @@ scripts/sanity-import/assets/
 
 # Local skill cache (mirrors installed Claude skills, not repo content)
 .claude/skills/
+.claude/settings.local.json
+*.local.json

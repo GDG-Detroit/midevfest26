@@ -4,7 +4,7 @@ import PropTypes from 'prop-types'
 import SpeakerCard from '@/components/speakers/SpeakerCard'
 import SectionSkipLink from '@/components/ui/SectionSkipLink'
 
-import { SpeakerContext } from '@/components/speakers/SpeakerContext'
+import SpeakerContext from '@/contexts/speakerContextCore'
 
 import { GOLD_PRIMARY_LIGHT_HOVER } from '@/constants/goldPrimaryButtonLightHover'
 import { DIRECTION } from '@/constants/directions'

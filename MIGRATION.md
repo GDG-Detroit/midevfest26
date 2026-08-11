@@ -19,7 +19,7 @@ them in one PR.
 - [ ] `grep -rniI "<old-slug>" . --exclude-dir={node_modules,.git,dist}`
 - [ ] Replace paired `org/repo` references first, then bare slug
 - [ ] Check these specifically:
-  - `package.json` + `package-lock.json` (root **and** `studio/`)
+  - `package.json` + `pnpm-lock.yaml` + `pnpm-workspace.yaml` (root **and** `studio/`)
   - `studio/sanity.cli.ts` (`studioHost`), `studio/env.ts` (`studioTitle`)
   - `index.html` (canonical, OG, Twitter meta)
   - `public/robots.txt`, `public/sitemap.xml`
@@ -35,7 +35,7 @@ them in one PR.
 - [ ] Create a new Sanity project + dataset (don't reuse the old one)
 - [ ] Update `studio/sanity.cli.ts`: `projectId`, `studioHost`, `appId`
 - [ ] Update `studio/env.ts` default project/dataset
-- [ ] Redeploy studio: `cd studio && npm run deploy`
+- [ ] Redeploy studio: `cd studio && pnpm run deploy`
 - [ ] Re-point env vars in `scripts/sanity-import/.env` and `n8n/`
 
 ## 4. Infra & Deploy
@@ -55,7 +55,7 @@ them in one PR.
 
 - [ ] Check for stale major versions (React, Vite, etc.) before rebrand work
       starts — upgrade first
-- [ ] `npm outdated`, `npm audit`
+- [ ] `pnpm outdated`, `pnpm audit`
 
 ## 7. Docs to Update
 
@@ -63,10 +63,12 @@ them in one PR.
       fork gained)
 - [ ] CHANGELOG: new `[Unreleased]` entry describing the fork
 - [ ] CONTRIBUTING, SECURITY: repo/org references
+- [ ] `pnpm-workspace.yaml`: carries the load-bearing `@babel/core` override and the
+      `allowBuilds` list — pnpm 11 reads no settings from `package.json`
 
 ## 8. Verify
 
-- [ ] `npm run build` succeeds
-- [ ] `npm run lint` clean (includes a11y rules)
+- [ ] `pnpm run build` succeeds
+- [ ] `pnpm run lint` clean (includes a11y rules)
 - [ ] Spot-check rewritten URLs resolve
 - [ ] `git remote -v` points to the new repo

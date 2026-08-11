@@ -1,0 +1,14 @@
+# pnpm v11 configuration for the Sanity Studio subproject.
+#
+# This file exists to mark `studio/` as its own workspace root so pnpm does not
+# walk up and attach it to the root app's workspace. Studio stays an independent
+# install with its own lockfile and node_modules, exactly as it was under npm.
+#
+# Run pnpm commands for the Studio from inside this directory (or via the root's
+# `pnpm run studio:dev`).
+
+# Dependency install scripts are blocked by default in pnpm 11. Add entries here as
+# ERR_PNPM_IGNORED_BUILDS names them during `pnpm install`.
+allowBuilds:
+  esbuild: true
+  fsevents: true

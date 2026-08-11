@@ -441,9 +441,9 @@ function Navbar() {
           `Currently viewing ${
             activeLink === 'landing'
               ? 'hero'
-              : navSections.find((s) => s.id === activeLink)?.text ??
+              : (navSections.find((s) => s.id === activeLink)?.text ??
                 sections.find((s) => s.to === location.pathname)?.text ??
-                'page'
+                'page')
           } section`}
       </div>
       <div

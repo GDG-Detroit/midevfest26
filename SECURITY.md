@@ -53,6 +53,6 @@ Out of scope:
 
 ## Dependencies
 
-CI runs `npm audit --audit-level moderate` on every push and pull request. High and
+CI runs `pnpm audit --audit-level high` on every push and pull request. High and
 critical vulnerabilities should be addressed promptly; moderate issues in dev-only
 dependencies are triaged case by case.

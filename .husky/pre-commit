@@ -2,6 +2,6 @@
 
 echo "🔍 Running pre-commit checks..."
 echo "📝 Running lint-staged (ESLint, Accessibility, Prettier)..."
-npm exec lint-staged
+pnpm exec lint-staged
 
 echo "✅ Pre-commit checks completed successfully!"

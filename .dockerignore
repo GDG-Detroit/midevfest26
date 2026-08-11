@@ -12,3 +12,9 @@ README.md
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+# Separate pnpm project — never installed in the image
+studio
+
+# Ops docs and automation, not build inputs
+n8n
+.github

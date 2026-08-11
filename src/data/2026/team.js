@@ -4,7 +4,7 @@
  *
  * Edit people in the Studio (Content → Team), not here. To reseed an empty
  * dataset from the last hand-authored roster, see
- * scripts/sanity-import/data/team-2026.json and `npm run import:team`.
+ * scripts/sanity-import/data/team-2026.json and `pnpm run import:team`.
  */
 import teamGenerated from './team.generated.json'
 
