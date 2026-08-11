@@ -22,8 +22,8 @@
     "preview": "vite preview",
     "prepare": "husky",
     "audit": "pnpm audit --audit-level moderate",
-    "import:speakers": "node scripts/sanity-import/import-speakers.mjs",
-    "import:team": "node scripts/sanity-import/import-team.mjs"
+    "import:speakers": "node --env-file-if-exists=scripts/sanity-import/.env scripts/sanity-import/import-speakers.mjs",
+    "import:team": "node --env-file-if-exists=scripts/sanity-import/.env scripts/sanity-import/import-team.mjs"
   },
   "lint-staged": {
     "*.{js,jsx}": [

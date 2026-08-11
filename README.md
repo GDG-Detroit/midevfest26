@@ -124,9 +124,9 @@ The **import pipeline** (`scripts/sanity-import/`) requires a `.env` file (gitig
 ### Docker Features
 
 - **Alpine Linux base**: Lightweight and secure
-- **Non-root user**: Enhanced security by running as non-root user
+- **Non-root user**: Runtime image is `nginx-unprivileged` (UID 101), no root
 - **Multi-stage optimization**: Efficient image size
-- **Production-ready**: Multi-stage build; runtime stage serves `dist/` with `serve`
+- **Production-ready**: Multi-stage build; nginx serves `dist/` with SPA fallback for React Router deep links
 
 ## Development Scripts
 

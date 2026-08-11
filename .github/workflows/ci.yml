@@ -93,7 +93,7 @@ jobs:
       # resolves correctly regardless of hoisting and is the supported entry point.
       - name: Start local server
         run: |
-          pnpm exec serve dist -l 3000 &
+          pnpm exec serve dist -s -l 3000 &
           sleep 5
 
       - name: Run accessibility tests
