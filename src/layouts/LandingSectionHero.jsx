@@ -1,6 +1,6 @@
 import { useEffect, useRef } from 'react'
 import PropTypes from 'prop-types'
-import { FaArrowRight, FaRegCalendarPlus } from 'react-icons/fa6'
+import { FaArrowRight } from 'react-icons/fa6'
 import CTAButton from '@/components/ui/CTAButton'
 import { generateICSFile } from '@/utils/calendarExport'
 import useHeroAnimation from '@/hooks/useHeroAnimation'
@@ -92,10 +92,10 @@ function HeroForeground() {
                     filename: 'michigan-devfest-2026-save-the-date.ics',
                   })
                 }
-                label="Save the Date"
-                ariaLabel="Download a calendar reminder for Michigan DevFest, November 13 to 14, 2026"
+                label="Register Now"
+                ariaLabel="Register for Michigan DevFest, November 13 to 14, 2026"
                 className="w-full min-w-48 sm:w-auto"
-                icon={<FaRegCalendarPlus />}
+                icon={<FaArrowRight />}
                 iconPosition="right"
               />
 
