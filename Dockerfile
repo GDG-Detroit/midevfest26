@@ -34,22 +34,19 @@ COPY . .
 RUN pnpm run build
 
 # ---- runtime --------------------------------------------------------------
-FROM node:22-alpine AS runtime
+# nginx, not Node. The previous runtime stage ran `npm install -g serve@14`, which
+# had three problems: it floated within 14.x so a newly published release could
+# reach production unreviewed, it lived outside the audited pnpm-lock.yaml graph so
+# `pnpm audit` in CI never saw it, and `serve` without `-s` 404s on every
+# BrowserRouter deep link. A static server with no package graph removes all three.
+#
+# nginx-unprivileged runs as UID 101 rather than root, preserving the non-root
+# property of the previous image.
+FROM nginxinc/nginx-unprivileged:alpine AS runtime
 
-WORKDIR /app
+# Overwrites the image's default server block, which listens on 8080.
+COPY docker/nginx.conf /etc/nginx/conf.d/default.conf
 
-RUN addgroup -g 1001 -S nodejs && \
-    adduser -S appuser -u 1001
-
-# `serve` is the only runtime dependency. Installed directly rather than carried
-# over from the build stage's node_modules, which pnpm stores as symlinks into a
-# virtual store that does not survive a COPY --from.
-RUN npm install -g serve@14 && npm cache clean --force
-
-COPY --from=build --chown=appuser:nodejs /app/dist ./dist
-
-USER appuser
+COPY --from=build /app/dist /usr/share/nginx/html
 
 EXPOSE 3000
-
-CMD ["serve", "dist", "-l", "3000"]
