@@ -137,6 +137,9 @@ source ~/.bashrc
 git clone https://github.com/Compass-Detroit/[this-repo].git ~/[this-repo]
 cd ~/[this-repo]
 nvm install && nvm use
+# nvm provides node/npm but NOT pnpm. `packageManager` in package.json is metadata,
+# not an installer — provision pnpm 11 explicitly or the next line fails.
+corepack enable && corepack prepare pnpm@11.21.0 --activate
 pnpm install --frozen-lockfile
 cp scripts/sanity-import/.env.example scripts/sanity-import/.env
 nano scripts/sanity-import/.env

@@ -44,10 +44,22 @@ Clone `midevfest26` where n8n can run shell commands, e.g. `/opt/midevfest26`:
 ```bash
 git clone https://github.com/GDG-Detroit/midevfest26.git /opt/midevfest26
 cd /opt/midevfest26
+
+# pnpm is NOT provided by nvm, and package.json's `packageManager` field is
+# metadata — it does not install anything. Provision pnpm 11 before installing,
+# or `pnpm install` fails on a fresh runner.
+corepack enable && corepack prepare pnpm@11.21.0 --activate
+pnpm --version   # expect 11.21.0
+
 pnpm install --frozen-lockfile
 cp scripts/sanity-import/.env.example scripts/sanity-import/.env
 # Edit .env with real IDs and token
 ```
+
+If n8n's Execute Command node runs inside a container rather than on the host,
+pnpm must be on **that** container's PATH — n8n does not inherit the host shell.
+Either bake the `corepack` step into the container image or set the node's command
+to an absolute path such as `/usr/local/bin/pnpm`.
 
 ---
 
