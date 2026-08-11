@@ -56,5 +56,14 @@ export default defineConfig({
     chunkSizeWarningLimit: 600,
   },
   assetsInclude: ['**/*.JPG', '**/*.jpg', '**/*.jpeg', '**/*.png', '**/*.webp'],
-  base: './',
+  // Absolute, NOT './'. With a relative base, index.html references
+  // `./assets/index-<hash>.js`, which the browser resolves against the current
+  // route. On a deep link such as /previous-events/2025 that becomes
+  // /previous-events/assets/index-<hash>.js — a path that does not exist, so the
+  // SPA fallback (vercel.json's rewrite, or try_files in docker/nginx.conf)
+  // returns index.html with Content-Type text/html. The browser refuses to
+  // execute HTML as a module script and the page renders blank.
+  // Client-side navigation hides this, because the bundle is already loaded;
+  // it only breaks on a direct visit or a refresh. Keep this '/'.
+  base: '/',
 })
