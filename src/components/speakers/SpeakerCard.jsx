@@ -3,7 +3,7 @@ import { useContext, useEffect, useRef } from 'react'
 
 import SpeakerDetails from '@/components/speakers/SpeakerDetails'
 import ProfileCard from '@/components/ui/ProfileCard'
-import { SpeakerContext } from './SpeakerContext'
+import SpeakerContext from '@/contexts/speakerContextCore'
 
 const SpeakerCard = ({
   avatar,

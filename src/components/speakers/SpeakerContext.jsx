@@ -1,18 +1,6 @@
 import PropTypes from 'prop-types'
-import { createContext, useState } from 'react'
-
-// default values for type sense
-export const SpeakerContext = createContext({
-  isModalOpen: false,
-  openModal: () => {},
-  closeModal: () => {},
-  speakerID: 0,
-  // eslint-disable-next-line no-unused-vars
-  setSpeakerID: (_speakerID) => {},
-  numSpeakers: 0,
-  uniqueSpeakers: [],
-  uniqueSpeakersSortedByFirstName: [],
-})
+import { useState } from 'react'
+import SpeakerContext from '@/contexts/speakerContextCore'
 
 export const SpeakerProvider = ({ children, speakersData = [] }) => {
   const [isModalOpen, setIsModalOpen] = useState(false)
