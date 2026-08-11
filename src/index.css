@@ -1302,8 +1302,8 @@
 /* Gradient token helpers compatible with Tailwind's gradient utilities */
 .from-iwd-dark-900 {
   --tw-gradient-from: rgb(var(--iwd-dark-900));
-  --tw-gradient-stops: var(--tw-gradient-from),
-    var(--tw-gradient-to, rgba(255, 255, 255, 0));
+  --tw-gradient-stops:
+    var(--tw-gradient-from), var(--tw-gradient-to, rgba(255, 255, 255, 0));
 }
 .to-iwd-dark-950 {
   --tw-gradient-to: rgb(var(--iwd-dark-950));
@@ -1411,8 +1411,9 @@
   }
 
   :root {
-    font-family: var(--iwd-font-body, 'Montserrat'), 'Open Sans', Helvetica,
-      Arial, sans-serif;
+    font-family:
+      var(--iwd-font-body, 'Montserrat'), 'Open Sans', Helvetica, Arial,
+      sans-serif;
     line-height: 1.5;
     font-weight: 500;
     font-synthesis: none;
