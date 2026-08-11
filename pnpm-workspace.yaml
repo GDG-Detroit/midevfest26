@@ -1,0 +1,37 @@
+# pnpm v11 configuration for the root app.
+#
+# In pnpm 11, settings are NO LONGER read from the `pnpm` field in package.json,
+# and only auth/registry settings are read from .npmrc. Everything else lives here.
+# A setting left in package.json is ignored SILENTLY, with no warning — see
+# https://github.com/pnpm/pnpm/issues/11536
+#
+# `packages:` is deliberately omitted. With no `packages` field only the root
+# package is in the workspace, which keeps `studio/` an independent install with
+# its own lockfile — matching how this repo has always been structured.
+
+# Was `overrides` in package.json under npm. pnpm 11 does not read that field.
+# Required so @svgr/rollup's @babel/preset-env and @vitejs/plugin-react's optional
+# @rolldown/plugin-babel peer resolve to a single @babel/core. Removing this
+# reintroduces the ERESOLVE conflict documented in the react-vite-major-upgrade skill.
+overrides:
+  '@babel/core': ^7.29.0
+
+# Dependency install scripts are blocked by default in pnpm 11 and `strictDepBuilds`
+# now defaults to true, so an unlisted package that wants to build fails the install
+# with ERR_PNPM_IGNORED_BUILDS rather than warning. Add packages here as that error
+# names them — do not disable the check.
+#
+# This list came from the orphaned `allowScripts` block that used to sit in
+# package.json. That was @lavamoat/allow-scripts syntax with lavamoat never
+# installed, so it enforced nothing. These entries are now actually load-bearing.
+allowBuilds:
+  esbuild: true
+  fsevents: true
+  '@vercel/speed-insights': true
+  chromedriver: true
+# Note on minimumReleaseAge: pnpm 11 defaults it to 1440 minutes (24h), which blocks
+# freshly published versions and is a real defense against the npm worm campaigns —
+# see the npm-supply-chain-triage skill. It is deliberately NOT set explicitly here:
+# setting it flips `minimumReleaseAgeStrict` to true, which makes resolution *fail*
+# instead of falling back when nothing in range is old enough. The default gives the
+# protection without the brittleness.
