@@ -1,3 +1,5 @@
+const path = require('path')
+
 module.exports = {
   root: true,
   env: { browser: true, es2020: true },
@@ -21,7 +23,12 @@ module.exports = {
   settings: {
     react: { version: '19.2' },
     tailwindcss: {
-      config: 'tailwind.config.js',
+      // Absolute, not 'tailwind.config.js'. eslint-plugin-tailwindcss derives the
+      // package-resolution directory from dirname() of this value, and a relative
+      // path yields '.', which under pnpm's symlinked node_modules resolves from
+      // the plugin's own nested location instead of the project root — the rules
+      // then die with "Could not resolve tailwindcss". npm's flat layout hid this.
+      config: path.join(__dirname, 'tailwind.config.js'),
       callees: ['classnames', 'clsx', 'ctl', 'cn'],
     },
     'jsx-a11y': {
