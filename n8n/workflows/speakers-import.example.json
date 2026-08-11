@@ -11,7 +11,7 @@
     },
     {
       "parameters": {
-        "command": "npm run import:speakers"
+        "command": "pnpm run import:speakers"
       },
       "id": "run-import",
       "name": "Run import script",

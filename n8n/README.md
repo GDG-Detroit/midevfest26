@@ -9,7 +9,7 @@ Heavy lifting lives in **`scripts/sanity-import/import-speakers.mjs`** (versione
         ↓
 [Set variables: env file path (SANITY_DATASET in .env)]
         ↓
-[Execute Command: npm run import:speakers]
+[Execute Command: pnpm run import:speakers]
         ↓
 [IF success → HTTP Request: Vercel deploy hook]
         ↓
@@ -24,7 +24,7 @@ Heavy lifting lives in **`scripts/sanity-import/import-speakers.mjs`** (versione
 
 - Project `5qtiaw9u`, **`production`** dataset
 - **2026 Event** document in Studio (year `2026`)
-- Schema deployed: `cd studio && npx sanity schema deploy`
+- Schema deployed: `cd studio && pnpm exec sanity schema deploy`
 - API token with **Editor** (or custom role with write + assets):  
   [sanity.io/manage/project/5qtiaw9u/api](https://www.sanity.io/manage/project/5qtiaw9u/api)
 
@@ -44,7 +44,7 @@ Clone `midevfest26` where n8n can run shell commands, e.g. `/opt/midevfest26`:
 ```bash
 git clone https://github.com/GDG-Detroit/midevfest26.git /opt/midevfest26
 cd /opt/midevfest26
-npm ci
+pnpm install --frozen-lockfile
 cp scripts/sanity-import/.env.example scripts/sanity-import/.env
 # Edit .env with real IDs and token
 ```
@@ -69,7 +69,7 @@ GOOGLE_DRIVE_FOLDER_ID=1xyz...
 Test locally before n8n:
 
 ```bash
-npm run import:speakers
+pnpm run import:speakers
 ```
 
 Sheet columns: [`n8n/sheet-template-speakers.md`](./sheet-template-speakers.md)
@@ -91,7 +91,7 @@ Use **Edit Fields (Set)** only if you need to override paths or env file locatio
 
 | Setting           | Value                 |
 | ----------------- | --------------------- |
-| Command           | `npm`                 |
+| Command           | `pnpm`                |
 | Arguments         | `run import:speakers` |
 | Working directory | `/opt/midevfest26`    |
 
@@ -142,7 +142,7 @@ Safe to run repeatedly:
 
 1. Create runner sheet from [`sheet-template-speakers.md`](./sheet-template-speakers.md)
 2. Add rows + headshots in Drive
-3. Run `npm run import:speakers` (or n8n workflow)
+3. Run `pnpm run import:speakers` (or n8n workflow)
 4. Verify in Studio (`midevfest26`)
 5. Trigger Vercel deploy
 

@@ -137,7 +137,7 @@ source ~/.bashrc
 git clone https://github.com/Compass-Detroit/[this-repo].git ~/[this-repo]
 cd ~/[this-repo]
 nvm install && nvm use
-npm ci
+pnpm install --frozen-lockfile
 cp scripts/sanity-import/.env.example scripts/sanity-import/.env
 nano scripts/sanity-import/.env
 ```
@@ -233,6 +233,6 @@ git pull
 | `Headshot not found in Drive`           | Filename in sheet must match Drive file exactly (case-sensitive)   |
 | `Google 403`                            | Share the sheet and folder with the service account `client_email` |
 | `Permission denied` cloning repo        | Directory already exists — run `sudo rm -rf ~/[repo]` first        |
-| `ERR_MODULE_NOT_FOUND`                  | Run `npm ci` — node_modules missing                                |
+| `ERR_MODULE_NOT_FOUND`                  | Run `pnpm install --frozen-lockfile` — node_modules missing        |
 | Node version error                      | Use NVM: `nvm install && nvm use` from the repo directory          |
 | Headshots not found in Shared Drive     | Confirm `supportsAllDrives: true` fix is in `lib/google.mjs`       |

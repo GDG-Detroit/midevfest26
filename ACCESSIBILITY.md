@@ -18,7 +18,7 @@ We use `eslint-plugin-jsx-a11y` to catch accessibility issues during development
 
 ```bash
 # Accessibility rules run as part of the normal lint
-npm run lint
+pnpm run lint
 ```
 
 **Configuration**: `.eslintrc.cjs` (the `jsx-a11y` rules and component mappings)
@@ -206,12 +206,12 @@ These styles live in `src/index.css` (`.nav-menu-expanded` and the reflow media 
 Run linting before committing — accessibility rules are included:
 
 ```bash
-npm run lint
+pnpm run lint
 ```
 
 ### 2. Runtime Testing
 
-- Start development server: `npm run dev`
+- Start development server: `pnpm run dev`
 - Open browser console to see axe-core warnings
 - Fix any reported accessibility violations
 
@@ -247,13 +247,13 @@ Accessibility testing is integrated into our git workflow:
 
 ```bash
 # Lint, including accessibility rules
-npm run lint
+pnpm run lint
 
 # Lint and auto-fix
-npm run lint:fix
+pnpm run lint:fix
 
 # Run lint-staged manually
-npx lint-staged
+pnpm exec lint-staged
 ```
 
 ## Common Issues and Solutions
@@ -291,7 +291,7 @@ npx lint-staged
 If you encounter accessibility issues or need guidance:
 
 1. Check the browser console for axe-core warnings
-2. Run `npm run lint` to see ESLint accessibility errors
+2. Run `pnpm run lint` to see ESLint accessibility errors
 3. Consult the resources above
 4. Test with actual assistive technologies
 5. Ask for help from team members familiar with accessibility

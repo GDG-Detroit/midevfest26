@@ -8,7 +8,7 @@ Organizers and developers manage event content here. The public site reads speak
 | ----------------- | ---------------------------------------------------------------------------------- |
 | **Project**       | `midevfest26`                                                                      |
 | **Project ID**    | `5qtiaw9u`                                                                         |
-| **Local Studio**  | `http://localhost:3333` (`npm run studio:dev` from repo root)                      |
+| **Local Studio**  | `http://localhost:3333` (`pnpm run studio:dev` from repo root)                     |
 | **Hosted Studio** | [midevfest26.sanity.studio](https://midevfest26.sanity.studio/)                    |
 | **Manage**        | [sanity.io/manage/project/5qtiaw9u](https://www.sanity.io/manage/project/5qtiaw9u) |
 
@@ -18,7 +18,7 @@ Organizers and developers manage event content here. The public site reads speak
 
 - Node.js 22+
 - Access to the Sanity project (invite from a project admin)
-- Sanity CLI login: `npx sanity login`
+- Sanity CLI login: `pnpm exec sanity login`
 
 ---
 
@@ -26,9 +26,9 @@ Organizers and developers manage event content here. The public site reads speak
 
 ```bash
 cd studio
-npm install
+pnpm install
 cp .env.example .env
-npm run dev
+pnpm run dev
 ```
 
 Open the URL shown in the terminal (usually `http://localhost:3333`).
@@ -55,13 +55,13 @@ Configuration is in `env.ts`, overridden by `.env`.
 Use this workflow while the n8n import pipeline is offline:
 
 1. **Edit content** in either Studio:
-   - Local: `npm run studio:dev` → `http://localhost:3333`
+   - Local: `pnpm run studio:dev` → `http://localhost:3333`
    - Cloud: [midevfest26.sanity.studio](https://midevfest26.sanity.studio/)
 2. **Publish** speakers and sessions in Studio (unpublished docs are excluded from the site).
 3. **Pull into the site** from the repo root:
    ```bash
-   npm run fetch:event-data   # refresh speakers.generated.json
-   npm run dev                # or: npm run dev:cms (fetch + dev in one step)
+   pnpm run fetch:event-data   # refresh speakers.generated.json
+   pnpm run dev                # or: pnpm run dev:cms (fetch + dev in one step)
    ```
 4. Open `http://localhost:5173` and verify the schedule and speaker grid.
 
@@ -110,14 +110,14 @@ Create an **Event** document before adding speakers, sessions, or team members.
 
 Run from `/studio`:
 
-| Command                                                     | Description                                            |
-| ----------------------------------------------------------- | ------------------------------------------------------ |
-| `npm run dev`                                               | Local Studio (hot reload)                              |
-| `npm run build`                                             | Production build of Studio                             |
-| `npm run deploy`                                            | Deploy hosted Studio to `*.sanity.studio`              |
-| `npx sanity schema deploy`                                  | Push schema to the Content Lake (required for API/MCP) |
-| `npx sanity dataset list`                                   | List datasets                                          |
-| `npx sanity documents query '*[_type == "speaker"][0...5]'` | Sample GROQ query                                      |
+| Command                                                           | Description                                            |
+| ----------------------------------------------------------------- | ------------------------------------------------------ |
+| `pnpm run dev`                                                    | Local Studio (hot reload)                              |
+| `pnpm run build`                                                  | Production build of Studio                             |
+| `pnpm run deploy`                                                 | Deploy hosted Studio to `*.sanity.studio`              |
+| `pnpm exec sanity schema deploy`                                  | Push schema to the Content Lake (required for API/MCP) |
+| `pnpm exec sanity dataset list`                                   | List datasets                                          |
+| `pnpm exec sanity documents query '*[_type == "speaker"][0...5]'` | Sample GROQ query                                      |
 
 ---
 
@@ -133,12 +133,12 @@ n8n import → production dataset
 Vercel redeploy → site build fetches Sanity
 ```
 
-- **Studio edits** → publish, then `npm run fetch:event-data` locally or redeploy
-- **Sheet imports** → `npm run import:speakers` (see `n8n/RUNBOOK.md`)
+- **Studio edits** → publish, then `pnpm run fetch:event-data` locally or redeploy
+- **Sheet imports** → `pnpm run import:speakers` (see `n8n/RUNBOOK.md`)
 
 Headshots are uploaded to Sanity assets during import (not hotlinked from Drive or Cloudinary).
 
-**n8n + import script:** see [`/n8n/README.md`](../n8n/README.md) and `npm run import:speakers`.
+**n8n + import script:** see [`/n8n/README.md`](../n8n/README.md) and `pnpm run import:speakers`.
 
 ---
 

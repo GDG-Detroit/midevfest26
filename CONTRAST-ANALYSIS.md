@@ -51,7 +51,7 @@ From `src/components/ui/CTAButton.jsx`:
 Because the button text sits on a translucent accent over a section background, check
 the **effective** (flattened) colors:
 
-1. Run the site (`npm run dev`) and open the button in the browser.
+1. Run the site (`pnpm run dev`) and open the button in the browser.
 2. For each theme (Purple/Blue/Green/Gold) and mode (light/dark), use Chrome DevTools
    → Elements → inspect the button text. The color picker shows the computed contrast
    ratio against the rendered background, including AA/AAA pass indicators.

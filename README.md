@@ -20,7 +20,7 @@ See `CHANGELOG.md` for the version-by-version detail behind each stage.
 ### Prerequisites
 
 - Node.js 22+
-- npm
+- pnpm 11+ (`brew install pnpm`)
 
 ### Recommended VS Code Extensions
 
@@ -36,11 +36,35 @@ This project includes VS Code extension recommendations. When you open the proje
 ```bash
 git clone <repo-url>
 cd midevfest26
-npm install
-npm run dev
+pnpm install
+pnpm run dev
 ```
 
 Navigate to `http://localhost:5173`. Customize the port in `vite.config.js` if needed.
+
+That's enough to run the site. Everything below the fold — content imports, Studio,
+deploys — needs access you can't get from the clone.
+
+### Getting access
+
+The site builds and runs from a fresh clone with no credentials: `prebuild` falls back
+to the committed `*.generated.json` files if it can't reach Sanity. You only need the
+items below to _change_ content or deploy.
+
+None of these are in the repo, by design. Ask **Greg Miller** (hello@gregmiller.io) for:
+
+| What                               | Why you'd need it                                          |
+| ---------------------------------- | ---------------------------------------------------------- |
+| `scripts/sanity-import/.env`       | Any import script. Schema is in `.env.schema`; gitignored. |
+| Google service-account JSON        | Sheet + Drive access for speaker imports. Never committed. |
+| Sanity project access (`5qtiaw9u`) | Editing content in Studio, generating an API token         |
+| Vercel project access              | Deploys, build logs, environment variables                 |
+| GitHub org access (`GDG-Detroit`)  | Push, PRs, Actions secrets                                 |
+
+If you'd rather provision your own rather than wait: `n8n/RUNBOOK.md` documents how to
+create the Google service account (§A) and the Sanity API token (§B) from scratch,
+including required scopes. That runbook is written for the n8n host but the credential
+steps are the same locally.
 
 ## Theme Switcher
 
@@ -102,24 +126,24 @@ The **import pipeline** (`scripts/sanity-import/`) requires a `.env` file (gitig
 - **Alpine Linux base**: Lightweight and secure
 - **Non-root user**: Enhanced security by running as non-root user
 - **Multi-stage optimization**: Efficient image size
-- **Production-ready**: Uses Vite preview for serving the built application
+- **Production-ready**: Multi-stage build; runtime stage serves `dist/` with `serve`
 
 ## Development Scripts
 
-| Command                    | Description                                                       |
-| -------------------------- | ----------------------------------------------------------------- |
-| `npm run dev`              | Start the development server via Vite                             |
-| `npm run dev:cms`          | Fetch latest Sanity content, then start dev server                |
-| `npm run fetch:event-data` | Pull speakers/sessions from Sanity into `speakers.generated.json` |
-| `npm run studio:dev`       | Start local Sanity Studio at `http://localhost:3333`              |
-| `npm run build`            | Fetch from Sanity, then build for production                      |
-| `npm run preview`          | Create a preview of the production build locally                  |
-| `npm run lint`             | Check code for linting errors (includes Tailwind class order)     |
-| `npm run lint:fix`         | Automatically fix linting errors                                  |
-| `npm run format`           | Format code with Prettier                                         |
-| `npm run format:check`     | Check code formatting with Prettier                               |
-| `npm run commitlint`       | Validate commit message format                                    |
-| `npm run import:speakers`  | Run the Google Sheets → Sanity speaker import script              |
+| Command                     | Description                                                       |
+| --------------------------- | ----------------------------------------------------------------- |
+| `pnpm run dev`              | Start the development server via Vite                             |
+| `pnpm run dev:cms`          | Fetch latest Sanity content, then start dev server                |
+| `pnpm run fetch:event-data` | Pull speakers/sessions from Sanity into `speakers.generated.json` |
+| `pnpm run studio:dev`       | Start local Sanity Studio at `http://localhost:3333`              |
+| `pnpm run build`            | Fetch from Sanity, then build for production                      |
+| `pnpm run preview`          | Create a preview of the production build locally                  |
+| `pnpm run lint`             | Check code for linting errors (includes Tailwind class order)     |
+| `pnpm run lint:fix`         | Automatically fix linting errors                                  |
+| `pnpm run format`           | Format code with Prettier                                         |
+| `pnpm run format:check`     | Check code formatting with Prettier                               |
+| `pnpm run commitlint`       | Validate commit message format                                    |
+| `pnpm run import:speakers`  | Run the Google Sheets → Sanity speaker import script              |
 
 ## Project Structure
 
@@ -146,17 +170,17 @@ Speaker and session data lives in **Sanity Studio** (`production` dataset). The 
 ```
 Sanity Studio (local :3333 or midevfest26.sanity.studio)
         ↓
-npm run fetch:event-data  →  speakers.generated.json
+pnpm run fetch:event-data  →  speakers.generated.json
         ↓
-npm run dev  (or Vercel deploy for production)
+pnpm run dev  (or Vercel deploy for production)
 ```
 
-| Studio | URL                                                             | Command                       |
-| ------ | --------------------------------------------------------------- | ----------------------------- |
-| Local  | `http://localhost:3333`                                         | `npm run studio:dev`          |
-| Cloud  | [midevfest26.sanity.studio](https://midevfest26.sanity.studio/) | `cd studio && npm run deploy` |
+| Studio | URL                                                             | Command                        |
+| ------ | --------------------------------------------------------------- | ------------------------------ |
+| Local  | `http://localhost:3333`                                         | `pnpm run studio:dev`          |
+| Cloud  | [midevfest26.sanity.studio](https://midevfest26.sanity.studio/) | `cd studio && pnpm run deploy` |
 
-Both studios edit the **same** cloud dataset. After publishing changes, run `npm run dev:cms` to see them on the local site.
+Both studios edit the **same** cloud dataset. After publishing changes, run `pnpm run dev:cms` to see them on the local site.
 
 ### Bulk import (when n8n is available)
 
@@ -177,7 +201,7 @@ Google Drive folder (headshots)
 ### Import script
 
 ```bash
-npm run import:speakers
+pnpm run import:speakers
 ```
 
 Requires `scripts/sanity-import/.env` (gitignored). Copy from `.env.example` and fill in credentials. See `.env.schema` for full documentation of each variable.
@@ -229,7 +253,7 @@ Excluded from the sitemap: `/previous-events` (redirect), and 404 routes.
 **Verify after deploy:**
 
 ```bash
-npm run build
+pnpm run build
 # confirm dist/robots.txt and dist/sitemap.xml exist
 
 curl https://midevfest26.vercel.app/robots.txt
@@ -253,11 +277,11 @@ Test link previews with the [Facebook Sharing Debugger](https://developers.faceb
 
 This project uses ESLint and Prettier for code quality and formatting:
 
-- Run `npm run lint` to check for linting issues
-- Run `npm run format:check` to check code formatting
-- Use `npm run lint:fix` and `npm run format` to automatically fix issues
+- Run `pnpm run lint` to check for linting issues
+- Run `pnpm run format:check` to check code formatting
+- Use `pnpm run lint:fix` and `pnpm run format` to automatically fix issues
 
-Run format and lint commands from the **repository root** — CI uses the root `package.json`. The `studio/` folder is a separate app with its own Prettier config; use `npx prettier --write .` inside `studio/` for Studio-only files.
+Run format and lint commands from the **repository root** — CI uses the root `package.json`. The `studio/` folder is a separate app with its own Prettier config; use `pnpm exec prettier --write .` inside `studio/` for Studio-only files.
 
 ### Git Hooks
 
@@ -373,7 +397,7 @@ This project uses a **manual class ordering** approach for optimal control and r
 ### Building for Production
 
 ```bash
-npm run build
+pnpm run build
 ```
 
 The built files will be in the `dist/` directory, ready for deployment.
@@ -391,7 +415,7 @@ The site is deployed on [Vercel](https://vercel.com) and uses Vercel Analytics a
 **To deploy manually** (e.g. from a fork):
 
 1. Connect the repository to Vercel
-2. Use the default Vite preset (build command: `npm run build`, output directory: `dist/`)
+2. Use the default Vite preset (build command: `pnpm run build`, output directory: `dist/`)
 3. Deploy
 
 **Alternative**: Use [Docker](#docker) for self-hosted deployments.
@@ -404,7 +428,7 @@ The landing hero uses a **raymarched WebGL shader ("Holo Blinds")** powered by [
 
 | Credit                           | Details                                                                                                                                                                                                                                                                                                                                                         |
 | -------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| **Three.js**                     | Copyright © 2010–2026 [three.js authors](https://github.com/mrdoob/three.js). [MIT License](https://github.com/mrdoob/three.js/blob/dev/LICENSE). Used for WebGL rendering and shader materials.                                                                                                                                                               |
+| **Three.js**                     | Copyright © 2010–2026 [three.js authors](https://github.com/mrdoob/three.js). [MIT License](https://github.com/mrdoob/three.js/blob/dev/LICENSE). Used for WebGL rendering and shader materials.                                                                                                                                                                |
 | **Initial "Holo Blinds" effect** | [Sabo Sugi](https://codepen.io/sabosugi/pen/azpNzMG) — original raymarched shader concept adapted for this site.                                                                                                                                                                                                                                                |
 | **Site integration**             | [Greg Miller](https://github.com/shrinkray) (Compass Detroit) — React integration, performance and accessibility behavior (static fallback, mobile pause), and scene wiring in `src/layouts/heroScene.js` and `src/layouts/LandingSectionHero.jsx`. Dev-only tuning UI uses [lil-gui](https://github.com/georgealways/lil-gui).                                 |
 | **Static hero fallback**         | When animation is off (mobile viewport, `prefers-reduced-motion`, user pause, or mobile nav over the hero), the site shows poster frames in `src/assets/images/hero/` (`hero-trails.webp`, `hero-trails-800x.webp`, `hero-trails.png`) instead of running the WebGL loop — **these are stale, still showing the old effect; regenerate once colors are final.** |
