@@ -74,5 +74,8 @@
     "vite": "^8.1.4"
   },
   "description": "GDG Detroit DevFest 2026 website",
-  "packageManager": "pnpm@11.21.0"
+  "packageManager": "pnpm@11.21.0",
+  "engines": {
+    "node": ">=22.9.0"
+  }
 }
