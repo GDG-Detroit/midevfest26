@@ -1,6 +1,6 @@
 /**
  * Fetch published speakers/sessions from Sanity and write frontend-ready JSON.
- * Run before build (or manually via npm run fetch:event-data).
+ * Run before build (or manually via pnpm run fetch:event-data).
  */
 import { mkdir, writeFile } from 'node:fs/promises'
 import { existsSync, readFileSync } from 'node:fs'
