@@ -11,7 +11,6 @@
       "Bash(pnpm why *)",
       "Bash(pnpm exec *)",
       "Bash(pnpm --dir studio *)",
-      "Bash(pnpm dlx *)",
 
       "Bash(node scripts/**)",
       "Bash(node --env-file=scripts/sanity-import/.env scripts/**)",
