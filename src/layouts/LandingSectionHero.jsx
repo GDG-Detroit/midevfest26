@@ -34,8 +34,8 @@ const HERO_LINKS = [
 const SAVE_THE_DATE = ['2026-11-13', '2026-11-14'].map((eventDate, index) => ({
   title: `Michigan DevFest & AI Hackathon (Day ${index + 1})`,
   description:
-    'Michigan DevFest & AI Hackathon at the Little Caesars Regional Center, Detroit. Full schedule and registration to be announced.',
-  location: 'Little Caesars Regional Center (LCRC), Detroit, MI',
+    'Michigan DevFest & AI Hackathon at the Little Caesars HQ, Detroit. Full schedule and registration to be announced.',
+  location: 'Little Caesars HQ, Detroit, MI',
   time: '9:00 am - 5:00 pm',
   eventDate,
   timezoneOffset: '-05:00',
@@ -53,6 +53,7 @@ function HeroForeground() {
               width={512}
               height={512}
               decoding="async"
+
               className="aspect-square w-full max-w-[220px] sm:max-w-[260px] md:max-w-none"
             />
           </div>
@@ -64,8 +65,8 @@ function HeroForeground() {
           >
             {/* Top metadata */}
             <p className="font-body text-[10px] font-semibold uppercase tracking-[0.35em] text-white/75 sm:text-xs">
-              Detroit &middot; LCRC &middot; 2026 <br /> Powered by Compass
-              Detroit &amp; Little Caesars
+              Detroit &middot; 2026 <br /> Powered by Compass Detroit &amp;
+              Little Caesars HQ
             </p>
 
             {/* Main title */}
@@ -116,15 +117,15 @@ function HeroForeground() {
             <p className="mt-6 font-body text-[11px] uppercase tracking-[0.2em] text-white/90 sm:text-xs">
               Venue:{' '}
               <span className="inline-block rounded border border-iwd-gold-400 bg-white/[0.04] px-2 py-0.5 font-semibold uppercase tracking-[0.15em] text-iwd-gold-300">
-                Little Caesars Global Resource Center
+                Little Caesars HQ
               </span>
             </p>
 
             {/* Description */}
             <p className="mx-auto mt-6 max-w-xl font-body text-base leading-relaxed text-white md:mx-0">
-              A day of learning, building, and connecting for innovators across
-              Detroit&apos;s tech ecosystem — hosted at Little Caesars Global
-              Resource Center with workshops, talks, and community.
+              Two days of learning, building, and connecting for innovators
+              across Detroit&apos;s tech ecosystem — hosted at Little Caesars HQ
+              with workshops, talks, and community.
             </p>
 
             {/* Footer links */}
