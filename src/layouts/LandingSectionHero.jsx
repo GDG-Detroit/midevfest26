@@ -2,7 +2,6 @@ import { useEffect, useRef } from 'react'
 import PropTypes from 'prop-types'
 import { FaArrowRight } from 'react-icons/fa6'
 import CTAButton from '@/components/ui/CTAButton'
-import { generateICSFile } from '@/utils/calendarExport'
 import useHeroAnimation from '@/hooks/useHeroAnimation'
 import heroTrails from '@/assets/images/hero/hero-trails.webp'
 import heroTrailsFull from '@/assets/images/hero/hero-trails.webp'
@@ -20,26 +19,7 @@ const HERO_LINKS = [
   { href: '#schedule', label: 'Schedule' },
 ]
 
-/**
- * Save-the-date calendar entries, one per event day.
- *
- * Registration isn't open, so the hero has no URL to send anyone to — a
- * calendar download gives the primary CTA something real to do in the meantime
- * and can't rot the way a placeholder link does.
- *
- * `timezoneOffset` is set explicitly because calendarExport defaults to -04:00
- * (EDT), and these dates fall after DST ends on 2026-11-01, so Detroit is on
- * EST. Inheriting the default would shift every entry an hour early.
- */
-const SAVE_THE_DATE = ['2026-11-13', '2026-11-14'].map((eventDate, index) => ({
-  title: `Michigan DevFest & AI Hackathon (Day ${index + 1})`,
-  description:
-    'Michigan DevFest & AI Hackathon at the Little Caesars HQ, Detroit. Full schedule and registration to be announced.',
-  location: 'Little Caesars HQ, Detroit, MI',
-  time: '9:00 am - 5:00 pm',
-  eventDate,
-  timezoneOffset: '-05:00',
-}))
+const REGISTER_URL = 'https://bit.ly/midevfest26'
 
 function HeroForeground() {
   return (
@@ -65,8 +45,8 @@ function HeroForeground() {
           >
             {/* Top metadata */}
             <p className="font-body text-[10px] font-semibold uppercase tracking-[0.35em] text-white/75 sm:text-xs">
-              Detroit &middot; 2026 <br /> Powered by Compass Detroit &amp;
-              Little Caesars HQ
+              Detroit &middot; 2026 &middot; Powered by Compass Detroit <br />{' '}
+              &amp; Little Caesars Corporate Office
             </p>
 
             {/* Main title */}
@@ -82,17 +62,14 @@ function HeroForeground() {
 
             {/* Subheading */}
             <p className="mt-5 font-body text-xs font-semibold uppercase tracking-[0.3em] text-iwd-gold-300/90 sm:text-base">
-              Registration opens soon
+              November 13–14, 2026
             </p>
 
             {/* Primary CTAs */}
             <div className="mt-8 flex flex-col items-center justify-center gap-4 sm:flex-row sm:gap-5 md:justify-start">
               <CTAButton
-                onClick={() =>
-                  generateICSFile(SAVE_THE_DATE, {
-                    filename: 'michigan-devfest-2026-save-the-date.ics',
-                  })
-                }
+                href={REGISTER_URL}
+                target="_self"
                 label="Register Now"
                 ariaLabel="Register for Michigan DevFest, November 13 to 14, 2026"
                 className="w-full min-w-48 sm:w-auto"
@@ -117,15 +94,15 @@ function HeroForeground() {
             <p className="mt-6 font-body text-[11px] uppercase tracking-[0.2em] text-white/90 sm:text-xs">
               Venue:{' '}
               <span className="inline-block rounded border border-iwd-gold-400 bg-white/[0.04] px-2 py-0.5 font-semibold uppercase tracking-[0.15em] text-iwd-gold-300">
-                Little Caesars HQ
+                Little Caesars Corporate Office
               </span>
             </p>
 
             {/* Description */}
             <p className="mx-auto mt-6 max-w-xl font-body text-base leading-relaxed text-white md:mx-0">
               Two days of learning, building, and connecting for innovators
-              across Detroit&apos;s tech ecosystem — hosted at Little Caesars HQ
-              with workshops, talks, and community.
+              across Detroit&apos;s tech ecosystem — hosted at Little Caesars
+              Corporate Office with workshops, talks, and community.
             </p>
 
             {/* Footer links */}

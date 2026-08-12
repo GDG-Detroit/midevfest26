@@ -19,7 +19,7 @@ const SEOStructuredData = memo(({ speakersData = [] }) => {
     'eventAttendanceMode': 'https://schema.org/OfflineEventAttendanceMode',
     'location': {
       '@type': 'Place',
-      'name': 'Little Caesars Global Resource Center',
+      'name': 'Little Caesars Global Corporate Office',
       'address': {
         '@type': 'PostalAddress',
         'streetAddress': '2125 Woodward Ave',
