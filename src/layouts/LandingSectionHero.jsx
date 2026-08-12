@@ -20,6 +20,7 @@ const HERO_LINKS = [
 ]
 
 const REGISTER_URL = 'https://bit.ly/midevfest26'
+const SPEAKER_CFP_URL = 'https://bit.ly/compass-speakers-26'
 
 function HeroForeground() {
   return (
@@ -46,7 +47,7 @@ function HeroForeground() {
             {/* Top metadata */}
             <p className="font-body text-[10px] font-semibold uppercase tracking-[0.35em] text-white/75 sm:text-xs">
               Detroit &middot; 2026 &middot; Powered by Compass Detroit <br />{' '}
-              &amp; Little Caesars Corporate Office
+              &amp; Little Caesars HQ
             </p>
 
             {/* Main title */}
@@ -66,7 +67,7 @@ function HeroForeground() {
             </p>
 
             {/* Primary CTAs */}
-            <div className="mt-8 flex flex-col items-center justify-center gap-4 sm:flex-row sm:gap-5 md:justify-start">
+            <div className="mt-8 flex flex-col items-center justify-center gap-4 sm:flex-row sm:flex-wrap sm:gap-5 md:justify-start">
               <CTAButton
                 href={REGISTER_URL}
                 target="_self"
@@ -88,13 +89,25 @@ function HeroForeground() {
                 icon={<FaArrowRight />}
                 iconPosition="right"
               />
+
+              <CTAButton
+                href={SPEAKER_CFP_URL}
+                label="Become a Speaker"
+                variant="secondary"
+                target="_blank"
+                rel="noopener noreferrer"
+                ariaLabel="Apply to speak at Michigan DevFest (opens in new tab)"
+                className="w-full min-w-48 border-iwd-gold-400/40 text-white sm:w-auto dark:border-iwd-gold-400/40 dark:text-white dark:hover:text-white"
+                icon={<FaArrowRight />}
+                iconPosition="right"
+              />
             </div>
 
             {/* Venue callout */}
             <p className="mt-6 font-body text-[11px] uppercase tracking-[0.2em] text-white/90 sm:text-xs">
               Venue:{' '}
               <span className="inline-block rounded border border-iwd-gold-400 bg-white/[0.04] px-2 py-0.5 font-semibold uppercase tracking-[0.15em] text-iwd-gold-300">
-                Little Caesars Corporate Office
+                Little Caesars HQ
               </span>
             </p>
 

@@ -180,7 +180,7 @@ function LocationSection() {
               <h3 className="text-xl font-semibold text-white">Venue</h3>
             </div>
             <p className="mb-2 text-2xl font-bold text-white">
-              Little Caesars Global Corporate Office
+              Little Caesars HQ
             </p>
             <p className="mb-4 text-lg font-bold text-gray-400">
               2125 Woodward Ave, Detroit, MI 48201
