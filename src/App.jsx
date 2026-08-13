@@ -8,6 +8,7 @@ import {
 } from 'react-router-dom'
 
 import Home from '@/pages/Home'
+import GoogleAnalytics from '@/components/GoogleAnalytics'
 import ThemeProvider from '@/components/ui/ThemeContext'
 import ScheduleProvider from '@/components/ui/ScheduleContext'
 import HeroAnimationProvider from '@/components/ui/HeroAnimationProvider'
@@ -36,6 +37,7 @@ function App() {
       <ScheduleProvider speakersData={SpeakersData}>
         <HeroAnimationProvider>
           <Router>
+            <GoogleAnalytics />
             <div role="document">
               {/* Skip Link - First element for accessibility; hidden until Tab focus */}
               <a className="skip-link" href="#main-content">
