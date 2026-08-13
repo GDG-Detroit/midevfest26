@@ -10,9 +10,9 @@
 # produces dist/ and the runtime stage carries only a static file server.
 
 # ---- build ----------------------------------------------------------------
-# Pinned to 22 to match .nvmrc. pnpm 11 requires Node 22+; the old `FROM node:alpine`
-# floated to whatever was latest and would silently break on a Node major bump.
-FROM node:22-alpine AS build
+# Pinned to the version in .nvmrc. A floating `node:22-alpine` tag can resolve
+# to a 22.x below engines.node (>=22.13.0), which pnpm 11.21 then rejects.
+FROM node:22.22.2-alpine AS build
 
 WORKDIR /app
 
@@ -23,7 +23,11 @@ RUN corepack enable
 # Copy manifests first so the install layer caches independently of source changes.
 # pnpm-workspace.yaml carries overrides/allowBuilds and MUST be present before
 # install — without it the @babel/core override is silently dropped.
-COPY package.json pnpm-lock.yaml pnpm-workspace.yaml ./
+# .nvmrc is copied so the image tag cannot drift from the repo pin unnoticed.
+COPY package.json pnpm-lock.yaml pnpm-workspace.yaml .nvmrc ./
+COPY scripts/check-node-version.mjs ./scripts/check-node-version.mjs
+
+RUN test "v$(tr -d '[:space:]' < .nvmrc)" = "$(node -v)"
 
 RUN pnpm install --frozen-lockfile
 

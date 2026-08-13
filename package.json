@@ -21,6 +21,7 @@
     "commitlint": "commitlint --edit",
     "preview": "vite preview",
     "prepare": "husky",
+    "preinstall": "node scripts/check-node-version.mjs",
     "audit": "pnpm audit --audit-level moderate",
     "import:speakers": "node --env-file-if-exists=scripts/sanity-import/.env scripts/sanity-import/import-speakers.mjs",
     "import:team": "node --env-file-if-exists=scripts/sanity-import/.env scripts/sanity-import/import-team.mjs"

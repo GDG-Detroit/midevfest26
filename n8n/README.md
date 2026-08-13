@@ -45,6 +45,10 @@ Clone `midevfest26` where n8n can run shell commands, e.g. `/opt/midevfest26`:
 git clone https://github.com/GDG-Detroit/midevfest26.git /opt/midevfest26
 cd /opt/midevfest26
 
+# .nvmrc pins the Node version. nvm is the supported installer on the n8n host.
+nvm install && nvm use
+node -v   # expect the version in .nvmrc (currently 22.22.2)
+
 # pnpm is NOT provided by nvm, and package.json's `packageManager` field is
 # metadata — it does not install anything. Provision pnpm 11 before installing,
 # or `pnpm install` fails on a fresh runner.

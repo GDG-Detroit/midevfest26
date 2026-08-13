@@ -137,6 +137,8 @@ source ~/.bashrc
 git clone https://github.com/Compass-Detroit/[this-repo].git ~/[this-repo]
 cd ~/[this-repo]
 nvm install && nvm use
+# .nvmrc pins an exact 22.x (>=22.13.0). A bare `nvm install 22` can land on an
+# older 22.x that pnpm 11.21 rejects. Confirm with `node -v` before installing.
 # nvm provides node/npm but NOT pnpm. `packageManager` in package.json is metadata,
 # not an installer — provision pnpm 11 explicitly or the next line fails.
 corepack enable && corepack prepare pnpm@11.21.0 --activate
@@ -237,5 +239,5 @@ git pull
 | `Google 403`                            | Share the sheet and folder with the service account `client_email` |
 | `Permission denied` cloning repo        | Directory already exists — run `sudo rm -rf ~/[repo]` first        |
 | `ERR_MODULE_NOT_FOUND`                  | Run `pnpm install --frozen-lockfile` — node_modules missing        |
-| Node version error                      | Use NVM: `nvm install && nvm use` from the repo directory          |
+| Node version error                      | Use NVM: `nvm install && nvm use` from the repo directory (needs the exact version in `.nvmrc`, currently 22.22.2) |
 | Headshots not found in Shared Drive     | Confirm `supportsAllDrives: true` fix is in `lib/google.mjs`       |

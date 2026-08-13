@@ -33,8 +33,8 @@ allowBuilds:
 # Enforce package.json's `engines.node` floor instead of warning past it. The floor
 # is >=22.13.0: vite/rolldown/@vitejs/plugin-react need >=22.12.0, and pnpm 11.21
 # needs >=22.13. Without this, `engines` is documentation that nothing checks.
-# .nvmrc and CI both resolve bare `22` to the latest 22.x; husky sources nvm so
-# GUI commits do not keep a stale 22.8 on PATH.
+# .nvmrc, CI (`node-version-file`), and Docker (`FROM node:<nvmrc>-alpine`) share
+# one pin so a 22.x below the floor cannot reach `pnpm install`.
 engineStrict: true
 # Note on minimumReleaseAge: pnpm 11 defaults it to 1440 minutes (24h), which blocks
 # freshly published versions and is a real defense against the npm worm campaigns —
