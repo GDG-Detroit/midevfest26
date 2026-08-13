@@ -9,7 +9,8 @@ on:
 # pnpm/action-setup must run BEFORE actions/setup-node: setup-node's `cache: 'pnpm'`
 # needs the pnpm binary on PATH to resolve the store path. No `version:` input is
 # given — action-setup reads the `packageManager` field from package.json, so the
-# pinned version lives in exactly one place.
+# pinned version lives in exactly one place. Node comes from `.nvmrc` via
+# `node-version-file` so CI cannot pick a 22.x below engines.node (>=22.13.0).
 #
 # Note on `pnpm install --frozen-lockfile`: pnpm 11 sets `minimumReleaseAge` to 1440
 # minutes by default and `trustLockfile` to false, so CI re-verifies every locked
@@ -32,7 +33,7 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: '22'
+          node-version-file: '.nvmrc'
           cache: 'pnpm'
 
       - name: Install dependencies
@@ -73,7 +74,7 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: '22'
+          node-version-file: '.nvmrc'
           cache: 'pnpm'
 
       - name: Install dependencies
@@ -119,7 +120,7 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: '22'
+          node-version-file: '.nvmrc'
           cache: 'pnpm'
 
       - name: Install dependencies
