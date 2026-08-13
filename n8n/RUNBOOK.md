@@ -230,14 +230,14 @@ git pull
 
 ## Troubleshooting
 
-| Error                                   | Fix                                                                |
-| --------------------------------------- | ------------------------------------------------------------------ |
-| `No event document found for year XXXX` | Create and **Publish** the Event doc in Studio                     |
-| `Unauthorized - Session not found`      | API token is wrong — check you pasted `sk-...` not the token name  |
-| `Missing required column`               | Sheet header row doesn't match the template                        |
-| `Headshot not found in Drive`           | Filename in sheet must match Drive file exactly (case-sensitive)   |
-| `Google 403`                            | Share the sheet and folder with the service account `client_email` |
-| `Permission denied` cloning repo        | Directory already exists — run `sudo rm -rf ~/[repo]` first        |
-| `ERR_MODULE_NOT_FOUND`                  | Run `pnpm install --frozen-lockfile` — node_modules missing        |
+| Error                                   | Fix                                                                                                                |
+| --------------------------------------- | ------------------------------------------------------------------------------------------------------------------ |
+| `No event document found for year XXXX` | Create and **Publish** the Event doc in Studio                                                                     |
+| `Unauthorized - Session not found`      | API token is wrong — check you pasted `sk-...` not the token name                                                  |
+| `Missing required column`               | Sheet header row doesn't match the template                                                                        |
+| `Headshot not found in Drive`           | Filename in sheet must match Drive file exactly (case-sensitive)                                                   |
+| `Google 403`                            | Share the sheet and folder with the service account `client_email`                                                 |
+| `Permission denied` cloning repo        | Directory already exists — run `sudo rm -rf ~/[repo]` first                                                        |
+| `ERR_MODULE_NOT_FOUND`                  | Run `pnpm install --frozen-lockfile` — node_modules missing                                                        |
 | Node version error                      | Use NVM: `nvm install && nvm use` from the repo directory (needs the exact version in `.nvmrc`, currently 22.22.2) |
-| Headshots not found in Shared Drive     | Confirm `supportsAllDrives: true` fix is in `lib/google.mjs`       |
+| Headshots not found in Shared Drive     | Confirm `supportsAllDrives: true` fix is in `lib/google.mjs`                                                       |
