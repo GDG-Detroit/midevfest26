@@ -252,6 +252,41 @@ function buildPartnerPatch(row, eventRef, logoField, namespace, existing) {
   return patch
 }
 
+/**
+ * Refuse to hijack another event's documents.
+ *
+ * Without `--id-namespace` a partner's ID is just `partner-<slug>`, which is
+ * deliberate — the live event owns the unnamespaced IDs, same as speakers and
+ * team. The trap is that the next event reuses those IDs: importing 2027
+ * without a namespace would `createOrReplace` the 2026 documents and move their
+ * event reference, so 2026's logos vanish from a page nobody was editing and
+ * the only visible symptom is a shorter grid.
+ *
+ * Renaming the IDs would orphan every document already in the dataset, so the
+ * fix is to make the collision loud instead. This is the one moment the
+ * information exists: the documents have been read, nothing has been written.
+ */
+function assertNoCrossEventCollision(existingDocs, eventRef, namespace) {
+  const collisions = existingDocs.filter(
+    (doc) => doc.eventRef && doc.eventRef !== eventRef._ref
+  )
+
+  if (collisions.length === 0) return
+
+  const hint = namespace
+    ? `The namespace "${namespace}" is already in use by that event.`
+    : 'Pass --id-namespace=<year> to scope this import to its own documents.'
+
+  throw new Error(
+    `${collisions.length} document(s) already belong to a different event ` +
+      `(importing would move them to ${eventRef._ref}):\n` +
+      collisions
+        .map((doc) => `    ${doc.name ?? doc._id} — currently ${doc.eventRef}`)
+        .join('\n') +
+      `\n  ${hint}`
+  )
+}
+
 async function resolveEventRef(client, { eventId, eventYear }) {
   if (eventId) return { _type: 'reference', _ref: eventId }
 
@@ -306,10 +341,12 @@ export async function importPartners(options = {}) {
   // What is already stored, so a replacement can inherit assets it cannot
   // resolve locally instead of wiping them.
   const existingDocs = await client.fetch(
-    `*[_id in $ids]{_id, logo, logoFilename, status}`,
+    `*[_id in $ids]{_id, logo, logoFilename, status, name, "eventRef": event._ref}`,
     { ids: partnerIds }
   )
   const existingById = new Map(existingDocs.map((doc) => [doc._id, doc]))
+
+  assertNoCrossEventCollision(existingDocs, eventRef, namespace)
 
   const missingLogos = []
   const preservedLogos = []

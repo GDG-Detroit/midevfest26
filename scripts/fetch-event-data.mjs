@@ -355,6 +355,34 @@ export async function fetchEventTeam(options = {}) {
     })
 }
 
+/** Fields a partner row cannot render without. */
+const PARTNER_REQUIRED_STRINGS = ['slug', 'name', 'tier']
+
+/**
+ * Sanity's Content Lake is schemaless at the API level: `options.list` and
+ * `validation` constrain the Studio, not the write API, so a row arriving from
+ * an import, an n8n workflow, or a hand-rolled mutation can hold a number where
+ * a string belongs. The import validates its own rows for this reason
+ * (assertValidRows), but that only covers rows that pass through the import.
+ *
+ * This is the other boundary — the one place the site's data is written — so
+ * the same suspicion applies. A truthy non-string would otherwise sail into
+ * `<img alt>` and `<a href>` as "[object Object]".
+ */
+const nonEmptyString = (value) =>
+  typeof value === 'string' && value.trim() !== ''
+
+/** Optional strings are dropped rather than coerced when malformed. */
+const optionalString = (value) => (nonEmptyString(value) ? value : undefined)
+
+/** Best available label for a row too broken to render. */
+const describePartner = (partner) =>
+  nonEmptyString(partner.name)
+    ? partner.name
+    : nonEmptyString(partner.slug)
+      ? partner.slug
+      : 'unnamed partner'
+
 /**
  * Partner rows in one flat array, ordered the way the page reads: tier by tier
  * in PARTNER_TIERS order, then sortOrder, then name.
@@ -378,8 +406,22 @@ export async function fetchEventPartners(options = {}) {
   // displaces the diamond row. writePartnersYear warns about it separately.
   const rankOf = (tier) => tierRank.get(tier) ?? PARTNER_TIERS.length
 
-  return partners
-    .filter((partner) => partner.slug && partner.name && partner.tier)
+  const unusable = []
+
+  const rows = partners
+    .filter((partner) => {
+      const missing = PARTNER_REQUIRED_STRINGS.filter(
+        (field) => !nonEmptyString(partner[field])
+      )
+      if (missing.length === 0) return true
+
+      unusable.push(
+        `${describePartner(partner)} — ${missing
+          .map((field) => `${field}=${JSON.stringify(partner[field])}`)
+          .join(', ')}`
+      )
+      return false
+    })
     .sort((a, b) => rankOf(a.tier) - rankOf(b.tier))
     .map((partner) => {
       const row = {
@@ -387,16 +429,28 @@ export async function fetchEventPartners(options = {}) {
         slug: partner.slug,
         name: partner.name,
         tier: partner.tier,
-        logo: partner.logo ?? '',
-        logoAlt: partner.logoAlt || partner.name,
+        logo: optionalString(partner.logo) ?? '',
+        logoAlt: optionalString(partner.logoAlt) ?? partner.name,
         logoSurface: partner.logoSurface === 'light' ? 'light' : 'dark',
       }
 
-      if (partner.url) row.url = partner.url
-      if (partner.description) row.description = partner.description
+      const url = optionalString(partner.url)
+      const description = optionalString(partner.description)
+      if (url) row.url = url
+      if (description) row.description = description
 
       return row
     })
+
+  if (unusable.length > 0) {
+    console.warn(
+      `  warning: ${unusable.length} partner(s) skipped — a required field ` +
+        `was missing or not a string:`
+    )
+    for (const problem of unusable) console.warn(`    ${problem}`)
+  }
+
+  return rows
 }
 
 async function writeFormattedJson(filePath, data) {
