@@ -1,0 +1,167 @@
+[
+  {
+    "id": 1364179335,
+    "slug": "little-caesars",
+    "name": "Little Caesars",
+    "tier": "diamond",
+    "logo": "https://cdn.sanity.io/images/5qtiaw9u/production/14143e16580fd54edf3b02e1ae1b59ed2cd2625b-300x102.webp",
+    "logoAlt": "Little Caesars",
+    "logoSurface": "dark",
+    "url": "https://www.littlecaesars.com",
+    "description": "Founded in Detroit in 1959, Little Caesars is now the third largest pizza chain in the world."
+  },
+  {
+    "id": 126035820,
+    "slug": "ibm",
+    "name": "IBM",
+    "tier": "platinum",
+    "logo": "https://cdn.sanity.io/images/5qtiaw9u/production/f99d1d39d627b7be0270373907f5f16b008caac9-300x300.webp",
+    "logoAlt": "IBM",
+    "logoSurface": "light",
+    "url": "https://www.ibm.com",
+    "description": "IBM is a global technology company providing hardware, software, and services to businesses and organizations."
+  },
+  {
+    "id": 886606401,
+    "slug": "google",
+    "name": "Google",
+    "tier": "platinum",
+    "logo": "https://cdn.sanity.io/images/5qtiaw9u/production/5a84a928560b6523e1d845d33e36e72ec3937d4b-300x99.webp",
+    "logoAlt": "Google",
+    "logoSurface": "dark",
+    "url": "https://about.google",
+    "description": "AI for everyone. Building for everyone."
+  },
+  {
+    "id": 1755794040,
+    "slug": "dte-energy",
+    "name": "DTE Energy",
+    "tier": "gold",
+    "logo": "https://cdn.sanity.io/images/5qtiaw9u/production/5e9f5d47211a2804330b7c199a9473c86b356390-300x300.webp",
+    "logoAlt": "DTE Energy",
+    "logoSurface": "dark",
+    "url": "https://www.dteenergy.com",
+    "description": "DTE Energy is a Detroit-based diversified energy company providing energy solutions across Michigan."
+  },
+  {
+    "id": 126039969,
+    "slug": "mlh",
+    "name": "Major League Hacking",
+    "tier": "gold",
+    "logo": "https://cdn.sanity.io/images/5qtiaw9u/production/4c63c92c0056d148ef86fd27a6d241a37e5a3979-300x126.webp",
+    "logoAlt": "Major League Hacking",
+    "logoSurface": "dark",
+    "url": "https://mlh.io",
+    "description": "MLH empowers developers and fosters community around its core values: Learn. Build. Share."
+  },
+  {
+    "id": 987955383,
+    "slug": "kaggle",
+    "name": "Kaggle",
+    "tier": "gold",
+    "logo": "https://cdn.sanity.io/images/5qtiaw9u/production/5e3ad129362e4b262170c7f9eb832e1693806ab1-300x136.webp",
+    "logoAlt": "Kaggle",
+    "logoSurface": "dark",
+    "url": "https://www.kaggle.com",
+    "description": "Kaggle is a platform for data science and machine learning competitions."
+  },
+  {
+    "id": 387691824,
+    "slug": "nsbe",
+    "name": "NSBE",
+    "tier": "community",
+    "logo": "https://cdn.sanity.io/images/5qtiaw9u/production/26cf4c2e7d984fb429144223f0dc6c661faad2a1-300x300.webp",
+    "logoAlt": "NSBE",
+    "logoSurface": "dark",
+    "url": "https://www.nsbe.org",
+    "description": "A community of Black engineers and scientists passionate about technology and innovation."
+  },
+  {
+    "id": 1292925936,
+    "slug": "gdg-detroit",
+    "name": "GDG Detroit",
+    "tier": "community",
+    "logo": "https://cdn.sanity.io/images/5qtiaw9u/production/40d28e0a3df958a65c496661cee68f8213481328-400x400.png",
+    "logoAlt": "GDG Detroit",
+    "logoSurface": "dark",
+    "url": "https://gdg.community.dev/gdg-detroit/",
+    "description": "The Detroit Google Developers Group meets monthly online and in downtown Detroit to educate and connect software developers."
+  },
+  {
+    "id": 1409193989,
+    "slug": "detroit-hacker-house",
+    "name": "Detroit Hacker House",
+    "tier": "community",
+    "logo": "https://cdn.sanity.io/images/5qtiaw9u/production/28126749a471435d05487cc05d50827ec40a9358-300x240.webp",
+    "logoAlt": "Detroit Hacker House",
+    "logoSurface": "dark",
+    "url": "https://detroithackerhouse.com",
+    "description": "A community-driven space for learning, collaboration, and innovation."
+  },
+  {
+    "id": 387553006,
+    "slug": "shpe",
+    "name": "SHPE",
+    "tier": "community",
+    "logo": "https://cdn.sanity.io/images/5qtiaw9u/production/e40707ded4fb13a3b73cbad0522bc8df8adc626d-600x114.webp",
+    "logoAlt": "SHPE",
+    "logoSurface": "dark",
+    "url": "https://shpe.org",
+    "description": "Transforming lives in Detroit by inspiring and motivating young Hispanic students to excel in STEM education."
+  },
+  {
+    "id": 101152379,
+    "slug": "dev-of-detroit",
+    "name": "Dev of Detroit",
+    "tier": "community",
+    "logo": "https://cdn.sanity.io/images/5qtiaw9u/production/a690148c3c3a477ccc6034218415633c84c02164-300x388.webp",
+    "logoAlt": "Dev of Detroit",
+    "logoSurface": "dark",
+    "url": "https://www.instagram.com/developersofdetroit/",
+    "description": "Build what lasts."
+  },
+  {
+    "id": 659442829,
+    "slug": "devops-detroit",
+    "name": "DevOps Detroit",
+    "tier": "community",
+    "logo": "https://cdn.sanity.io/images/5qtiaw9u/production/b4b9c64c1b5f4dfdd300679c707c821e8c1db1b0-300x300.webp",
+    "logoAlt": "DevOps Detroit",
+    "logoSurface": "dark",
+    "url": "https://www.devopsdetroit.io/",
+    "description": "Dedicated to empowering Detroit's tech community through collaboration, education, and innovation."
+  },
+  {
+    "id": 1575526201,
+    "slug": "techqueria",
+    "name": "Techqueria",
+    "tier": "community",
+    "logo": "https://cdn.sanity.io/images/5qtiaw9u/production/2b46a87d03ae72ff40ce01ce4298cdb32d7dd1b1-300x300.webp",
+    "logoAlt": "Techqueria",
+    "logoSurface": "dark",
+    "url": "https://techqueria.org",
+    "description": "Where Latine talent drives tech innovation."
+  },
+  {
+    "id": 998861849,
+    "slug": "ai-collective-detroit",
+    "name": "AI Collective Detroit",
+    "tier": "community",
+    "logo": "https://cdn.sanity.io/images/5qtiaw9u/production/ad81ef6b8dcde076aac0d1bb88e1b8865099cf26-884x511.png",
+    "logoAlt": "AI Collective Detroit",
+    "logoSurface": "light",
+    "url": "https://www.aicollective.com/chapters/detroit",
+    "description": "A community of AI enthusiasts building the future."
+  },
+  {
+    "id": 654537134,
+    "slug": "luminesso-coffee",
+    "name": "Luminesso Coffee",
+    "tier": "fuel",
+    "logo": "https://cdn.sanity.io/images/5qtiaw9u/production/afc186ce94985415d037115cbaae3942ffdab6b0-300x250.png",
+    "logoAlt": "Luminesso Coffee",
+    "logoSurface": "light",
+    "url": "https://www.luminessocoffee.com",
+    "description": "Fueling Detroit's builders one cup at a time."
+  }
+]

@@ -1,0 +1,211 @@
+[
+  {
+    "slug": "techtown-detroit",
+    "name": "TechTown Detroit",
+    "tier": "diamond",
+    "url": "https://techtowndetroit.org",
+    "logo_path": "sponsors/dia-techtown-300x.webp",
+    "logo_surface": "light",
+    "logo_alt": "TechTown Detroit",
+    "description": "TechTown Detroit is the city's entrepreneurship hub, supporting innovation and small business growth.",
+    "sort_order": 0
+  },
+  {
+    "slug": "ibm",
+    "name": "IBM",
+    "tier": "platinum",
+    "url": "https://www.ibm.com",
+    "logo_path": "sponsors/platinum-ibm-300x.webp",
+    "logo_surface": "light",
+    "logo_alt": "IBM",
+    "description": "IBM is a global technology company providing hardware, software, and services to businesses and organizations.",
+    "sort_order": 0
+  },
+  {
+    "slug": "google",
+    "name": "Google",
+    "tier": "platinum",
+    "url": "https://about.google",
+    "logo_path": "sponsors/platinum-google-300x.webp",
+    "logo_surface": "dark",
+    "logo_alt": "Google",
+    "description": "AI for everyone. Building for everyone.",
+    "sort_order": 1
+  },
+  {
+    "slug": "michigan-tech-week",
+    "name": "Michigan Tech Week",
+    "tier": "platinum",
+    "url": "https://www.michigantechweek.com",
+    "logo_path": "sponsors/platinum-mtw-300x.webp",
+    "logo_surface": "dark",
+    "logo_alt": "Michigan Tech Week",
+    "description": "Founder-first. Future-focused. Fearlessly Michigan.",
+    "sort_order": 2
+  },
+  {
+    "slug": "dte-energy",
+    "name": "DTE Energy",
+    "tier": "gold",
+    "url": "https://www.dteenergy.com",
+    "logo_path": "sponsors/gold-dte-300x.webp",
+    "logo_surface": "dark",
+    "logo_alt": "DTE Energy",
+    "description": "DTE Energy is a Detroit-based diversified energy company providing energy solutions across Michigan.",
+    "sort_order": 0
+  },
+  {
+    "slug": "little-caesars",
+    "name": "Little Caesars",
+    "tier": "gold",
+    "url": "https://www.littlecaesars.com",
+    "logo_path": "sponsors/gold-littleceasars-300x.webp",
+    "logo_surface": "dark",
+    "logo_alt": "Little Caesars",
+    "description": "Founded in Detroit in 1959, Little Caesars is now the third largest pizza chain in the world.",
+    "sort_order": 1
+  },
+  {
+    "slug": "mlh",
+    "name": "Major League Hacking",
+    "tier": "gold",
+    "url": "https://mlh.io",
+    "logo_path": "sponsors/gold-mlh-300x.webp",
+    "logo_surface": "dark",
+    "logo_alt": "Major League Hacking",
+    "description": "MLH empowers developers and fosters community around its core values: Learn. Build. Share.",
+    "sort_order": 2
+  },
+  {
+    "slug": "kaggle",
+    "name": "Kaggle",
+    "tier": "gold",
+    "url": "https://www.kaggle.com",
+    "logo_path": "sponsors/gold-kaggle-300x.webp",
+    "logo_surface": "dark",
+    "logo_alt": "Kaggle",
+    "description": "Kaggle is a platform for data science and machine learning competitions.",
+    "sort_order": 3
+  },
+  {
+    "slug": "nsbe",
+    "name": "NSBE",
+    "tier": "community",
+    "url": "https://www.nsbe.org",
+    "logo_path": "sponsors/com-nsbe-300x.webp",
+    "logo_surface": "dark",
+    "logo_alt": "NSBE",
+    "description": "A community of Black engineers and scientists passionate about technology and innovation.",
+    "sort_order": 0
+  },
+  {
+    "slug": "gdg-detroit",
+    "name": "GDG Detroit",
+    "tier": "community",
+    "url": "https://gdg.community.dev/gdg-detroit/",
+    "logo_path": "sponsors/com-gdg-detroit2.png",
+    "logo_surface": "dark",
+    "logo_alt": "GDG Detroit",
+    "description": "The Detroit Google Developers Group meets monthly online and in downtown Detroit to educate and connect software developers.",
+    "sort_order": 1
+  },
+  {
+    "slug": "detroit-hacker-house",
+    "name": "Detroit Hacker House",
+    "tier": "community",
+    "url": "https://detroithackerhouse.com",
+    "logo_path": "sponsors/com-dhh-300x.webp",
+    "logo_surface": "dark",
+    "logo_alt": "Detroit Hacker House",
+    "description": "A community-driven space for learning, collaboration, and innovation.",
+    "sort_order": 2
+  },
+  {
+    "slug": "shpe",
+    "name": "SHPE",
+    "tier": "community",
+    "url": "https://shpe.org",
+    "logo_path": "sponsors/com-shpe-600x.webp",
+    "logo_surface": "dark",
+    "logo_alt": "SHPE",
+    "description": "Transforming lives in Detroit by inspiring and motivating young Hispanic students to excel in STEM education.",
+    "sort_order": 3
+  },
+  {
+    "slug": "dev-of-detroit",
+    "name": "Dev of Detroit",
+    "tier": "community",
+    "url": "https://www.instagram.com/developersofdetroit/",
+    "logo_path": "sponsors/com-dev-of-detroit.webp",
+    "logo_surface": "dark",
+    "logo_alt": "Dev of Detroit",
+    "description": "Build what lasts.",
+    "sort_order": 4
+  },
+  {
+    "slug": "devops-detroit",
+    "name": "DevOps Detroit",
+    "tier": "community",
+    "url": "https://www.devopsdetroit.io/",
+    "logo_path": "sponsors/com-devops-detroit.webp",
+    "logo_surface": "dark",
+    "logo_alt": "DevOps Detroit",
+    "description": "Dedicated to empowering Detroit's tech community through collaboration, education, and innovation.",
+    "sort_order": 5
+  },
+  {
+    "slug": "techqueria",
+    "name": "Techqueria",
+    "tier": "community",
+    "url": "https://techqueria.org",
+    "logo_path": "sponsors/com-tq-techqueria-300x.webp",
+    "logo_surface": "dark",
+    "logo_alt": "Techqueria",
+    "description": "Where Latine talent drives tech innovation.",
+    "sort_order": 6
+  },
+  {
+    "slug": "ai-collective-detroit",
+    "name": "AI Collective Detroit",
+    "tier": "community",
+    "url": "https://www.aicollective.com/chapters/detroit",
+    "logo_path": "sponsors/com_AI_Collective_Detroit.png",
+    "logo_surface": "light",
+    "logo_alt": "AI Collective Detroit",
+    "description": "A community of AI enthusiasts building the future.",
+    "sort_order": 7
+  },
+  {
+    "slug": "start-midwest",
+    "name": "Start Midwest",
+    "tier": "media",
+    "url": "https://www.start-midwest.com/",
+    "logo_path": "sponsors/media-startMidwest.webp",
+    "logo_surface": "dark",
+    "logo_alt": "Start Midwest",
+    "description": "The storytelling engine for Midwest innovation and entrepreneurship.",
+    "sort_order": 0
+  },
+  {
+    "slug": "why-not-collab-detroit",
+    "name": "Why Not Collab Detroit",
+    "tier": "media",
+    "url": "https://www.instagram.com/whynotcollabdet/",
+    "logo_path": "sponsors/media-whynotcollab-300x.png",
+    "logo_surface": "dark",
+    "logo_alt": "Why Not Collab Detroit",
+    "description": "A creative community amplifying Detroit voices.",
+    "sort_order": 1
+  },
+  {
+    "slug": "luminesso-coffee",
+    "name": "Luminesso Coffee",
+    "tier": "fuel",
+    "url": "https://www.luminessocoffee.com",
+    "logo_path": "sponsors/fuel-luminesso-300x.png",
+    "logo_surface": "light",
+    "logo_alt": "Luminesso Coffee",
+    "description": "Fueling Detroit's builders one cup at a time.",
+    "sort_order": 0
+  }
+]

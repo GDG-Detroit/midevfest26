@@ -12,6 +12,11 @@ import {
   RENDERED_TEAM_GROUPS,
   isRenderedTeamGroup,
 } from './sanity-import/lib/team-groups.mjs'
+import {
+  PARTNER_TIERS,
+  RENDERED_PARTNER_TIERS,
+  isRenderedPartnerTier,
+} from './sanity-import/lib/partner-tiers.mjs'
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url))
 const ROOT = path.resolve(__dirname, '..')
@@ -23,6 +28,9 @@ const outputFor = (year) =>
 
 const teamOutputFor = (year) =>
   path.join(ROOT, `src/data/${year}/team.generated.json`)
+
+const partnersOutputFor = (year) =>
+  path.join(ROOT, `src/data/${year}/partners.generated.json`)
 
 /** Every event in the dataset, newest first — drives the archive. */
 const EVENTS_QUERY = `*[_type == "event" && defined(year)] | order(year desc){
@@ -89,6 +97,26 @@ const TEAM_QUERY = `*[_type == "teamMember" && event->year == $year && published
   twitter,
   github,
   "avatar": headshot.asset->url
+}`
+
+/**
+ * `!defined(status)` is not belt-and-braces: the field was added after these
+ * documents existed, so an unset status means "written before the field" and
+ * has to read as active. Dropping that clause would empty the grid for every
+ * document nobody has opened in Studio since.
+ *
+ * `published` is separate and mechanical — the import clears it for rows that
+ * disappear from its source. Both have to pass.
+ */
+const PARTNERS_QUERY = `*[_type == "partner" && event->year == $year && published == true && (!defined(status) || status == "active")] | order(sortOrder asc, name asc) {
+  "slug": slug.current,
+  name,
+  tier,
+  url,
+  description,
+  logoSurface,
+  "logo": logo.asset->url,
+  "logoAlt": logo.alt
 }`
 
 function readEnv(name, fallback) {
@@ -327,6 +355,50 @@ export async function fetchEventTeam(options = {}) {
     })
 }
 
+/**
+ * Partner rows in one flat array, ordered the way the page reads: tier by tier
+ * in PARTNER_TIERS order, then sortOrder, then name.
+ *
+ * Grouping is left to the component rather than baked into a nested object,
+ * because the tier row it renders is a display concern (heading, slot count,
+ * tile shape) that already lives there — see TIER_DISPLAY in PartnersSection.
+ * A flat array also means a tier gaining its first sponsor needs no new key.
+ */
+export async function fetchEventPartners(options = {}) {
+  const eventYear = Number(
+    options.eventYear ??
+      readEnv('SANITY_EVENT_YEAR', String(DEFAULT_EVENT_YEAR))
+  )
+
+  const client = createSanityReadClient(options)
+  const partners = await client.fetch(PARTNERS_QUERY, { year: eventYear })
+
+  const tierRank = new Map(PARTNER_TIERS.map((tier, index) => [tier, index]))
+  // An unknown tier sorts last rather than to the front, so bad data never
+  // displaces the diamond row. writePartnersYear warns about it separately.
+  const rankOf = (tier) => tierRank.get(tier) ?? PARTNER_TIERS.length
+
+  return partners
+    .filter((partner) => partner.slug && partner.name && partner.tier)
+    .sort((a, b) => rankOf(a.tier) - rankOf(b.tier))
+    .map((partner) => {
+      const row = {
+        id: stableId(`partner::${partner.slug}`),
+        slug: partner.slug,
+        name: partner.name,
+        tier: partner.tier,
+        logo: partner.logo ?? '',
+        logoAlt: partner.logoAlt || partner.name,
+        logoSurface: partner.logoSurface === 'light' ? 'light' : 'dark',
+      }
+
+      if (partner.url) row.url = partner.url
+      if (partner.description) row.description = partner.description
+
+      return row
+    })
+}
+
 async function writeFormattedJson(filePath, data) {
   const config = await prettier.resolveConfig(filePath)
   const formatted = await prettier.format(JSON.stringify(data), {
@@ -357,6 +429,15 @@ const teamPassthroughModule = (year) => `/**
 import teamGenerated from './team.generated.json'
 
 export const teamData = teamGenerated
+`
+
+const partnersPassthroughModule = (year) => `/**
+ * Partners and sponsors for ${year}.
+ * Generated from Sanity before each build — see scripts/fetch-event-data.mjs.
+ */
+import partnersGenerated from './partners.generated.json'
+
+export const partnersData = partnersGenerated
 `
 
 /**
@@ -440,6 +521,65 @@ async function writeTeamYear(year) {
   return rows.length
 }
 
+/**
+ * Same contract as writeTeamYear: a year that has never had partners gets no
+ * files, but once the file exists it tracks the dataset all the way down to [],
+ * so unpublishing every sponsor actually takes them off the built site.
+ */
+async function writePartnersYear(year) {
+  const rows = await fetchEventPartners({ eventYear: year })
+  const target = partnersOutputFor(year)
+
+  if (rows.length === 0 && !existsSync(target)) return 0
+
+  // Published, valid, and invisible: a tier the grid has no row for. Say so
+  // here rather than letting an organizer wonder why the sponsor they just
+  // added never showed up.
+  const unrendered = rows.filter((row) => !isRenderedPartnerTier(row.tier))
+  if (unrendered.length > 0) {
+    console.warn(
+      `  warning: ${unrendered.length} partner(s) are in a tier the site does ` +
+        `not render (it shows ${RENDERED_PARTNER_TIERS.join(', ')}):`
+    )
+    for (const row of unrendered) {
+      console.warn(`    ${row.name} — ${row.tier}`)
+    }
+  }
+
+  const logoless = rows.filter((row) => !row.logo)
+  if (logoless.length > 0) {
+    console.warn(
+      `  warning: ${logoless.length} partner(s) have no logo in Sanity and ` +
+        `will render as a name-only tile:`
+    )
+    for (const row of logoless) {
+      console.warn(`    ${row.name}`)
+    }
+  }
+
+  await mkdir(path.dirname(target), { recursive: true })
+  await writeFormattedJson(target, rows)
+
+  const modulePath = path.join(path.dirname(target), 'partners.js')
+  if (!existsSync(modulePath)) {
+    await writeFile(modulePath, partnersPassthroughModule(year), 'utf8')
+  }
+
+  if (rows.length === 0) {
+    console.warn(
+      `  warning: ${year} has no published partners — wrote an empty list to ` +
+        `${path.relative(ROOT, target)}. The partners section will show its ` +
+        `"looking for partners" state on the built site.`
+    )
+    return 0
+  }
+
+  console.log(
+    `  ${year}: ${rows.length} partners -> ${path.relative(ROOT, target)}`
+  )
+  return rows.length
+}
+
 async function writeYear(year) {
   const rows = await fetchEventSpeakers({ eventYear: year })
   const output = stripInternalFields(rows)
@@ -475,10 +615,12 @@ async function main() {
 
   let total = 0
   let teamTotal = 0
+  let partnersTotal = 0
   const manifest = []
   for (const event of events) {
     const stats = await writeYear(event.year)
     teamTotal += await writeTeamYear(event.year)
+    partnersTotal += await writePartnersYear(event.year)
     total += stats.rowCount
     manifest.push({ ...event, ...stats })
   }
@@ -486,8 +628,8 @@ async function main() {
   await writeFormattedJson(EVENTS_OUTPUT, manifest)
 
   console.log(
-    `Wrote ${total} speaker-session rows and ${teamTotal} team members ` +
-      `across ${years.length} year(s)`
+    `Wrote ${total} speaker-session rows, ${teamTotal} team members and ` +
+      `${partnersTotal} partners across ${years.length} year(s)`
   )
 }
 
