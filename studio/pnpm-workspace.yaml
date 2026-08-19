@@ -13,18 +13,18 @@ allowBuilds:
   esbuild: true
   fsevents: true
 minimumReleaseAgeExclude:
-  - '@sanity/access-ui@6.10.0'
+  - '@sanity/access-ui@6.10.0 || 6.10.1'
   - '@sanity/cli-build@5.2.1'
   - '@sanity/cli-core@3.1.0'
   - '@sanity/cli@8.0.2'
   - '@sanity/client@8.1.0'
-  - '@sanity/diff@6.10.0'
-  - '@sanity/mutator@6.10.0'
-  - '@sanity/schema@6.10.0'
-  - '@sanity/types@6.10.0'
-  - '@sanity/util@6.10.0'
-  - '@sanity/vision@6.10.0'
+  - '@sanity/diff@6.10.0 || 6.10.1'
+  - '@sanity/mutator@6.10.0 || 6.10.1'
+  - '@sanity/schema@6.10.0 || 6.10.1'
+  - '@sanity/types@6.10.0 || 6.10.1'
+  - '@sanity/util@6.10.0 || 6.10.1'
+  - '@sanity/vision@6.10.0 || 6.10.1'
   - '@sanity/workbench-cli@2.0.1'
   - '@sanity/workbench@0.1.0-alpha.42'
   - get-it@9.5.0
-  - sanity@6.10.0
+  - sanity@6.10.0 || 6.10.1
