@@ -34,7 +34,7 @@ function Footer() {
               <Link
                 key={section.id}
                 to={`/#${section.id}`}
-                className="rounded-md px-2.5 py-1 text-base text-gray-300 transition-all duration-200 hover:bg-white/[0.04] hover:text-iwd-gold-300 hover:no-underline"
+                className="inline-flex min-h-6 items-center rounded-md px-2.5 py-1.5 text-base text-gray-300 transition-all duration-200 hover:bg-white/[0.04] hover:text-iwd-gold-300 hover:no-underline"
               >
                 {section.text}
               </Link>
@@ -43,7 +43,7 @@ function Footer() {
             <Link
               key={link.to}
               to={link.to}
-              className="rounded-md px-2.5 py-1 text-base text-gray-300 transition-all duration-200 hover:bg-white/[0.04] hover:text-iwd-gold-300 hover:no-underline"
+              className="inline-flex min-h-6 items-center rounded-md px-2.5 py-1.5 text-base text-gray-300 transition-all duration-200 hover:bg-white/[0.04] hover:text-iwd-gold-300 hover:no-underline"
             >
               {link.text}
             </Link>

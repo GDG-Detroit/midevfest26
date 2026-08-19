@@ -24,7 +24,8 @@
     "preinstall": "node scripts/check-node-version.mjs",
     "audit": "pnpm audit --audit-level moderate",
     "import:speakers": "node --env-file-if-exists=scripts/sanity-import/.env scripts/sanity-import/import-speakers.mjs",
-    "import:team": "node --env-file-if-exists=scripts/sanity-import/.env scripts/sanity-import/import-team.mjs"
+    "import:team": "node --env-file-if-exists=scripts/sanity-import/.env scripts/sanity-import/import-team.mjs",
+    "import:partners": "node --env-file-if-exists=scripts/sanity-import/.env scripts/sanity-import/import-partners.mjs"
   },
   "lint-staged": {
     "*.{js,jsx}": [

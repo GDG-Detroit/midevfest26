@@ -855,7 +855,7 @@ export default function InspirationalHero() {
             onClick={() => goTo(i)}
             aria-label={`Go to quote ${i + 1} by ${quotes[i].name}`}
             aria-current={i === currentIndex ? 'true' : undefined}
-            className={`group relative flex h-6 w-4 items-center justify-center transition-all duration-300 sm:w-6`}
+            className="group relative flex min-h-6 min-w-6 items-center justify-center transition-all duration-300"
           >
             <span
               className={`rounded-full transition-all duration-500 ${

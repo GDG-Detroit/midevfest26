@@ -25,15 +25,6 @@ const __dirname = path.dirname(fileURLToPath(import.meta.url))
 const ROOT = path.resolve(__dirname, '../..')
 
 /**
- * Speakers whose source headshot is too small to render well on a speaker card.
- * The legacy site pointed Jenna at a 100x100 team thumbnail; the speakers folder
- * carries a full-size portrait of the same person.
- */
-const HEADSHOT_OVERRIDES = {
-  'jenna-ritten': 'assets/images/speakers/Jenna_Ritten.png',
-}
-
-/**
  * `import X from '@/assets/a/b.png'` resolves to the repo-relative path under
  * src/, which is what the extracted rows carry.
  */
@@ -128,7 +119,7 @@ function firstUrl(value) {
 function toRow(speaker, sessionSlug) {
   const session = speaker.session ?? {}
   const speakerSlug = slugify(speaker.name)
-  const headshotPath = HEADSHOT_OVERRIDES[speakerSlug] ?? speaker.avatar ?? ''
+  const headshotPath = speaker.avatar ?? ''
 
   return {
     speaker_slug: speakerSlug,

@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://midevfest26.vercel.app/sitemap.xml
+Sitemap: https://www.midevfest.com/sitemap.xml

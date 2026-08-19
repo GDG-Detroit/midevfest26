@@ -34,6 +34,8 @@ export const sessionDocId = (slug, namespace) =>
   namespace ? `session-${namespace}-${slug}` : `session-${slug}`
 export const teamMemberDocId = (slug, namespace) =>
   namespace ? `team-${namespace}-${slug}` : `team-${slug}`
+export const partnerDocId = (slug, namespace) =>
+  namespace ? `partner-${namespace}-${slug}` : `partner-${slug}`
 
 export function slugRef(type, slug, idFn, namespace) {
   return {

@@ -12,7 +12,7 @@ const SEOStructuredData = memo(({ speakersData = [] }) => {
     'name': 'Michigan DevFest 2026',
     'description':
       'Celebrating innovation, empowerment, and community at Michigan DevFest 2026 in Detroit.',
-    'image': 'https://midevfest26.vercel.app/social-card.jpg',
+    'image': 'https://www.midevfest.com/social-card.jpg',
     'startDate': '2026-03-28T08:00:00-04:00',
     'endDate': '2026-03-28T17:00:00-04:00',
     'eventStatus': 'https://schema.org/EventScheduled',
@@ -32,7 +32,7 @@ const SEOStructuredData = memo(({ speakersData = [] }) => {
     'organizer': {
       '@type': 'Organization',
       'name': 'Compass Detroit / GDG Detroit',
-      'url': 'https://midevfest26.vercel.app/',
+      'url': 'https://www.midevfest.com/',
     },
     'performer': speakersData.map((speaker) => ({
       '@type': 'Person',
