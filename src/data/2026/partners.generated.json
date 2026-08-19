@@ -4,9 +4,9 @@
     "slug": "little-caesars",
     "name": "Little Caesars",
     "tier": "diamond",
-    "logo": "https://cdn.sanity.io/images/5qtiaw9u/production/14143e16580fd54edf3b02e1ae1b59ed2cd2625b-300x102.webp",
+    "logo": "https://cdn.sanity.io/images/5qtiaw9u/production/f40f2d57084cebcacc7842f2a169e19764afdc7c-400x136.png",
     "logoAlt": "Little Caesars",
-    "logoSurface": "dark",
+    "logoSurface": "light",
     "url": "https://www.littlecaesars.com",
     "description": "Founded in Detroit in 1959, Little Caesars is now the third largest pizza chain in the world."
   },
@@ -66,17 +66,6 @@
     "description": "Kaggle is a platform for data science and machine learning competitions."
   },
   {
-    "id": 387691824,
-    "slug": "nsbe",
-    "name": "NSBE",
-    "tier": "community",
-    "logo": "https://cdn.sanity.io/images/5qtiaw9u/production/26cf4c2e7d984fb429144223f0dc6c661faad2a1-300x300.webp",
-    "logoAlt": "NSBE",
-    "logoSurface": "dark",
-    "url": "https://www.nsbe.org",
-    "description": "A community of Black engineers and scientists passionate about technology and innovation."
-  },
-  {
     "id": 1292925936,
     "slug": "gdg-detroit",
     "name": "GDG Detroit",
@@ -88,15 +77,26 @@
     "description": "The Detroit Google Developers Group meets monthly online and in downtown Detroit to educate and connect software developers."
   },
   {
-    "id": 1409193989,
-    "slug": "detroit-hacker-house",
-    "name": "Detroit Hacker House",
+    "id": 346629859,
+    "slug": "gdg-ann-arbor",
+    "name": "GDG Ann Arbor",
     "tier": "community",
-    "logo": "https://cdn.sanity.io/images/5qtiaw9u/production/28126749a471435d05487cc05d50827ec40a9358-300x240.webp",
-    "logoAlt": "Detroit Hacker House",
+    "logo": "https://cdn.sanity.io/images/5qtiaw9u/production/72efe0633ccea09b4414eff94dedd7ea0c21ccc1-400x400.png",
+    "logoAlt": "GDG Ann Arbor",
     "logoSurface": "dark",
-    "url": "https://detroithackerhouse.com",
-    "description": "A community-driven space for learning, collaboration, and innovation."
+    "url": "https://gdg.community.dev/gdg-ann-arbor/",
+    "description": "The Ann Arbor Google Developers Group meets monthly online and in downtown Ann Arbor to educate and connect software developers."
+  },
+  {
+    "id": 387691824,
+    "slug": "nsbe",
+    "name": "NSBE",
+    "tier": "community",
+    "logo": "https://cdn.sanity.io/images/5qtiaw9u/production/26cf4c2e7d984fb429144223f0dc6c661faad2a1-300x300.webp",
+    "logoAlt": "NSBE",
+    "logoSurface": "dark",
+    "url": "https://www.nsbe.org",
+    "description": "A community of Black engineers and scientists passionate about technology and innovation."
   },
   {
     "id": 387553006,
@@ -110,15 +110,26 @@
     "description": "Transforming lives in Detroit by inspiring and motivating young Hispanic students to excel in STEM education."
   },
   {
-    "id": 101152379,
-    "slug": "dev-of-detroit",
-    "name": "Dev of Detroit",
+    "id": 1575526201,
+    "slug": "techqueria",
+    "name": "Techqueria",
     "tier": "community",
-    "logo": "https://cdn.sanity.io/images/5qtiaw9u/production/a690148c3c3a477ccc6034218415633c84c02164-300x388.webp",
-    "logoAlt": "Dev of Detroit",
+    "logo": "https://cdn.sanity.io/images/5qtiaw9u/production/2b46a87d03ae72ff40ce01ce4298cdb32d7dd1b1-300x300.webp",
+    "logoAlt": "Techqueria",
     "logoSurface": "dark",
-    "url": "https://www.instagram.com/developersofdetroit/",
-    "description": "Build what lasts."
+    "url": "https://techqueria.org",
+    "description": "Where Latine talent drives tech innovation."
+  },
+  {
+    "id": 1409193989,
+    "slug": "detroit-hacker-house",
+    "name": "Detroit Hacker House",
+    "tier": "community",
+    "logo": "https://cdn.sanity.io/images/5qtiaw9u/production/28126749a471435d05487cc05d50827ec40a9358-300x240.webp",
+    "logoAlt": "Detroit Hacker House",
+    "logoSurface": "dark",
+    "url": "https://detroithackerhouse.com",
+    "description": "A community-driven space for learning, collaboration, and innovation."
   },
   {
     "id": 659442829,
@@ -132,15 +143,15 @@
     "description": "Dedicated to empowering Detroit's tech community through collaboration, education, and innovation."
   },
   {
-    "id": 1575526201,
-    "slug": "techqueria",
-    "name": "Techqueria",
+    "id": 101152379,
+    "slug": "dev-of-detroit",
+    "name": "Dev of Detroit",
     "tier": "community",
-    "logo": "https://cdn.sanity.io/images/5qtiaw9u/production/2b46a87d03ae72ff40ce01ce4298cdb32d7dd1b1-300x300.webp",
-    "logoAlt": "Techqueria",
+    "logo": "https://cdn.sanity.io/images/5qtiaw9u/production/a690148c3c3a477ccc6034218415633c84c02164-300x388.webp",
+    "logoAlt": "Dev of Detroit",
     "logoSurface": "dark",
-    "url": "https://techqueria.org",
-    "description": "Where Latine talent drives tech innovation."
+    "url": "https://www.instagram.com/developersofdetroit/",
+    "description": "Build what lasts."
   },
   {
     "id": 998861849,
@@ -152,6 +163,50 @@
     "logoSurface": "light",
     "url": "https://www.aicollective.com/chapters/detroit",
     "description": "A community of AI enthusiasts building the future."
+  },
+  {
+    "id": 425343178,
+    "slug": "gdg-toledo",
+    "name": "GDG Toledo",
+    "tier": "community",
+    "logo": "https://cdn.sanity.io/images/5qtiaw9u/production/cc971ea6a97dd1ce687710eff845dc978cf470dc-400x400.png",
+    "logoAlt": "GDG Toledo Ohio",
+    "logoSurface": "dark",
+    "url": "https://gdg.community.dev/gdg-toledo-1/",
+    "description": "The Toledo Google Developers Group meets monthly online and in downtown Toledo to educate and connect software developers."
+  },
+  {
+    "id": 1501662749,
+    "slug": "gdg-windsor",
+    "name": "GDG Windsor",
+    "tier": "community",
+    "logo": "https://cdn.sanity.io/images/5qtiaw9u/production/e6023af32e137d05a589ef81d9becd216ba80f19-400x400.png",
+    "logoAlt": "GDG Windsor Ontario",
+    "logoSurface": "dark",
+    "url": "https://gdg.community.dev/gdg-windsor/",
+    "description": "The Windsor Google Developers Group meets monthly online and in downtown Windsor, Ontario to educate and connect software developers."
+  },
+  {
+    "id": 2113135323,
+    "slug": "gdg-um-dearborn",
+    "name": "GDG Campus UM Dearborn",
+    "tier": "community",
+    "logo": "https://cdn.sanity.io/images/5qtiaw9u/production/d097cd60edb144d9d5c246f4b93536b60bf4507e-400x400.png",
+    "logoAlt": "GDG University of Michigan Dearborn",
+    "logoSurface": "dark",
+    "url": "https://gdg.community.dev/gdg-on-campus-university-of-michigan-dearborn-dearborn-united-states/",
+    "description": "The University of Michigan-Dearborn Google Developers Group meets monthly online and in on campus to educate and connect software developers."
+  },
+  {
+    "id": 1930732906,
+    "slug": "gdg-campus-emu",
+    "name": "GDG Campus EMU",
+    "tier": "community",
+    "logo": "https://cdn.sanity.io/images/5qtiaw9u/production/c5a1c43602f3e2a92e702d95c5f67e8b834a609e-400x400.png",
+    "logoAlt": "Campus chapter of Eastern Michigan University",
+    "logoSurface": "dark",
+    "url": "https://gdg.community.dev/gdg-on-campus-eastern-michigan-university/",
+    "description": "The Eastern Michigan's Google Developers Group meets monthly online and on campus to educate and connect software developers."
   },
   {
     "id": 654537134,
