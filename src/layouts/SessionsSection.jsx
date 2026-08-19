@@ -467,7 +467,7 @@ const SessionsSection = ({
                     aria-controls="sessions-tabpanel"
                     id={`session-tab-${index}`}
                     tabIndex={isExpanded ? 0 : -1}
-                    className={`relative shrink-0 whitespace-nowrap rounded-md p-2 text-xs font-semibold uppercase tracking-wider transition-all duration-300 focus:outline-none focus-visible:ring-2 focus-visible:ring-focus-ring focus-visible:ring-offset-2 focus-visible:ring-offset-black light:focus-visible:ring-offset-white md:min-w-20 md:px-3 md:py-2 lg:min-w-36 lg:px-4 lg:text-sm ${
+                    className={`relative inline-flex min-h-6 min-w-6 shrink-0 items-center justify-center whitespace-nowrap rounded-md px-3 py-2 text-xs font-semibold uppercase tracking-wider transition-all duration-300 focus:outline-none focus-visible:ring-2 focus-visible:ring-focus-ring focus-visible:ring-offset-2 focus-visible:ring-offset-black light:focus-visible:ring-offset-white md:min-w-20 md:px-3 md:py-2 lg:min-w-36 lg:px-4 lg:text-sm ${
                       activeTab === index
                         ? 'border border-iwd-gold-400/40 bg-iwd-gold-400/15 text-iwd-gold-300 shadow-lg shadow-iwd-gold-500/10 after:absolute after:-bottom-3 after:left-1/2 after:block after:size-0 after:-translate-x-1/2 after:border-x-[10px] after:border-t-[10px] after:border-iwd-gold-400/40 after:border-x-transparent light:border-iwd-gold-500/50 light:bg-iwd-gold-500/10 light:text-iwd-gold-600 light:shadow-none'
                         : 'border border-white/5 bg-white/[0.03] text-gray-400 hover:border-white/10 hover:bg-white/[0.06] light:border-gray-200 light:bg-gray-50 light:text-gray-500 light:hover:border-iwd-gold-400/50 light:hover:bg-iwd-gold-50 light:hover:text-gray-900 dark:hover:text-white'
