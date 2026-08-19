@@ -72,8 +72,24 @@ const SURFACE_CLASSES = {
   dark: 'border border-white/10 bg-white/[0.04] hover:border-white/25 light:border-black/10 light:bg-black/[0.03] light:hover:border-black/25',
 }
 
+/**
+ * An open slot is a non-text affordance, so its border carries the whole signal
+ * and has to clear the 3:1 in ACCESSIBILITY.md against the surface behind it —
+ * near-black in dark mode, `--iwd-surface-raised` in light. The earlier /15
+ * borders sat near 1.3:1 and effectively vanished in light mode.
+ */
 const PLACEHOLDER_CLASSES =
-  'border border-dashed border-white/15 bg-white/[0.02] light:border-black/15 light:bg-black/[0.02]'
+  'border border-dashed border-white/40 bg-white/[0.02] light:border-black/40 light:bg-black/[0.02]'
+
+/**
+ * Fallback wordmark colour follows the tile, not the theme. A `light` tile is
+ * `bg-white/95` in both themes, so its text must stay dark in both; a `dark`
+ * tile flips with the theme, so its text does too.
+ */
+const FALLBACK_TEXT_CLASSES = {
+  light: 'text-gray-900',
+  dark: 'text-white light:text-gray-900',
+}
 
 const PARTNER_SHAPE = PropTypes.shape({
   id: PropTypes.oneOfType([PropTypes.number, PropTypes.string]).isRequired,
@@ -86,10 +102,12 @@ const PARTNER_SHAPE = PropTypes.shape({
   description: PropTypes.string,
 })
 
-function PartnerLogo({ partner }) {
+function PartnerLogo({ partner, surface }) {
   if (!partner.logo) {
     return (
-      <p className="text-center font-heading text-lg font-bold tracking-tight text-white light:text-gray-900">
+      <p
+        className={`text-center font-heading text-lg font-bold tracking-tight ${FALLBACK_TEXT_CLASSES[surface]}`}
+      >
         {partner.name}
       </p>
     )
@@ -106,11 +124,17 @@ function PartnerLogo({ partner }) {
   )
 }
 
-PartnerLogo.propTypes = { partner: PARTNER_SHAPE.isRequired }
+PartnerLogo.propTypes = {
+  partner: PARTNER_SHAPE.isRequired,
+  surface: PropTypes.oneOf(Object.keys(SURFACE_CLASSES)).isRequired,
+}
 
 function PartnerSlot({ partner, shape, slotLabel }) {
-  const surface = SURFACE_CLASSES[partner.logoSurface] ?? SURFACE_CLASSES.dark
-  const content = <PartnerLogo partner={partner} />
+  const surfaceKey = SURFACE_CLASSES[partner.logoSurface]
+    ? partner.logoSurface
+    : 'dark'
+  const surface = SURFACE_CLASSES[surfaceKey]
+  const content = <PartnerLogo partner={partner} surface={surfaceKey} />
 
   return (
     <li
@@ -194,7 +218,7 @@ function PartnerTier({ tier, partners }) {
             } of ${totalSlots}`}
           >
             <span
-              className="select-none text-4xl font-light leading-none text-gray-400/60"
+              className="select-none text-4xl font-light leading-none text-gray-500"
               aria-hidden="true"
             >
               +
@@ -228,7 +252,12 @@ const PartnersSection = ({ partnersData = [], year }) => {
     byTier.get(partner.tier)?.push(partner)
   }
 
-  const hasPartners = partnersData.length > 0
+  // Derived from the grouped rows, not the raw ones: a partner whose tier is
+  // missing from TIER_DISPLAY is dropped by the grouping above, so counting raw
+  // rows would render an empty grid instead of the "looking for partners" copy.
+  const hasPartners = TIER_DISPLAY.some(
+    ({ key }) => (byTier.get(key) ?? []).length > 0
+  )
 
   return (
     <section

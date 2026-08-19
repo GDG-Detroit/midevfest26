@@ -32,16 +32,25 @@ Google Sheet / prior-year repo
 
 - `src/data/<year>/speakers.generated.json`
 - `src/data/2026/team.generated.json`
+- `src/data/2026/partners.generated.json`
 - `src/data/events.generated.json` — the archive-year manifest; a new year appearing in
   Sanity shows up here without a code edit
 
 To change their contents, change the data in Sanity and re-run `pnpm run fetch:event-data`.
 Editing them directly produces a change that the next build silently reverts.
 
-Everything else in `src/data/2026/` (`partners.js`, `venues.js`, `schedules.js`,
-`jobboard.js`, `navigation.js`, `community.js`, `conferenceActivities.js`,
-`inspirationalQuotes.js`) is still hand-authored static data. Moving more of it into
-Sanity is active work — see the `sanity-content-migration` skill before starting.
+`speakers.js`, `team.js`, and `partners.js` are **generated passthroughs**: thin wrappers
+that re-export their `*.generated.json` with no content of their own. Sanity is the source
+of truth for all three — edit them in the Studio, not here.
+
+Everything else in `src/data/2026/` (`venues.js`, `schedules.js`, `jobboard.js`,
+`navigation.js`, `community.js`, `conferenceActivities.js`, `inspirationalQuotes.js`) is
+still hand-authored static data. Moving more of it into Sanity is active work — see the
+`sanity-content-migration` skill before starting.
+
+Image assets follow the same split. Speaker and team headshots live in Sanity and serve
+from its CDN; `src/data/2026/assets/attendees/` and `.../images/job-board/` are still
+local files, because neither content type exists in Sanity yet.
 
 ## Commands
 
