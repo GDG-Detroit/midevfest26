@@ -31,6 +31,9 @@
     "*.{js,jsx}": [
       "eslint --fix",
       "prettier --write"
+    ],
+    "*.{mjs,cjs,ts,tsx,md,json,css,scss,yml,yaml,html}": [
+      "prettier --write"
     ]
   },
   "dependencies": {
