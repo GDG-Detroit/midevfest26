@@ -22,6 +22,17 @@
     "description": "IBM is a global technology company providing hardware, software, and services to businesses and organizations."
   },
   {
+    "id": 1316007954,
+    "slug": "vonage",
+    "name": "Vonage",
+    "tier": "platinum",
+    "logo": "https://cdn.sanity.io/images/5qtiaw9u/production/7ea06aa76369352c38b13b801e51f24efa7fd84b-1000x400.png",
+    "logoAlt": "Vonage, part of Ericsson",
+    "logoSurface": "light",
+    "url": "https://www.vonage.com",
+    "description": "Vonage is a cloud communications company and part of Ericsson."
+  },
+  {
     "id": 1755794040,
     "slug": "dte-energy",
     "name": "DTE Energy",
