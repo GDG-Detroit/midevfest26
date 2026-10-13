@@ -45,9 +45,13 @@ function HeroForeground() {
             aria-labelledby="main-heading"
           >
             {/* Top metadata */}
-            <p className="font-body text-[10px] font-semibold uppercase tracking-[0.35em] text-white/75 sm:text-xs">
-              Detroit &middot; 2026 &middot; Powered by Compass Detroit <br />{' '}
-              &amp; Little Caesars
+            <p className="font-body text-[10px] font-semibold uppercase leading-[1.8] tracking-[0.28em] text-white/75 sm:text-xs">
+              <span className="block">Detroit &middot; 2026</span>
+              <span className="block">Hollywood Casino at Greektown</span>
+              <span className="mt-1 block tracking-[0.16em] sm:tracking-[0.2em]">
+                Powered by Compass Detroit <br className="sm:hidden" />
+                &amp; Little Caesars
+              </span>
             </p>
 
             {/* Main title */}
