@@ -38,7 +38,10 @@ const loaderByYear = new Map(
  * TODO: promote to the event schema so this map can go away.
  */
 const EVENT_DETAILS = {
-  2026: { date: 'November 13-14, 2026', location: 'LCRC, Detroit' },
+  2026: {
+    date: 'November 13-14, 2026',
+    location: 'Hollywood Casino Hotel at Greektown',
+  },
   2025: {
     date: 'November 2025',
     location: 'MotorCity Casino, Detroit',
