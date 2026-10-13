@@ -1,14 +1,14 @@
 [
   {
-    "id": 1364179335,
-    "slug": "little-caesars",
-    "name": "Little Caesars",
+    "id": 886606401,
+    "slug": "google",
+    "name": "Google",
     "tier": "diamond",
-    "logo": "https://cdn.sanity.io/images/5qtiaw9u/production/f40f2d57084cebcacc7842f2a169e19764afdc7c-400x136.png",
-    "logoAlt": "Little Caesars",
-    "logoSurface": "light",
-    "url": "https://www.littlecaesars.com",
-    "description": "Founded in Detroit in 1959, Little Caesars is now the third largest pizza chain in the world."
+    "logo": "https://cdn.sanity.io/images/5qtiaw9u/production/5a84a928560b6523e1d845d33e36e72ec3937d4b-300x99.webp",
+    "logoAlt": "Google",
+    "logoSurface": "dark",
+    "url": "https://about.google",
+    "description": "AI for everyone. Building for everyone."
   },
   {
     "id": 126035820,
@@ -22,17 +22,6 @@
     "description": "IBM is a global technology company providing hardware, software, and services to businesses and organizations."
   },
   {
-    "id": 886606401,
-    "slug": "google",
-    "name": "Google",
-    "tier": "platinum",
-    "logo": "https://cdn.sanity.io/images/5qtiaw9u/production/5a84a928560b6523e1d845d33e36e72ec3937d4b-300x99.webp",
-    "logoAlt": "Google",
-    "logoSurface": "dark",
-    "url": "https://about.google",
-    "description": "AI for everyone. Building for everyone."
-  },
-  {
     "id": 1755794040,
     "slug": "dte-energy",
     "name": "DTE Energy",
@@ -42,6 +31,17 @@
     "logoSurface": "dark",
     "url": "https://www.dteenergy.com",
     "description": "DTE Energy is a Detroit-based diversified energy company providing energy solutions across Michigan."
+  },
+  {
+    "id": 1364179335,
+    "slug": "little-caesars",
+    "name": "Little Caesars",
+    "tier": "gold",
+    "logo": "https://cdn.sanity.io/images/5qtiaw9u/production/f40f2d57084cebcacc7842f2a169e19764afdc7c-400x136.png",
+    "logoAlt": "Little Caesars",
+    "logoSurface": "light",
+    "url": "https://www.littlecaesars.com",
+    "description": "Founded in Detroit in 1959, Little Caesars is now the third largest pizza chain in the world."
   },
   {
     "id": 126039969,

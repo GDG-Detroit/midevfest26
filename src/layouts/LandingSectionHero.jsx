@@ -50,7 +50,7 @@ function HeroForeground() {
               <span className="block">Hollywood Casino at Greektown</span>
               <span className="mt-1 block tracking-[0.16em] sm:tracking-[0.2em]">
                 Powered by Compass Detroit <br className="sm:hidden" />
-                &amp; Little Caesars
+                &amp; Google
               </span>
             </p>
 
