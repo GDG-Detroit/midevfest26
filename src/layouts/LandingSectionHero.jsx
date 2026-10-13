@@ -47,7 +47,7 @@ function HeroForeground() {
             {/* Top metadata */}
             <p className="font-body text-[10px] font-semibold uppercase tracking-[0.35em] text-white/75 sm:text-xs">
               Detroit &middot; 2026 &middot; Powered by Compass Detroit <br />{' '}
-              &amp; Little Caesars
+              Hollywood Casino at Greektown
             </p>
 
             {/* Main title */}
