@@ -14,44 +14,47 @@ import SectionSkipLink from '@/components/ui/SectionSkipLink'
 import { GOLD_PRIMARY_LIGHT_HOVER } from '@/constants/goldPrimaryButtonLightHover'
 
 // Venue images
-import lcHqFacade from '@/assets/images/location/lc_hq_facade.jpg'
-import lcHqLobby from '@/assets/images/location/lc_hq_lobby.jpg'
-import lcHqBlueRed from '@/assets/images/location/lc_hq_blue_red.jpg'
-import lcHqFacade2 from '@/assets/images/location/lc_hq_facade_2.jpg'
-import lcHqFox from '@/assets/images/location/lc_hq_fox.jpg'
+import streetGreektown from '@/assets/images/location/street-greektown.webp'
+import greektownNight from '@/assets/images/location/greektown-night.jpg'
+import hotelLobby from '@/assets/images/location/hotel-lobby.jpg'
+import conferenceCenter from '@/assets/images/location/conference-center.webp'
+import boardroom from '@/assets/images/location/boardroom.webp'
 
 const VENUE_IMAGES = [
   {
-    src: lcHqFacade,
-    alt: 'Little Caesars HQ Main Entrance',
-    label: 'Main Entrance & Facade',
+    src: streetGreektown,
+    alt: 'Hollywood Casino Hotel tower above the Greektown street',
+    label: 'Hotel & Greektown',
   },
   {
-    src: lcHqLobby,
-    alt: 'Little Caesars HQ Lobby',
-    label: 'Lobby & Atrium',
+    src: greektownNight,
+    alt: 'Greektown street at night with the hotel tower',
+    label: 'Greektown at Night',
   },
   {
-    src: lcHqBlueRed,
-    alt: 'Little Caesars HQ Night Illumination',
-    label: 'Nighttime Illumination',
+    src: hotelLobby,
+    alt: 'Hollywood Casino Hotel lobby',
+    label: 'Hotel Lobby',
   },
   {
-    src: lcHqFacade2,
-    alt: 'Little Caesars HQ Architectural Detail',
-    label: 'Architectural Details',
+    src: conferenceCenter,
+    alt: 'Conference center ballroom set for a meeting',
+    label: 'Conference Center',
   },
   {
-    src: lcHqFox,
-    alt: 'Historic Fox Theatre Neighborhood',
-    label: 'Historic Fox Theatre',
+    src: boardroom,
+    alt: 'Conference center boardroom with a view of downtown',
+    label: 'Boardroom',
   },
 ]
 
 const AUTOPLAY_INTERVAL = 5000
 
 const VENUE_GOOGLE_MAPS_URL =
-  'https://www.google.com/maps/search/?api=1&query=2125+Woodward+Ave,+Detroit,+MI+48201'
+  'https://www.google.com/maps/search/?api=1&query=Hollywood+Casino+Hotel+at+Greektown,+555+E+Lafayette+St,+Detroit,+MI+48226'
+
+const VENUE_MAP_EMBED_URL =
+  'https://maps.google.com/maps?q=Hollywood+Casino+Hotel+at+Greektown,+555+E+Lafayette+St,+Detroit,+MI+48226&z=16&output=embed'
 
 function LocationSection() {
   const [activeImg, setActiveImg] = useState(0)
@@ -180,10 +183,13 @@ function LocationSection() {
               <h3 className="text-xl font-semibold text-white">Venue</h3>
             </div>
             <p className="mb-2 text-2xl font-bold text-white">
-              Little Caesars HQ
+              Hollywood Casino Hotel at Greektown
+            </p>
+            <p className="mb-1 text-lg font-bold text-gray-400">
+              Conference Center
             </p>
             <p className="mb-4 text-lg font-bold text-gray-400">
-              2125 Woodward Ave, Detroit, MI 48201
+              555 E. Lafayette St, Detroit, MI 48226
             </p>
             <div className="flex flex-wrap gap-3">
               <a
@@ -340,10 +346,10 @@ function LocationSection() {
           <div className="w-full lg:w-1/2">
             <div className="bg-iwd-surface-raised relative aspect-[4/3] w-full overflow-hidden rounded-3xl border border-white/[0.1] shadow-2xl dark:bg-iwd-black-950/50">
               <div className="absolute right-4 top-4 z-20 rounded-md bg-black/60 px-3 py-1 text-xs font-bold uppercase tracking-widest text-iwd-gold-300">
-                Little Caesars HQ
+                Greektown
               </div>
               <iframe
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1474.743169822604!2d-83.05315364177726!3d42.338780280806414!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8824d2ca78df0e73%3A0xe54d6afcc1dacc7!2sLittle%20Caesars%20Global%20Resource%20Center!5e0!3m2!1sen!2sus!4v1711204899999!5m2!1sen!2sus"
+                src={VENUE_MAP_EMBED_URL}
                 width="100%"
                 height="100%"
                 style={{
@@ -353,7 +359,7 @@ function LocationSection() {
                 allowFullScreen=""
                 loading="lazy"
                 referrerPolicy="no-referrer-when-downgrade"
-                title="Little Caesars HQ Venue Map"
+                title="Hollywood Casino Hotel at Greektown map"
                 className="absolute inset-0 size-full"
               />
               <div className="pointer-events-none absolute inset-0 z-10 rounded-3xl ring-1 ring-inset ring-white/10" />
@@ -361,7 +367,7 @@ function LocationSection() {
               {/* Pin Overlay */}
               <div className="pointer-events-none absolute left-1/2 top-1/2 flex -translate-x-1/2 -translate-y-1/2 flex-col items-center">
                 <div className="mb-2 rounded-full bg-iwd-gold-400/90 px-3 py-1 text-[10px] font-black uppercase tracking-widest text-iwd-black-950 shadow-2xl">
-                  PIZZA PIZZA
+                  Conference Center
                 </div>
                 <FaMapPin className="size-10 text-iwd-gold-400 drop-shadow-[0_0_15px_rgba(255,184,0,0.8)]" />
               </div>
@@ -401,11 +407,11 @@ function LocationSection() {
                 </div>
                 <div>
                   <strong className="mb-1 block text-white">
-                    Fox Garage (Recommended)
+                    Greektown Self-Park Garage
                   </strong>
                   <p className="text-base leading-relaxed text-gray-400">
-                    Adjacent at 50 W Montcalm St. Most convenient for a quick
-                    walk to the entrance.
+                    1211 Crysler Dr. Enter from the I-375 Lafayette ramp. Public
+                    parking; pay by credit card at the kiosk.
                   </p>
                 </div>
               </div>
@@ -415,38 +421,11 @@ function LocationSection() {
                 </div>
                 <div>
                   <strong className="mb-1 block text-white">
-                    Opera House Garage
-                  </strong>
-                  <p className="text-base leading-relaxed text-gray-400">
-                    Located at 1601 Broadway St. Short walk through District
-                    Detroit.
-                  </p>
-                </div>
-              </div>
-              <div className="flex items-start gap-4">
-                <div className="mt-1 flex size-6 shrink-0 items-center justify-center rounded-full bg-iwd-gold-400 font-heading text-[10px] font-black text-iwd-black-950">
-                  3
-                </div>
-                <div>
-                  <strong className="mb-1 block text-white">
-                    Comerica Park Lots
-                  </strong>
-                  <p className="text-base leading-relaxed text-gray-400">
-                    Various lots along Witherell St and Montcalm St.
-                  </p>
-                </div>
-              </div>
-              <div className="flex items-start gap-4">
-                <div className="mt-1 flex size-6 shrink-0 items-center justify-center rounded-full bg-iwd-gold-400 font-heading text-[10px] font-black text-iwd-black-950">
-                  4
-                </div>
-                <div>
-                  <strong className="mb-1 block text-white">
                     MGM Grand Garage (Free)
                   </strong>
                   <p className="text-base leading-relaxed text-gray-400">
-                    Free parking available at MGM Grand Detroit. A scenic ~12
-                    min walk to the venue.
+                    Free parking at MGM Grand Detroit, across town from
+                    Greektown.
                   </p>
                 </div>
               </div>
@@ -457,8 +436,8 @@ function LocationSection() {
           <div className="group rounded-2xl border border-white/[0.06] bg-white/[0.02] p-8 backdrop-blur-sm transition-all duration-300 hover:border-white/[0.12] hover:bg-white/[0.04]">
             <h3 className="mb-3 text-xl font-semibold text-white">Entrance</h3>
             <p className="text-lg leading-relaxed text-gray-400">
-              Enter through the main front doors on Woodward Avenue. Check-in is
-              located in the main lobby. Have your registration QR code ready.
+              The event is in the conference center. Check-in is there. Have
+              your registration QR code ready.
             </p>
           </div>
         </div>

@@ -1,6 +1,6 @@
 const DEFAULT_EVENT_DATE = '2026-03-28'
 const DEFAULT_TIMEZONE_OFFSET = '-04:00'
-const DEFAULT_LOCATION_PREFIX = 'IBM HQ Detroit'
+const DEFAULT_LOCATION_PREFIX = 'Hollywood Casino Hotel at Greektown'
 
 // Formats a Date object to YYYYMMDDTHHmmssZ
 const formatDate = (date) =>

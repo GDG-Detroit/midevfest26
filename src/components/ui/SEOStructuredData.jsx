@@ -19,13 +19,13 @@ const SEOStructuredData = memo(({ speakersData = [] }) => {
     'eventAttendanceMode': 'https://schema.org/OfflineEventAttendanceMode',
     'location': {
       '@type': 'Place',
-      'name': 'Little Caesars Global Corporate Office',
+      'name': 'Hollywood Casino Hotel at Greektown',
       'address': {
         '@type': 'PostalAddress',
-        'streetAddress': '2125 Woodward Ave',
+        'streetAddress': '555 E. Lafayette St',
         'addressLocality': 'Detroit',
         'addressRegion': 'MI',
-        'postalCode': '48201',
+        'postalCode': '48226',
         'addressCountry': 'US',
       },
     },

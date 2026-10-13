@@ -14,7 +14,7 @@ solved — accessibility, performance, mobile layout, and a design system we con
 
 What's already done and correct for 2026:
 
-- **Venue and map** — Little Caesars Resource Center (LCRC), with a working interactive map
+- **Venue and map** — Hollywood Casino Hotel at Greektown, conference center, with a Google map
 - **Page structure** — landing, about, sessions, speakers, team, partners, job board, location
 - **Team and partner content**
 - **Content management system** — a new Sanity CMS instance under the Compass Detroit
@@ -55,11 +55,11 @@ updates.
 
 ## Handling the venue difference
 
-Last year's event was at the MotorCity Casino Conference Center. This year is at LCRC.
+Last year's event was at the MotorCity Casino Conference Center. This year is at Hollywood Casino Hotel at Greektown.
 That means last year's room assignments (MCC2, Sound Board, Salon A-C) are meaningless
 on this year's map.
 
-**How we handle it:** the site shows the **LCRC map and venue**, because that's where
+**How we handle it:** the site shows the **Greektown hotel and map**, because that's where
 DevFest 2026 actually is and that's what visitors need to know. Last year's sessions are
 imported **without room assignments** — they display with title, speaker, track, and time
 slot, but no room label.
@@ -78,7 +78,7 @@ DevFest 2025 ran seven tracks — Level Up, Leadership, Hackathon, Innovation, B
 AI, Tech+Design, and Workshops. The site supports multiple tracks with tabbed navigation,
 and we'll restore that for both last year's content and this year's.
 
-**Open question for planning:** what track structure do we expect at LCRC in 2026? This
+**Open question for planning:** what track structure do we expect at the Greektown conference center in 2026? This
 doesn't block anything now, but it shapes how the schedule is laid out and is worth
 settling before the program firms up.
 
@@ -106,7 +106,7 @@ published, adding a speaker takes minutes and doesn't require me.
 1. **Confirmation** that publishing with last year's program, clearly labeled, is
    acceptable.
 2. **Event date** for 2026, once it's set.
-3. **Track structure** expected at LCRC — even a rough sense.
+3. **Track structure** expected at the Greektown conference center — even a rough sense.
 4. **Speaker pipeline guidelines** from Jenna when they exist, however provisional.
    Knowing the shape of the process matters more right now than firm dates.
 

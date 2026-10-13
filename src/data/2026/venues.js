@@ -27,8 +27,8 @@ export const PLACEHOLDER_TRACKS_2025 = [
 ]
 
 export const VENUE_ROOMS = {
-  LEVEL_UP: 'Rooms 2415 & 2416',
-  KITCHEN: 'Kitchen',
+  LEVEL_UP: '',
+  KITCHEN: '',
 }
 
 /** Primary room per schedule track. */
