@@ -15,6 +15,29 @@
 # reintroduces the ERESOLVE conflict documented in the react-vite-major-upgrade skill.
 overrides:
   '@babel/core': ^7.29.0
+  # Parents pin ranges that stop short of the patched release, so
+  # `pnpm audit --audit-level high` stays red until these are forced.
+  # basic-ftp is the one major bump: get-uri asks for ^5, and 5.x has no fix.
+  adm-zip: ^0.6.1
+  axios: ^1.20.0
+  basic-ftp: ^6.2.1
+  'brace-expansion@1': ^1.1.20
+  'brace-expansion@2': ^2.1.6
+  compression: ^1.8.2
+  fast-uri: ^3.1.7
+  js-yaml: ^4.3.2
+  source-map-js: ^1.2.2
+  svgo: ^3.3.5
+  # @axe-core/cli depends on chromedriver "latest". Keep the driver this
+  # repo already ran in CI instead of floating it on a lockfile refresh.
+  chromedriver: 151.0.5
+
+# braces >=3.0.4 is the release named by this advisory, and npm has never
+# published it (latest is 3.0.3). The finding is a stack overflow in
+# Tailwind's dev-time file watcher, not in the shipped site.
+audit:
+  ignore:
+    - GHSA-vfj7-8cjw-p6xm
 
 # Dependency install scripts are blocked by default in pnpm 11 and `strictDepBuilds`
 # now defaults to true, so an unlisted package that wants to build fails the install
