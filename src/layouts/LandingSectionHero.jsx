@@ -47,7 +47,7 @@ function HeroForeground() {
             {/* Top metadata */}
             <p className="font-body text-[10px] font-semibold uppercase tracking-[0.35em] text-white/75 sm:text-xs">
               Detroit &middot; 2026 &middot; Powered by Compass Detroit <br />{' '}
-              &amp; Little Caesars HQ
+              &amp; Little Caesars
             </p>
 
             {/* Main title */}
@@ -107,15 +107,16 @@ function HeroForeground() {
             <p className="mt-6 font-body text-[11px] uppercase tracking-[0.2em] text-white/90 sm:text-xs">
               Venue:{' '}
               <span className="inline-block rounded border border-iwd-gold-400 bg-white/[0.04] px-2 py-0.5 font-semibold uppercase tracking-[0.15em] text-iwd-gold-300">
-                Little Caesars HQ
+                Hollywood Casino Hotel at Greektown
               </span>
             </p>
 
             {/* Description */}
             <p className="mx-auto mt-6 max-w-xl font-body text-base leading-relaxed text-white md:mx-0">
               Two days of learning, building, and connecting for innovators
-              across Detroit&apos;s tech ecosystem — hosted at Little Caesars
-              Corporate Office with workshops, talks, and community.
+              across Detroit&apos;s tech ecosystem — hosted at the conference
+              center at Hollywood Casino Hotel at Greektown, with workshops,
+              talks, and community.
             </p>
 
             {/* Footer links */}
