@@ -20,7 +20,6 @@ const HERO_LINKS = [
 ]
 
 const REGISTER_URL = 'https://bit.ly/midevfest26'
-const SPEAKER_CFP_URL = 'https://bit.ly/compass-speakers-26'
 
 function HeroForeground() {
   return (
@@ -47,7 +46,9 @@ function HeroForeground() {
             {/* Top metadata */}
             <p className="font-body text-[10px] font-semibold uppercase leading-[1.8] tracking-[0.28em] text-white/75 sm:text-xs">
               <span className="block">Detroit &middot; 2026</span>
-              <span className="block">Hollywood Casino at Greektown</span>
+              <span className="block">
+                Hollywood Casino Hotel <br className="sm:hidden" /> at Greektown
+              </span>
               <span className="mt-1 block tracking-[0.16em] sm:tracking-[0.2em]">
                 Powered by Compass Detroit <br className="sm:hidden" />
                 &amp; Google
@@ -89,18 +90,6 @@ function HeroForeground() {
                 target="_blank"
                 rel="noopener noreferrer"
                 ariaLabel="Become a sponsor for Michigan DevFest"
-                className="w-full min-w-48 border-iwd-gold-400/40 text-white sm:w-auto dark:border-iwd-gold-400/40 dark:text-white dark:hover:text-white"
-                icon={<FaArrowRight />}
-                iconPosition="right"
-              />
-
-              <CTAButton
-                href={SPEAKER_CFP_URL}
-                label="Become a Speaker"
-                variant="secondary"
-                target="_blank"
-                rel="noopener noreferrer"
-                ariaLabel="Apply to speak at Michigan DevFest (opens in new tab)"
                 className="w-full min-w-48 border-iwd-gold-400/40 text-white sm:w-auto dark:border-iwd-gold-400/40 dark:text-white dark:hover:text-white"
                 icon={<FaArrowRight />}
                 iconPosition="right"
