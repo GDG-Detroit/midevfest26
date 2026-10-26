@@ -158,9 +158,20 @@ const SessionsSection = ({
   year = new Date().getFullYear(),
   tracks = [],
   defaultExpanded = true,
+  defaultTab,
   isArchived = false,
 }) => {
-  const [activeTab, setActiveTab] = useState(0)
+  // Opens on `defaultTab` when it is one of the tabs, otherwise the first tab.
+  const [activeTab, setActiveTab] = useState(() => {
+    const names = tracks.includes('Map')
+      ? [
+          'Map',
+          ...(isArchived ? [] : ['My Schedule']),
+          ...tracks.filter((t) => t !== 'Map'),
+        ]
+      : [...(isArchived ? [] : ['My Schedule']), ...tracks]
+    return Math.max(0, names.indexOf(defaultTab))
+  })
   const [isExpanded, setIsExpanded] = useState(defaultExpanded)
   const [direction, setDirection] = useState(
     defaultExpanded === true ? DIRECTION.TOP : DIRECTION.BOTTOM
@@ -840,6 +851,8 @@ SessionsSection.propTypes = {
   year: PropTypes.number,
   tracks: PropTypes.arrayOf(PropTypes.string),
   defaultExpanded: PropTypes.bool,
+  /** Tab selected on first render, e.g. 'Build with AI'. Falls back to the first tab. */
+  defaultTab: PropTypes.string,
   /**
    * Renders the section as a historical record. Hides the My Schedule tab, the
    * sidebar and the conflict banner, and tells each card to swap its save and

@@ -33,13 +33,14 @@ function Home() {
           speakersData={Speakers2026}
           year={EVENT_YEAR}
           defaultExpanded={true}
+          defaultTab={SCHEDULE_TRACK}
           tracks={[SCHEDULE_TRACK, ...PROGRAM_TRACKS]}
         />
 
         <SpeakersSection
           speakersData={Speakers2026}
           year={EVENT_YEAR}
-          defaultExpanded={false}
+          defaultExpanded={true}
         />
 
         <AboutSection />
