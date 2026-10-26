@@ -455,7 +455,7 @@ const SessionsSection = ({
               role="tablist"
               aria-orientation="horizontal"
               id="sessions-nav"
-              className={`scrollbar-visible bg-iwd-surface-raised flex w-full flex-nowrap items-center justify-start gap-3 overflow-x-auto overflow-y-visible rounded-2xl border border-white/5 p-3 backdrop-blur-md md:px-6 dark:bg-iwd-black-950/50 ${
+              className={`scrollbar-elevator bg-iwd-surface-raised flex w-full flex-nowrap items-center justify-start gap-3 overflow-x-auto overflow-y-visible rounded-2xl border border-white/5 p-3 backdrop-blur-md md:px-6 dark:bg-iwd-black-950/50 ${
                 isExpanded
                   ? 'max-h-none opacity-100'
                   : 'max-h-0 opacity-0 transition-all'

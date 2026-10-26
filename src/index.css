@@ -668,6 +668,22 @@
 [data-mode='light'] .scrollbar-visible::-webkit-scrollbar-track {
   background: #e2e8f0;
 }
+[data-mode='light'] .scrollbar-elevator {
+  scrollbar-color: rgb(var(--iwd-accent-900)) #e2e8f0;
+}
+[data-mode='light'] .scrollbar-elevator::-webkit-scrollbar-track {
+  background: #e2e8f0;
+}
+[data-mode='light'] .scrollbar-elevator::-webkit-scrollbar-thumb {
+  background: rgb(var(--iwd-accent-900));
+  border-color: #e2e8f0;
+}
+[data-mode='light'] .scrollbar-elevator::-webkit-scrollbar-thumb:hover {
+  background: rgb(var(--iwd-accent-800));
+}
+[data-mode='light'] .scrollbar-elevator::-webkit-scrollbar-thumb:active {
+  background: rgb(var(--iwd-accent-700));
+}
 
 [data-mode='dark'],
 :root {
@@ -731,6 +747,33 @@
   }
   .scrollbar-visible::-webkit-scrollbar-thumb:hover {
     background: rgb(var(--iwd-accent-300));
+  }
+
+  /* "Elevator box": a larger, grabbable scroll thumb for the schedule tabs */
+  .scrollbar-elevator {
+    scrollbar-width: auto; /* Firefox */
+    scrollbar-color: rgb(var(--iwd-accent-400)) #1f2937;
+  }
+  .scrollbar-elevator::-webkit-scrollbar {
+    height: 18px;
+  }
+  .scrollbar-elevator::-webkit-scrollbar-track {
+    background: #1f2937;
+    border-radius: 9px;
+  }
+  .scrollbar-elevator::-webkit-scrollbar-thumb {
+    min-width: 56px;
+    background: rgb(var(--iwd-accent-400));
+    border: 3px solid #1f2937;
+    border-radius: 9px;
+    cursor: grab;
+  }
+  .scrollbar-elevator::-webkit-scrollbar-thumb:hover {
+    background: rgb(var(--iwd-accent-300));
+  }
+  .scrollbar-elevator::-webkit-scrollbar-thumb:active {
+    background: rgb(var(--iwd-accent-200));
+    cursor: grabbing;
   }
 }
 
