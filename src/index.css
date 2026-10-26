@@ -734,6 +734,36 @@
   }
 }
 
+/* Schedule tab scrollbar: 58x29 grip thumb (accent-driven) */
+.tab-scrollbar-track {
+  background: #1f2937;
+}
+[data-mode='light'] .tab-scrollbar-track {
+  background: #cbd5e1;
+}
+.tab-thumb-outer {
+  fill: rgb(var(--iwd-accent-400));
+  stroke: rgb(var(--iwd-accent-950));
+}
+.tab-thumb-inner {
+  fill: rgb(var(--iwd-accent-400));
+  stroke: rgb(var(--iwd-accent-500));
+}
+.tab-thumb-glyph {
+  stroke: rgb(var(--iwd-accent-950));
+}
+.tab-thumb-grip {
+  fill: rgb(var(--iwd-accent-950));
+}
+[role='scrollbar']:hover .tab-thumb-outer,
+[role='scrollbar']:hover .tab-thumb-inner {
+  fill: rgb(var(--iwd-accent-300));
+}
+[role='scrollbar']:active .tab-thumb-outer,
+[role='scrollbar']:active .tab-thumb-inner {
+  fill: rgb(var(--iwd-accent-200));
+}
+
 /* Yoda 404 keyframes (@keyframes are not layer-aware) */
 @keyframes float {
   0%,

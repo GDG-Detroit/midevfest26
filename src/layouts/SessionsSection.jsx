@@ -5,6 +5,7 @@ import useSchedule from '@/hooks/useSchedule'
 import ActivityCard from '@/components/sessions/ActivityCard'
 import MyScheduleExports from '@/components/sessions/MyScheduleExports'
 import SessionCard from '@/components/sessions/SessionCard'
+import TabScrollbar from '@/components/sessions/TabScrollbar'
 import SectionSkipLink from '@/components/ui/SectionSkipLink'
 import VenueMaps from '@/components/sessions/VenueMaps'
 import MyScheduleEmptyState from '@/components/sessions/MyScheduleEmptyState'
@@ -455,7 +456,7 @@ const SessionsSection = ({
               role="tablist"
               aria-orientation="horizontal"
               id="sessions-nav"
-              className={`scrollbar-visible bg-iwd-surface-raised flex w-full flex-nowrap items-center justify-start gap-3 overflow-x-auto overflow-y-visible rounded-2xl border border-white/5 p-3 backdrop-blur-md md:px-6 dark:bg-iwd-black-950/50 ${
+              className={`scrollbar-hide bg-iwd-surface-raised flex w-full flex-nowrap items-center justify-start gap-3 overflow-x-auto overflow-y-visible rounded-2xl border border-white/5 p-3 backdrop-blur-md md:px-6 dark:bg-iwd-black-950/50 ${
                 isExpanded
                   ? 'max-h-none opacity-100'
                   : 'max-h-0 opacity-0 transition-all'
@@ -528,6 +529,11 @@ const SessionsSection = ({
                 </React.Fragment>
               ))}
             </div>
+            <TabScrollbar
+              targetRef={navRef}
+              controlsId="sessions-nav"
+              label="Scroll session tracks"
+            />
           </div>
           {/* Scroll hint for mobile */}
           {(canScrollLeft || canScrollRight) && (
@@ -552,7 +558,7 @@ const SessionsSection = ({
 
         {/* Track description: below tablist, above session cards */}
         {isExpanded && currentSession && trackDescriptions[currentSession] && (
-          <div className="mx-auto mt-6 w-full max-w-6xl px-[2.5%] md:px-[5%]">
+          <div className="mx-auto mt-12 w-full max-w-6xl px-[2.5%] md:px-[5%]">
             {trackDescriptions[currentSession]}
           </div>
         )}
