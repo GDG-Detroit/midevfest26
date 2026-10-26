@@ -111,7 +111,7 @@ const TabScrollbar = ({ targetRef, controlsId, label = 'Scroll tracks' }) => {
     <div
       ref={trackRef}
       onPointerDown={handleTrackPointerDown}
-      className={`tab-scrollbar-track relative mt-3 h-2 w-full touch-none rounded-full ${
+      className={`tab-scrollbar-track relative mx-auto mt-3 h-2 w-full max-w-xs touch-none rounded-full ${
         metrics.visible ? '' : 'invisible'
       }`}
     >
