@@ -10,7 +10,7 @@ import { GOLD_PRIMARY_LIGHT_HOVER } from '@/constants/goldPrimaryButtonLightHove
 import { DIRECTION } from '@/constants/directions'
 import { IoChevronDown } from 'react-icons/io5'
 
-const SpeakersContent = ({ year, defaultExpanded }) => {
+const SpeakersContent = ({ year, defaultExpanded = true }) => {
   const [isExpanded, setIsExpanded] = useState(defaultExpanded)
   const [direction, setDirection] = useState(
     defaultExpanded === true ? DIRECTION.TOP : DIRECTION.BOTTOM
