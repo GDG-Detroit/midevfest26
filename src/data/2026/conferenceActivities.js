@@ -2,9 +2,8 @@
  * Conference activities (non-speaker events) shown in track schedules.
  * Use 24-hour time format (e.g. "08:00", "13:00") for sorting.
  * Track names must match SessionsSection tracks exactly.
- * Room labels: import from venues.js (ACTIVITY_ROOMS prefixes "in"/"near" where needed).
  */
-import { SCHEDULE_TRACK, VENUE_ROOMS } from './venues'
+import { SCHEDULE_TRACK } from './venues'
 
 export const conferenceActivities = [
   {
@@ -14,7 +13,6 @@ export const conferenceActivities = [
     content: null,
     time: '08:00',
     timeEnd: '09:00',
-    room: VENUE_ROOMS.KITCHEN,
   },
   {
     id: 'schedule-yoga',
@@ -23,7 +21,6 @@ export const conferenceActivities = [
     content: null,
     time: '08:15',
     timeEnd: '08:45',
-    room: VENUE_ROOMS.LEVEL_UP,
   },
   {
     id: 'schedule-welcome',
@@ -32,16 +29,22 @@ export const conferenceActivities = [
     content: null,
     time: '08:45',
     timeEnd: '09:00',
-    room: VENUE_ROOMS.LEVEL_UP,
+  },
+  {
+    id: 'schedule-keynote',
+    track: SCHEDULE_TRACK,
+    title: 'Keynote',
+    content: 'Keynote speaker to be announced.',
+    time: '09:00',
+    timeEnd: '09:45',
   },
   {
     id: 'schedule-sessions-morning',
     track: SCHEDULE_TRACK,
     title: 'Sessions',
     content: null,
-    time: '09:00',
+    time: '10:00',
     timeEnd: '12:15',
-    room: VENUE_ROOMS.LEVEL_UP,
   },
   {
     id: 'schedule-lunch',
@@ -50,7 +53,6 @@ export const conferenceActivities = [
     content: null,
     time: '12:15',
     timeEnd: '13:00',
-    room: VENUE_ROOMS.KITCHEN,
   },
   {
     id: 'schedule-sessions-afternoon',
@@ -59,7 +61,6 @@ export const conferenceActivities = [
     content: null,
     time: '13:00',
     timeEnd: '16:00',
-    room: VENUE_ROOMS.LEVEL_UP,
   },
   {
     id: 'schedule-closing',
@@ -68,7 +69,6 @@ export const conferenceActivities = [
     content: null,
     time: '16:00',
     timeEnd: '16:30',
-    room: null,
   },
   {
     id: 'schedule-techie-hour',
@@ -77,6 +77,5 @@ export const conferenceActivities = [
     content: null,
     time: '16:30',
     timeEnd: '18:00',
-    room: null,
   },
 ]
