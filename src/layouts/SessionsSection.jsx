@@ -558,7 +558,7 @@ const SessionsSection = ({
 
         {/* Track description: below tablist, above session cards */}
         {isExpanded && currentSession && trackDescriptions[currentSession] && (
-          <div className="mx-auto mt-6 w-full max-w-6xl px-[2.5%] md:px-[5%]">
+          <div className="mx-auto mt-12 w-full max-w-6xl px-[2.5%] md:px-[5%]">
             {trackDescriptions[currentSession]}
           </div>
         )}
