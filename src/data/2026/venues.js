@@ -1,65 +1,24 @@
 /**
- * Venue room names for our Innovation Summit.
- * Update labels here when room assignments are confirmed.
+ * Tracks for Michigan DevFest 2026. Each track has its own room, named after
+ * the track, so there are no separate room labels to maintain.
  */
 
 /** Run-of-show tab (check-in, breaks, keynote, etc.). */
 export const SCHEDULE_TRACK = 'Schedule'
 
-/** Single session track for 2026 — all speaker sessions and activities use this. */
-export const SESSION_TRACK = 'Level Up'
-
-/**
- * Tracks of the 2025 program, which stands in as placeholder content until the
- * 2026 program is confirmed. The schedule renders one tab per track, so these
- * have to be listed for last year's sessions to be reachable at all.
- *
- * Remove this and go back to SESSION_TRACK once 2026 sessions are in the CMS.
- */
-export const PLACEHOLDER_TRACKS_2025 = [
-  'Level Up',
-  'Leadership',
-  'Hackathon',
-  'Innovation',
+/** Tracks for the 2026 program, in tab order. Keynote is a label, not a track. */
+export const PROGRAM_TRACKS = [
   'Build with AI',
-  'Tech+Design',
-  'Workshops',
+  'AI Foundations',
+  'Innovation',
+  'Leadership',
+  'Level Up',
 ]
 
-export const VENUE_ROOMS = {
-  LEVEL_UP: '',
-  KITCHEN: '',
-}
+/** Fallback track for sessions without one. */
+export const SESSION_TRACK = 'Level Up'
 
-/** Primary room per schedule track. */
-export const TRACK_ROOMS = {
-  [SESSION_TRACK]: VENUE_ROOMS.LEVEL_UP,
-  [SCHEDULE_TRACK]: '',
-}
-
-/** Prefix + room label; returns '' when room is unset so UI chips stay hidden. */
-export function withRoomPrefix(prefix, room) {
-  const label = typeof room === 'string' ? room.trim() : ''
-  return label ? `${prefix}${label}` : ''
-}
-
-/** Activity cards sometimes prefix the room (e.g. "in IBM HQ"). */
-export const ACTIVITY_ROOMS = {
-  IN_LEVEL_UP: withRoomPrefix('in ', VENUE_ROOMS.LEVEL_UP),
-  NEAR_LEVEL_UP: withRoomPrefix('near ', VENUE_ROOMS.LEVEL_UP),
-  NEAR_STAIRS_AND_LEVEL_UP: withRoomPrefix(
-    'near stairs and ',
-    VENUE_ROOMS.LEVEL_UP
-  ),
-  AT_SESSIONS: 'at Sessions',
-}
-
-export function roomForTrack(track) {
-  const room = TRACK_ROOMS[track]
-  return typeof room === 'string' ? room.trim() : ''
-}
-
+/** The track name doubles as the room name. */
 export function trackStageHeading(track) {
-  const room = roomForTrack(track)
-  return room ? `${track} stage in ${room}` : track
+  return track
 }

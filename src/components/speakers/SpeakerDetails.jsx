@@ -42,6 +42,24 @@ const TRACK_THEMES = {
     focusColor: colors.red[700],
     focusRingOffset: hexToRgba(colors.red[950], 0.6),
   },
+  'AI Foundations': {
+    gradient: `linear-gradient(135deg, ${colors.blue[600]} 0%, ${colors.blue[800]} 52%, ${colors.blue[950]} 100%)`,
+    pattern: `radial-gradient(circle at 24% 20%, ${hexToRgba(
+      colors.blue[300],
+      0.38
+    )} 0, ${hexToRgba(
+      colors.blue[300],
+      0.12
+    )} 35%, transparent 60%), radial-gradient(circle at 78% 18%, ${hexToRgba(
+      colors.sky[400],
+      0.32
+    )} 0, ${hexToRgba(colors.sky[400], 0.1)} 38%, transparent 65%)`,
+    fallbackColor: colors.blue[950],
+    badgeBorder: hexToRgba(colors.blue[300], 0.6),
+    badgeText: colors.white,
+    focusColor: colors.blue[700],
+    focusRingOffset: hexToRgba(colors.blue[950], 0.6),
+  },
   'Build with AI': {
     gradient: `linear-gradient(135deg, ${colors.violet[600]} 0%, ${colors.violet[800]} 52%, ${colors.violet[950]} 100%)`,
     pattern: `radial-gradient(circle at 24% 20%, ${hexToRgba(

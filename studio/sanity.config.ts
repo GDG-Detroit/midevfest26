@@ -16,5 +16,17 @@ export default defineConfig({
 
   schema: {
     types: schemaTypes,
+    templates: (templates) => [
+      ...templates,
+      {
+        id: 'session-for-event',
+        title: 'Session',
+        schemaType: 'session',
+        parameters: [{name: 'eventId', type: 'string'}],
+        value: ({eventId}: {eventId: string}) => ({
+          event: {_type: 'reference', _ref: eventId},
+        }),
+      },
+    ],
   },
 })

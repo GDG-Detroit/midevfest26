@@ -76,7 +76,7 @@
     "prettier": "^3.0.3",
     "serve": "^14.2.1",
     "tailwindcss": "^3.4.18",
-    "vite": "^8.1.4"
+    "vite": "^8.2.4"
   },
   "description": "GDG Detroit DevFest 2026 website",
   "packageManager": "pnpm@11.21.0",
