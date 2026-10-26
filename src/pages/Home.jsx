@@ -33,7 +33,7 @@ function Home() {
           speakersData={Speakers2026}
           year={EVENT_YEAR}
           defaultExpanded={true}
-          defaultTab="Build with AI"
+          defaultTab={SCHEDULE_TRACK}
           tracks={[SCHEDULE_TRACK, ...PROGRAM_TRACKS]}
         />
 
