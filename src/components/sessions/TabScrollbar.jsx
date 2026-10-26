@@ -1,7 +1,8 @@
 import { useCallback, useEffect, useRef, useState } from 'react'
 import PropTypes from 'prop-types'
 
-const MIN_THUMB_WIDTH = 64
+const THUMB_WIDTH = 58
+const THUMB_HEIGHT = 29
 const KEY_STEP = 96
 
 /**
@@ -14,7 +15,6 @@ const TabScrollbar = ({ targetRef, controlsId, label = 'Scroll tracks' }) => {
   const dragRef = useRef(null)
   const [metrics, setMetrics] = useState({
     visible: false,
-    thumbWidth: MIN_THUMB_WIDTH,
     thumbX: 0,
     value: 0,
   })
@@ -30,14 +30,10 @@ const TabScrollbar = ({ targetRef, controlsId, label = 'Scroll tracks' }) => {
       setMetrics((m) => (m.visible ? { ...m, visible: false } : m))
       return
     }
-    const thumbWidth = Math.min(
-      trackWidth,
-      Math.max(MIN_THUMB_WIDTH, (clientWidth / scrollWidth) * trackWidth)
-    )
+    const thumbWidth = THUMB_WIDTH
     const ratio = Math.min(1, Math.max(0, scrollLeft / maxScroll))
     setMetrics({
       visible: true,
-      thumbWidth,
       thumbX: ratio * (trackWidth - thumbWidth),
       value: Math.round(ratio * 100),
     })
@@ -57,11 +53,11 @@ const TabScrollbar = ({ targetRef, controlsId, label = 'Scroll tracks' }) => {
     }
   }, [targetRef, update])
 
-  const scrollToThumbX = (thumbX, thumbWidth) => {
+  const scrollToThumbX = (thumbX) => {
     const target = targetRef.current
     const track = trackRef.current
     if (!target || !track) return
-    const room = track.clientWidth - thumbWidth
+    const room = track.clientWidth - THUMB_WIDTH
     if (room <= 0) return
     const maxScroll = target.scrollWidth - target.clientWidth
     target.scrollLeft = (Math.min(room, Math.max(0, thumbX)) / room) * maxScroll
@@ -80,7 +76,7 @@ const TabScrollbar = ({ targetRef, controlsId, label = 'Scroll tracks' }) => {
   const handleThumbPointerMove = (event) => {
     if (!dragRef.current) return
     const { startX, startThumbX } = dragRef.current
-    scrollToThumbX(startThumbX + (event.clientX - startX), metrics.thumbWidth)
+    scrollToThumbX(startThumbX + (event.clientX - startX))
   }
 
   const endDrag = (event) => {
@@ -93,10 +89,7 @@ const TabScrollbar = ({ targetRef, controlsId, label = 'Scroll tracks' }) => {
   const handleTrackPointerDown = (event) => {
     if (event.target !== event.currentTarget) return
     const rect = event.currentTarget.getBoundingClientRect()
-    scrollToThumbX(
-      event.clientX - rect.left - metrics.thumbWidth / 2,
-      metrics.thumbWidth
-    )
+    scrollToThumbX(event.clientX - rect.left - THUMB_WIDTH / 2)
   }
 
   const handleKeyDown = (event) => {
@@ -136,14 +129,50 @@ const TabScrollbar = ({ targetRef, controlsId, label = 'Scroll tracks' }) => {
         onPointerMove={handleThumbPointerMove}
         onPointerUp={endDrag}
         onPointerCancel={endDrag}
-        className="tab-scrollbar-thumb absolute top-1/2 flex h-8 -translate-y-1/2 cursor-grab touch-none items-center justify-center rounded-lg focus:outline-none focus-visible:ring-2 focus-visible:ring-focus-ring focus-visible:ring-offset-2 active:cursor-grabbing"
+        className="absolute left-0 top-1/2 cursor-grab touch-none rounded-md focus:outline-none focus-visible:ring-2 focus-visible:ring-focus-ring focus-visible:ring-offset-2 active:cursor-grabbing"
         style={{
-          width: metrics.thumbWidth,
+          width: THUMB_WIDTH,
+          height: THUMB_HEIGHT,
           transform: `translate(${metrics.thumbX}px, -50%)`,
-          left: 0,
         }}
       >
-        <span aria-hidden="true" className="tab-scrollbar-grip" />
+        <svg
+          aria-hidden="true"
+          className="tab-thumb block"
+          width={THUMB_WIDTH}
+          height={THUMB_HEIGHT}
+          viewBox="0 0 58 29"
+          fill="none"
+        >
+          <rect
+            className="tab-thumb-outer"
+            x="0.5"
+            y="0.5"
+            width="57"
+            height="28"
+            rx="6"
+          />
+          <rect
+            className="tab-thumb-inner"
+            x="4.5"
+            y="4.5"
+            width="49"
+            height="20"
+            rx="3.5"
+          />
+          <path
+            className="tab-thumb-glyph"
+            d="M16 8.5L10 14.5L16 20.5M42 8.5L48 14.5L42 20.5"
+            strokeWidth="2"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+          />
+          <g className="tab-thumb-grip" opacity="0.55">
+            <rect x="25" y="9" width="2" height="11" rx="1" />
+            <rect x="29" y="9" width="2" height="11" rx="1" />
+            <rect x="33" y="9" width="2" height="11" rx="1" />
+          </g>
+        </svg>
       </div>
     </div>
   )
