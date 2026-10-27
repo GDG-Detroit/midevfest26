@@ -124,6 +124,29 @@ export const generateOutlookCalendarLink = (session) => {
   }
 }
 
+export const generateGoogleCalendarLink = (session) => {
+  const [event] = normalizeSessionsArray(session)
+  if (!event) return '#'
+
+  try {
+    const parsed = parseSessionDates(event)
+    if (!parsed) return '#'
+
+    const { startDate, endDate } = parsed
+    const params = new URLSearchParams({
+      action: 'TEMPLATE',
+      text: event.title || 'Michigan DevFest Session',
+      details: event.description || '',
+      dates: `${formatDate(startDate)}/${formatDate(endDate)}`,
+      location: buildEventLocation(event),
+    })
+    return `https://calendar.google.com/calendar/render?${params.toString()}`
+  } catch (error) {
+    console.error('Failed to parse session date for Google Calendar', error)
+    return '#'
+  }
+}
+
 const buildICSContent = (sessions) => {
   const events = normalizeSessionsArray(sessions)
     .map((session, index) => {
