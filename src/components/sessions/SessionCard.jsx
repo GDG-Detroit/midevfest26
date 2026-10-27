@@ -98,6 +98,7 @@ function SessionCard({
   sessionDesc,
   sessionTime,
   sessionRoom,
+  eventDate,
   sessionDuration = 60, // Duration in minutes
   isArchived = false,
 }) {
@@ -210,7 +211,8 @@ function SessionCard({
           onClick={() => sessionDesc && toggle()}
           aria-expanded={sessionDesc ? isExpanded : undefined}
           aria-controls={
-            sessionTitle
+            // Only a card with a description has a panel to control.
+            sessionTitle && sessionDesc
               ? `session-${sessionTitle.replace(/\s+/g, '-').toLowerCase()}`
               : undefined
           }
@@ -380,6 +382,7 @@ function SessionCard({
                   time: sessionTime,
                   room: sessionRoom,
                   sessionDuration,
+                  eventDate,
                 })}
                 target="_blank"
                 rel="noopener noreferrer"
@@ -397,6 +400,7 @@ function SessionCard({
                     time: sessionTime,
                     room: sessionRoom,
                     sessionDuration,
+                    eventDate,
                   })
                 }}
                 className="rounded-md border border-white/10 bg-white/5 px-3 py-1.5 text-xs font-semibold text-white transition-colors hover:bg-white/10"
@@ -419,6 +423,8 @@ SessionCard.propTypes = {
   sessionTime: PropTypes.string.isRequired,
   sessionRoom: PropTypes.string.isRequired,
   sessionDuration: PropTypes.number, // Duration in minutes
+  /** YYYY-MM-DD the session runs on, for calendar exports. Defaults to the main event day. */
+  eventDate: PropTypes.string,
   /**
    * Renders the card as a historical record: the save control and the calendar
    * export controls are replaced by static text, since a finished session can

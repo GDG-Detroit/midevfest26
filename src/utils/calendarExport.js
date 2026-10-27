@@ -1,4 +1,5 @@
-const DEFAULT_EVENT_DATE = '2026-11-14'
+import { EVENT_DATE as DEFAULT_EVENT_DATE } from '@/data/2026/eventDates'
+
 const DEFAULT_TIMEZONE_OFFSET = '-05:00'
 const DEFAULT_LOCATION_PREFIX = 'Hollywood Casino Hotel at Greektown'
 

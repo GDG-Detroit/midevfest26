@@ -57,6 +57,7 @@ MyScheduleExports.propTypes = {
       room: PropTypes.string,
       sessionDuration: PropTypes.number,
       location: PropTypes.string,
+      eventDate: PropTypes.string,
     })
   ).isRequired,
 }

@@ -60,6 +60,24 @@ const TRACK_THEMES = {
     focusColor: colors.blue[700],
     focusRingOffset: hexToRgba(colors.blue[950], 0.6),
   },
+  Hackathon: {
+    gradient: `linear-gradient(135deg, ${colors.emerald[600]} 0%, ${colors.emerald[800]} 52%, ${colors.emerald[950]} 100%)`,
+    pattern: `radial-gradient(circle at 24% 20%, ${hexToRgba(
+      colors.emerald[300],
+      0.38
+    )} 0, ${hexToRgba(
+      colors.emerald[300],
+      0.12
+    )} 35%, transparent 60%), radial-gradient(circle at 78% 18%, ${hexToRgba(
+      colors.teal[400],
+      0.32
+    )} 0, ${hexToRgba(colors.teal[400], 0.1)} 38%, transparent 65%)`,
+    fallbackColor: colors.emerald[950],
+    badgeBorder: hexToRgba(colors.emerald[300], 0.6),
+    badgeText: colors.white,
+    focusColor: colors.emerald[700],
+    focusRingOffset: hexToRgba(colors.emerald[950], 0.6),
+  },
   'Build with AI': {
     gradient: `linear-gradient(135deg, ${colors.violet[600]} 0%, ${colors.violet[800]} 52%, ${colors.violet[950]} 100%)`,
     pattern: `radial-gradient(circle at 24% 20%, ${hexToRgba(

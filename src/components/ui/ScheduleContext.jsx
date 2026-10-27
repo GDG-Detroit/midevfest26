@@ -1,6 +1,7 @@
 import { useState, useEffect, useMemo } from 'react'
 import PropTypes from 'prop-types'
 import ScheduleContext from '@/contexts/scheduleContextCore'
+import { dateForTrack } from '@/data/2026/eventDates'
 
 function canonicalizeSessionId(sessionId, speakersData) {
   if (!sessionId && sessionId !== 0) return ''
@@ -48,6 +49,18 @@ const buildSessionRange = (time, duration) => {
   return { start, end }
 }
 
+// A session's slot on its own day. Sessions on different days never conflict,
+// however their times line up (Hackathon on day one, conference on day two).
+const rangeForSpeaker = (speaker) => {
+  const session = speaker?.session
+  if (!session?.time || session.time === 'TBA') return null
+  const range = buildSessionRange(session.time, session.sessionDuration)
+  return range ? { ...range, date: dateForTrack(session.track) } : null
+}
+
+const rangesOverlap = (a, b) =>
+  a.date === b.date && a.start < b.end && a.end > b.start
+
 const SAVED_SESSIONS_KEY = 'midevfest26_saved_sessions'
 const LEGACY_SAVED_SESSIONS_KEY = 'iwd26_saved_sessions'
 
@@ -91,24 +104,11 @@ export default function ScheduleProvider({ children, speakersData = [] }) {
         return prev.filter((id) => id !== canonicalId)
       }
 
-      const rep = resolveSpeaker(canonicalId)
-      if (rep?.session?.time && rep.session.time !== 'TBA') {
-        const newRange = buildSessionRange(
-          rep.session.time,
-          rep.session.sessionDuration
-        )
+      const newRange = rangeForSpeaker(resolveSpeaker(canonicalId))
+      if (newRange) {
         const conflictingSaved = prev.filter((savedId) => {
-          const savedRep = resolveSpeaker(savedId)
-          if (!savedRep?.session?.time || savedRep.session.time === 'TBA')
-            return false
-          const savedRange = buildSessionRange(
-            savedRep.session.time,
-            savedRep.session.sessionDuration
-          )
-          if (!savedRange || !newRange) return false
-          return (
-            newRange.start < savedRange.end && newRange.end > savedRange.start
-          )
+          const savedRange = rangeForSpeaker(resolveSpeaker(savedId))
+          return savedRange ? rangesOverlap(newRange, savedRange) : false
         })
 
         if (conflictingSaved.length > 0) {
@@ -137,14 +137,7 @@ export default function ScheduleProvider({ children, speakersData = [] }) {
     const conflict = lastConflict || { newId: canonicalId, conflicts: [] }
     const items = [conflict.newId, ...conflict.conflicts]
     const withRanges = items
-      .map((id) => {
-        const rep = resolveSpeaker(id)
-        const range =
-          rep?.session?.time && rep.session.time !== 'TBA'
-            ? buildSessionRange(rep.session.time, rep.session.sessionDuration)
-            : null
-        return { id, range }
-      })
+      .map((id) => ({ id, range: rangeForSpeaker(resolveSpeaker(id)) }))
       .filter((x) => x.range)
 
     if (withRanges.length === 0) {
@@ -166,13 +159,7 @@ export default function ScheduleProvider({ children, speakersData = [] }) {
   useEffect(() => {
     const ranges = savedSessionIds
       .map((id) => {
-        const rep = resolveSpeaker(id)
-        if (!rep || !rep.session?.time || rep.session.time === 'TBA')
-          return null
-        const r = buildSessionRange(
-          rep.session.time,
-          rep.session.sessionDuration
-        )
+        const r = rangeForSpeaker(resolveSpeaker(id))
         return r ? { id, ...r } : null
       })
       .filter(Boolean)
@@ -182,7 +169,7 @@ export default function ScheduleProvider({ children, speakersData = [] }) {
       for (let j = i + 1; j < ranges.length; j++) {
         const a = ranges[i]
         const b = ranges[j]
-        if (a.start < b.end && a.end > b.start) {
+        if (rangesOverlap(a, b)) {
           conflictSet.add(a.id)
           conflictSet.add(b.id)
         }

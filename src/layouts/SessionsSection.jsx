@@ -12,7 +12,13 @@ import MyScheduleEmptyState from '@/components/sessions/MyScheduleEmptyState'
 import TrackEmptyState from '@/components/sessions/TrackEmptyState'
 
 import { conferenceActivities } from '@/data/2026/conferenceActivities'
-import { trackStageHeading } from '@/data/2026/venues'
+import { HACKATHON_TRACK, trackStageHeading } from '@/data/2026/venues'
+import {
+  HACKATHON_DATE,
+  dateForTrack,
+  formatEventDate,
+  formatEventDayShort,
+} from '@/data/2026/eventDates'
 import { DIRECTION } from '@/constants/directions'
 import { IoChevronDown, IoChevronForward, IoChevronBack } from 'react-icons/io5'
 
@@ -45,6 +51,13 @@ const normalizeSortTime = (t) => {
   const normalized = convertTo24Hour(t) || t
   const [h, m] = normalized.split(':').map(Number)
   return `${String(h).padStart(2, '0')}:${String(m || 0).padStart(2, '0')}`
+}
+
+/** Earlier day first, then earlier time of day. */
+const compareByDayAndTime = (a, b) => {
+  if (a.date !== b.date) return a.date < b.date ? -1 : 1
+  if (a.sortTime === b.sortTime) return 0
+  return a.sortTime < b.sortTime ? -1 : 1
 }
 
 // Track descriptions (strings or JSX for inline formatting like <strong>)
@@ -123,6 +136,20 @@ const trackDescriptions = {
       >
         {trackStageHeading('Careers')}
       </h3>
+    </>
+  ),
+  [HACKATHON_TRACK]: (
+    <>
+      <h3
+        id="hackathon-heading"
+        className="mx-auto mb-4 text-center text-xl font-semibold text-white sm:text-2xl "
+      >
+        <span className="font-bold">AI Hackathon</span>
+      </h3>
+      <p className="mb-6 max-w-4xl text-pretty text-center text-base text-gray-400">
+        {formatEventDate(HACKATHON_DATE)} at the Hollywood Casino Hotel at
+        Greektown, the day before DevFest. Add any session to My Schedule.
+      </p>
     </>
   ),
   'Schedule': (
@@ -288,14 +315,16 @@ const SessionsSection = ({
     ...currentTrackSessions.map((s) => ({
       type: 'session',
       sortTime: normalizeSortTime(s.sessionTime),
+      date: dateForTrack(s.track),
       ...s,
     })),
     ...currentTrackActivities.map((a) => ({
       type: 'activity',
       sortTime: normalizeSortTime(a.time),
+      date: a.date ?? dateForTrack(a.track),
       ...a,
     })),
-  ].sort((a, b) => (a.sortTime < b.sortTime ? -1 : 1))
+  ].sort(compareByDayAndTime)
 
   const hasContentForTrack =
     currentTrackSessions.length > 0 || currentTrackActivities.length > 0
@@ -590,6 +619,7 @@ const SessionsSection = ({
                             key: s.id,
                             time: s.sessionTime,
                             sortTime: normalizeSortTime(s.sessionTime),
+                            date: dateForTrack(s.track),
                             label: s.sessionTitle,
                           })),
                         ...conferenceActivities
@@ -598,10 +628,11 @@ const SessionsSection = ({
                             key: a.id,
                             time: a.time,
                             sortTime: normalizeSortTime(a.time),
+                            date: a.date ?? dateForTrack(a.track),
                             label: a.title,
                           })),
                       ]
-                        .sort((a, b) => (a.sortTime < b.sortTime ? -1 : 1))
+                        .sort(compareByDayAndTime)
                         .slice(0, 5) // Preview top 5
                         .map((item) => (
                           <li
@@ -609,7 +640,7 @@ const SessionsSection = ({
                             className="group relative flex flex-col gap-1 border-l-2 border-iwd-gold-400/30 pl-4 transition-all hover:border-iwd-gold-400"
                           >
                             <span className="text-[10px] font-black uppercase tracking-wider text-iwd-gold-400">
-                              {item.time}
+                              {formatEventDayShort(item.date)} · {item.time}
                             </span>
                             <span className="line-clamp-1 text-xs font-bold text-white transition-colors group-hover:text-iwd-gold-300">
                               {item.label}
@@ -768,6 +799,7 @@ const SessionsSection = ({
                               time: item.sessionTime,
                               room: item.sessionRoom,
                               sessionDuration: item.sessionDuration,
+                              eventDate: item.date,
                             }
                           : {
                               title: item.title,
@@ -778,6 +810,7 @@ const SessionsSection = ({
                               time: item.time,
                               timeEnd: item.timeEnd,
                               room: item.room,
+                              eventDate: item.date,
                             }
                       )}
                     />
@@ -785,35 +818,47 @@ const SessionsSection = ({
                 )}
                 {/* Session cards + activity cards: single column; sorted by time */}
                 <ul className="grid w-full grid-cols-1 gap-8 py-7">
-                  {mergedTrackItems.map((item) =>
-                    item.type === 'session' ? (
-                      <li key={item.id} className="w-full">
-                        <SessionCard
-                          sessionId={item.id}
-                          participants={item.participants}
-                          sessionTitle={item.sessionTitle}
-                          sessionDesc={item.sessionDesc}
-                          sessionTime={item.sessionTime}
-                          sessionRoom={item.sessionRoom}
-                          sessionDuration={item.sessionDuration}
-                          isArchived={isArchived}
-                        />
-                      </li>
-                    ) : (
-                      <li key={item.id} className="w-full">
-                        <ActivityCard
-                          activityId={item.id}
-                          title={item.title}
-                          content={item.content ?? null}
-                          cta={item.cta ?? null}
-                          time={item.time}
-                          timeEnd={item.timeEnd}
-                          room={item.room}
-                          isArchived={isArchived}
-                        />
-                      </li>
-                    )
-                  )}
+                  {mergedTrackItems.map((item, index) => (
+                    <React.Fragment key={item.id}>
+                      {currentSession === 'My Schedule' &&
+                        (index === 0 ||
+                          mergedTrackItems[index - 1].date !== item.date) && (
+                          <li className="w-full">
+                            <h3 className="border-b border-white/10 pb-2 font-heading text-lg font-bold uppercase tracking-widest text-iwd-gold-300">
+                              {formatEventDate(item.date)}
+                            </h3>
+                          </li>
+                        )}
+                      {item.type === 'session' ? (
+                        <li className="w-full">
+                          <SessionCard
+                            sessionId={item.id}
+                            participants={item.participants}
+                            sessionTitle={item.sessionTitle}
+                            sessionDesc={item.sessionDesc}
+                            sessionTime={item.sessionTime}
+                            sessionRoom={item.sessionRoom}
+                            sessionDuration={item.sessionDuration}
+                            eventDate={item.date}
+                            isArchived={isArchived}
+                          />
+                        </li>
+                      ) : (
+                        <li className="w-full">
+                          <ActivityCard
+                            activityId={item.id}
+                            title={item.title}
+                            content={item.content ?? null}
+                            cta={item.cta ?? null}
+                            time={item.time}
+                            timeEnd={item.timeEnd}
+                            room={item.room}
+                            isArchived={isArchived}
+                          />
+                        </li>
+                      )}
+                    </React.Fragment>
+                  ))}
                 </ul>
               </>
             ) : currentSession === 'My Schedule' ? (

@@ -10,7 +10,12 @@ import PartnersSection from '@/layouts/PartnersSection'
 import JobBoardSection from '@/layouts/JobBoardSection'
 import OrganizersSection from '@/layouts/OrganizersSection'
 import { SpeakersData as Speakers2026 } from '@/data/2026/speakers'
-import { PROGRAM_TRACKS, SCHEDULE_TRACK } from '@/data/2026/venues'
+import {
+  HACKATHON_TRACK,
+  PROGRAM_TRACKS,
+  SCHEDULE_TRACK,
+} from '@/data/2026/venues'
+import { defaultTrackForDate } from '@/data/2026/eventDates'
 import { partnersData } from '@/data/2026/partners'
 
 import MembersSection from '@/layouts/MembersSection'
@@ -33,8 +38,8 @@ function Home() {
           speakersData={Speakers2026}
           year={EVENT_YEAR}
           defaultExpanded={true}
-          defaultTab={SCHEDULE_TRACK}
-          tracks={[SCHEDULE_TRACK, ...PROGRAM_TRACKS]}
+          defaultTab={defaultTrackForDate()}
+          tracks={[HACKATHON_TRACK, SCHEDULE_TRACK, ...PROGRAM_TRACKS]}
         />
 
         <SpeakersSection
