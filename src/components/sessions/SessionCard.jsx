@@ -211,7 +211,8 @@ function SessionCard({
           onClick={() => sessionDesc && toggle()}
           aria-expanded={sessionDesc ? isExpanded : undefined}
           aria-controls={
-            sessionTitle
+            // Only a card with a description has a panel to control.
+            sessionTitle && sessionDesc
               ? `session-${sessionTitle.replace(/\s+/g, '-').toLowerCase()}`
               : undefined
           }
