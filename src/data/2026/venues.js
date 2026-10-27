@@ -3,6 +3,9 @@
  * the track, so there are no separate room labels to maintain.
  */
 
+/** Day-one tab: the AI Hackathon. Its own date lives in `eventDates.js`. */
+export const HACKATHON_TRACK = 'Hackathon'
+
 /** Run-of-show tab (check-in, breaks, keynote, etc.). */
 export const SCHEDULE_TRACK = 'Schedule'
 
