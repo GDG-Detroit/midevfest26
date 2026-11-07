@@ -396,39 +396,17 @@ function LocationSection() {
                   aria-hidden="true"
                 />
               </div>
-              <h3 className="text-xl font-semibold text-white">
-                Parking Options
-              </h3>
+              <h3 className="text-xl font-semibold text-white">Parking</h3>
             </div>
-            <div className="grid grid-cols-1 gap-8 sm:grid-cols-2">
-              <div className="flex items-start gap-4">
-                <div className="mt-1 flex size-6 shrink-0 items-center justify-center rounded-full bg-iwd-gold-400 font-heading text-[10px] font-black text-iwd-black-950">
-                  1
-                </div>
-                <div>
-                  <strong className="mb-1 block text-white">
-                    Greektown Self-Park Garage
-                  </strong>
-                  <p className="text-base leading-relaxed text-gray-400">
-                    1211 Crysler Dr. Enter from the I-375 Lafayette ramp. Public
-                    parking; pay by credit card at the kiosk.
-                  </p>
-                </div>
-              </div>
-              <div className="flex items-start gap-4">
-                <div className="mt-1 flex size-6 shrink-0 items-center justify-center rounded-full bg-iwd-gold-400 font-heading text-[10px] font-black text-iwd-black-950">
-                  2
-                </div>
-                <div>
-                  <strong className="mb-1 block text-white">
-                    MGM Grand Garage (Free)
-                  </strong>
-                  <p className="text-base leading-relaxed text-gray-400">
-                    Free parking at MGM Grand Detroit, across town from
-                    Greektown.
-                  </p>
-                </div>
-              </div>
+            <div>
+              <strong className="mb-1 block text-white">
+                Greektown parking structure
+              </strong>
+              <p className="text-base leading-relaxed text-gray-400">
+                Parking is free. Park in the Greektown parking structure at 1211
+                Crysler Dr (enter from the I-375 Lafayette ramp) and let the
+                guard know you&apos;re there for Michigan DevFest.
+              </p>
             </div>
           </div>
 
