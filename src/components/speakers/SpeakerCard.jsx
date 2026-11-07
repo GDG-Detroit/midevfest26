@@ -1,5 +1,6 @@
 import PropTypes from 'prop-types'
 import { useContext, useEffect, useRef } from 'react'
+import { createPortal } from 'react-dom'
 
 import SpeakerDetails from '@/components/speakers/SpeakerDetails'
 import ProfileCard from '@/components/ui/ProfileCard'
@@ -110,52 +111,55 @@ const SpeakerCard = ({
         twitter={twitter}
       />
 
-      {isModalOpen && id === speakerID && (
-        <div
-          role="dialog"
-          aria-modal="true"
-          aria-labelledby={`speaker-modal-title-${id}`}
-          aria-describedby={`speaker-modal-bio-${id}`}
-          className="fixed inset-0 z-40 overflow-y-auto bg-black/90 backdrop-blur-sm dark:bg-black/80"
-          tabIndex={-1}
-          ref={modalRef}
-          aria-label="Speaker details modal"
-        >
-          <button
-            type="button"
-            className="absolute inset-0 size-full cursor-default"
-            onClick={handleOverlayClick}
-            onKeyDown={handleKeyDown}
-            aria-label="Close modal"
+      {isModalOpen &&
+        id === speakerID &&
+        createPortal(
+          <div
+            role="dialog"
+            aria-modal="true"
+            aria-labelledby={`speaker-modal-title-${id}`}
+            aria-describedby={`speaker-modal-bio-${id}`}
+            className="fixed inset-0 z-[80] overflow-y-auto bg-black/90 backdrop-blur-sm dark:bg-black/80"
             tabIndex={-1}
-          />
-          <div className="pointer-events-none flex min-h-full items-center justify-center p-4">
-            <div className="pointer-events-auto my-8">
-              <SpeakerDetails
-                avatar={avatar}
-                bio={bio}
-                id={id}
-                instagram={instagram}
-                isGDE={isGDE}
-                isWTM={isWTM}
-                mastodon={mastodon}
-                name={name}
-                organization={organization}
-                onClose={closeModal}
-                position={position}
-                sessionDescription={sessionDescription}
-                sessionSpeakers={sessionSpeakers}
-                sessionParticipants={sessionParticipants}
-                sessionTitle={sessionTitle}
-                tags={tags}
-                track={track}
-                twitter={twitter}
-                url={url}
-              />
+            ref={modalRef}
+            aria-label="Speaker details modal"
+          >
+            <button
+              type="button"
+              className="absolute inset-0 size-full cursor-default"
+              onClick={handleOverlayClick}
+              onKeyDown={handleKeyDown}
+              aria-label="Close modal"
+              tabIndex={-1}
+            />
+            <div className="pointer-events-none flex min-h-full justify-center p-4">
+              <div className="pointer-events-auto m-auto w-full max-w-4xl">
+                <SpeakerDetails
+                  avatar={avatar}
+                  bio={bio}
+                  id={id}
+                  instagram={instagram}
+                  isGDE={isGDE}
+                  isWTM={isWTM}
+                  mastodon={mastodon}
+                  name={name}
+                  organization={organization}
+                  onClose={closeModal}
+                  position={position}
+                  sessionDescription={sessionDescription}
+                  sessionSpeakers={sessionSpeakers}
+                  sessionParticipants={sessionParticipants}
+                  sessionTitle={sessionTitle}
+                  tags={tags}
+                  track={track}
+                  twitter={twitter}
+                  url={url}
+                />
+              </div>
             </div>
-          </div>
-        </div>
-      )}
+          </div>,
+          document.body
+        )}
     </>
   )
 }
