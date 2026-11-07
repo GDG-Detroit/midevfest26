@@ -1,5 +1,39 @@
 [
   {
+    "id": 763937731,
+    "name": "William Bowen",
+    "avatar": "https://cdn.sanity.io/images/5qtiaw9u/production/ad3866f8a911429301109ea6dd5bcdd2832059f4-401x401.webp",
+    "bio": "I currently wear multiple professional hats as an IT specialist and a fitness instructor / enthusiast.\n\nOn the IT side I have the responsibly for managing service orders, telecommunication contracts and services, along with support for iOS devices.  I also have experience teaching networks, network security and software development. This work branches off to work I do with the National Society of Black Engineers (NSBE) and the Cyber Patriot program which includes talks and tutorials on technology and computers.\n\nAs a fitness enthusiast I have taught multiple boot camp classes that incorporates both strength and cardio training at different locations.  This has led me to compete in multiple powerlifting meets with UPA and USAPL as well as physique with NPC.   At this time I am also looking at different applications that incorporate fitness.",
+    "organization": "JAC3D G33K Services LLC",
+    "position": "Developer / Trainer",
+    "isWTM": false,
+    "isGDE": false,
+    "isModerator": false,
+    "sortOrder": 0,
+    "session": {
+      "title": "Hackathon Morning Meditation & Yoga",
+      "abstract": "Ignite your body and mind with our Fitness Yoga class — a dynamic blend of yoga, strength training, and cardio designed to build power, flexibility, and endurance. Move with intention, break a sweat, and leave feeling strong, centered, and fully recharged.",
+      "description": "This fitness yoga class blends traditional yoga poses with strength training and cardiovascular movements for a balanced, full-body workout. Participants will improve flexibility, build lean muscle, and boost endurance through flowing sequences, bodyweight exercises, and dynamic movement. The class is designed to enhance both physical strength and mindfulness, leaving you energized, focused, and refreshed.",
+      "tags": ["Hackathon", "Fitness", "Yoga", "Mindfulness", "Wellness"],
+      "track": "Hackathon",
+      "time": "08:15",
+      "room": "",
+      "sessionDuration": 30,
+      "speakers": ["William Bowen"],
+      "moderators": [],
+      "panelists": ["William Bowen"],
+      "participants": [
+        {
+          "name": "William Bowen",
+          "avatar": "https://cdn.sanity.io/images/5qtiaw9u/production/ad3866f8a911429301109ea6dd5bcdd2832059f4-401x401.webp",
+          "isModerator": false,
+          "sortOrder": 0
+        }
+      ]
+    },
+    "linkedIn": "https://www.linkedin.com/in/william-bowen-a7216610/"
+  },
+  {
     "id": 11479664,
     "name": "Dr. Bernadette Atanga",
     "avatar": "https://cdn.sanity.io/images/5qtiaw9u/production/bd2beaa96e0de85d51088266d3581a6633668158-682x682.jpg",
@@ -66,6 +100,86 @@
       ]
     },
     "linkedIn": "https://www.linkedin.com/in/tim-moore-7b00332/"
+  },
+  {
+    "id": 1772352073,
+    "name": "Hoda Solati",
+    "avatar": "https://cdn.sanity.io/images/5qtiaw9u/production/217e90ac200609f531ea6b8de4cea8ab10c0089b-900x900.jpg",
+    "bio": "Hoda Solati is an award-winning UX designer working at BraunAbility blending creativity, technology, and innovation to craft inclusive, user-centered experiences. With advanced degrees in UX Design and Animation, she explores cutting-edge technologies such as VR, AR, and robotics to solve complex design challenges. Recognized at global events including DDX’25 NYC, IEEE Smart Mobility, and Ars Electronica, Hoda is passionate about redefining the future of user experience through innovation and accessibility.",
+    "organization": "BraunAbility",
+    "position": "UX Designer",
+    "isWTM": false,
+    "isGDE": false,
+    "isModerator": false,
+    "sortOrder": 0,
+    "session": {
+      "title": "Design for AI Workshop",
+      "abstract": "",
+      "description": "",
+      "tags": ["Hackathon"],
+      "track": "Hackathon",
+      "time": "10:00",
+      "room": "",
+      "sessionDuration": 60,
+      "speakers": ["Hoda Solati", "Shima Solati"],
+      "moderators": [],
+      "panelists": ["Hoda Solati", "Shima Solati"],
+      "participants": [
+        {
+          "name": "Hoda Solati",
+          "avatar": "https://cdn.sanity.io/images/5qtiaw9u/production/217e90ac200609f531ea6b8de4cea8ab10c0089b-900x900.jpg",
+          "isModerator": false,
+          "sortOrder": 0
+        },
+        {
+          "name": "Shima Solati",
+          "avatar": "https://cdn.sanity.io/images/5qtiaw9u/production/7bdb6775e0582f8e94b84f9a436ece40e9ec4912-800x800.jpg",
+          "isModerator": false,
+          "sortOrder": 1
+        }
+      ]
+    },
+    "linkedIn": "https://www.linkedin.com/in/hoda-solati"
+  },
+  {
+    "id": 1432160973,
+    "name": "Shima Solati",
+    "avatar": "https://cdn.sanity.io/images/5qtiaw9u/production/7bdb6775e0582f8e94b84f9a436ece40e9ec4912-800x800.jpg",
+    "bio": "Shima Solati is an award-winning UX/UI designer and researcher at BraunAbility, leading efforts to advance mobility and accessibility through innovative, user-centered design. With a Master’s in User Experience Design from the College for Creative Studies and dual degrees in fashion and textiles, Shima brings a rare multidisciplinary perspective to solving complex challenges. Her expertise spans immersive and assistive technologies, VR, AR, robotics, and her portfolio includes impactful work for KUKA Robotics, the Augmented Reality Center, General Motors, and Ford. Passionate about inclusive design and emerging technologies, Shima is dedicated to creating intuitive solutions that empower all users.",
+    "organization": "BraunAbility",
+    "position": "UX/UI Designer and Researcher",
+    "isWTM": false,
+    "isGDE": false,
+    "isModerator": false,
+    "sortOrder": 1,
+    "session": {
+      "title": "Design for AI Workshop",
+      "abstract": "",
+      "description": "",
+      "tags": ["Hackathon"],
+      "track": "Hackathon",
+      "time": "10:00",
+      "room": "",
+      "sessionDuration": 60,
+      "speakers": ["Hoda Solati", "Shima Solati"],
+      "moderators": [],
+      "panelists": ["Hoda Solati", "Shima Solati"],
+      "participants": [
+        {
+          "name": "Hoda Solati",
+          "avatar": "https://cdn.sanity.io/images/5qtiaw9u/production/217e90ac200609f531ea6b8de4cea8ab10c0089b-900x900.jpg",
+          "isModerator": false,
+          "sortOrder": 0
+        },
+        {
+          "name": "Shima Solati",
+          "avatar": "https://cdn.sanity.io/images/5qtiaw9u/production/7bdb6775e0582f8e94b84f9a436ece40e9ec4912-800x800.jpg",
+          "isModerator": false,
+          "sortOrder": 1
+        }
+      ]
+    },
+    "linkedIn": "https://www.linkedin.com/in/shima-solati/"
   },
   {
     "id": 1677549836,
@@ -304,9 +418,179 @@
     "linkedIn": "https://linkedin.com/in/gregraymiller"
   },
   {
-    "id": 2115677240,
+    "id": 1106051384,
+    "name": "Jenna Ritten",
+    "avatar": "https://cdn.sanity.io/images/5qtiaw9u/production/267ff43c481c7f87d7fcb842f6d9c0defc465a42-804x784.png",
+    "bio": "Jenna Ritten spoke at Michigan DevFest.",
+    "organization": "IBM",
+    "position": "Chief Developer Advocate & Senior Architect",
+    "isWTM": true,
+    "isGDE": true,
+    "isModerator": false,
+    "sortOrder": 0,
+    "session": {
+      "title": "AI Hackathon Keynote",
+      "abstract": "",
+      "description": "",
+      "tags": ["Hackathon"],
+      "track": "Hackathon",
+      "time": "11:00",
+      "room": "",
+      "sessionDuration": 60,
+      "speakers": ["Jenna Ritten"],
+      "moderators": [],
+      "panelists": ["Jenna Ritten"],
+      "participants": [
+        {
+          "name": "Jenna Ritten",
+          "avatar": "https://cdn.sanity.io/images/5qtiaw9u/production/267ff43c481c7f87d7fcb842f6d9c0defc465a42-804x784.png",
+          "isModerator": false,
+          "sortOrder": 0
+        }
+      ]
+    },
+    "linkedIn": "https://www.linkedin.com/in/jritten/",
+    "twitter": "jritten"
+  },
+  {
+    "id": 167756570,
+    "name": "Vahi Guner",
+    "avatar": "https://cdn.sanity.io/images/5qtiaw9u/production/b3fcfcf44203287d9c563d4258f1846af49d0d76-250x252.png",
+    "bio": "Vahi Guner is an AI Engineer at IBM with a background in Electrical Engineering. He has hands-on experience working with both traditional machine learning models and modern generative AI technologies.",
+    "organization": "IBM Client Engineering",
+    "position": "AI Engineer",
+    "isWTM": false,
+    "isGDE": false,
+    "isModerator": false,
+    "sortOrder": 0,
+    "session": {
+      "title": "Build with AI Workshop ",
+      "abstract": "This session highlights how IBM watsonx and agentic AI architectures can streamline complex HR operations by unifying workflows across disparate enterprise systems. Using a simplified AskHR agent built with watsonx Orchestrate, we demonstrate how reasoning-enabled agents interact with tools, APIs, and knowledge sources to perform tasks such as querying employee data, submitting time-off requests, and updating records.\n\nWe will walk through the technical architecture behind the agent—including multi-agent orchestration, OpenAPI-based connectors, secure data retrieval, and built-in grounding to minimize hallucinations. The lab showcases how developers can rapidly integrate existing HR platforms like Workday or SuccessFactors, or create custom tools for any internal system.\n\nAttendees will leave with a practical understanding of how to build, configure, and extend agentic workflows on watsonx to automate real-world operational processes at scale.",
+      "description": "This session highlights how IBM watsonx and agentic AI architectures can streamline complex HR operations by unifying workflows across disparate enterprise systems. Using a simplified AskHR agent built with watsonx Orchestrate, we demonstrate how reasoning-enabled agents interact with tools, APIs, and knowledge sources to perform tasks such as querying employee data, submitting time-off requests, and updating records.\n\nWe will walk through the technical architecture behind the agent—including multi-agent orchestration, OpenAPI-based connectors, secure data retrieval, and built-in grounding to minimize hallucinations. The lab showcases how developers can rapidly integrate existing HR platforms like Workday or SuccessFactors, or create custom tools for any internal system.\n\nAttendees will leave with a practical understanding of how to build, configure, and extend agentic workflows on watsonx to automate real-world operational processes at scale.",
+      "tags": ["Hackathon"],
+      "track": "Hackathon",
+      "time": "11:00",
+      "room": "",
+      "sessionDuration": 60,
+      "speakers": ["Vahi Guner", "Brandon Brown", "Jason Fleming"],
+      "moderators": [],
+      "panelists": ["Vahi Guner", "Brandon Brown", "Jason Fleming"],
+      "participants": [
+        {
+          "name": "Vahi Guner",
+          "avatar": "https://cdn.sanity.io/images/5qtiaw9u/production/b3fcfcf44203287d9c563d4258f1846af49d0d76-250x252.png",
+          "isModerator": false,
+          "sortOrder": 0
+        },
+        {
+          "name": "Brandon Brown",
+          "avatar": "https://cdn.sanity.io/images/5qtiaw9u/production/05f67097b06b1a1135356dc655b7dcf8fc112074-800x800.jpg",
+          "isModerator": false,
+          "sortOrder": 1
+        },
+        {
+          "name": "Jason Fleming",
+          "avatar": "https://cdn.sanity.io/images/5qtiaw9u/production/7b2c8959872e0c902f5d279b9e9c43504046bcc4-1109x1003.jpg",
+          "isModerator": false,
+          "sortOrder": 2
+        }
+      ]
+    }
+  },
+  {
+    "id": 247233591,
+    "name": "Brandon Brown",
+    "avatar": "https://cdn.sanity.io/images/5qtiaw9u/production/05f67097b06b1a1135356dc655b7dcf8fc112074-800x800.jpg",
+    "bio": "Brandon Brown is an AI engineer at IBM who helps organizations navigate their AI adoption journey. He bridges the gap between cutting-edge AI technology and practical business applications, enabling companies to achieve measurable ROI through intelligent automation and data-driven solutions.",
+    "organization": "IBM Client Engineering",
+    "position": "AI Engineer",
+    "isWTM": false,
+    "isGDE": false,
+    "isModerator": false,
+    "sortOrder": 1,
+    "session": {
+      "title": "Build with AI Workshop ",
+      "abstract": "This session highlights how IBM watsonx and agentic AI architectures can streamline complex HR operations by unifying workflows across disparate enterprise systems. Using a simplified AskHR agent built with watsonx Orchestrate, we demonstrate how reasoning-enabled agents interact with tools, APIs, and knowledge sources to perform tasks such as querying employee data, submitting time-off requests, and updating records.\n\nWe will walk through the technical architecture behind the agent—including multi-agent orchestration, OpenAPI-based connectors, secure data retrieval, and built-in grounding to minimize hallucinations. The lab showcases how developers can rapidly integrate existing HR platforms like Workday or SuccessFactors, or create custom tools for any internal system.\n\nAttendees will leave with a practical understanding of how to build, configure, and extend agentic workflows on watsonx to automate real-world operational processes at scale.",
+      "description": "This session highlights how IBM watsonx and agentic AI architectures can streamline complex HR operations by unifying workflows across disparate enterprise systems. Using a simplified AskHR agent built with watsonx Orchestrate, we demonstrate how reasoning-enabled agents interact with tools, APIs, and knowledge sources to perform tasks such as querying employee data, submitting time-off requests, and updating records.\n\nWe will walk through the technical architecture behind the agent—including multi-agent orchestration, OpenAPI-based connectors, secure data retrieval, and built-in grounding to minimize hallucinations. The lab showcases how developers can rapidly integrate existing HR platforms like Workday or SuccessFactors, or create custom tools for any internal system.\n\nAttendees will leave with a practical understanding of how to build, configure, and extend agentic workflows on watsonx to automate real-world operational processes at scale.",
+      "tags": ["Hackathon"],
+      "track": "Hackathon",
+      "time": "11:00",
+      "room": "",
+      "sessionDuration": 60,
+      "speakers": ["Vahi Guner", "Brandon Brown", "Jason Fleming"],
+      "moderators": [],
+      "panelists": ["Vahi Guner", "Brandon Brown", "Jason Fleming"],
+      "participants": [
+        {
+          "name": "Vahi Guner",
+          "avatar": "https://cdn.sanity.io/images/5qtiaw9u/production/b3fcfcf44203287d9c563d4258f1846af49d0d76-250x252.png",
+          "isModerator": false,
+          "sortOrder": 0
+        },
+        {
+          "name": "Brandon Brown",
+          "avatar": "https://cdn.sanity.io/images/5qtiaw9u/production/05f67097b06b1a1135356dc655b7dcf8fc112074-800x800.jpg",
+          "isModerator": false,
+          "sortOrder": 1
+        },
+        {
+          "name": "Jason Fleming",
+          "avatar": "https://cdn.sanity.io/images/5qtiaw9u/production/7b2c8959872e0c902f5d279b9e9c43504046bcc4-1109x1003.jpg",
+          "isModerator": false,
+          "sortOrder": 2
+        }
+      ]
+    }
+  },
+  {
+    "id": 621091780,
+    "name": "Jason Fleming",
+    "avatar": "https://cdn.sanity.io/images/5qtiaw9u/production/7b2c8959872e0c902f5d279b9e9c43504046bcc4-1109x1003.jpg",
+    "bio": "As an IBM Client Engineering Solution Architect, Jason Fleming leads the design and delivery of agile, hybrid cloud solutions—leveraging deep domain expertise, strategic innovation, and collaborative client engagement to drive impactful Proofs of Value across industries.",
+    "organization": "IBM Client Engineering",
+    "position": "Solution Architect",
+    "isWTM": false,
+    "isGDE": false,
+    "isModerator": false,
+    "sortOrder": 2,
+    "session": {
+      "title": "Build with AI Workshop ",
+      "abstract": "This session highlights how IBM watsonx and agentic AI architectures can streamline complex HR operations by unifying workflows across disparate enterprise systems. Using a simplified AskHR agent built with watsonx Orchestrate, we demonstrate how reasoning-enabled agents interact with tools, APIs, and knowledge sources to perform tasks such as querying employee data, submitting time-off requests, and updating records.\n\nWe will walk through the technical architecture behind the agent—including multi-agent orchestration, OpenAPI-based connectors, secure data retrieval, and built-in grounding to minimize hallucinations. The lab showcases how developers can rapidly integrate existing HR platforms like Workday or SuccessFactors, or create custom tools for any internal system.\n\nAttendees will leave with a practical understanding of how to build, configure, and extend agentic workflows on watsonx to automate real-world operational processes at scale.",
+      "description": "This session highlights how IBM watsonx and agentic AI architectures can streamline complex HR operations by unifying workflows across disparate enterprise systems. Using a simplified AskHR agent built with watsonx Orchestrate, we demonstrate how reasoning-enabled agents interact with tools, APIs, and knowledge sources to perform tasks such as querying employee data, submitting time-off requests, and updating records.\n\nWe will walk through the technical architecture behind the agent—including multi-agent orchestration, OpenAPI-based connectors, secure data retrieval, and built-in grounding to minimize hallucinations. The lab showcases how developers can rapidly integrate existing HR platforms like Workday or SuccessFactors, or create custom tools for any internal system.\n\nAttendees will leave with a practical understanding of how to build, configure, and extend agentic workflows on watsonx to automate real-world operational processes at scale.",
+      "tags": ["Hackathon"],
+      "track": "Hackathon",
+      "time": "11:00",
+      "room": "",
+      "sessionDuration": 60,
+      "speakers": ["Vahi Guner", "Brandon Brown", "Jason Fleming"],
+      "moderators": [],
+      "panelists": ["Vahi Guner", "Brandon Brown", "Jason Fleming"],
+      "participants": [
+        {
+          "name": "Vahi Guner",
+          "avatar": "https://cdn.sanity.io/images/5qtiaw9u/production/b3fcfcf44203287d9c563d4258f1846af49d0d76-250x252.png",
+          "isModerator": false,
+          "sortOrder": 0
+        },
+        {
+          "name": "Brandon Brown",
+          "avatar": "https://cdn.sanity.io/images/5qtiaw9u/production/05f67097b06b1a1135356dc655b7dcf8fc112074-800x800.jpg",
+          "isModerator": false,
+          "sortOrder": 1
+        },
+        {
+          "name": "Jason Fleming",
+          "avatar": "https://cdn.sanity.io/images/5qtiaw9u/production/7b2c8959872e0c902f5d279b9e9c43504046bcc4-1109x1003.jpg",
+          "isModerator": false,
+          "sortOrder": 2
+        }
+      ]
+    }
+  },
+  {
+    "id": 1549321228,
     "name": "Christine Burkette",
-    "avatar": "https://cdn.sanity.io/images/5qtiaw9u/production/b5802ba27c13775c47a1d88f02d69f43333b9f0a-1080x1080.jpg",
+    "avatar": "https://cdn.sanity.io/images/5qtiaw9u/production/5899e20b0ff8d671a89c512c1c2fa31501dc9828-1080x1080.png",
     "bio": "I design and lead large-scale AI, technology, and sustainability transformation systems.  I help organizations turn systems, data, and artificial intelligence into measurable outcomes, without adding headcount. With more than 20 years of leadership across education, corporate, manufacturing, sustainability, and public-sector environments, I specialize in translating complex technology into clear strategy, modern workflows, and scalable systems that work. My work sits at the intersection of AI governance, digital transformation, enterprise technology strategy, and sustainability innovation, helping leaders move beyond tools toward systems that improve performance, accountability, and impact.",
     "organization": "PICF, Inc. Ai/IT Consulting Firm",
     "position": "CEO/Founder",
@@ -315,9 +599,9 @@
     "isModerator": false,
     "sortOrder": 0,
     "session": {
-      "title": "Beyond the Chatbot: Building Immersive AI Learning Environments for the Next Generation",
+      "title": "Don't Just Learn About AI. Build Something With It!",
       "abstract": "Artificial intelligence is rapidly changing how we teach, learn, and build, but the next frontier goes beyond putting a chatbot in front of a student.",
-      "description": "Artificial intelligence is rapidly changing how we teach, learn, and build, but the next frontier goes beyond putting a chatbot in front of a student.\n\nIn this session, Christine Burkette will take attendees inside the development of MYSTA × STEMCity Michigan, an initiative exploring how AI, immersive 3D environments, XR, and learning data can come together to create interactive educational experiences for K–12 students.\n\nThe session will examine the journey from concept to working learning environment: designing virtual classrooms and STEM spaces, integrating AI-supported instruction, creating interactive math and science experiences, connecting student activities and assessments, and capturing learning data that can inform personalization and future instruction.\n\nChristine will also discuss a challenge that developers, educators, and technology leaders increasingly share: How do we move young people from simply using AI to understanding, building, and creating with it?\n\nAttendees will see how emerging technologies can be combined to create learning environments that connect classroom concepts with real-world STEM, technology, AI, and career pathways. The session will also share lessons learned from developing an immersive platform, including technology decisions, accessibility considerations, scalability, implementation challenges, and the realities of turning an ambitious AI/XR concept into something students and educators can actually use.\n\nParticipants will leave with a practical framework for thinking beyond standalone AI tools and toward connected, immersive experiences where AI becomes part of the learning architecture, not simply an add-on.",
+      "description": "What if you could turn your imagination into a cinematic superhero comic book using AI, right from your phone?\n\nAt Michigan DevFest 2026, we're moving beyond talking about artificial intelligence and putting it directly into your hands! Join award-winning speaker and AI & technology executive Christine Burkette for a fast-paced, interactive experience where YOU become the creator.\n\nUsing AI tools like ChatGPT or Claude, you'll discover your personal superpowers, design your own superhero character, develop an action-packed storyline, and bring your adventure to life as a cinematic comic book, all during the session. No coding, design experience, or technical background required. Just bring your phone, your imagination, and a willingness to create! But the experience doesn't stop with superheroes.\n\nChristine will demonstrate how these same AI skills can be applied to real-world challenges, including creating engaging educational tools and personalized comic-book stories that help students with learning disabilities build confidence and strengthen their reading skills. You'll see an example of an AI-created superhero comic book designed to support students with dyslexia.\n\nYou'll leave with more than inspiration. You'll have a creation of your own, a repeatable AI workflow, and new ideas for putting artificial intelligence to work in education, business, and everyday life.\n\nWhether you're a developer, educator, student, entrepreneur, or simply AI-curious, this session is designed to show you what's possible when creativity meets technology.\n\nDon't just watch the future of AI unfold. Come build something with it!",
       "tags": ["AI Foundations"],
       "track": "AI Foundations",
       "time": "11:30",
@@ -329,7 +613,7 @@
       "participants": [
         {
           "name": "Christine Burkette",
-          "avatar": "https://cdn.sanity.io/images/5qtiaw9u/production/b5802ba27c13775c47a1d88f02d69f43333b9f0a-1080x1080.jpg",
+          "avatar": "https://cdn.sanity.io/images/5qtiaw9u/production/5899e20b0ff8d671a89c512c1c2fa31501dc9828-1080x1080.png",
           "isModerator": false,
           "sortOrder": 0
         }
@@ -748,7 +1032,7 @@
     "name": "Veera Ravindra Divi",
     "avatar": "https://cdn.sanity.io/images/5qtiaw9u/production/f4af3ed642f4088afe38ca3d66a310abf1ede499-570x675.jpg",
     "bio": "Veera Ravindra Divi is a Machine Learning Engineer and distributed systems researcher based in Austin, Texas, with over 11 years of experience in software engineering, distributed systems, and enterprise technology. He builds AI-assisted engineering tools and connects production engineering with research in reliable agentic AI. He has authored or coauthored nine IEEE-published papers, reviewed 80+ IEEE conference papers, and serves on technical program committees including IEEE ICCA 2026 and IEEE GAISS 2026. He delivered an invited keynote at IEEE AIC 2026, “From Autonomy to Assurance: Governing Agentic AI for Production Enterprise Systems.” He also builds Assevra, an open-source LLM-agent reliability project. His sessions emphasize reproducible examples, engineering trade-offs, and practical techniques developers can apply to their own systems.",
-    "organization": "Independent",
+    "organization": "Amazon",
     "position": "Machine Learning Engineer",
     "isWTM": false,
     "isGDE": false,
@@ -882,7 +1166,7 @@
   {
     "id": 423491972,
     "name": "Adkham Zokhirov",
-    "avatar": "https://cdn.sanity.io/images/5qtiaw9u/production/cc74db624b31f8d9c8a8eb2988619d240d1e417f-2628x3632.jpg",
+    "avatar": "https://cdn.sanity.io/images/5qtiaw9u/production/bf8d1e3416e30444075332afc743dfcd089cbc81-2600x3031.jpg",
     "bio": "Adkham Zokhirov is a Google Developer Expert (GDE) in AI/ML and the CAIO at Mohirdev. He specializes in building practical AI solutions, agentic workflows, and multimodal architectures, with extensive experience in machine learning and cloud technologies.",
     "organization": "Mohirdev LLC",
     "position": "CAIO",
@@ -905,7 +1189,7 @@
       "participants": [
         {
           "name": "Adkham Zokhirov",
-          "avatar": "https://cdn.sanity.io/images/5qtiaw9u/production/cc74db624b31f8d9c8a8eb2988619d240d1e417f-2628x3632.jpg",
+          "avatar": "https://cdn.sanity.io/images/5qtiaw9u/production/bf8d1e3416e30444075332afc743dfcd089cbc81-2600x3031.jpg",
           "isModerator": false,
           "sortOrder": 0
         }
@@ -948,40 +1232,6 @@
     "linkedIn": "https://www.linkedin.com/in/shugmishumunov/"
   },
   {
-    "id": 1925838000,
-    "name": "Boris-Wilfried Nyasse",
-    "avatar": "https://cdn.sanity.io/images/5qtiaw9u/production/8ff516c64d53b371e6bc531d7d0540efd9dcbd66-400x400.png",
-    "bio": "Passionate Developer & Google Developer Expert\n\nI enjoy my journey to ensure that the engineering trains run on time by creating an ideal environment for passionate people.\n\nMy goal is just to inspire others to continuously improve and raise their standards at all levels of the team.",
-    "organization": "Oloodi",
-    "position": "Technical Founder",
-    "isWTM": false,
-    "isGDE": true,
-    "isModerator": false,
-    "sortOrder": 0,
-    "session": {
-      "title": "Hire Your First AI Employees Without Handing Over the Keys",
-      "abstract": "A technology company grows, and the founder ends up doing the marketing, the technology watch, the contracts and the books.",
-      "description": "A technology company grows, and the founder ends up doing the marketing, the technology watch, the contracts and the books. It is real work, it has to be done well, and it is not what you are best at. Hiring was out of budget then, and there was nobody to delegate to yet. So we opened a department and staffed it with virtual employees. Two work here today, one on our repositories, one on technology watch and documents. Like every employee, each has a name, a job description, a manager who reviews the work, an identity, and exactly the accesses the role requires.\n\nThe moment a virtual employee holds credentials you are not designing a workflow, you are running an identity:\n\n- A virtual employee is not a persona, it is a perimeter.\n- Hiring is provisioning credentials.\n- Training is restricting, then widening.\n- Promoting is granting write access.\n- Firing is revoking.\n\nYou can keep calling them agents. They still need HR, and that HR is mostly IAM with better UX. You will leave with the architecture on Google Cloud and its budget, how we split work between Gemini, Claude Code and Hermes, the job description template, and the failures that showed us the edges.",
-      "tags": ["Leadership"],
-      "track": "Leadership",
-      "time": "15:15",
-      "room": "",
-      "sessionDuration": 35,
-      "speakers": ["Boris-Wilfried Nyasse"],
-      "moderators": [],
-      "panelists": ["Boris-Wilfried Nyasse"],
-      "participants": [
-        {
-          "name": "Boris-Wilfried Nyasse",
-          "avatar": "https://cdn.sanity.io/images/5qtiaw9u/production/8ff516c64d53b371e6bc531d7d0540efd9dcbd66-400x400.png",
-          "isModerator": false,
-          "sortOrder": 0
-        }
-      ]
-    },
-    "linkedIn": "https://www.linkedin.com/in/bwnyasse/"
-  },
-  {
     "id": 1447019505,
     "name": "Robert Yates",
     "avatar": "https://cdn.sanity.io/images/5qtiaw9u/production/d00130775f61f4f775af7ff73ce75dc2e186642c-400x400.jpg",
@@ -1016,38 +1266,38 @@
     "linkedIn": "https://www.linkedin.com/in/robert-yates-5441b061"
   },
   {
-    "id": 2031487011,
-    "name": "John Folberth",
-    "avatar": "https://cdn.sanity.io/images/5qtiaw9u/production/706a76b3f8331adceb9a7de257062f6f8bc5fff6-400x400.jpg",
-    "bio": "John Folberth is an AI and Data technologist at Microsoft who helps organizations turn complex cloud, data, DevOps, and AI challenges into practical, scalable solutions. A former Microsoft Azure MVP, John has built his career around cloud architecture, Infrastructure as Code, DevOps, modern data platforms, and emerging AI technologies. He is a frequent technical speaker and writer, sharing real-world lessons with developer communities, user groups, and conferences. His work includes contributions to Microsoft technical content, technical book reviews, and articles on Azure, Terraform, CI/CD, GitHub, and AI at blog.johnfolberth.com. More recently, John has focused on applied AI, AI security, agentic systems, GitHub Copilot, Azure AI, and the Model Context Protocol. His sessions are known for making complex technologies approachable, practical, and immediately useful, with an emphasis on helping teams understand not just how new technologies work, but how to adopt them effectively and securely.",
-    "organization": "Microsoft",
-    "position": "AI and Data Global Blackbelt",
+    "id": 2138146425,
+    "name": "Boris-Wilfried Nyasse",
+    "avatar": "https://cdn.sanity.io/images/5qtiaw9u/production/8ff516c64d53b371e6bc531d7d0540efd9dcbd66-400x400.png",
+    "bio": "Passionate Developer & Google Developer Expert\n\nI enjoy my journey to ensure that the engineering trains run on time by creating an ideal environment for passionate people.\n\nMy goal is just to inspire others to continuously improve and raise their standards at all levels of the team.",
+    "organization": "Oloodi",
+    "position": "Technical Founder",
     "isWTM": false,
-    "isGDE": false,
+    "isGDE": true,
     "isModerator": false,
     "sortOrder": 0,
     "session": {
-      "title": "Microsoft Foundry's Four IQs",
-      "abstract": "Microsoft’s Work IQ, Web IQ, Foundry IQ, and Fabric IQ provide complementary forms of intelligence for building grounded, context-aware agents but how do you bring them together in a deployable, production-ready solution?",
-      "description": "Microsoft’s Work IQ, Web IQ, Foundry IQ, and Fabric IQ provide complementary forms of intelligence for building grounded, context-aware agents but how do you bring them together in a deployable, production-ready solution?\n\nIn this implementation-focused session, we will build a practical architecture that exposes the four IQs through a shared, versioned Toolbox. We’ll explore how Work IQ supplies permission-aware organizational context, Web IQ enables current public and industry research, Foundry IQ grounds agents in curated enterprise knowledge, and Fabric IQ adds business semantics, relationships, and operational data.\n\nThe emphasis will be on what it takes to ship and operate the solution: defining tool contracts, connecting agents through MCP, managing identities and RBAC, packaging agent workloads as secure containers, and publishing immutable images and Toolbox versions. We’ll also examine an end-to-end DevOps approach using Terraform, Azure Container Registry, deployment validation, observability, and controlled agent publication to Microsoft Foundry.\n\nAttendees will leave with a reusable architectural pattern for combining the four IQs while keeping agent reasoning, enterprise data, external research, and platform operations independently governed and deployable.\n\nAttendee takeaways:\n\n- Understand the distinct roles and representative uses of all four Microsoft IQs.\n- Design a shared Toolbox architecture using MCP and versioned tool contracts.\n- Implement secure identity, RBAC, secrets, and data-access boundaries.\n- Automate infrastructure, container, Toolbox, and agent deployments.\n- Apply production safeguards for validation, observability, governance, and lifecycle management",
-      "tags": ["Innovation"],
-      "track": "Innovation",
+      "title": "Off the Edge: Grading Google AI Edge and Gemini Against a Practitioner's Eye",
+      "abstract": "Can AI coach physical movement? This session examines a production Google Cloud application built to analyze jump rope mechanics, pitting precise spatial measurement against multimodal AI advice. Using Google AI Edge's Pose Landmarker for frame-by-frame 33-point tracking alongside Gemini video understanding for high-level athletic feedback, the project evaluates whether automated analysis drives measurable skill progression. Attendees examine architecture trade-offs, live execution against real footage, direct evaluations from experienced athletes, and clear cost-to-performance benchmarks for deploying video AI stacks.",
+      "description": "𝗔𝗜 𝗮𝗹𝗿𝗲𝗮𝗱𝘆 𝗵𝗲𝗹𝗽𝘀 𝘂𝘀 𝗹𝗲𝗮𝗿𝗻, 𝘄𝗿𝗶𝘁𝗲 𝗮𝗻𝗱 𝗱𝗲𝗰𝗶𝗱𝗲. 𝗖𝗮𝗻 𝗶𝘁 𝗵𝗲𝗹𝗽 𝘂𝘀 𝗺𝗼𝘃𝗲 𝗯𝗲𝘁𝘁𝗲𝗿?\n\nGetting better at a physical skill takes someone who can see what you cannot see: your own body while it is moving. Where your arms are. How high you rise. Whether this second looks like the one before it.\n\nThat is a harder thing to ask of a machine than it sounds. It has to understand space rather than words (position, speed, repetition) and then say something about it that is worth acting on.\n\nThis talk sets out to find how far that has come, using an application built for the purpose and a sport where the answer can actually be checked: 𝗷𝘂𝗺𝗽𝗶𝗻𝗴 𝗿𝗼𝗽𝗲.\n\nThat sport was chosen for exactly that reason. Someone who practises it can grade the answer. A few seconds of footage are enough to say what is wrong and why, so a model offering coaching gets no benefit of the doubt.\n\nThe application runs on Google Cloud, on two technologies that read movement in completely different ways. 𝗚𝗼𝗼𝗴𝗹𝗲 𝗔𝗜 𝗘𝗱𝗴𝗲'𝘀 𝗣𝗼𝘀𝗲 𝗟𝗮𝗻𝗱𝗺𝗮𝗿𝗸𝗲𝗿 measures the body. 𝗚𝗲𝗺𝗶𝗻𝗶 𝘃𝗶𝗱𝗲𝗼\n𝘂𝗻𝗱𝗲𝗿𝘀𝘁𝗮𝗻𝗱𝗶𝗻𝗴 is asked for the harder thing: not a description of the video, but advice that changes the next session.\n\nThree questions drove the whole build, and this talk is how each one turned out.\n\n- 𝗛𝗼𝘄 𝗳𝗮𝗿 𝗱𝗼𝗲𝘀 𝗣𝗼𝘀𝗲 𝗟𝗮𝗻𝗱𝗺𝗮𝗿𝗸𝗲𝗿 𝗴𝗼 𝗼𝗻 𝗿𝗲𝗮𝗹 𝗳𝗼𝗼𝘁𝗮𝗴𝗲? The specification says thirty-three body points, thirty times a second.\n- 𝗜𝘀 𝗚𝗲𝗺𝗶𝗻𝗶 𝘃𝗶𝗱𝗲𝗼 𝘂𝗻𝗱𝗲𝗿𝘀𝘁𝗮𝗻𝗱𝗶𝗻𝗴 𝗴𝗲𝗻𝘂𝗶𝗻𝗲𝗹𝘆 𝘂𝘀𝗲𝗳𝘂𝗹 𝗮𝘀 𝗮 𝗰𝗼𝗮𝗰𝗵? Not whether it sounds convincing, every model does that now. Does it say something specific enough to change how someone trains tomorrow?\n- 𝗪𝗵𝗲𝗻 𝘁𝗵𝗲 𝗺𝗲𝗮𝘀𝘂𝗿𝗲𝗺𝗲𝗻𝘁 𝗮𝗻𝗱 𝘁𝗵𝗲 𝗮𝗱𝘃𝗶𝗰𝗲 𝗱𝗶𝘀𝗮𝗴𝗿𝗲𝗲, 𝘄𝗵𝗶𝗰𝗵 𝗼𝗻𝗲 𝗱𝗼 𝘆𝗼𝘂 𝗯𝗲𝗹𝗶𝗲𝘃𝗲?\n\n𝗜𝗻 𝘁𝗵𝗶𝘀 𝘀𝗲𝘀𝘀𝗶𝗼𝗻 𝘄𝗲 𝗴𝗼 𝘁𝗵𝗿𝗼𝘂𝗴𝗵 𝘁𝗵𝗲 𝘄𝗵𝗼𝗹𝗲 𝗿𝗼𝘂𝘁𝗲:\n  1. How the application is built on Google Cloud, the choices that survived contact with real video and the ones that did not, and the point where each technology reached its limit.\n  2. We will run the application live, on real sessions, and read together what it has to say about them.\n  3. Then comes the coaching it produced, what practitioners of the sport made of it, and a grade for both technologies.\n\nYou will leave knowing what Pose Landmarker really delivers and where it stops, what this stack costs and demands on Google Cloud, and whether Gemini video understanding is worth putting in front of your own users, whatever it is you are helping them get better at.\n\n𝗧𝗵𝗲 𝗾𝘂𝗲𝘀𝘁𝗶𝗼𝗻 𝘄𝗮𝘀 𝗻𝗲𝘃𝗲𝗿 𝘄𝗵𝗲𝘁𝗵𝗲𝗿 𝘁𝗵𝗲 𝗺𝗼𝗱𝗲𝗹𝘀 𝗮𝗿𝗲 𝗶𝗺𝗽𝗿𝗲𝘀𝘀𝗶𝘃𝗲. 𝗧𝗵𝗲𝘆 𝗮𝗿𝗲. 𝗜𝘁 𝗶𝘀 𝘄𝗵𝗲𝘁𝗵𝗲𝗿 𝘁𝗵𝗲 𝗷𝘂𝗺𝗽𝗶𝗻𝗴 𝗶𝘀 𝗯𝗲𝘁𝘁𝗲𝗿 𝗶𝗻 𝗠𝗮𝗿𝗰𝗵 𝘁𝗵𝗮𝗻 𝗶𝘁 𝘄𝗮𝘀 𝗶𝗻 𝗝𝗮𝗻𝘂𝗮𝗿𝘆.",
+      "tags": ["Leadership"],
+      "track": "Leadership",
       "time": "15:15",
       "room": "",
       "sessionDuration": 35,
-      "speakers": ["John Folberth"],
+      "speakers": ["Boris-Wilfried Nyasse"],
       "moderators": [],
-      "panelists": ["John Folberth"],
+      "panelists": ["Boris-Wilfried Nyasse"],
       "participants": [
         {
-          "name": "John Folberth",
-          "avatar": "https://cdn.sanity.io/images/5qtiaw9u/production/706a76b3f8331adceb9a7de257062f6f8bc5fff6-400x400.jpg",
+          "name": "Boris-Wilfried Nyasse",
+          "avatar": "https://cdn.sanity.io/images/5qtiaw9u/production/8ff516c64d53b371e6bc531d7d0540efd9dcbd66-400x400.png",
           "isModerator": false,
           "sortOrder": 0
         }
       ]
     },
-    "linkedIn": "https://www.linkedin.com/in/john-folberth/"
+    "linkedIn": "https://www.linkedin.com/in/bwnyasse/"
   },
   {
     "id": 1200987542,
@@ -1082,5 +1332,40 @@
       ]
     },
     "linkedIn": "https://linkedin.com/in/pragyakeshap"
+  },
+  {
+    "id": 114667211,
+    "name": "Jenna Ritten",
+    "avatar": "https://cdn.sanity.io/images/5qtiaw9u/production/267ff43c481c7f87d7fcb842f6d9c0defc465a42-804x784.png",
+    "bio": "Jenna Ritten spoke at Michigan DevFest.",
+    "organization": "IBM",
+    "position": "Chief Developer Advocate & Senior Architect",
+    "isWTM": true,
+    "isGDE": true,
+    "isModerator": false,
+    "sortOrder": 0,
+    "session": {
+      "title": "Winners Announced, Awards & Prizes",
+      "abstract": "",
+      "description": "",
+      "tags": ["Hackathon"],
+      "track": "Hackathon",
+      "time": "19:30",
+      "room": "",
+      "sessionDuration": 30,
+      "speakers": ["Jenna Ritten"],
+      "moderators": [],
+      "panelists": ["Jenna Ritten"],
+      "participants": [
+        {
+          "name": "Jenna Ritten",
+          "avatar": "https://cdn.sanity.io/images/5qtiaw9u/production/267ff43c481c7f87d7fcb842f6d9c0defc465a42-804x784.png",
+          "isModerator": false,
+          "sortOrder": 0
+        }
+      ]
+    },
+    "linkedIn": "https://www.linkedin.com/in/jritten/",
+    "twitter": "jritten"
   }
 ]

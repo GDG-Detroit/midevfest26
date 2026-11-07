@@ -3,12 +3,13 @@
     "slug": "michigan-devfest-2026",
     "title": "Michigan DevFest 2026",
     "year": 2026,
-    "rowCount": 32,
-    "speakerCount": 32,
-    "sessionCount": 32,
+    "rowCount": 39,
+    "speakerCount": 37,
+    "sessionCount": 36,
     "tracks": [
       "AI Foundations",
       "Build with AI",
+      "Hackathon",
       "Innovation",
       "Leadership",
       "Level Up"
