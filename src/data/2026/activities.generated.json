@@ -1,0 +1,47 @@
+[
+  {
+    "id": "sanity-activity-7a207059-37ba-49d8-a340-1390f0b5a4c0",
+    "track": "Hackathon",
+    "title": "Build with AI Workshop by Google",
+    "content": null,
+    "time": "12:00",
+    "timeEnd": "13:00",
+    "room": ""
+  },
+  {
+    "id": "sanity-activity-session-think-small-to-build-big-why-tiny-ai-models-are-the-future",
+    "track": "Hackathon",
+    "title": "Lunch Break & Networking",
+    "content": null,
+    "time": "13:00",
+    "timeEnd": "14:00",
+    "room": ""
+  },
+  {
+    "id": "sanity-activity-02664f2f-ca16-4c7e-b629-90b2e296e241",
+    "track": "Hackathon",
+    "title": "Hacking Continues",
+    "content": null,
+    "time": "14:00",
+    "timeEnd": "18:00",
+    "room": ""
+  },
+  {
+    "id": "sanity-activity-0feb6e8c-9099-4d95-aeb5-5fa7682482ba",
+    "track": "Hackathon",
+    "title": "Submissions Close",
+    "content": null,
+    "time": "18:00",
+    "timeEnd": "18:30",
+    "room": ""
+  },
+  {
+    "id": "sanity-activity-a4e5519f-ddf1-4b1d-9c52-cbf87238b4b9",
+    "track": "Hackathon",
+    "title": "Presentations, Demos & Judging",
+    "content": null,
+    "time": "18:30",
+    "timeEnd": "19:30",
+    "room": ""
+  }
+]

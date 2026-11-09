@@ -4,8 +4,11 @@
  * Track names must match SessionsSection tracks exactly.
  */
 import { SCHEDULE_TRACK } from './venues'
+// Speakerless Hackathon sessions from Sanity — see SPEAKERLESS_TRACKS in
+// scripts/fetch-event-data.mjs. Edit those in the Studio, not here.
+import sanityActivities from './activities.generated.json'
 
-export const conferenceActivities = [
+const staticActivities = [
   {
     id: 'schedule-checkin',
     track: SCHEDULE_TRACK,
@@ -79,3 +82,5 @@ export const conferenceActivities = [
     timeEnd: '18:00',
   },
 ]
+
+export const conferenceActivities = [...staticActivities, ...sanityActivities]

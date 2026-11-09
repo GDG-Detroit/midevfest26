@@ -32,6 +32,18 @@ const teamOutputFor = (year) =>
 const partnersOutputFor = (year) =>
   path.join(ROOT, `src/data/${year}/partners.generated.json`)
 
+const activitiesOutputFor = (year) =>
+  path.join(ROOT, `src/data/${year}/activities.generated.json`)
+
+/**
+ * Tracks whose published sessions still appear in the schedule when they have
+ * no published speaker — run-of-show items like "Hacking Continues" or
+ * "Submissions Close". Everywhere else a session needs a speaker to be listed,
+ * so a session whose speaker backed out drops off rather than showing empty.
+ * Match the `track` string stored in Sanity (see HACKATHON_TRACK in venues.js).
+ */
+const SPEAKERLESS_TRACKS = ['Hackathon']
+
 /** Every event in the dataset, newest first — drives the archive. */
 const EVENTS_QUERY = `*[_type == "event" && defined(year)] | order(year desc){
   year,
@@ -220,6 +232,56 @@ function buildRow(session, participant) {
   row._featuredSessionId = speaker.featuredSessionId ?? null
 
   return row
+}
+
+/** "08:15" + 30 → "08:45". Returns '' when the start time is not HH:mm. */
+function addMinutes(time, minutes) {
+  const match = /^(\d{1,2}):(\d{2})$/.exec(time ?? '')
+  if (!match || !Number.isFinite(minutes)) return ''
+  const total = Number(match[1]) * 60 + Number(match[2]) + minutes
+  const hours = Math.floor(total / 60) % 24
+  return `${String(hours).padStart(2, '0')}:${String(total % 60).padStart(2, '0')}`
+}
+
+/**
+ * A speakerless session in the same shape as the hand-authored entries in
+ * conferenceActivities.js, so it renders as an ActivityCard.
+ */
+function buildActivity(session) {
+  const time = normalizeTimeString(session.startTime) || 'TBA'
+  return {
+    id: `sanity-activity-${session._id}`,
+    track: session.track,
+    title: session.title?.trim() ?? '',
+    content: session.description || session.abstract || null,
+    time,
+    timeEnd: addMinutes(time, session.durationMinutes ?? 60),
+    room: session.room || DEFAULT_ROOM,
+  }
+}
+
+function hasPublishedSpeaker(session) {
+  return (session.participants ?? []).some((p) => p.speaker?.published)
+}
+
+/**
+ * Published sessions on SPEAKERLESS_TRACKS that have no published speaker.
+ * Sessions that do have one are already rows in speakers.generated.json.
+ */
+export async function fetchEventActivities(options = {}) {
+  const eventYear = Number(
+    options.eventYear ??
+      readEnv('SANITY_EVENT_YEAR', String(DEFAULT_EVENT_YEAR))
+  )
+
+  const client = createSanityReadClient(options)
+  const sessions = await client.fetch(SESSIONS_QUERY, { year: eventYear })
+
+  return sessions
+    .filter((session) => SPEAKERLESS_TRACKS.includes(session.track))
+    .filter((session) => !hasPublishedSpeaker(session))
+    .filter((session) => session.title?.trim())
+    .map(buildActivity)
 }
 
 function enrichSessionParticipants(rows) {
@@ -657,6 +719,20 @@ async function writeYear(year) {
   return { rowCount: output.length, ...metadata }
 }
 
+async function writeActivitiesYear(year) {
+  const rows = await fetchEventActivities({ eventYear: year })
+  const target = activitiesOutputFor(year)
+
+  await mkdir(path.dirname(target), { recursive: true })
+  await writeFormattedJson(target, rows)
+
+  console.log(
+    `  ${year}: ${rows.length} speakerless ${SPEAKERLESS_TRACKS.join('/')} ` +
+      `session(s) -> ${path.relative(ROOT, target)}`
+  )
+  return rows.length
+}
+
 async function main() {
   loadOptionalEnvFile()
 
@@ -680,6 +756,13 @@ async function main() {
   }
 
   await writeFormattedJson(EVENTS_OUTPUT, manifest)
+
+  // Only the current year: conferenceActivities.js is a per-year hand-authored
+  // file and past years do not import an activities feed.
+  const currentYear = Number(
+    readEnv('SANITY_EVENT_YEAR', String(DEFAULT_EVENT_YEAR))
+  )
+  await writeActivitiesYear(currentYear)
 
   console.log(
     `Wrote ${total} speaker-session rows, ${teamTotal} team members and ` +
