@@ -33,6 +33,9 @@ Google Sheet / prior-year repo
 - `src/data/<year>/speakers.generated.json`
 - `src/data/2026/team.generated.json`
 - `src/data/2026/partners.generated.json`
+- `src/data/2026/activities.generated.json` — published Hackathon sessions with no
+  speaker, merged into `conferenceActivities.js` so they render as run-of-show items
+  (tracks listed in `SPEAKERLESS_TRACKS` in `scripts/fetch-event-data.mjs`)
 - `src/data/events.generated.json` — the archive-year manifest; a new year appearing in
   Sanity shows up here without a code edit
 
