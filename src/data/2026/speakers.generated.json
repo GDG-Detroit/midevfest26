@@ -472,9 +472,19 @@
       "time": "11:00",
       "room": "",
       "sessionDuration": 60,
-      "speakers": ["Vahi Guner", "Brandon Brown", "Jason Fleming"],
+      "speakers": [
+        "Vahi Guner",
+        "Brandon Brown",
+        "Jason Fleming",
+        "Michael Mati"
+      ],
       "moderators": [],
-      "panelists": ["Vahi Guner", "Brandon Brown", "Jason Fleming"],
+      "panelists": [
+        "Vahi Guner",
+        "Brandon Brown",
+        "Jason Fleming",
+        "Michael Mati"
+      ],
       "participants": [
         {
           "name": "Vahi Guner",
@@ -493,6 +503,12 @@
           "avatar": "https://cdn.sanity.io/images/5qtiaw9u/production/7b2c8959872e0c902f5d279b9e9c43504046bcc4-1109x1003.jpg",
           "isModerator": false,
           "sortOrder": 2
+        },
+        {
+          "name": "Michael Mati",
+          "avatar": "https://cdn.sanity.io/images/5qtiaw9u/production/5d522a9488a163eb0a255bd10b22be8f83e75ebc-982x999.jpg",
+          "isModerator": false,
+          "sortOrder": 3
         }
       ]
     }
@@ -517,9 +533,19 @@
       "time": "11:00",
       "room": "",
       "sessionDuration": 60,
-      "speakers": ["Vahi Guner", "Brandon Brown", "Jason Fleming"],
+      "speakers": [
+        "Vahi Guner",
+        "Brandon Brown",
+        "Jason Fleming",
+        "Michael Mati"
+      ],
       "moderators": [],
-      "panelists": ["Vahi Guner", "Brandon Brown", "Jason Fleming"],
+      "panelists": [
+        "Vahi Guner",
+        "Brandon Brown",
+        "Jason Fleming",
+        "Michael Mati"
+      ],
       "participants": [
         {
           "name": "Vahi Guner",
@@ -538,6 +564,12 @@
           "avatar": "https://cdn.sanity.io/images/5qtiaw9u/production/7b2c8959872e0c902f5d279b9e9c43504046bcc4-1109x1003.jpg",
           "isModerator": false,
           "sortOrder": 2
+        },
+        {
+          "name": "Michael Mati",
+          "avatar": "https://cdn.sanity.io/images/5qtiaw9u/production/5d522a9488a163eb0a255bd10b22be8f83e75ebc-982x999.jpg",
+          "isModerator": false,
+          "sortOrder": 3
         }
       ]
     }
@@ -562,9 +594,19 @@
       "time": "11:00",
       "room": "",
       "sessionDuration": 60,
-      "speakers": ["Vahi Guner", "Brandon Brown", "Jason Fleming"],
+      "speakers": [
+        "Vahi Guner",
+        "Brandon Brown",
+        "Jason Fleming",
+        "Michael Mati"
+      ],
       "moderators": [],
-      "panelists": ["Vahi Guner", "Brandon Brown", "Jason Fleming"],
+      "panelists": [
+        "Vahi Guner",
+        "Brandon Brown",
+        "Jason Fleming",
+        "Michael Mati"
+      ],
       "participants": [
         {
           "name": "Vahi Guner",
@@ -583,9 +625,77 @@
           "avatar": "https://cdn.sanity.io/images/5qtiaw9u/production/7b2c8959872e0c902f5d279b9e9c43504046bcc4-1109x1003.jpg",
           "isModerator": false,
           "sortOrder": 2
+        },
+        {
+          "name": "Michael Mati",
+          "avatar": "https://cdn.sanity.io/images/5qtiaw9u/production/5d522a9488a163eb0a255bd10b22be8f83e75ebc-982x999.jpg",
+          "isModerator": false,
+          "sortOrder": 3
         }
       ]
     }
+  },
+  {
+    "id": 1636105623,
+    "name": "Michael Mati",
+    "avatar": "https://cdn.sanity.io/images/5qtiaw9u/production/5d522a9488a163eb0a255bd10b22be8f83e75ebc-982x999.jpg",
+    "bio": "Hi everyone! My name is Michael Mati, and I am an Automation Customer Success Engineer at IBM. Even though I live in Michigan, I was born in New York and have lived in Texas most of my life until last year. I graduated from the University of Texas at Dallas with a B.S. in Computer Information Systems and Technology. In my free time, I love playing basketball, going to the gym, and watching movies! ",
+    "organization": "IBM",
+    "position": "Automation Customer Success Engineer",
+    "isWTM": false,
+    "isGDE": false,
+    "isModerator": false,
+    "sortOrder": 3,
+    "session": {
+      "title": "Build with AI Workshop ",
+      "abstract": "This session highlights how IBM watsonx and agentic AI architectures can streamline complex HR operations by unifying workflows across disparate enterprise systems. Using a simplified AskHR agent built with watsonx Orchestrate, we demonstrate how reasoning-enabled agents interact with tools, APIs, and knowledge sources to perform tasks such as querying employee data, submitting time-off requests, and updating records.\n\nWe will walk through the technical architecture behind the agent—including multi-agent orchestration, OpenAPI-based connectors, secure data retrieval, and built-in grounding to minimize hallucinations. The lab showcases how developers can rapidly integrate existing HR platforms like Workday or SuccessFactors, or create custom tools for any internal system.\n\nAttendees will leave with a practical understanding of how to build, configure, and extend agentic workflows on watsonx to automate real-world operational processes at scale.",
+      "description": "This session highlights how IBM watsonx and agentic AI architectures can streamline complex HR operations by unifying workflows across disparate enterprise systems. Using a simplified AskHR agent built with watsonx Orchestrate, we demonstrate how reasoning-enabled agents interact with tools, APIs, and knowledge sources to perform tasks such as querying employee data, submitting time-off requests, and updating records.\n\nWe will walk through the technical architecture behind the agent—including multi-agent orchestration, OpenAPI-based connectors, secure data retrieval, and built-in grounding to minimize hallucinations. The lab showcases how developers can rapidly integrate existing HR platforms like Workday or SuccessFactors, or create custom tools for any internal system.\n\nAttendees will leave with a practical understanding of how to build, configure, and extend agentic workflows on watsonx to automate real-world operational processes at scale.",
+      "tags": ["Hackathon"],
+      "track": "Hackathon",
+      "time": "11:00",
+      "room": "",
+      "sessionDuration": 60,
+      "speakers": [
+        "Vahi Guner",
+        "Brandon Brown",
+        "Jason Fleming",
+        "Michael Mati"
+      ],
+      "moderators": [],
+      "panelists": [
+        "Vahi Guner",
+        "Brandon Brown",
+        "Jason Fleming",
+        "Michael Mati"
+      ],
+      "participants": [
+        {
+          "name": "Vahi Guner",
+          "avatar": "https://cdn.sanity.io/images/5qtiaw9u/production/b3fcfcf44203287d9c563d4258f1846af49d0d76-250x252.png",
+          "isModerator": false,
+          "sortOrder": 0
+        },
+        {
+          "name": "Brandon Brown",
+          "avatar": "https://cdn.sanity.io/images/5qtiaw9u/production/05f67097b06b1a1135356dc655b7dcf8fc112074-800x800.jpg",
+          "isModerator": false,
+          "sortOrder": 1
+        },
+        {
+          "name": "Jason Fleming",
+          "avatar": "https://cdn.sanity.io/images/5qtiaw9u/production/7b2c8959872e0c902f5d279b9e9c43504046bcc4-1109x1003.jpg",
+          "isModerator": false,
+          "sortOrder": 2
+        },
+        {
+          "name": "Michael Mati",
+          "avatar": "https://cdn.sanity.io/images/5qtiaw9u/production/5d522a9488a163eb0a255bd10b22be8f83e75ebc-982x999.jpg",
+          "isModerator": false,
+          "sortOrder": 3
+        }
+      ]
+    },
+    "linkedIn": "https://www.linkedin.com/in/michael-mati/"
   },
   {
     "id": 1549321228,
