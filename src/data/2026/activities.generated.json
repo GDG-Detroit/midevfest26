@@ -1,11 +1,11 @@
 [
   {
-    "id": "sanity-activity-7a207059-37ba-49d8-a340-1390f0b5a4c0",
+    "id": "sanity-activity-session-ai-assistants-agentic-ai-watsonx-orchestrate-lab",
     "track": "Hackathon",
-    "title": "Build with AI Workshop by Google",
-    "content": null,
-    "time": "12:00",
-    "timeEnd": "13:00",
+    "title": "Build with AI Workshop",
+    "content": "This session highlights how IBM watsonx and agentic AI architectures can streamline complex HR operations by unifying workflows across disparate enterprise systems. Using a simplified AskHR agent built with watsonx Orchestrate, we demonstrate how reasoning-enabled agents interact with tools, APIs, and knowledge sources to perform tasks such as querying employee data, submitting time-off requests, and updating records.\n\nWe will walk through the technical architecture behind the agent—including multi-agent orchestration, OpenAPI-based connectors, secure data retrieval, and built-in grounding to minimize hallucinations. The lab showcases how developers can rapidly integrate existing HR platforms like Workday or SuccessFactors, or create custom tools for any internal system.\n\nAttendees will leave with a practical understanding of how to build, configure, and extend agentic workflows on watsonx to automate real-world operational processes at scale.",
+    "time": "11:00",
+    "timeEnd": "12:00",
     "room": ""
   },
   {

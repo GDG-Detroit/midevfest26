@@ -34,6 +34,41 @@
     "linkedIn": "https://www.linkedin.com/in/william-bowen-a7216610/"
   },
   {
+    "id": 1106051384,
+    "name": "Jenna Ritten",
+    "avatar": "https://cdn.sanity.io/images/5qtiaw9u/production/267ff43c481c7f87d7fcb842f6d9c0defc465a42-804x784.png",
+    "bio": "Jenna Ritten spoke at Michigan DevFest.",
+    "organization": "IBM",
+    "position": "Chief Developer Advocate & Senior Architect",
+    "isWTM": true,
+    "isGDE": true,
+    "isModerator": false,
+    "sortOrder": 0,
+    "session": {
+      "title": "AI Hackathon Keynote",
+      "abstract": "",
+      "description": "",
+      "tags": ["Hackathon"],
+      "track": "Hackathon",
+      "time": "09:00",
+      "room": "",
+      "sessionDuration": 60,
+      "speakers": ["Jenna Ritten"],
+      "moderators": [],
+      "panelists": ["Jenna Ritten"],
+      "participants": [
+        {
+          "name": "Jenna Ritten",
+          "avatar": "https://cdn.sanity.io/images/5qtiaw9u/production/267ff43c481c7f87d7fcb842f6d9c0defc465a42-804x784.png",
+          "isModerator": false,
+          "sortOrder": 0
+        }
+      ]
+    },
+    "linkedIn": "https://www.linkedin.com/in/jritten/",
+    "twitter": "jritten"
+  },
+  {
     "id": 11479664,
     "name": "Dr. Bernadette Atanga",
     "avatar": "https://cdn.sanity.io/images/5qtiaw9u/production/bd2beaa96e0de85d51088266d3581a6633668158-682x682.jpg",
@@ -121,9 +156,9 @@
       "time": "10:00",
       "room": "",
       "sessionDuration": 60,
-      "speakers": ["Hoda Solati", "Shima Solati"],
+      "speakers": ["Hoda Solati", "Shima Solati", "Roland Frohman III"],
       "moderators": [],
-      "panelists": ["Hoda Solati", "Shima Solati"],
+      "panelists": ["Hoda Solati", "Shima Solati", "Roland Frohman III"],
       "participants": [
         {
           "name": "Hoda Solati",
@@ -136,6 +171,12 @@
           "avatar": "https://cdn.sanity.io/images/5qtiaw9u/production/7bdb6775e0582f8e94b84f9a436ece40e9ec4912-800x800.jpg",
           "isModerator": false,
           "sortOrder": 1
+        },
+        {
+          "name": "Roland Frohman III",
+          "avatar": "https://cdn.sanity.io/images/5qtiaw9u/production/e47cb2c20a862bf40afc03f1d7a89b71696ff235-200x200.jpg",
+          "isModerator": false,
+          "sortOrder": 2
         }
       ]
     },
@@ -161,9 +202,9 @@
       "time": "10:00",
       "room": "",
       "sessionDuration": 60,
-      "speakers": ["Hoda Solati", "Shima Solati"],
+      "speakers": ["Hoda Solati", "Shima Solati", "Roland Frohman III"],
       "moderators": [],
-      "panelists": ["Hoda Solati", "Shima Solati"],
+      "panelists": ["Hoda Solati", "Shima Solati", "Roland Frohman III"],
       "participants": [
         {
           "name": "Hoda Solati",
@@ -176,10 +217,62 @@
           "avatar": "https://cdn.sanity.io/images/5qtiaw9u/production/7bdb6775e0582f8e94b84f9a436ece40e9ec4912-800x800.jpg",
           "isModerator": false,
           "sortOrder": 1
+        },
+        {
+          "name": "Roland Frohman III",
+          "avatar": "https://cdn.sanity.io/images/5qtiaw9u/production/e47cb2c20a862bf40afc03f1d7a89b71696ff235-200x200.jpg",
+          "isModerator": false,
+          "sortOrder": 2
         }
       ]
     },
     "linkedIn": "https://www.linkedin.com/in/shima-solati/"
+  },
+  {
+    "id": 1603920108,
+    "name": "Roland Frohman III",
+    "avatar": "https://cdn.sanity.io/images/5qtiaw9u/production/e47cb2c20a862bf40afc03f1d7a89b71696ff235-200x200.jpg",
+    "bio": "Roland’s research explores the convergence of physical and digital interactions within connected product ecosystems, with particular focus on IoT devices and spatial computing interfaces. His work investigates how emerging technologies—including AR/VR/XR, voice interfaces, and AI-driven interactions—shape human-centered design across multiple touch points. Through his practice and teaching, he examines the evolution from traditional 2D interfaces to spatial computing environments, developing pedagogical approaches that prepare designers for increasingly complex, multi-modal experiences. His current research involves creating frameworks for seamless cross-platform experiences that bridge the gap between industrial design and digital interaction.",
+    "organization": "College for Creative Studies",
+    "position": "Graduate Adjunct Professor",
+    "isWTM": false,
+    "isGDE": false,
+    "isModerator": false,
+    "sortOrder": 2,
+    "session": {
+      "title": "Design for AI Workshop",
+      "abstract": "",
+      "description": "",
+      "tags": ["Hackathon"],
+      "track": "Hackathon",
+      "time": "10:00",
+      "room": "",
+      "sessionDuration": 60,
+      "speakers": ["Hoda Solati", "Shima Solati", "Roland Frohman III"],
+      "moderators": [],
+      "panelists": ["Hoda Solati", "Shima Solati", "Roland Frohman III"],
+      "participants": [
+        {
+          "name": "Hoda Solati",
+          "avatar": "https://cdn.sanity.io/images/5qtiaw9u/production/217e90ac200609f531ea6b8de4cea8ab10c0089b-900x900.jpg",
+          "isModerator": false,
+          "sortOrder": 0
+        },
+        {
+          "name": "Shima Solati",
+          "avatar": "https://cdn.sanity.io/images/5qtiaw9u/production/7bdb6775e0582f8e94b84f9a436ece40e9ec4912-800x800.jpg",
+          "isModerator": false,
+          "sortOrder": 1
+        },
+        {
+          "name": "Roland Frohman III",
+          "avatar": "https://cdn.sanity.io/images/5qtiaw9u/production/e47cb2c20a862bf40afc03f1d7a89b71696ff235-200x200.jpg",
+          "isModerator": false,
+          "sortOrder": 2
+        }
+      ]
+    },
+    "linkedIn": "https://www.linkedin.com/in/rhfrohman3/"
   },
   {
     "id": 1677549836,
@@ -242,6 +335,39 @@
         {
           "name": "Bryce Howitson",
           "avatar": "https://cdn.sanity.io/images/5qtiaw9u/production/69d0a759457bf0800310d08789b063177be0cd59-400x400.jpg",
+          "isModerator": false,
+          "sortOrder": 0
+        }
+      ]
+    }
+  },
+  {
+    "id": 932352874,
+    "name": "Ida Byrd-Hill",
+    "avatar": "https://cdn.sanity.io/images/5qtiaw9u/production/f969370920522d6e95d402d22d051ddddb856407-1010x829.png",
+    "bio": "Ida Byrd-Hill leads Automation Workz, a Human + AI integration firm, as CEO. She created SenseiiWyze™, a predictive behavioral analytics engine, to identify employee technology capability, predict technostress risk, and uncover employee resistance to power AI ROI and profitability.\n\nAutomation Workz contributed to a 45% revenue increase over 3 years for Dr. Bronner’s Magic Soap by identifying performance barriers, leading an enterprise Culture Audit, coordinating cross-functional teams, developing leaders, and supporting AI adoption.\nFor 4 years, Automation Workz served Michigan Works agencies providing AI, cybersecurity, data analytics, IoT and network engineering certification training achieving a 284.4%  ROI on training investment with a 631.4% increase in learner completions and 115.5% increase in learner salary. Created the 1st AI/ Data Analytics workforce development (WIOA)  training program in US. Ida has trained 17,000+ front-liners in business and technology. \n\nPreviously, Byrd-Hill grew a wealth management firm from 0 to $620 million Assets Under Management, serving 2200 high net worth individuals and 10 corporate clients. She expanded an idea incubator nonprofit, an executive search firm and technology proficiency as a public education advocate. She even piloted a virtual alternative high school. \nIda Byrd-Hill is a graduate of the University of Michigan - Ann Arbor with a BA in Economics and Strayer University with an MBA focused on Strategy/People Management.\n\nShe is the author of Culture Re-Wired: Unleash Your Inner AI CEO and TEDx Speaker. She was selected by the CEO Magazine as a 2025 Top Tech Innovator alongside Sam Altman, CEO, OpenAI; Tim Cook, CEO, Apple; and Mark Zuckerberg, CEO, Meta. Appointed to Holon IQ/ BCG AI & Digital Skills Leadership Council. Former Detroit Regional Chamber of Commerce board of director.",
+    "organization": "Automation Workz",
+    "position": "Founder",
+    "isWTM": false,
+    "isGDE": false,
+    "isModerator": false,
+    "sortOrder": 0,
+    "session": {
+      "title": "Why Human Behavior is the Missing Ingredient in AI ROI",
+      "abstract": "",
+      "description": "Organizations are racing to adopt artificial intelligence, investing millions in tools, platforms, and automation. So why are so many organizations struggling to turn AI investments into measurable business results?\n\nThe answer may not be found in the technology. It may be found in the culture.\n\nOutdated management practices, employee resistance, information silos, ineffective workflows, and leadership blind spots can undermine even the most sophisticated AI strategy.\n\nIn this provocative, business-focused keynote, Ida Byrd-Hill challenges executives and decision-makers to rethink the relationship between organizational culture, human behavior, and AI profitability. Drawing on her work in behavioral intelligence, workforce development, and technology transformation, Byrd-Hill introduces the Five Bs of AI ROI.\n\nAttendees will discover why human capabilities are essential to successful AI transformation.\n\nYou'll learn how to:\n1. Identify cultural and behavioral barriers that prevent organizations from realizing AI's business value.\n2. Apply the Five Bs of AI ROI to evaluate organizational readiness and technology investments.\n3. Recognize how human intelligence and leadership influence AI adoption, innovation, and execution.\n4. Connect workforce capabilities and redesigned business processes to measurable business outcomes.\n\nWho should attend: CEOs, CIOs, CTOs, CHROs, founders, executives, technology decision-makers, engineering leaders, and business transformation professionals.\n\nThe takeaway: Your competitors can buy the same AI tools. Your competitive advantage comes from how effectively your people use them.\n\nStop buying or building AI and hoping for ROI.",
+      "tags": ["Build with AI"],
+      "track": "Build with AI",
+      "time": "10:00",
+      "room": "Grand Ballroom",
+      "sessionDuration": 35,
+      "speakers": ["Ida Byrd-Hill"],
+      "moderators": [],
+      "panelists": ["Ida Byrd-Hill"],
+      "participants": [
+        {
+          "name": "Ida Byrd-Hill",
+          "avatar": "https://cdn.sanity.io/images/5qtiaw9u/production/f969370920522d6e95d402d22d051ddddb856407-1010x829.png",
           "isModerator": false,
           "sortOrder": 0
         }
@@ -418,286 +544,6 @@
     "linkedIn": "https://linkedin.com/in/gregraymiller"
   },
   {
-    "id": 1106051384,
-    "name": "Jenna Ritten",
-    "avatar": "https://cdn.sanity.io/images/5qtiaw9u/production/267ff43c481c7f87d7fcb842f6d9c0defc465a42-804x784.png",
-    "bio": "Jenna Ritten spoke at Michigan DevFest.",
-    "organization": "IBM",
-    "position": "Chief Developer Advocate & Senior Architect",
-    "isWTM": true,
-    "isGDE": true,
-    "isModerator": false,
-    "sortOrder": 0,
-    "session": {
-      "title": "AI Hackathon Keynote",
-      "abstract": "",
-      "description": "",
-      "tags": ["Hackathon"],
-      "track": "Hackathon",
-      "time": "11:00",
-      "room": "",
-      "sessionDuration": 60,
-      "speakers": ["Jenna Ritten"],
-      "moderators": [],
-      "panelists": ["Jenna Ritten"],
-      "participants": [
-        {
-          "name": "Jenna Ritten",
-          "avatar": "https://cdn.sanity.io/images/5qtiaw9u/production/267ff43c481c7f87d7fcb842f6d9c0defc465a42-804x784.png",
-          "isModerator": false,
-          "sortOrder": 0
-        }
-      ]
-    },
-    "linkedIn": "https://www.linkedin.com/in/jritten/",
-    "twitter": "jritten"
-  },
-  {
-    "id": 167756570,
-    "name": "Vahi Guner",
-    "avatar": "https://cdn.sanity.io/images/5qtiaw9u/production/b3fcfcf44203287d9c563d4258f1846af49d0d76-250x252.png",
-    "bio": "Vahi Guner is an AI Engineer at IBM with a background in Electrical Engineering. He has hands-on experience working with both traditional machine learning models and modern generative AI technologies.",
-    "organization": "IBM Client Engineering",
-    "position": "AI Engineer",
-    "isWTM": false,
-    "isGDE": false,
-    "isModerator": false,
-    "sortOrder": 0,
-    "session": {
-      "title": "Build with AI Workshop ",
-      "abstract": "This session highlights how IBM watsonx and agentic AI architectures can streamline complex HR operations by unifying workflows across disparate enterprise systems. Using a simplified AskHR agent built with watsonx Orchestrate, we demonstrate how reasoning-enabled agents interact with tools, APIs, and knowledge sources to perform tasks such as querying employee data, submitting time-off requests, and updating records.\n\nWe will walk through the technical architecture behind the agent—including multi-agent orchestration, OpenAPI-based connectors, secure data retrieval, and built-in grounding to minimize hallucinations. The lab showcases how developers can rapidly integrate existing HR platforms like Workday or SuccessFactors, or create custom tools for any internal system.\n\nAttendees will leave with a practical understanding of how to build, configure, and extend agentic workflows on watsonx to automate real-world operational processes at scale.",
-      "description": "This session highlights how IBM watsonx and agentic AI architectures can streamline complex HR operations by unifying workflows across disparate enterprise systems. Using a simplified AskHR agent built with watsonx Orchestrate, we demonstrate how reasoning-enabled agents interact with tools, APIs, and knowledge sources to perform tasks such as querying employee data, submitting time-off requests, and updating records.\n\nWe will walk through the technical architecture behind the agent—including multi-agent orchestration, OpenAPI-based connectors, secure data retrieval, and built-in grounding to minimize hallucinations. The lab showcases how developers can rapidly integrate existing HR platforms like Workday or SuccessFactors, or create custom tools for any internal system.\n\nAttendees will leave with a practical understanding of how to build, configure, and extend agentic workflows on watsonx to automate real-world operational processes at scale.",
-      "tags": ["Hackathon"],
-      "track": "Hackathon",
-      "time": "11:00",
-      "room": "",
-      "sessionDuration": 60,
-      "speakers": [
-        "Vahi Guner",
-        "Brandon Brown",
-        "Jason Fleming",
-        "Michael Mati"
-      ],
-      "moderators": [],
-      "panelists": [
-        "Vahi Guner",
-        "Brandon Brown",
-        "Jason Fleming",
-        "Michael Mati"
-      ],
-      "participants": [
-        {
-          "name": "Vahi Guner",
-          "avatar": "https://cdn.sanity.io/images/5qtiaw9u/production/b3fcfcf44203287d9c563d4258f1846af49d0d76-250x252.png",
-          "isModerator": false,
-          "sortOrder": 0
-        },
-        {
-          "name": "Brandon Brown",
-          "avatar": "https://cdn.sanity.io/images/5qtiaw9u/production/05f67097b06b1a1135356dc655b7dcf8fc112074-800x800.jpg",
-          "isModerator": false,
-          "sortOrder": 1
-        },
-        {
-          "name": "Jason Fleming",
-          "avatar": "https://cdn.sanity.io/images/5qtiaw9u/production/7b2c8959872e0c902f5d279b9e9c43504046bcc4-1109x1003.jpg",
-          "isModerator": false,
-          "sortOrder": 2
-        },
-        {
-          "name": "Michael Mati",
-          "avatar": "https://cdn.sanity.io/images/5qtiaw9u/production/5d522a9488a163eb0a255bd10b22be8f83e75ebc-982x999.jpg",
-          "isModerator": false,
-          "sortOrder": 3
-        }
-      ]
-    }
-  },
-  {
-    "id": 247233591,
-    "name": "Brandon Brown",
-    "avatar": "https://cdn.sanity.io/images/5qtiaw9u/production/05f67097b06b1a1135356dc655b7dcf8fc112074-800x800.jpg",
-    "bio": "Brandon Brown is an AI engineer at IBM who helps organizations navigate their AI adoption journey. He bridges the gap between cutting-edge AI technology and practical business applications, enabling companies to achieve measurable ROI through intelligent automation and data-driven solutions.",
-    "organization": "IBM Client Engineering",
-    "position": "AI Engineer",
-    "isWTM": false,
-    "isGDE": false,
-    "isModerator": false,
-    "sortOrder": 1,
-    "session": {
-      "title": "Build with AI Workshop ",
-      "abstract": "This session highlights how IBM watsonx and agentic AI architectures can streamline complex HR operations by unifying workflows across disparate enterprise systems. Using a simplified AskHR agent built with watsonx Orchestrate, we demonstrate how reasoning-enabled agents interact with tools, APIs, and knowledge sources to perform tasks such as querying employee data, submitting time-off requests, and updating records.\n\nWe will walk through the technical architecture behind the agent—including multi-agent orchestration, OpenAPI-based connectors, secure data retrieval, and built-in grounding to minimize hallucinations. The lab showcases how developers can rapidly integrate existing HR platforms like Workday or SuccessFactors, or create custom tools for any internal system.\n\nAttendees will leave with a practical understanding of how to build, configure, and extend agentic workflows on watsonx to automate real-world operational processes at scale.",
-      "description": "This session highlights how IBM watsonx and agentic AI architectures can streamline complex HR operations by unifying workflows across disparate enterprise systems. Using a simplified AskHR agent built with watsonx Orchestrate, we demonstrate how reasoning-enabled agents interact with tools, APIs, and knowledge sources to perform tasks such as querying employee data, submitting time-off requests, and updating records.\n\nWe will walk through the technical architecture behind the agent—including multi-agent orchestration, OpenAPI-based connectors, secure data retrieval, and built-in grounding to minimize hallucinations. The lab showcases how developers can rapidly integrate existing HR platforms like Workday or SuccessFactors, or create custom tools for any internal system.\n\nAttendees will leave with a practical understanding of how to build, configure, and extend agentic workflows on watsonx to automate real-world operational processes at scale.",
-      "tags": ["Hackathon"],
-      "track": "Hackathon",
-      "time": "11:00",
-      "room": "",
-      "sessionDuration": 60,
-      "speakers": [
-        "Vahi Guner",
-        "Brandon Brown",
-        "Jason Fleming",
-        "Michael Mati"
-      ],
-      "moderators": [],
-      "panelists": [
-        "Vahi Guner",
-        "Brandon Brown",
-        "Jason Fleming",
-        "Michael Mati"
-      ],
-      "participants": [
-        {
-          "name": "Vahi Guner",
-          "avatar": "https://cdn.sanity.io/images/5qtiaw9u/production/b3fcfcf44203287d9c563d4258f1846af49d0d76-250x252.png",
-          "isModerator": false,
-          "sortOrder": 0
-        },
-        {
-          "name": "Brandon Brown",
-          "avatar": "https://cdn.sanity.io/images/5qtiaw9u/production/05f67097b06b1a1135356dc655b7dcf8fc112074-800x800.jpg",
-          "isModerator": false,
-          "sortOrder": 1
-        },
-        {
-          "name": "Jason Fleming",
-          "avatar": "https://cdn.sanity.io/images/5qtiaw9u/production/7b2c8959872e0c902f5d279b9e9c43504046bcc4-1109x1003.jpg",
-          "isModerator": false,
-          "sortOrder": 2
-        },
-        {
-          "name": "Michael Mati",
-          "avatar": "https://cdn.sanity.io/images/5qtiaw9u/production/5d522a9488a163eb0a255bd10b22be8f83e75ebc-982x999.jpg",
-          "isModerator": false,
-          "sortOrder": 3
-        }
-      ]
-    }
-  },
-  {
-    "id": 621091780,
-    "name": "Jason Fleming",
-    "avatar": "https://cdn.sanity.io/images/5qtiaw9u/production/7b2c8959872e0c902f5d279b9e9c43504046bcc4-1109x1003.jpg",
-    "bio": "As an IBM Client Engineering Solution Architect, Jason Fleming leads the design and delivery of agile, hybrid cloud solutions—leveraging deep domain expertise, strategic innovation, and collaborative client engagement to drive impactful Proofs of Value across industries.",
-    "organization": "IBM Client Engineering",
-    "position": "Solution Architect",
-    "isWTM": false,
-    "isGDE": false,
-    "isModerator": false,
-    "sortOrder": 2,
-    "session": {
-      "title": "Build with AI Workshop ",
-      "abstract": "This session highlights how IBM watsonx and agentic AI architectures can streamline complex HR operations by unifying workflows across disparate enterprise systems. Using a simplified AskHR agent built with watsonx Orchestrate, we demonstrate how reasoning-enabled agents interact with tools, APIs, and knowledge sources to perform tasks such as querying employee data, submitting time-off requests, and updating records.\n\nWe will walk through the technical architecture behind the agent—including multi-agent orchestration, OpenAPI-based connectors, secure data retrieval, and built-in grounding to minimize hallucinations. The lab showcases how developers can rapidly integrate existing HR platforms like Workday or SuccessFactors, or create custom tools for any internal system.\n\nAttendees will leave with a practical understanding of how to build, configure, and extend agentic workflows on watsonx to automate real-world operational processes at scale.",
-      "description": "This session highlights how IBM watsonx and agentic AI architectures can streamline complex HR operations by unifying workflows across disparate enterprise systems. Using a simplified AskHR agent built with watsonx Orchestrate, we demonstrate how reasoning-enabled agents interact with tools, APIs, and knowledge sources to perform tasks such as querying employee data, submitting time-off requests, and updating records.\n\nWe will walk through the technical architecture behind the agent—including multi-agent orchestration, OpenAPI-based connectors, secure data retrieval, and built-in grounding to minimize hallucinations. The lab showcases how developers can rapidly integrate existing HR platforms like Workday or SuccessFactors, or create custom tools for any internal system.\n\nAttendees will leave with a practical understanding of how to build, configure, and extend agentic workflows on watsonx to automate real-world operational processes at scale.",
-      "tags": ["Hackathon"],
-      "track": "Hackathon",
-      "time": "11:00",
-      "room": "",
-      "sessionDuration": 60,
-      "speakers": [
-        "Vahi Guner",
-        "Brandon Brown",
-        "Jason Fleming",
-        "Michael Mati"
-      ],
-      "moderators": [],
-      "panelists": [
-        "Vahi Guner",
-        "Brandon Brown",
-        "Jason Fleming",
-        "Michael Mati"
-      ],
-      "participants": [
-        {
-          "name": "Vahi Guner",
-          "avatar": "https://cdn.sanity.io/images/5qtiaw9u/production/b3fcfcf44203287d9c563d4258f1846af49d0d76-250x252.png",
-          "isModerator": false,
-          "sortOrder": 0
-        },
-        {
-          "name": "Brandon Brown",
-          "avatar": "https://cdn.sanity.io/images/5qtiaw9u/production/05f67097b06b1a1135356dc655b7dcf8fc112074-800x800.jpg",
-          "isModerator": false,
-          "sortOrder": 1
-        },
-        {
-          "name": "Jason Fleming",
-          "avatar": "https://cdn.sanity.io/images/5qtiaw9u/production/7b2c8959872e0c902f5d279b9e9c43504046bcc4-1109x1003.jpg",
-          "isModerator": false,
-          "sortOrder": 2
-        },
-        {
-          "name": "Michael Mati",
-          "avatar": "https://cdn.sanity.io/images/5qtiaw9u/production/5d522a9488a163eb0a255bd10b22be8f83e75ebc-982x999.jpg",
-          "isModerator": false,
-          "sortOrder": 3
-        }
-      ]
-    }
-  },
-  {
-    "id": 1636105623,
-    "name": "Michael Mati",
-    "avatar": "https://cdn.sanity.io/images/5qtiaw9u/production/5d522a9488a163eb0a255bd10b22be8f83e75ebc-982x999.jpg",
-    "bio": "Hi everyone! My name is Michael Mati, and I am an Automation Customer Success Engineer at IBM. Even though I live in Michigan, I was born in New York and have lived in Texas most of my life until last year. I graduated from the University of Texas at Dallas with a B.S. in Computer Information Systems and Technology. In my free time, I love playing basketball, going to the gym, and watching movies! ",
-    "organization": "IBM",
-    "position": "Automation Customer Success Engineer",
-    "isWTM": false,
-    "isGDE": false,
-    "isModerator": false,
-    "sortOrder": 3,
-    "session": {
-      "title": "Build with AI Workshop ",
-      "abstract": "This session highlights how IBM watsonx and agentic AI architectures can streamline complex HR operations by unifying workflows across disparate enterprise systems. Using a simplified AskHR agent built with watsonx Orchestrate, we demonstrate how reasoning-enabled agents interact with tools, APIs, and knowledge sources to perform tasks such as querying employee data, submitting time-off requests, and updating records.\n\nWe will walk through the technical architecture behind the agent—including multi-agent orchestration, OpenAPI-based connectors, secure data retrieval, and built-in grounding to minimize hallucinations. The lab showcases how developers can rapidly integrate existing HR platforms like Workday or SuccessFactors, or create custom tools for any internal system.\n\nAttendees will leave with a practical understanding of how to build, configure, and extend agentic workflows on watsonx to automate real-world operational processes at scale.",
-      "description": "This session highlights how IBM watsonx and agentic AI architectures can streamline complex HR operations by unifying workflows across disparate enterprise systems. Using a simplified AskHR agent built with watsonx Orchestrate, we demonstrate how reasoning-enabled agents interact with tools, APIs, and knowledge sources to perform tasks such as querying employee data, submitting time-off requests, and updating records.\n\nWe will walk through the technical architecture behind the agent—including multi-agent orchestration, OpenAPI-based connectors, secure data retrieval, and built-in grounding to minimize hallucinations. The lab showcases how developers can rapidly integrate existing HR platforms like Workday or SuccessFactors, or create custom tools for any internal system.\n\nAttendees will leave with a practical understanding of how to build, configure, and extend agentic workflows on watsonx to automate real-world operational processes at scale.",
-      "tags": ["Hackathon"],
-      "track": "Hackathon",
-      "time": "11:00",
-      "room": "",
-      "sessionDuration": 60,
-      "speakers": [
-        "Vahi Guner",
-        "Brandon Brown",
-        "Jason Fleming",
-        "Michael Mati"
-      ],
-      "moderators": [],
-      "panelists": [
-        "Vahi Guner",
-        "Brandon Brown",
-        "Jason Fleming",
-        "Michael Mati"
-      ],
-      "participants": [
-        {
-          "name": "Vahi Guner",
-          "avatar": "https://cdn.sanity.io/images/5qtiaw9u/production/b3fcfcf44203287d9c563d4258f1846af49d0d76-250x252.png",
-          "isModerator": false,
-          "sortOrder": 0
-        },
-        {
-          "name": "Brandon Brown",
-          "avatar": "https://cdn.sanity.io/images/5qtiaw9u/production/05f67097b06b1a1135356dc655b7dcf8fc112074-800x800.jpg",
-          "isModerator": false,
-          "sortOrder": 1
-        },
-        {
-          "name": "Jason Fleming",
-          "avatar": "https://cdn.sanity.io/images/5qtiaw9u/production/7b2c8959872e0c902f5d279b9e9c43504046bcc4-1109x1003.jpg",
-          "isModerator": false,
-          "sortOrder": 2
-        },
-        {
-          "name": "Michael Mati",
-          "avatar": "https://cdn.sanity.io/images/5qtiaw9u/production/5d522a9488a163eb0a255bd10b22be8f83e75ebc-982x999.jpg",
-          "isModerator": false,
-          "sortOrder": 3
-        }
-      ]
-    },
-    "linkedIn": "https://www.linkedin.com/in/michael-mati/"
-  },
-  {
     "id": 1549321228,
     "name": "Christine Burkette",
     "avatar": "https://cdn.sanity.io/images/5qtiaw9u/production/5899e20b0ff8d671a89c512c1c2fa31501dc9828-1080x1080.png",
@@ -709,7 +555,7 @@
     "isModerator": false,
     "sortOrder": 0,
     "session": {
-      "title": "Don't Just Learn About AI. Build Something With It!",
+      "title": "Beyond the Chatbot: Building Immersive AI Learning Environments for the Next Generation",
       "abstract": "Artificial intelligence is rapidly changing how we teach, learn, and build, but the next frontier goes beyond putting a chatbot in front of a student.",
       "description": "What if you could turn your imagination into a cinematic superhero comic book using AI, right from your phone?\n\nAt Michigan DevFest 2026, we're moving beyond talking about artificial intelligence and putting it directly into your hands! Join award-winning speaker and AI & technology executive Christine Burkette for a fast-paced, interactive experience where YOU become the creator.\n\nUsing AI tools like ChatGPT or Claude, you'll discover your personal superpowers, design your own superhero character, develop an action-packed storyline, and bring your adventure to life as a cinematic comic book, all during the session. No coding, design experience, or technical background required. Just bring your phone, your imagination, and a willingness to create! But the experience doesn't stop with superheroes.\n\nChristine will demonstrate how these same AI skills can be applied to real-world challenges, including creating engaging educational tools and personalized comic-book stories that help students with learning disabilities build confidence and strengthen their reading skills. You'll see an example of an AI-created superhero comic book designed to support students with dyslexia.\n\nYou'll leave with more than inspiration. You'll have a creation of your own, a repeatable AI workflow, and new ideas for putting artificial intelligence to work in education, business, and everyday life.\n\nWhether you're a developer, educator, student, entrepreneur, or simply AI-curious, this session is designed to show you what's possible when creativity meets technology.\n\nDon't just watch the future of AI unfold. Come build something with it!",
       "tags": ["AI Foundations"],
@@ -777,7 +623,7 @@
     "isModerator": false,
     "sortOrder": 0,
     "session": {
-      "title": "HumanOS: Build Systems That Multiply Your Productivity Across Life, Business & Strategy",
+      "title": "HumanOS: Build Systems That Multiply Your Productivity Across Life, Business & Service",
       "abstract": "AI is moving fast, but access to it does not automatically create opportunity. Knowing how to use these tools intentionally does.",
       "description": "AI is moving fast, but access to it does not automatically create opportunity. Knowing how to use these tools intentionally does.\n\nIn this interactive session, Kelli Nicole shares how she began using AI as her HumanOS after a traumatic brain injury changed the way she processed information, organized ideas, and worked. What started as a personal adaptation evolved into a practical system for entrepreneurship, workforce development, automation, communication, and problem-solving.\n\nParticipants will learn how to move beyond basic prompting and begin building an AI-supported system that helps them capture knowledge, organize information, identify problems worth solving, and turn ideas into action. The session also explores how these skills can help people traditionally excluded from emerging technology build confidence, career readiness, and economic opportunity.\n\nAttendees will leave with a simple framework they can immediately use to begin building their own HumanOS, without needing a technical background.",
       "tags": ["Level Up"],
@@ -811,7 +657,7 @@
     "isModerator": false,
     "sortOrder": 0,
     "session": {
-      "title": "Leading Through Resilience: Hispanic/Latinos Engineers Shaping the Future of Steam",
+      "title": "Leading Through Resilience: Hispanic/Latinos Engineers Shaping the Future of STEAM",
       "abstract": "A conversation, moderated by SHPE Detroit, on resilience, identity, mentorship, and technical leadership among Hispanic and Latino engineers.",
       "description": "Moderated by SHPE Detroit.\n\nAt the heart of this conversation is a shared commitment to recognizing the value of diverse technical talent, strengthening pathways into STEM, and inspiring the next generation of engineers to lead with confidence, purpose, and resilience.\n\nKey discussion themes:\n\n- Technical Skills & Impact: How engineering expertise, problem-solving, and continuous learning create value across STEM fields and industries\n- Resilience & Career Growth: Navigating obstacles, career transitions, setbacks, and turning points while continuing to move forward\n- Identity & Leadership: How cultural identity and lived experience influence innovation, teamwork, decision-making, and professional growth\n- Representation & Visibility: The importance of seeing Hispanic and Latino engineers represented across technical fields, and how we widen that path\n- Community, Mentorship & Support: The role of mentors, professional organizations, employee resource groups, family, and community in career achievement\n- Shaping the Future of STEM: Preparing emerging talent, expanding opportunity, and using technical leadership to drive meaningful change in organizations and communities",
       "tags": ["Leadership"],
@@ -819,19 +665,262 @@
       "time": "11:30",
       "room": "",
       "sessionDuration": 35,
-      "speakers": ["Hernando Gonzalez Malabet"],
-      "moderators": [],
-      "panelists": ["Hernando Gonzalez Malabet"],
+      "speakers": [
+        "Hernando Gonzalez Malabet",
+        "Cindy Cruz-Rodriguez",
+        "Anthony Bernal",
+        "Jordan Mazaira"
+      ],
+      "moderators": ["Cindy Cruz-Rodriguez"],
+      "panelists": [
+        "Hernando Gonzalez Malabet",
+        "Anthony Bernal",
+        "Jordan Mazaira"
+      ],
       "participants": [
         {
           "name": "Hernando Gonzalez Malabet",
           "avatar": "https://cdn.sanity.io/images/5qtiaw9u/production/4aafd72d37c554dc8973fbb90a930356896f23a0-400x400.jpg",
           "isModerator": false,
           "sortOrder": 0
+        },
+        {
+          "name": "Cindy Cruz-Rodriguez",
+          "avatar": "https://cdn.sanity.io/images/5qtiaw9u/production/4a29819a608bc37a1968eff52db95760bb4e9c2a-750x750.webp",
+          "isModerator": true,
+          "sortOrder": 0
+        },
+        {
+          "name": "Anthony Bernal",
+          "avatar": "https://cdn.sanity.io/images/5qtiaw9u/production/c2220dff767d0ae1103449afe2fc4e7d41c46869-1600x1600.jpg",
+          "isModerator": false,
+          "sortOrder": 2
+        },
+        {
+          "name": "Jordan Mazaira",
+          "avatar": "https://cdn.sanity.io/images/5qtiaw9u/production/cb98f27f9febba5a0d380079db601e6837653620-800x800.png",
+          "isModerator": false,
+          "sortOrder": 3
         }
       ]
     },
     "linkedIn": "https://www.linkedin.com/in/hernando-gonzalez-malabet-baa03625/"
+  },
+  {
+    "id": 804312712,
+    "name": "Cindy Cruz-Rodriguez",
+    "avatar": "https://cdn.sanity.io/images/5qtiaw9u/production/4a29819a608bc37a1968eff52db95760bb4e9c2a-750x750.webp",
+    "bio": "Hello! My name is Cindy Cruz-Rodriguez and my current role is Supplier Quality Engineer for Interiors Components at the GM Warren Technical Center where I directly engage and ensure compliance for 9 different DUNS Suppliers. ",
+    "organization": "General Motors",
+    "position": "Supplier Quality Engineer at General Motors",
+    "isWTM": false,
+    "isGDE": false,
+    "isModerator": true,
+    "sortOrder": 0,
+    "session": {
+      "title": "Leading Through Resilience: Hispanic/Latinos Engineers Shaping the Future of STEAM",
+      "abstract": "A conversation, moderated by SHPE Detroit, on resilience, identity, mentorship, and technical leadership among Hispanic and Latino engineers.",
+      "description": "Moderated by SHPE Detroit.\n\nAt the heart of this conversation is a shared commitment to recognizing the value of diverse technical talent, strengthening pathways into STEM, and inspiring the next generation of engineers to lead with confidence, purpose, and resilience.\n\nKey discussion themes:\n\n- Technical Skills & Impact: How engineering expertise, problem-solving, and continuous learning create value across STEM fields and industries\n- Resilience & Career Growth: Navigating obstacles, career transitions, setbacks, and turning points while continuing to move forward\n- Identity & Leadership: How cultural identity and lived experience influence innovation, teamwork, decision-making, and professional growth\n- Representation & Visibility: The importance of seeing Hispanic and Latino engineers represented across technical fields, and how we widen that path\n- Community, Mentorship & Support: The role of mentors, professional organizations, employee resource groups, family, and community in career achievement\n- Shaping the Future of STEM: Preparing emerging talent, expanding opportunity, and using technical leadership to drive meaningful change in organizations and communities",
+      "tags": ["Leadership"],
+      "track": "Leadership",
+      "time": "11:30",
+      "room": "",
+      "sessionDuration": 35,
+      "speakers": [
+        "Hernando Gonzalez Malabet",
+        "Cindy Cruz-Rodriguez",
+        "Anthony Bernal",
+        "Jordan Mazaira"
+      ],
+      "moderators": ["Cindy Cruz-Rodriguez"],
+      "panelists": [
+        "Hernando Gonzalez Malabet",
+        "Anthony Bernal",
+        "Jordan Mazaira"
+      ],
+      "participants": [
+        {
+          "name": "Hernando Gonzalez Malabet",
+          "avatar": "https://cdn.sanity.io/images/5qtiaw9u/production/4aafd72d37c554dc8973fbb90a930356896f23a0-400x400.jpg",
+          "isModerator": false,
+          "sortOrder": 0
+        },
+        {
+          "name": "Cindy Cruz-Rodriguez",
+          "avatar": "https://cdn.sanity.io/images/5qtiaw9u/production/4a29819a608bc37a1968eff52db95760bb4e9c2a-750x750.webp",
+          "isModerator": true,
+          "sortOrder": 0
+        },
+        {
+          "name": "Anthony Bernal",
+          "avatar": "https://cdn.sanity.io/images/5qtiaw9u/production/c2220dff767d0ae1103449afe2fc4e7d41c46869-1600x1600.jpg",
+          "isModerator": false,
+          "sortOrder": 2
+        },
+        {
+          "name": "Jordan Mazaira",
+          "avatar": "https://cdn.sanity.io/images/5qtiaw9u/production/cb98f27f9febba5a0d380079db601e6837653620-800x800.png",
+          "isModerator": false,
+          "sortOrder": 3
+        }
+      ]
+    }
+  },
+  {
+    "id": 373513390,
+    "name": "Anthony Bernal",
+    "avatar": "https://cdn.sanity.io/images/5qtiaw9u/production/c2220dff767d0ae1103449afe2fc4e7d41c46869-1600x1600.jpg",
+    "bio": "Anthony Bernal is an automotive engineer specializing in vehicle development, brake systems, body structure, and lightweighting. He is currently a Brake System Engineer at Ford Motor Company, leading brake system development and integration for the next-generation Ford programs.\n\nPreviously, he spent over seven years at General Motors in, working on programs including the Cadillac GT4, Chevrolet Colorado/GMC Canyon, Chevrolet Tahoe/GMC Yukon/Cadillac Escalade, Cadillac Optiq, and Chevrolet Silverado/GMC Sierra. He holds a master's in Automotive Systems Engineering from the University of Michigan–Dearborn, a bachelor's in Mechanical Engineering from Widener University, and three U.S. patents.\n\nHe is also the founder and editor of Engineering Cheat Sheet, created to help students, enthusiasts, and engineers better understand how real automotive products are designed, engineered, validated, and manufactured.",
+    "organization": "Ford",
+    "position": "Brake Systems Engineer",
+    "isWTM": false,
+    "isGDE": false,
+    "isModerator": false,
+    "sortOrder": 2,
+    "session": {
+      "title": "Leading Through Resilience: Hispanic/Latinos Engineers Shaping the Future of STEAM",
+      "abstract": "A conversation, moderated by SHPE Detroit, on resilience, identity, mentorship, and technical leadership among Hispanic and Latino engineers.",
+      "description": "Moderated by SHPE Detroit.\n\nAt the heart of this conversation is a shared commitment to recognizing the value of diverse technical talent, strengthening pathways into STEM, and inspiring the next generation of engineers to lead with confidence, purpose, and resilience.\n\nKey discussion themes:\n\n- Technical Skills & Impact: How engineering expertise, problem-solving, and continuous learning create value across STEM fields and industries\n- Resilience & Career Growth: Navigating obstacles, career transitions, setbacks, and turning points while continuing to move forward\n- Identity & Leadership: How cultural identity and lived experience influence innovation, teamwork, decision-making, and professional growth\n- Representation & Visibility: The importance of seeing Hispanic and Latino engineers represented across technical fields, and how we widen that path\n- Community, Mentorship & Support: The role of mentors, professional organizations, employee resource groups, family, and community in career achievement\n- Shaping the Future of STEM: Preparing emerging talent, expanding opportunity, and using technical leadership to drive meaningful change in organizations and communities",
+      "tags": ["Leadership"],
+      "track": "Leadership",
+      "time": "11:30",
+      "room": "",
+      "sessionDuration": 35,
+      "speakers": [
+        "Hernando Gonzalez Malabet",
+        "Cindy Cruz-Rodriguez",
+        "Anthony Bernal",
+        "Jordan Mazaira"
+      ],
+      "moderators": ["Cindy Cruz-Rodriguez"],
+      "panelists": [
+        "Hernando Gonzalez Malabet",
+        "Anthony Bernal",
+        "Jordan Mazaira"
+      ],
+      "participants": [
+        {
+          "name": "Hernando Gonzalez Malabet",
+          "avatar": "https://cdn.sanity.io/images/5qtiaw9u/production/4aafd72d37c554dc8973fbb90a930356896f23a0-400x400.jpg",
+          "isModerator": false,
+          "sortOrder": 0
+        },
+        {
+          "name": "Cindy Cruz-Rodriguez",
+          "avatar": "https://cdn.sanity.io/images/5qtiaw9u/production/4a29819a608bc37a1968eff52db95760bb4e9c2a-750x750.webp",
+          "isModerator": true,
+          "sortOrder": 0
+        },
+        {
+          "name": "Anthony Bernal",
+          "avatar": "https://cdn.sanity.io/images/5qtiaw9u/production/c2220dff767d0ae1103449afe2fc4e7d41c46869-1600x1600.jpg",
+          "isModerator": false,
+          "sortOrder": 2
+        },
+        {
+          "name": "Jordan Mazaira",
+          "avatar": "https://cdn.sanity.io/images/5qtiaw9u/production/cb98f27f9febba5a0d380079db601e6837653620-800x800.png",
+          "isModerator": false,
+          "sortOrder": 3
+        }
+      ]
+    },
+    "linkedIn": "https://www.linkedin.com/in/j-anthony-bernal-10/"
+  },
+  {
+    "id": 342224892,
+    "name": "Jordan Mazaira",
+    "avatar": "https://cdn.sanity.io/images/5qtiaw9u/production/cb98f27f9febba5a0d380079db601e6837653620-800x800.png",
+    "bio": "I'm an Engineering Supervisor at Ford Motor Company, where I lead team efforts on electrified powertrain controls. My academic foundation includes a Mechanical Engineering degree from Georgia Tech and a Master’s in Automotive Systems from UM-Dearborn. Throughout my time at Dearborn and SHPE Detroit Professional Chapter, my passion has been making engineering accessible through interactive, hands-on STEM events for local students.  ",
+    "organization": "TBA",
+    "position": "TBA",
+    "isWTM": false,
+    "isGDE": false,
+    "isModerator": false,
+    "sortOrder": 3,
+    "session": {
+      "title": "Leading Through Resilience: Hispanic/Latinos Engineers Shaping the Future of STEAM",
+      "abstract": "A conversation, moderated by SHPE Detroit, on resilience, identity, mentorship, and technical leadership among Hispanic and Latino engineers.",
+      "description": "Moderated by SHPE Detroit.\n\nAt the heart of this conversation is a shared commitment to recognizing the value of diverse technical talent, strengthening pathways into STEM, and inspiring the next generation of engineers to lead with confidence, purpose, and resilience.\n\nKey discussion themes:\n\n- Technical Skills & Impact: How engineering expertise, problem-solving, and continuous learning create value across STEM fields and industries\n- Resilience & Career Growth: Navigating obstacles, career transitions, setbacks, and turning points while continuing to move forward\n- Identity & Leadership: How cultural identity and lived experience influence innovation, teamwork, decision-making, and professional growth\n- Representation & Visibility: The importance of seeing Hispanic and Latino engineers represented across technical fields, and how we widen that path\n- Community, Mentorship & Support: The role of mentors, professional organizations, employee resource groups, family, and community in career achievement\n- Shaping the Future of STEM: Preparing emerging talent, expanding opportunity, and using technical leadership to drive meaningful change in organizations and communities",
+      "tags": ["Leadership"],
+      "track": "Leadership",
+      "time": "11:30",
+      "room": "",
+      "sessionDuration": 35,
+      "speakers": [
+        "Hernando Gonzalez Malabet",
+        "Cindy Cruz-Rodriguez",
+        "Anthony Bernal",
+        "Jordan Mazaira"
+      ],
+      "moderators": ["Cindy Cruz-Rodriguez"],
+      "panelists": [
+        "Hernando Gonzalez Malabet",
+        "Anthony Bernal",
+        "Jordan Mazaira"
+      ],
+      "participants": [
+        {
+          "name": "Hernando Gonzalez Malabet",
+          "avatar": "https://cdn.sanity.io/images/5qtiaw9u/production/4aafd72d37c554dc8973fbb90a930356896f23a0-400x400.jpg",
+          "isModerator": false,
+          "sortOrder": 0
+        },
+        {
+          "name": "Cindy Cruz-Rodriguez",
+          "avatar": "https://cdn.sanity.io/images/5qtiaw9u/production/4a29819a608bc37a1968eff52db95760bb4e9c2a-750x750.webp",
+          "isModerator": true,
+          "sortOrder": 0
+        },
+        {
+          "name": "Anthony Bernal",
+          "avatar": "https://cdn.sanity.io/images/5qtiaw9u/production/c2220dff767d0ae1103449afe2fc4e7d41c46869-1600x1600.jpg",
+          "isModerator": false,
+          "sortOrder": 2
+        },
+        {
+          "name": "Jordan Mazaira",
+          "avatar": "https://cdn.sanity.io/images/5qtiaw9u/production/cb98f27f9febba5a0d380079db601e6837653620-800x800.png",
+          "isModerator": false,
+          "sortOrder": 3
+        }
+      ]
+    },
+    "linkedIn": "https://www.linkedin.com/in/jordan-mazaira-94058a161/ "
+  },
+  {
+    "id": 1808465386,
+    "name": "Justin Beaudry",
+    "avatar": "https://cdn.sanity.io/images/5qtiaw9u/production/9d33e86357fddf625d1662977108e6b66dde6357-2048x1365.jpg",
+    "bio": "Justin Beaudry is Director of Engineering at Actual Reality Technologies and the OpenAI Ambassador for Northwest Ohio. He leads software and AI development while staying hands-on with architecture and code, combining engineering leadership with a practical understanding of what it takes to build and maintain real systems.\n\nJustin is also the founder of Toledo Codes and co-chair of the AI Collective’s Technical Committee. Through workshops, community events, and mentorship, he helps developers sharpen their skills and creates opportunities for young people to explore technology. His approach to AI is grounded in experience: understanding where it helps, recognizing where it fails, and keeping engineering judgment at the center of the work.",
+    "organization": "Actual Reality Technologies",
+    "position": "Director of Engineering",
+    "isWTM": false,
+    "isGDE": false,
+    "isModerator": false,
+    "sortOrder": 0,
+    "session": {
+      "title": "Build with AI Workshop by Google & Lovable",
+      "abstract": "",
+      "description": "",
+      "tags": ["Hackathon"],
+      "track": "Hackathon",
+      "time": "12:00",
+      "room": "Ballroom",
+      "sessionDuration": 60,
+      "speakers": ["Justin Beaudry"],
+      "moderators": [],
+      "panelists": ["Justin Beaudry"],
+      "participants": [
+        {
+          "name": "Justin Beaudry",
+          "avatar": "https://cdn.sanity.io/images/5qtiaw9u/production/9d33e86357fddf625d1662977108e6b66dde6357-2048x1365.jpg",
+          "isModerator": false,
+          "sortOrder": 0
+        }
+      ]
+    },
+    "linkedIn": "https://www.linkedin.com/in/justinbeaudry/"
   },
   {
     "id": 1152146056,
@@ -870,7 +959,7 @@
   {
     "id": 366390216,
     "name": "Navjot Singh",
-    "avatar": "https://cdn.sanity.io/images/5qtiaw9u/production/15086e83c169d1027a5c8e86fcb4c79223ad39f3-400x400.jpg",
+    "avatar": "https://cdn.sanity.io/images/5qtiaw9u/production/d2c45bfddd448674aded64891892331aeca0f0fc-4682x4682.png",
     "bio": "Google Developer Expert for Android, Organizer at GDG-Montreal, and writes articles about Android and Kotlin.\n\nApart from his day-to-day job, He spends his time learning new technologies/frameworks.",
     "organization": "Manulife",
     "position": "Senior Mobile Software Engineer",
@@ -893,7 +982,7 @@
       "participants": [
         {
           "name": "Navjot Singh",
-          "avatar": "https://cdn.sanity.io/images/5qtiaw9u/production/15086e83c169d1027a5c8e86fcb4c79223ad39f3-400x400.jpg",
+          "avatar": "https://cdn.sanity.io/images/5qtiaw9u/production/d2c45bfddd448674aded64891892331aeca0f0fc-4682x4682.png",
           "isModerator": false,
           "sortOrder": 0
         }
@@ -988,7 +1077,7 @@
       "track": "Build with AI",
       "time": "13:00",
       "room": "",
-      "sessionDuration": 35,
+      "sessionDuration": 80,
       "speakers": ["Jayashree Ravi"],
       "moderators": [],
       "panelists": ["Jayashree Ravi"],
@@ -1001,6 +1090,144 @@
         }
       ]
     }
+  },
+  {
+    "id": 206163145,
+    "name": "Hoda Solati",
+    "avatar": "https://cdn.sanity.io/images/5qtiaw9u/production/217e90ac200609f531ea6b8de4cea8ab10c0089b-900x900.jpg",
+    "bio": "Hoda Solati is an award-winning UX designer working at BraunAbility blending creativity, technology, and innovation to craft inclusive, user-centered experiences. With advanced degrees in UX Design and Animation, she explores cutting-edge technologies such as VR, AR, and robotics to solve complex design challenges. Recognized at global events including DDX’25 NYC, IEEE Smart Mobility, and Ars Electronica, Hoda is passionate about redefining the future of user experience through innovation and accessibility.",
+    "organization": "BraunAbility",
+    "position": "UX Designer",
+    "isWTM": false,
+    "isGDE": false,
+    "isModerator": false,
+    "sortOrder": 0,
+    "session": {
+      "title": "Beyond Expectations: Innovating the User Experience",
+      "abstract": "",
+      "description": "Fireside Chat on UX Design in the Age of AI",
+      "tags": ["Leadership"],
+      "track": "Leadership",
+      "time": "13:45",
+      "room": "Salon E",
+      "sessionDuration": 35,
+      "speakers": ["Hoda Solati", "Shima Solati", "Roland Frohman III"],
+      "moderators": [],
+      "panelists": ["Hoda Solati", "Shima Solati", "Roland Frohman III"],
+      "participants": [
+        {
+          "name": "Hoda Solati",
+          "avatar": "https://cdn.sanity.io/images/5qtiaw9u/production/217e90ac200609f531ea6b8de4cea8ab10c0089b-900x900.jpg",
+          "isModerator": false,
+          "sortOrder": 0
+        },
+        {
+          "name": "Shima Solati",
+          "avatar": "https://cdn.sanity.io/images/5qtiaw9u/production/7bdb6775e0582f8e94b84f9a436ece40e9ec4912-800x800.jpg",
+          "isModerator": false,
+          "sortOrder": 1
+        },
+        {
+          "name": "Roland Frohman III",
+          "avatar": "https://cdn.sanity.io/images/5qtiaw9u/production/ce48cf488328f977582c6476341d2a951c0a6b17-800x800.webp",
+          "isModerator": false,
+          "sortOrder": 2
+        }
+      ]
+    },
+    "linkedIn": "https://www.linkedin.com/in/hoda-solati"
+  },
+  {
+    "id": 427126587,
+    "name": "Shima Solati",
+    "avatar": "https://cdn.sanity.io/images/5qtiaw9u/production/7bdb6775e0582f8e94b84f9a436ece40e9ec4912-800x800.jpg",
+    "bio": "Shima Solati is an award-winning UX/UI designer and researcher at BraunAbility, leading efforts to advance mobility and accessibility through innovative, user-centered design. With a Master’s in User Experience Design from the College for Creative Studies and dual degrees in fashion and textiles, Shima brings a rare multidisciplinary perspective to solving complex challenges. Her expertise spans immersive and assistive technologies, VR, AR, robotics, and her portfolio includes impactful work for KUKA Robotics, the Augmented Reality Center, General Motors, and Ford. Passionate about inclusive design and emerging technologies, Shima is dedicated to creating intuitive solutions that empower all users.",
+    "organization": "BraunAbility",
+    "position": "UX/UI Designer and Researcher",
+    "isWTM": false,
+    "isGDE": false,
+    "isModerator": false,
+    "sortOrder": 1,
+    "session": {
+      "title": "Beyond Expectations: Innovating the User Experience",
+      "abstract": "",
+      "description": "Fireside Chat on UX Design in the Age of AI",
+      "tags": ["Leadership"],
+      "track": "Leadership",
+      "time": "13:45",
+      "room": "Salon E",
+      "sessionDuration": 35,
+      "speakers": ["Hoda Solati", "Shima Solati", "Roland Frohman III"],
+      "moderators": [],
+      "panelists": ["Hoda Solati", "Shima Solati", "Roland Frohman III"],
+      "participants": [
+        {
+          "name": "Hoda Solati",
+          "avatar": "https://cdn.sanity.io/images/5qtiaw9u/production/217e90ac200609f531ea6b8de4cea8ab10c0089b-900x900.jpg",
+          "isModerator": false,
+          "sortOrder": 0
+        },
+        {
+          "name": "Shima Solati",
+          "avatar": "https://cdn.sanity.io/images/5qtiaw9u/production/7bdb6775e0582f8e94b84f9a436ece40e9ec4912-800x800.jpg",
+          "isModerator": false,
+          "sortOrder": 1
+        },
+        {
+          "name": "Roland Frohman III",
+          "avatar": "https://cdn.sanity.io/images/5qtiaw9u/production/ce48cf488328f977582c6476341d2a951c0a6b17-800x800.webp",
+          "isModerator": false,
+          "sortOrder": 2
+        }
+      ]
+    },
+    "linkedIn": "https://www.linkedin.com/in/shima-solati/"
+  },
+  {
+    "id": 96786399,
+    "name": "Roland Frohman III",
+    "avatar": "https://cdn.sanity.io/images/5qtiaw9u/production/ce48cf488328f977582c6476341d2a951c0a6b17-800x800.webp",
+    "bio": "Roland Frohman III is a product and UX designer with more than nine years of experience building connected experiences where physical products, digital interfaces, and AI meet. His work centers on how design shapes the way people understand and trust AI, from conversational and voice interfaces to AI-driven product ecosystems. As Design Lead for BISSELL Connect & IoT, he led the design of the company's connected product ecosystem, including AI chat and voice experiences. Through his studio, RHFIII Designs, he helps teams turn emerging technology (AR/VR/XR, voice, and conversational AI) into experiences people actually want to use.\n\nRoland is an MFA Instructor at the College for Creative Studies, where he teaches graduate automotive and XR design studios. He holds an MFA in User Experience Design from CCS and a BA in Japanese & Asian Studies from the University of Michigan.",
+    "organization": "RHFIII Designs, LLC",
+    "position": "Founder & Principal Designer",
+    "isWTM": false,
+    "isGDE": false,
+    "isModerator": false,
+    "sortOrder": 2,
+    "session": {
+      "title": "Beyond Expectations: Innovating the User Experience",
+      "abstract": "",
+      "description": "Fireside Chat on UX Design in the Age of AI",
+      "tags": ["Leadership"],
+      "track": "Leadership",
+      "time": "13:45",
+      "room": "Salon E",
+      "sessionDuration": 35,
+      "speakers": ["Hoda Solati", "Shima Solati", "Roland Frohman III"],
+      "moderators": [],
+      "panelists": ["Hoda Solati", "Shima Solati", "Roland Frohman III"],
+      "participants": [
+        {
+          "name": "Hoda Solati",
+          "avatar": "https://cdn.sanity.io/images/5qtiaw9u/production/217e90ac200609f531ea6b8de4cea8ab10c0089b-900x900.jpg",
+          "isModerator": false,
+          "sortOrder": 0
+        },
+        {
+          "name": "Shima Solati",
+          "avatar": "https://cdn.sanity.io/images/5qtiaw9u/production/7bdb6775e0582f8e94b84f9a436ece40e9ec4912-800x800.jpg",
+          "isModerator": false,
+          "sortOrder": 1
+        },
+        {
+          "name": "Roland Frohman III",
+          "avatar": "https://cdn.sanity.io/images/5qtiaw9u/production/ce48cf488328f977582c6476341d2a951c0a6b17-800x800.webp",
+          "isModerator": false,
+          "sortOrder": 2
+        }
+      ]
+    },
+    "linkedIn": "https://www.linkedin.com/in/rhfrohman3"
   },
   {
     "id": 1318734723,
@@ -1035,73 +1262,6 @@
       ]
     },
     "linkedIn": "https://linkedin.com/in/mattalynn-darden"
-  },
-  {
-    "id": 1403338773,
-    "name": "Kiruthika",
-    "avatar": "https://cdn.sanity.io/images/5qtiaw9u/production/6297e45e03b50f14a30c1406939eacdaec332279-400x400.jpg",
-    "bio": "I am Kiruthika Subramani, a Data Scientist at Bell, Canada. Did my Master's at MILA, the Quebec AI Institute. I have written two books on AI, delivered over 230 talks across the globe, and published more than 100 blogs. My recognitions include being a Google Developer Expert in AI, an IBM Champion for Data and AI, and a Women Techmakers Ambassador. My experience includes serving as the former Head of AI at Musitechnic Formation and interning at Amazon. I am a nine-time certified cloud practitioner (4x GCP, 5x AWS) and was honoured to be named the Women in AI Scholarship Award Winner for 2025.",
-    "organization": "Bell Canada",
-    "position": "Data Scientist",
-    "isWTM": false,
-    "isGDE": true,
-    "isModerator": false,
-    "sortOrder": 0,
-    "session": {
-      "title": "Self Refining Agents That Earn Their Own Upgrades On Google Cloud",
-      "abstract": "What would it take for an AI agent to deserve its next version, instead of just generating one itself?",
-      "description": "What would it take for an AI agent to deserve its next version, instead of just generating one itself? That question is the whole build. As it talks to customers, it takes notes on how to get better and writes them into its own skill files, and for the deterministic tasks behind every reply, the way it classifies, clusters, and recommends, it proves itself against ground-truth labeled data. Leave a thumbs up or a thumbs down and it replays the conversation, learns from it, and drafts a sharper version of itself. But here the testing happens in a way you would not expect. Before any version ships, a friend agent steps in and plays the customer, pushing it with real questions in real time, and only when it proves better than the version it came from does a human give the final yes. This is a self refining, self looping agent running on open-source models auto-scaled on Google Cloud, earning every upgrade by proving it is genuinely better, not just a prompt we talked into looking good.",
-      "tags": ["Build with AI"],
-      "track": "Build with AI",
-      "time": "13:45",
-      "room": "",
-      "sessionDuration": 80,
-      "speakers": ["Kiruthika"],
-      "moderators": [],
-      "panelists": ["Kiruthika"],
-      "participants": [
-        {
-          "name": "Kiruthika",
-          "avatar": "https://cdn.sanity.io/images/5qtiaw9u/production/6297e45e03b50f14a30c1406939eacdaec332279-400x400.jpg",
-          "isModerator": false,
-          "sortOrder": 0
-        }
-      ]
-    }
-  },
-  {
-    "id": 275288344,
-    "name": "Rupali Sharma",
-    "avatar": "https://cdn.sanity.io/images/5qtiaw9u/production/39df200304014094aa94580b6d1d72c941b3141c-400x400.jpg",
-    "bio": "Rupali Sharma is a product and platform leader with over 15 years of experience shaping large-scale digital ecosystems, platform infrastructure, and trust & safety systems. Across leadership roles at Electronic Arts, Take-Two Interactive, and currently as Principal Product Lead at k-ID, she has led product strategy across titles and ecosystems including Apex Legends, FIFA, Civilization VI, XCOM 2, and Kerbal Space Program—impacting tens of millions of players globally. At k-ID, Rupali directs product and customer success for global child-safety and privacy compliance infrastructure. She also mentors aspiring leaders through Girls Who Code and ADPList, and founded the Bay Area Product Leaders community.",
-    "organization": "k-ID",
-    "position": "Principal Product Lead",
-    "isWTM": false,
-    "isGDE": false,
-    "isModerator": false,
-    "sortOrder": 0,
-    "session": {
-      "title": "Strategist, Systems Builder, Customer Whisperer: The Product Leader in the AI Era",
-      "abstract": "The product leader's job doesn't get harder because of scale; it gets harder because the job changes.",
-      "description": "The product leader's job doesn't get harder because of scale; it gets harder because the job changes. And now AI has quietly rewritten the job description and forgotten to tell anyone.\n\nWhen anyone can generate a 20-page strategy doc or boilerplate code in five minutes, raw knowledge stops being the moat. The tool commoditized knowing; it didn't commoditize judgment.\n\nIn this talk, Rupali outlines why the modern tech and product leader must operate as three distinct archetypes simultaneously: a strategist who knows where to point autonomous tools, a systems builder who designs how organizational workflows move and decide, and a customer whisperer who spends the time AI gives back getting closer to the human users the dashboards cannot see. Drawing on real-world operating models from k-ID, where management tools are interconnected, 40% of the cross-functional team has built custom agents, and delivery cycles have collapsed, this session provides practical frameworks for tech and product teams to integrate agentic workflows effectively.\n\nKey takeaways:\n\n- How developers and product leaders can transition from routine task execution to high-leverage decision architecture\n- Concrete frameworks for building custom agents and automating operational pipelines\n- Retaining human-centered design, empathy, and platform trust in high-velocity AI environments",
-      "tags": ["Leadership"],
-      "track": "Leadership",
-      "time": "13:45",
-      "room": "",
-      "sessionDuration": 35,
-      "speakers": ["Rupali Sharma"],
-      "moderators": [],
-      "panelists": ["Rupali Sharma"],
-      "participants": [
-        {
-          "name": "Rupali Sharma",
-          "avatar": "https://cdn.sanity.io/images/5qtiaw9u/production/39df200304014094aa94580b6d1d72c941b3141c-400x400.jpg",
-          "isModerator": false,
-          "sortOrder": 0
-        }
-      ]
-    },
-    "linkedIn": "https://www.linkedin.com/in/rupali-sharma-171a757"
   },
   {
     "id": 812416415,
@@ -1308,6 +1468,39 @@
     "linkedIn": "https://linkedin.com/in/adkhamboy"
   },
   {
+    "id": 1403338773,
+    "name": "Kiruthika Subramani",
+    "avatar": "https://cdn.sanity.io/images/5qtiaw9u/production/6297e45e03b50f14a30c1406939eacdaec332279-400x400.jpg",
+    "bio": "I am Kiruthika Subramani, a Data Scientist at Bell, Canada. Did my Master's at MILA, the Quebec AI Institute. I have written two books on AI, delivered over 230 talks across the globe, and published more than 100 blogs. My recognitions include being a Google Developer Expert in AI, an IBM Champion for Data and AI, and a Women Techmakers Ambassador. My experience includes serving as the former Head of AI at Musitechnic Formation and interning at Amazon. I am a nine-time certified cloud practitioner (4x GCP, 5x AWS) and was honoured to be named the Women in AI Scholarship Award Winner for 2025.",
+    "organization": "Bell Canada",
+    "position": "Data Scientist",
+    "isWTM": false,
+    "isGDE": true,
+    "isModerator": false,
+    "sortOrder": 0,
+    "session": {
+      "title": "Self Refining Agents That Earn Their Own Upgrades On Google Cloud",
+      "abstract": "What would it take for an AI agent to deserve its next version, instead of just generating one itself?",
+      "description": "What would it take for an AI agent to deserve its next version, instead of just generating one itself? That question is the whole build. As it talks to customers, it takes notes on how to get better and writes them into its own skill files, and for the deterministic tasks behind every reply, the way it classifies, clusters, and recommends, it proves itself against ground-truth labeled data. Leave a thumbs up or a thumbs down and it replays the conversation, learns from it, and drafts a sharper version of itself. But here the testing happens in a way you would not expect. Before any version ships, a friend agent steps in and plays the customer, pushing it with real questions in real time, and only when it proves better than the version it came from does a human give the final yes. This is a self refining, self looping agent running on open-source models auto-scaled on Google Cloud, earning every upgrade by proving it is genuinely better, not just a prompt we talked into looking good.",
+      "tags": ["Build with AI"],
+      "track": "Build with AI",
+      "time": "14:30",
+      "room": "",
+      "sessionDuration": 80,
+      "speakers": ["Kiruthika Subramani"],
+      "moderators": [],
+      "panelists": ["Kiruthika Subramani"],
+      "participants": [
+        {
+          "name": "Kiruthika Subramani",
+          "avatar": "https://cdn.sanity.io/images/5qtiaw9u/production/6297e45e03b50f14a30c1406939eacdaec332279-400x400.jpg",
+          "isModerator": false,
+          "sortOrder": 0
+        }
+      ]
+    }
+  },
+  {
     "id": 964251629,
     "name": "Shugmi Shumunov",
     "avatar": "https://cdn.sanity.io/images/5qtiaw9u/production/f6db6595b5354196915bf77b7ad5969c30bae5c2-360x360.webp",
@@ -1408,40 +1601,6 @@
       ]
     },
     "linkedIn": "https://www.linkedin.com/in/bwnyasse/"
-  },
-  {
-    "id": 1200987542,
-    "name": "Pragya Keshap",
-    "avatar": "https://cdn.sanity.io/images/5qtiaw9u/production/f5c799e4451b9ff9e8e96bc335ea8a83d49165f0-628x720.png",
-    "bio": "Pragya Keshap is a Technical Architect and Google Developer Expert (GDE) in Google Cloud with over 17 years of experience designing and building large-scale enterprise systems. Her current work focuses on Generative AI, agentic architectures, Google Cloud, Vertex AI, Gemini, ADK, and Model Context Protocol (MCP).\n\nPragya is an active technical speaker and has presented at developer conferences and community events including Google DevFest, Google I/O Extended, Women in Tech Global Conference, CloudAustin, Kubernetes Austin, ACM Austin, and BrightTALK. Her recent talks have focused on building AI agents, multi-agent orchestration with Google ADK, and taking AI applications from chatbots to production-ready agentic systems.\n\nShe is passionate about turning emerging AI technologies into practical, production-ready solutions and sharing real-world learnings with the developer community. Pragya is also a Docker Captain and regularly speaks on Generative AI, AI agents, cloud architecture, and cloud-native technologies.",
-    "organization": "Charles Schwab",
-    "position": "Technical Architect",
-    "isWTM": false,
-    "isGDE": false,
-    "isModerator": false,
-    "sortOrder": 0,
-    "session": {
-      "title": "Who Evaluates the Evaluator? Building Reliable LLM-as-a-Judge Evaluations with Gemini",
-      "abstract": "LLM-as-a-Judge is quickly becoming a popular way to evaluate generative AI applications and AI agents.",
-      "description": "LLM-as-a-Judge is quickly becoming a popular way to evaluate generative AI applications and AI agents. Instead of relying solely on human reviewers, we can ask another LLM to assess qualities such as correctness, relevance, groundedness, and overall response quality. But this introduces an important question: Who evaluates the evaluator?\n\nIn this session, we’ll explore how to build reliable LLM-as-a-Judge evaluations using Gemini. We’ll look at what makes a good evaluation rubric, how human-labeled examples can be used to calibrate an AI judge, and how factors such as prompt design, bias, inconsistency, and model choice can influence evaluation results.\n\nThrough practical examples, we’ll compare human and LLM judgments, investigate cases where the judge gets it wrong, and explore techniques for measuring and improving judge reliability.\n\nAttendees will leave with a practical framework for designing LLM-based evaluations they can use with greater confidence when testing and improving their own generative AI and agentic applications.",
-      "tags": ["Build with AI"],
-      "track": "Build with AI",
-      "time": "15:15",
-      "room": "",
-      "sessionDuration": 35,
-      "speakers": ["Pragya Keshap"],
-      "moderators": [],
-      "panelists": ["Pragya Keshap"],
-      "participants": [
-        {
-          "name": "Pragya Keshap",
-          "avatar": "https://cdn.sanity.io/images/5qtiaw9u/production/f5c799e4451b9ff9e8e96bc335ea8a83d49165f0-628x720.png",
-          "isModerator": false,
-          "sortOrder": 0
-        }
-      ]
-    },
-    "linkedIn": "https://linkedin.com/in/pragyakeshap"
   },
   {
     "id": 114667211,
