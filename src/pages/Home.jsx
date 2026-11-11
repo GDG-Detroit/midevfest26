@@ -39,7 +39,7 @@ function Home() {
           year={EVENT_YEAR}
           defaultExpanded={true}
           defaultTab={defaultTrackForDate()}
-          tracks={[HACKATHON_TRACK, SCHEDULE_TRACK, ...PROGRAM_TRACKS]}
+          tracks={['Map', HACKATHON_TRACK, SCHEDULE_TRACK, ...PROGRAM_TRACKS]}
         />
 
         <SpeakersSection

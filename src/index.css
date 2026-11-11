@@ -292,32 +292,56 @@
   );
 }
 
-/* ─── Venue map: interactive area highlights ─── */
+/* ─── Venue map: fit the plan, then pan/zoom to the selected room ─── */
+.venue-map-frame {
+  position: absolute;
+  top: 0;
+  left: 0;
+  transform-origin: 0 0;
+}
+@media (prefers-reduced-motion: no-preference) {
+  .venue-map-frame {
+    transition: transform 0.45s ease;
+  }
+}
 .venue-map-svg svg {
   display: block;
-  width: 2092px;
-  height: 573px;
   max-width: none;
+}
+.venue-map-svg #floorplan {
+  pointer-events: none;
+}
+.venue-map-elevator {
+  fill-opacity: 0.35;
+}
+.venue-map-room-name {
+  display: none;
 }
 .venue-map-region {
   fill: transparent !important;
   stroke: transparent !important;
-  stroke-width: 14px !important;
-  rx: 16px !important;
-  ry: 16px !important;
-  pointer-events: none !important;
+  stroke-width: 2.5px !important;
+  vector-effect: non-scaling-stroke;
+  pointer-events: fill !important;
+  cursor: pointer;
   fill-opacity: 1 !important;
   stroke-opacity: 1 !important;
   transition:
     fill 0.35s ease,
     stroke 0.35s ease;
 }
+.venue-map-region#BOARDROOM {
+  cursor: default;
+}
+.venue-map-tip {
+  color: #fff;
+}
 .venue-map-region.is-active {
-  fill: rgb(var(--iwd-accent-500) / 0.3) !important;
-  stroke: rgb(var(--iwd-accent-400)) !important;
-  stroke-width: 10px !important;
+  fill: rgb(var(--iwd-accent-500) / 0.38) !important;
+  stroke: rgb(var(--iwd-accent-700)) !important;
+  stroke-width: 2.5px !important;
   paint-order: stroke !important;
-  filter: drop-shadow(0 0 10px rgb(var(--iwd-accent-400) / 0.6)) !important;
+  filter: drop-shadow(0 0 4px rgb(var(--iwd-accent-500) / 0.45)) !important;
 }
 @media (prefers-reduced-motion: reduce) {
   .venue-map-region {
