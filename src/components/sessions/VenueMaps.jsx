@@ -1,81 +1,65 @@
 import { useCallback, useEffect, useRef, useState } from 'react'
-import {
-  FaBriefcase,
-  FaClipboardCheck,
-  FaFilm,
-  FaPizzaSlice,
-  FaSpa,
-  FaStore,
-  FaUtensils,
-} from 'react-icons/fa6'
-import lcMapUrl from '@/assets/images/maps/lcMap.svg'
+import { FaBriefcase, FaDoorOpen, FaUsers } from 'react-icons/fa6'
+import mapUrl from '@/assets/images/maps/greekTownMap.svg'
 
-// Each button maps to a highlight region group in lcMap.svg.
-// Text labels live in separate *-GROUP ids (PIZZATREAT, HOTNREADY, etc.).
+// Buttons target highlight polygons in greekTownMap.svg (Greektown conference
+// center). Session tracks are not assigned to rooms yet, so navigation is by room.
 const AREAS = [
   {
-    key: 'checkin',
-    label: 'Check-In',
-    regionId: 'CHECKINLABEL',
-    Icon: FaClipboardCheck,
+    key: 'grandballroom',
+    label: 'Grand Ballroom',
+    regionId: 'GRANDBALLROOM',
+    Icon: FaUsers,
+    badge: 'GB',
   },
   {
-    key: 'yoga',
-    label: 'Yoga',
-    regionId: 'YOGA',
-    Icon: FaSpa,
+    key: 'salona',
+    label: 'Salon A',
+    regionId: 'SALONA',
+    Icon: FaDoorOpen,
+    badge: 'A',
   },
   {
-    key: 'food',
-    label: 'Food',
-    regionId: 'FOOD',
-    Icon: FaUtensils,
+    key: 'salonb',
+    label: 'Salon B',
+    regionId: 'SALONB',
+    Icon: FaDoorOpen,
+    badge: 'B',
   },
   {
-    key: 'pizzatreat',
-    label: 'Pizza Treat',
-    regionId: 'PIZZATREAT',
-    Icon: FaPizzaSlice,
-    badge: 'PT',
+    key: 'salonc',
+    label: 'Salon C',
+    regionId: 'SALONC',
+    Icon: FaDoorOpen,
+    badge: 'C',
   },
   {
-    key: 'pizzapizza',
-    label: 'Pizza Pizza',
-    regionId: 'PIZZAPIZZA',
-    Icon: FaPizzaSlice,
-    badge: 'PP',
+    key: 'salond',
+    label: 'Salon D',
+    regionId: 'SALOND',
+    Icon: FaDoorOpen,
+    badge: 'D',
   },
   {
-    key: 'hotnready',
-    label: 'Hot-N-Ready',
-    regionId: 'HOTNREADY',
-    Icon: FaPizzaSlice,
-    badge: 'HR',
+    key: 'salone',
+    label: 'Salon E',
+    regionId: 'SALONE',
+    Icon: FaDoorOpen,
+    badge: 'E',
   },
   {
-    key: 'reservenready',
-    label: 'Reserve-N-Ready',
-    regionId: 'RESERVENREADY',
-    Icon: FaPizzaSlice,
-    badge: 'RR',
+    key: 'salonf',
+    label: 'Salon F',
+    regionId: 'SALONF',
+    Icon: FaDoorOpen,
+    badge: 'F',
   },
   {
-    key: 'familytheater',
-    label: 'Family Theater',
-    regionId: 'FAMILYTHEATER',
-    Icon: FaFilm,
-  },
-  {
-    key: 'careers',
-    label: 'Careers',
-    regionId: 'CAREERS',
+    key: 'boardroom',
+    label: 'Executive Boardroom',
+    regionId: 'BOARDROOM',
     Icon: FaBriefcase,
-  },
-  {
-    key: 'booths',
-    label: 'Booths',
-    regionId: 'BOOTHS',
-    Icon: FaStore,
+    badge: 'EX',
   },
 ]
 
@@ -91,22 +75,63 @@ function isValidSvgResponse(contentType, text) {
   return /^<svg[\s>]/i.test(withoutProlog)
 }
 
-function getScrollBehavior() {
+function prefersReducedMotion() {
   return window.matchMedia('(prefers-reduced-motion: reduce)').matches
-    ? 'auto'
-    : 'smooth'
+}
+
+function svgSize(svg) {
+  const box = svg.viewBox?.baseVal
+  if (box?.width && box?.height) return { w: box.width, h: box.height }
+  return {
+    w: svg.width?.baseVal?.value || 536,
+    h: svg.height?.baseVal?.value || 270,
+  }
+}
+
+/** Fit the whole plan in the viewport, or zoom so a room sits in the center. */
+function computeView(container, svg, shape) {
+  const cw = container.clientWidth
+  const ch = container.clientHeight
+  if (!cw || !ch || !svg) return null
+
+  const { w: svgW, h: svgH } = svgSize(svg)
+  const fit = Math.min(cw / svgW, ch / svgH)
+
+  if (!shape) {
+    return {
+      scale: fit,
+      x: (cw - svgW * fit) / 2,
+      y: (ch - svgH * fit) / 2,
+    }
+  }
+
+  const box = shape.getBBox()
+  const pad = 1.45
+  const roomScale = Math.min(
+    cw / Math.max(box.width * pad, 1),
+    ch / Math.max(box.height * pad, 1)
+  )
+  const scale = Math.min(Math.max(roomScale, fit), fit * 4.5)
+  const cx = box.x + box.width / 2
+  const cy = box.y + box.height / 2
+  return {
+    scale,
+    x: cw / 2 - cx * scale,
+    y: ch / 2 - cy * scale,
+  }
 }
 
 function VenueMaps() {
   const scrollRef = useRef(null)
+  const frameRef = useRef(null)
   const holderRef = useRef(null)
+  const viewRef = useRef(null)
   const [svgMarkup, setSvgMarkup] = useState(null)
   const [active, setActive] = useState(null)
 
-  // Load the SVG as inline markup so its named regions become targetable DOM.
   useEffect(() => {
     let cancelled = false
-    fetch(lcMapUrl)
+    fetch(mapUrl)
       .then(async (res) => {
         if (!res.ok) {
           throw new Error(`SVG fetch failed with status ${res.status}`)
@@ -132,96 +157,98 @@ function VenueMaps() {
 
   const getRegionShapes = useCallback((regionId) => {
     const holder = holderRef.current
-    if (!holder) {
-      console.warn('getRegionShapes: holderRef.current is null')
-      return []
-    }
+    if (!holder) return []
     const element = holder.querySelector(`#${CSS.escape(regionId)}`)
-    if (!element) {
-      console.warn(
-        `getRegionShapes: Element with id="${regionId}" not found in holder`
-      )
-      return []
-    }
-    if (element.matches('rect, path')) {
-      return [element]
-    }
-    const firstShape = element.querySelector('rect, path')
-    if (firstShape) {
-      return [firstShape]
-    }
-    console.warn(
-      `getRegionShapes: Group with id="${regionId}" contains no rect or path elements`
-    )
-    return []
+    if (!element) return []
+    if (element.matches('rect, path, polygon')) return [element]
+    const shapes = element.querySelectorAll('rect, path, polygon')
+    return shapes.length ? [...shapes] : []
   }, [])
 
-  const scrollRegionIntoView = useCallback((shape) => {
-    const container = scrollRef.current
-    if (!container || !shape) return
-    const cRect = container.getBoundingClientRect()
-    const rRect = shape.getBoundingClientRect()
-    const left =
-      rRect.left -
-      cRect.left +
-      container.scrollLeft -
-      (container.clientWidth - rRect.width) / 2
-    container.scrollTo({
-      left,
-      behavior: getScrollBehavior(),
-    })
+  const applyView = useCallback((view) => {
+    const frame = frameRef.current
+    if (!frame || !view) return
+    viewRef.current = view
+    frame.style.transform = `translate(${view.x}px, ${view.y}px) scale(${view.scale})`
   }, [])
 
-  // Reflect the active selection on the SVG and bring it into view.
+  const focusView = useCallback(
+    (shape) => {
+      const container = scrollRef.current
+      const svg = holderRef.current?.querySelector('svg')
+      if (!container || !svg) return
+      applyView(computeView(container, svg, shape))
+    },
+    [applyView]
+  )
+
   useEffect(() => {
     if (!svgMarkup) return
     let activeShape = null
     AREAS.forEach(({ key, regionId }) => {
       const isActive = key === active
       getRegionShapes(regionId).forEach((shape) => {
-        // Ensure the base class and style cleanup are always applied
         shape.classList.add('venue-map-region')
-        shape.style.fill = ''
-
         shape.classList.toggle('is-active', isActive)
         if (isActive && !activeShape) activeShape = shape
       })
     })
-    if (activeShape) scrollRegionIntoView(activeShape)
-  }, [active, svgMarkup, getRegionShapes, scrollRegionIntoView])
+    focusView(activeShape)
+  }, [active, svgMarkup, getRegionShapes, focusView])
 
-  // Keyboard helpers for the scroll region (parity with prior behaviour).
+  useEffect(() => {
+    const container = scrollRef.current
+    if (!container || !svgMarkup) return undefined
+    const observer = new ResizeObserver(() => {
+      const area = AREAS.find((item) => item.key === active)
+      const shape = area ? getRegionShapes(area.regionId)[0] : null
+      focusView(shape || null)
+    })
+    observer.observe(container)
+    return () => observer.disconnect()
+  }, [active, svgMarkup, getRegionShapes, focusView])
+
   useEffect(() => {
     const el = scrollRef.current
-    if (!el) return undefined
+    if (!el || !svgMarkup) return undefined
     const handleKeyDown = (e) => {
-      const scrollBehavior = getScrollBehavior()
       if (e.key === 'Home') {
         e.preventDefault()
-        el.scrollTo({ left: 0, behavior: scrollBehavior })
-      } else if (e.key === 'End') {
-        e.preventDefault()
-        el.scrollTo({
-          left: el.scrollWidth - el.clientWidth,
-          behavior: scrollBehavior,
-        })
+        setActive(null)
+        return
       }
+      if (e.key === 'End') {
+        e.preventDefault()
+        setActive(AREAS[AREAS.length - 1].key)
+        return
+      }
+      const step = prefersReducedMotion() ? 80 : 48
+      const pan = {
+        ArrowLeft: [-step, 0],
+        ArrowRight: [step, 0],
+        ArrowUp: [0, -step],
+        ArrowDown: [0, step],
+      }[e.key]
+      if (!pan || !viewRef.current) return
+      e.preventDefault()
+      const view = viewRef.current
+      applyView({
+        scale: view.scale,
+        x: view.x + pan[0],
+        y: view.y + pan[1],
+      })
     }
     el.addEventListener('keydown', handleKeyDown)
     return () => el.removeEventListener('keydown', handleKeyDown)
-  }, [svgMarkup])
+  }, [svgMarkup, applyView])
 
-  // Handle clicking off of the buttons to deactivate
   useEffect(() => {
+    if (!active) return undefined
     const handleClickOutside = (e) => {
-      if (!active) return
-      // If the click is not on one of our map buttons, clear the active selection
       const clickedMapButton = e.target
         .closest('button')
         ?.classList.contains('group/area')
-      if (!clickedMapButton) {
-        setActive(null)
-      }
+      if (!clickedMapButton) setActive(null)
     }
     document.addEventListener('click', handleClickOutside)
     return () => document.removeEventListener('click', handleClickOutside)
@@ -229,7 +256,7 @@ function VenueMaps() {
 
   const toggleArea = (key) => setActive((cur) => (cur === key ? null : key))
 
-  const activeLabel = AREAS.find((a) => a.key === active)?.label
+  const activeLabel = AREAS.find((area) => area.key === active)?.label
 
   return (
     <section className="w-full py-8" aria-labelledby="venue-maps-heading">
@@ -237,48 +264,37 @@ function VenueMaps() {
         Venue map
       </h2>
 
-      <div className="flex flex-col gap-4 lg:flex-row">
-        {/* Area buttons: icon-only row on mobile, labelled column on desktop */}
+      <div className="flex flex-col gap-4 lg:flex-row lg:items-stretch">
         <nav
-          aria-label="Highlight a venue area"
+          aria-label="Highlight a room"
           className="flex shrink-0 flex-row flex-wrap justify-center gap-2 lg:w-72 lg:flex-col lg:justify-start"
         >
-          {AREAS.map(({ key, label, sublabel, Icon, badge }) => {
+          {AREAS.map(({ key, label, Icon, badge }) => {
             const isActive = key === active
-            const accessibleName = sublabel ? `${label}, ${sublabel}` : label
             return (
               <button
                 key={key}
                 type="button"
                 onClick={() => toggleArea(key)}
                 aria-pressed={isActive}
-                aria-label={accessibleName}
-                title={accessibleName}
+                aria-label={label}
+                title={label}
                 className={`group/area relative flex items-center justify-center gap-3 rounded-xl border p-3 font-bold transition-all duration-300 active:scale-95 lg:justify-start lg:p-4 ${
                   isActive
-                    ? 'border-iwd-gold-400/60 bg-iwd-gold-400/15 text-iwd-gold-200 shadow-[0_0_14px_rgba(255,208,174,0.25)]'
+                    ? 'border-iwd-gold-400/60 bg-iwd-gold-400/15 text-iwd-gold-200 shadow-[0_0_14px_rgba(var(--iwd-accent-400),0.45)]'
                     : 'border-white/10 bg-white/[0.03] text-white hover:border-iwd-gold-400/30 hover:bg-iwd-gold-400/10'
                 }`}
               >
                 <Icon
                   className={`size-6 shrink-0 transition-transform duration-300 lg:size-7 ${
                     isActive
-                      ? 'scale-110 text-iwd-gold-400 drop-shadow-[0_0_8px_rgba(255,208,174,0.5)]'
+                      ? 'scale-110 text-iwd-gold-400 drop-shadow-[0_0_8px_rgba(var(--iwd-accent-400),0.65)]'
                       : 'text-gray-400 group-hover/area:scale-110 group-hover/area:text-iwd-gold-300'
                   }`}
                   aria-hidden="true"
                 />
-                <span className="hidden text-left leading-snug lg:block">
-                  <span className="block text-lg">{label}</span>
-                  {sublabel && (
-                    <span
-                      className={`mt-1.5 block text-sm font-semibold uppercase leading-snug tracking-wide ${
-                        isActive ? 'text-iwd-gold-100' : 'text-gray-100'
-                      }`}
-                    >
-                      {sublabel}
-                    </span>
-                  )}
+                <span className="hidden text-left text-lg leading-snug lg:block">
+                  {label}
                 </span>
                 {badge && (
                   <span className="absolute -right-1 -top-1 flex h-4 min-w-[16px] items-center justify-center rounded bg-iwd-gold-400 px-1 font-mono text-[8px] font-black uppercase text-black ring-1 ring-black/20 lg:hidden">
@@ -290,28 +306,28 @@ function VenueMaps() {
           })}
         </nav>
 
-        {/* Map */}
-        <div className="min-w-0 flex-1">
-          <div className="mb-1 rounded-xl border-4 border-iwd-gold-500 bg-white">
+        <div className="flex min-h-[28rem] min-w-0 flex-1 flex-col lg:min-h-0">
+          <div className="relative min-h-[28rem] flex-1 overflow-hidden rounded-xl border-4 border-iwd-gold-500 bg-iwd-dark-50">
             <div
               ref={scrollRef}
-              className="scrollbar-visible w-full overflow-x-auto overflow-y-hidden scroll-smooth rounded-md focus:outline-none focus-visible:ring-2 focus-visible:ring-focus-ring focus-visible:ring-offset-2 focus-visible:ring-offset-iwd-gold-100 motion-reduce:scroll-auto"
+              className="absolute inset-1 overflow-hidden rounded-md focus:outline-none focus-visible:ring-2 focus-visible:ring-focus-ring focus-visible:ring-offset-2 focus-visible:ring-offset-iwd-dark-50"
               tabIndex={0}
               role="region"
-              aria-label="Scrollable venue map"
+              aria-label="Venue floor plan. Choose a room to center it. Arrow keys pan. Home shows the full plan."
             >
               {svgMarkup ? (
-                <div
-                  ref={holderRef}
-                  className="venue-map-svg"
-                  dangerouslySetInnerHTML={{ __html: svgMarkup }}
-                />
+                <div ref={frameRef} className="venue-map-frame">
+                  <div
+                    ref={holderRef}
+                    className="venue-map-svg text-iwd-dark-800"
+                    dangerouslySetInnerHTML={{ __html: svgMarkup }}
+                  />
+                </div>
               ) : (
                 <img
-                  src={lcMapUrl}
-                  alt="Venue floor plan"
-                  className="block h-[573px] w-[2092px] max-w-none"
-                  loading="lazy"
+                  src={mapUrl}
+                  alt="Hollywood Casino at Greektown conference center floor plan"
+                  className="size-full object-contain"
                 />
               )}
             </div>
@@ -319,8 +335,8 @@ function VenueMaps() {
 
           <p className="sr-only" role="status" aria-live="polite">
             {activeLabel
-              ? `Highlighting ${activeLabel}`
-              : 'No area highlighted'}
+              ? `Highlighting ${activeLabel}, centered on the map`
+              : 'Showing the full floor plan'}
           </p>
         </div>
       </div>
