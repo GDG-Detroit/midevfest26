@@ -1,67 +1,26 @@
 import { useCallback, useEffect, useRef, useState } from 'react'
-import { FaBriefcase, FaDoorOpen, FaUsers } from 'react-icons/fa6'
+import { FaDoorOpen, FaUsers } from 'react-icons/fa6'
 import mapUrl from '@/assets/images/maps/greekTownMap.svg'
+import { linesForRoom, VENUE_ROOMS } from '@/data/2026/venues'
 
-// Buttons target highlight polygons in greekTownMap.svg (Greektown conference
-// center). Session tracks are not assigned to rooms yet, so navigation is by room.
-const AREAS = [
-  {
-    key: 'grandballroom',
-    label: 'Grand Ballroom',
-    regionId: 'GRANDBALLROOM',
-    Icon: FaUsers,
-    badge: 'GB',
-  },
-  {
-    key: 'salona',
-    label: 'Salon A',
-    regionId: 'SALONA',
-    Icon: FaDoorOpen,
-    badge: 'A',
-  },
-  {
-    key: 'salonb',
-    label: 'Salon B',
-    regionId: 'SALONB',
-    Icon: FaDoorOpen,
-    badge: 'B',
-  },
-  {
-    key: 'salonc',
-    label: 'Salon C',
-    regionId: 'SALONC',
-    Icon: FaDoorOpen,
-    badge: 'C',
-  },
-  {
-    key: 'salond',
-    label: 'Salon D',
-    regionId: 'SALOND',
-    Icon: FaDoorOpen,
-    badge: 'D',
-  },
-  {
-    key: 'salone',
-    label: 'Salon E',
-    regionId: 'SALONE',
-    Icon: FaDoorOpen,
-    badge: 'E',
-  },
-  {
-    key: 'salonf',
-    label: 'Salon F',
-    regionId: 'SALONF',
-    Icon: FaDoorOpen,
-    badge: 'F',
-  },
-  {
-    key: 'boardroom',
-    label: 'Executive Boardroom',
-    regionId: 'BOARDROOM',
-    Icon: FaBriefcase,
-    badge: 'EX',
-  },
-]
+const ICONS = {
+  ballroomc: FaUsers,
+  ballroomb: FaUsers,
+  ballrooma: FaUsers,
+}
+
+// Buttons target highlight polygons in greekTownMap.svg. The track is the
+// larger line; the room name sits under it.
+const AREAS = VENUE_ROOMS.map((room) => {
+  const [primary, secondary] = linesForRoom(room)
+  return {
+    key: room.key,
+    primary,
+    secondary,
+    regionId: room.regionId,
+    Icon: ICONS[room.key] ?? FaDoorOpen,
+  }
+})
 
 function isValidSvgResponse(contentType, text) {
   if (contentType && /text\/html/i.test(contentType)) return false
@@ -243,6 +202,21 @@ function VenueMaps() {
   }, [svgMarkup, applyView])
 
   useEffect(() => {
+    const holder = holderRef.current
+    if (!holder || !svgMarkup) return undefined
+    const handleClick = (event) => {
+      const shape = event.target.closest?.('.venue-map-region')
+      if (!shape?.id) return
+      const area = AREAS.find((item) => item.regionId === shape.id)
+      if (!area) return
+      event.stopPropagation()
+      setActive((current) => (current === area.key ? null : area.key))
+    }
+    holder.addEventListener('click', handleClick)
+    return () => holder.removeEventListener('click', handleClick)
+  }, [svgMarkup])
+
+  useEffect(() => {
     if (!active) return undefined
     const handleClickOutside = (e) => {
       const clickedMapButton = e.target
@@ -256,7 +230,7 @@ function VenueMaps() {
 
   const toggleArea = (key) => setActive((cur) => (cur === key ? null : key))
 
-  const activeLabel = AREAS.find((area) => area.key === active)?.label
+  const activeArea = AREAS.find((area) => area.key === active)
 
   return (
     <section className="w-full py-8" aria-labelledby="venue-maps-heading">
@@ -267,19 +241,20 @@ function VenueMaps() {
       <div className="flex flex-col gap-4 lg:flex-row lg:items-stretch">
         <nav
           aria-label="Highlight a room"
-          className="flex shrink-0 flex-row flex-wrap justify-center gap-2 lg:w-72 lg:flex-col lg:justify-start"
+          className="grid shrink-0 grid-cols-2 gap-2 lg:flex lg:w-72 lg:flex-col"
         >
-          {AREAS.map(({ key, label, Icon, badge }) => {
+          {AREAS.map(({ key, primary, secondary, Icon }) => {
             const isActive = key === active
+            const accessibleName = `${primary}, ${secondary}`
             return (
               <button
                 key={key}
                 type="button"
                 onClick={() => toggleArea(key)}
                 aria-pressed={isActive}
-                aria-label={label}
-                title={label}
-                className={`group/area relative flex items-center justify-center gap-3 rounded-xl border p-3 font-bold transition-all duration-300 active:scale-95 lg:justify-start lg:p-4 ${
+                aria-label={accessibleName}
+                title={accessibleName}
+                className={`group/area relative flex w-full items-center justify-start gap-3 rounded-xl border p-3 text-left font-bold transition-all duration-300 active:scale-95 lg:p-4 ${
                   isActive
                     ? 'border-iwd-gold-400/60 bg-iwd-gold-400/15 text-iwd-gold-200 shadow-[0_0_14px_rgba(var(--iwd-accent-400),0.45)]'
                     : 'border-white/10 bg-white/[0.03] text-white hover:border-iwd-gold-400/30 hover:bg-iwd-gold-400/10'
@@ -293,14 +268,22 @@ function VenueMaps() {
                   }`}
                   aria-hidden="true"
                 />
-                <span className="hidden text-left text-lg leading-snug lg:block">
-                  {label}
-                </span>
-                {badge && (
-                  <span className="absolute -right-1 -top-1 flex h-4 min-w-[16px] items-center justify-center rounded bg-iwd-gold-400 px-1 font-mono text-[8px] font-black uppercase text-black ring-1 ring-black/20 lg:hidden">
-                    {badge}
+                <span className="min-w-0 leading-tight">
+                  <span
+                    className={`block text-base lg:text-lg ${
+                      key === 'salond' ? 'max-w-[16ch] lg:max-w-none' : ''
+                    }`}
+                  >
+                    {primary}
                   </span>
-                )}
+                  <span
+                    className={`mt-0.5 block text-xs font-semibold uppercase tracking-wide lg:text-sm ${
+                      isActive ? 'text-iwd-gold-100' : 'text-gray-300'
+                    }`}
+                  >
+                    {secondary}
+                  </span>
+                </span>
               </button>
             )
           })}
@@ -313,7 +296,7 @@ function VenueMaps() {
               className="absolute inset-1 overflow-hidden rounded-md focus:outline-none focus-visible:ring-2 focus-visible:ring-focus-ring focus-visible:ring-offset-2 focus-visible:ring-offset-iwd-dark-50"
               tabIndex={0}
               role="region"
-              aria-label="Venue floor plan. Choose a room to center it. Arrow keys pan. Home shows the full plan."
+              aria-label="Venue floor plan. Tap a room or choose one from the list to center it. Arrow keys pan. Home shows the full plan."
             >
               {svgMarkup ? (
                 <div ref={frameRef} className="venue-map-frame">
@@ -331,11 +314,18 @@ function VenueMaps() {
                 />
               )}
             </div>
+            {!active && (
+              <p className="pointer-events-none absolute inset-x-3 top-3 z-10 text-center">
+                <span className="venue-map-tip inline-block rounded-full bg-black/80 px-3 py-1.5 text-sm font-medium">
+                  Tap a room on the map to zoom in
+                </span>
+              </p>
+            )}
           </div>
 
           <p className="sr-only" role="status" aria-live="polite">
-            {activeLabel
-              ? `Highlighting ${activeLabel}, centered on the map`
+            {activeArea
+              ? `Highlighting ${activeArea.primary}, ${activeArea.secondary}, centered on the map`
               : 'Showing the full floor plan'}
           </p>
         </div>

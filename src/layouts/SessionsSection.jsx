@@ -12,7 +12,11 @@ import MyScheduleEmptyState from '@/components/sessions/MyScheduleEmptyState'
 import TrackEmptyState from '@/components/sessions/TrackEmptyState'
 
 import { conferenceActivities } from '@/data/2026/conferenceActivities'
-import { HACKATHON_TRACK, trackStageHeading } from '@/data/2026/venues'
+import {
+  HACKATHON_TRACK,
+  linesForScheduleTrack,
+  trackStageHeading,
+} from '@/data/2026/venues'
 import {
   HACKATHON_DATE,
   dateForTrack,
@@ -60,40 +64,61 @@ const compareByDayAndTime = (a, b) => {
   return a.sortTime < b.sortTime ? -1 : 1
 }
 
+/** Track name, with the 2026 room underneath when this year has one. */
+function TrackHeading({ id, track, showRoom }) {
+  const room = showRoom ? linesForScheduleTrack(track)?.[1] : null
+  return (
+    <h3
+      id={id}
+      className="mx-auto mb-4 text-center text-xl font-semibold text-white sm:text-2xl"
+    >
+      <span className="block">{trackStageHeading(track)}</span>
+      {room ? (
+        <span className="mt-1 block text-sm font-medium uppercase tracking-wide text-gray-400">
+          {room}
+        </span>
+      ) : null}
+    </h3>
+  )
+}
+
+TrackHeading.propTypes = {
+  id: PropTypes.string.isRequired,
+  track: PropTypes.string.isRequired,
+  showRoom: PropTypes.bool,
+}
+
 // Track descriptions (strings or JSX for inline formatting like <strong>)
 const trackDescriptions = {
-  'Build with AI': (
+  'Build with AI': (showRoom) => (
     <>
-      <h3
+      <TrackHeading
         id="build-with-ai-heading"
-        className="mx-auto mb-4 text-center text-xl font-semibold text-white sm:text-2xl "
-      >
-        {trackStageHeading('Build with AI')}
-      </h3>
+        track="Build with AI"
+        showRoom={showRoom}
+      />
     </>
   ),
-  'Innovation': (
+  'Innovation': (showRoom) => (
     <>
-      <h3
+      <TrackHeading
         id="innovation-heading"
-        className="mx-auto mb-4 text-center text-xl font-semibold text-white sm:text-2xl "
-      >
-        {trackStageHeading('Innovation')}
-      </h3>
+        track="Innovation"
+        showRoom={showRoom}
+      />
       <p className="mb-6 max-w-4xl text-pretty text-center text-base text-gray-400">
         Discover groundbreaking ideas and emerging technologies shaping the
         future.
       </p>
     </>
   ),
-  'Level Up': (
+  'Level Up': (showRoom) => (
     <>
-      <h3
+      <TrackHeading
         id="level-up-heading"
-        className="mx-auto mb-4 text-center text-xl font-semibold text-white sm:text-2xl "
-      >
-        {trackStageHeading('Level Up')}
-      </h3>
+        track="Level Up"
+        showRoom={showRoom}
+      />
       <p className="mb-6 max-w-4xl text-pretty text-center text-base text-gray-400">
         Advance your career and personal growth. From mentorship to leadership,
         explore sessions that help you level up professionally and personally in
@@ -101,41 +126,34 @@ const trackDescriptions = {
       </p>
     </>
   ),
-  'Leadership': (
+  'Leadership': (showRoom) => (
     <>
-      <h3
+      <TrackHeading
         id="leadership-heading"
-        className="mx-auto mb-4 text-center text-xl font-semibold text-white sm:text-2xl "
-      >
-        {trackStageHeading('Leadership')}
-      </h3>
+        track="Leadership"
+        showRoom={showRoom}
+      />
       <p className="mb-6 max-w-4xl text-pretty text-center text-base text-gray-400">
         Discover insights from founders and entrepreneurs building the next
         generation of tech companies.{' '}
       </p>
     </>
   ),
-  'AI Foundations': (
+  'AI Foundations': (showRoom) => (
     <>
-      <h3
+      <TrackHeading
         id="ai-foundations-heading"
-        className="mx-auto mb-4 text-center text-xl font-semibold text-white sm:text-2xl "
-      >
-        {trackStageHeading('AI Foundations')}
-      </h3>
+        track="AI Foundations"
+        showRoom={showRoom}
+      />
       <p className="mb-6 max-w-4xl text-pretty text-center text-base text-gray-400">
         Build your foundational knowledge of artificial intelligence.{' '}
       </p>
     </>
   ),
-  'Careers': (
+  'Careers': (showRoom) => (
     <>
-      <h3
-        id="careers-heading"
-        className="mx-auto mb-4 text-center text-xl font-semibold text-white sm:text-2xl "
-      >
-        {trackStageHeading('Careers')}
-      </h3>
+      <TrackHeading id="careers-heading" track="Careers" showRoom={showRoom} />
     </>
   ),
   [HACKATHON_TRACK]: (
@@ -491,72 +509,86 @@ const SessionsSection = ({
                   : 'max-h-0 opacity-0 transition-all'
               }`}
             >
-              {tabs.map((tab, index) => (
-                <React.Fragment key={tab}>
-                  {index !== 0 &&
-                    ![activeTab, activeTab + 1].includes(index) && (
-                      <div className="hidden h-5 w-0 shrink-0 bg-white/10 sm:w-px md:mx-2 md:block lg:mx-3" />
-                    )}
+              {tabs.map((tab, index) => {
+                const roomTabLines = isArchived
+                  ? null
+                  : linesForScheduleTrack(tab)
+                return (
+                  <React.Fragment key={tab}>
+                    {index !== 0 &&
+                      ![activeTab, activeTab + 1].includes(index) && (
+                        <div className="hidden h-5 w-0 shrink-0 bg-white/10 sm:w-px md:mx-2 md:block lg:mx-3" />
+                      )}
 
-                  <button
-                    key={tab}
-                    ref={(el) => {
-                      buttonRefs.current[index] = el
-                    }}
-                    role="tab"
-                    aria-selected={activeTab === index}
-                    aria-controls="sessions-tabpanel"
-                    id={`session-tab-${index}`}
-                    tabIndex={isExpanded ? 0 : -1}
-                    className={`relative inline-flex min-h-6 min-w-6 shrink-0 items-center justify-center whitespace-nowrap rounded-md px-3 py-2 text-xs font-semibold uppercase tracking-wider transition-all duration-300 focus:outline-none focus-visible:ring-2 focus-visible:ring-focus-ring focus-visible:ring-offset-2 focus-visible:ring-offset-black light:focus-visible:ring-offset-white md:min-w-20 md:px-3 md:py-2 lg:min-w-36 lg:px-4 lg:text-sm ${
-                      activeTab === index
-                        ? 'border border-iwd-gold-400/40 bg-iwd-gold-400/15 text-iwd-gold-300 shadow-lg shadow-iwd-gold-500/10 after:absolute after:-bottom-3 after:left-1/2 after:block after:size-0 after:-translate-x-1/2 after:border-x-[10px] after:border-t-[10px] after:border-iwd-gold-400/40 after:border-x-transparent light:border-iwd-gold-500/50 light:bg-iwd-gold-500/10 light:text-iwd-gold-600 light:shadow-none'
-                        : 'border border-white/5 bg-white/[0.03] text-gray-400 hover:border-white/10 hover:bg-white/[0.06] light:border-gray-200 light:bg-gray-50 light:text-gray-500 light:hover:border-iwd-gold-400/50 light:hover:bg-iwd-gold-50 light:hover:text-gray-900 dark:hover:text-white'
-                    }`}
-                    onClick={() => activateTab(index, false)}
-                    onFocus={(e) => scrollTabIntoView(e.currentTarget)}
-                    onKeyDown={(e) => handleKeyDown(e, index)}
-                  >
-                    {tab === 'My Schedule' ? (
-                      <>
-                        <svg
-                          className="mr-1.5 inline size-3 lg:size-4"
-                          fill="currentColor"
-                          viewBox="0 0 24 24"
-                        >
-                          <path d="M19 21l-7-5-7 5V5a2 2 0 012-2h10a2 2 0 012 2v16z" />
-                        </svg>
-                        My Schedule
-                      </>
-                    ) : tab === 'Schedule' ? (
-                      <>
-                        <svg
-                          className="mr-1.5 inline size-3 lg:size-4"
-                          fill="currentColor"
-                          viewBox="0 0 24 24"
-                        >
-                          <path d="M19 4h-1V2h-2v2H8V2H6v2H5c-1.11 0-1.99.9-1.99 2L3 20c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 16H5V10h14v10z" />
-                        </svg>
-                        Schedule
-                      </>
-                    ) : tab === 'Tech+Design' ? (
-                      <>Tech+Design</>
-                    ) : tab === 'Level Up' ? (
-                      <>Level Up</>
-                    ) : tab === 'Leadership' ? (
-                      <>Leadership</>
-                    ) : tab === 'Build with AI' ? (
-                      <>Build with AI</>
-                    ) : tab === 'Workshops' ? (
-                      <>Workshops</>
-                    ) : tab === 'AI Foundations' ? (
-                      <>AI Foundations</>
-                    ) : (
-                      tab
-                    )}
-                  </button>
-                </React.Fragment>
-              ))}
+                    <button
+                      key={tab}
+                      ref={(el) => {
+                        buttonRefs.current[index] = el
+                      }}
+                      role="tab"
+                      aria-selected={activeTab === index}
+                      aria-controls="sessions-tabpanel"
+                      id={`session-tab-${index}`}
+                      tabIndex={isExpanded ? 0 : -1}
+                      className={`relative inline-flex min-h-6 min-w-6 shrink-0 items-center justify-center whitespace-nowrap rounded-md px-3 py-2 text-xs font-semibold uppercase tracking-wider transition-all duration-300 focus:outline-none focus-visible:ring-2 focus-visible:ring-focus-ring focus-visible:ring-offset-2 focus-visible:ring-offset-black light:focus-visible:ring-offset-white md:min-w-20 md:px-3 md:py-2 lg:min-w-36 lg:px-4 lg:text-sm ${
+                        activeTab === index
+                          ? 'border border-iwd-gold-400/40 bg-iwd-gold-400/15 text-iwd-gold-300 shadow-lg shadow-iwd-gold-500/10 after:absolute after:-bottom-3 after:left-1/2 after:block after:size-0 after:-translate-x-1/2 after:border-x-[10px] after:border-t-[10px] after:border-iwd-gold-400/40 after:border-x-transparent light:border-iwd-gold-500/50 light:bg-iwd-gold-500/10 light:text-iwd-gold-600 light:shadow-none'
+                          : 'border border-white/5 bg-white/[0.03] text-gray-400 hover:border-white/10 hover:bg-white/[0.06] light:border-gray-200 light:bg-gray-50 light:text-gray-500 light:hover:border-iwd-gold-400/50 light:hover:bg-iwd-gold-50 light:hover:text-gray-900 dark:hover:text-white'
+                      }`}
+                      onClick={() => activateTab(index, false)}
+                      onFocus={(e) => scrollTabIntoView(e.currentTarget)}
+                      onKeyDown={(e) => handleKeyDown(e, index)}
+                    >
+                      {tab === 'My Schedule' ? (
+                        <>
+                          <svg
+                            className="mr-1.5 inline size-3 lg:size-4"
+                            fill="currentColor"
+                            viewBox="0 0 24 24"
+                          >
+                            <path d="M19 21l-7-5-7 5V5a2 2 0 012-2h10a2 2 0 012 2v16z" />
+                          </svg>
+                          My Schedule
+                        </>
+                      ) : tab === 'Schedule' ? (
+                        <>
+                          <svg
+                            className="mr-1.5 inline size-3 lg:size-4"
+                            fill="currentColor"
+                            viewBox="0 0 24 24"
+                          >
+                            <path d="M19 4h-1V2h-2v2H8V2H6v2H5c-1.11 0-1.99.9-1.99 2L3 20c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 16H5V10h14v10z" />
+                          </svg>
+                          Schedule
+                        </>
+                      ) : roomTabLines ? (
+                        <span className="flex flex-col items-center leading-none">
+                          <span className="text-sm font-bold">
+                            {roomTabLines[0]}
+                          </span>
+                          <span className="mt-0.5 text-[0.65em] font-medium tracking-wide">
+                            {roomTabLines[1]}
+                          </span>
+                        </span>
+                      ) : tab === 'Tech+Design' ? (
+                        <>Tech+Design</>
+                      ) : tab === 'Level Up' ? (
+                        <>Level Up</>
+                      ) : tab === 'Leadership' ? (
+                        <>Leadership</>
+                      ) : tab === 'Build with AI' ? (
+                        <>Build with AI</>
+                      ) : tab === 'Workshops' ? (
+                        <>Workshops</>
+                      ) : tab === 'AI Foundations' ? (
+                        <>AI Foundations</>
+                      ) : (
+                        tab
+                      )}
+                    </button>
+                  </React.Fragment>
+                )
+              })}
             </div>
             <TabScrollbar
               targetRef={navRef}
@@ -588,7 +620,9 @@ const SessionsSection = ({
         {/* Track description: below tablist, above session cards */}
         {isExpanded && currentSession && trackDescriptions[currentSession] && (
           <div className="mx-auto mt-12 w-full max-w-6xl px-[2.5%] md:px-[5%]">
-            {trackDescriptions[currentSession]}
+            {typeof trackDescriptions[currentSession] === 'function'
+              ? trackDescriptions[currentSession](!isArchived)
+              : trackDescriptions[currentSession]}
           </div>
         )}
 

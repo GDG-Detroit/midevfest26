@@ -308,20 +308,33 @@
   display: block;
   max-width: none;
 }
+.venue-map-svg #floorplan {
+  pointer-events: none;
+}
 .venue-map-elevator {
   fill-opacity: 0.35;
+}
+.venue-map-room-name {
+  display: none;
 }
 .venue-map-region {
   fill: transparent !important;
   stroke: transparent !important;
   stroke-width: 2.5px !important;
   vector-effect: non-scaling-stroke;
-  pointer-events: none !important;
+  pointer-events: fill !important;
+  cursor: pointer;
   fill-opacity: 1 !important;
   stroke-opacity: 1 !important;
   transition:
     fill 0.35s ease,
     stroke 0.35s ease;
+}
+.venue-map-region#BOARDROOM {
+  cursor: default;
+}
+.venue-map-tip {
+  color: #fff;
 }
 .venue-map-region.is-active {
   fill: rgb(var(--iwd-accent-500) / 0.38) !important;
