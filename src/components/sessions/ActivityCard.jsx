@@ -1,11 +1,14 @@
+import { useState } from 'react'
 import PropTypes from 'prop-types'
 import { format, parse } from 'date-fns'
+import { IoChevronDown } from 'react-icons/io5'
 import useSchedule from '@/hooks/useSchedule'
 
 /**
  * Card for conference activities (check-in, breakfast, lunch, etc.)
- * that are not speaker sessions. Single column: time range + title.
+ * that are not speaker sessions. A long description starts collapsed.
  */
+const COLLAPSIBLE_CONTENT_LENGTH = 180
 function ActivityCard({
   activityId,
   title,
@@ -18,6 +21,12 @@ function ActivityCard({
 }) {
   const { isSessionSaved, toggleSession } = useSchedule()
   const isSaved = activityId ? isSessionSaved(activityId) : false
+  const [expanded, setExpanded] = useState(false)
+  const description = typeof content === 'string' ? content.trim() : ''
+  const isCollapsible =
+    description.length > COLLAPSIBLE_CONTENT_LENGTH ||
+    description.includes('\n')
+  const panelId = activityId ? `activity-${activityId}` : undefined
   const formatTime = (t) => {
     if (!t) return ''
     try {
@@ -35,6 +44,40 @@ function ActivityCard({
       : startFormatted || ''
 
   const linkClassName = 'font-medium text-sky-400 underline hover:text-sky-300'
+  const timeMeta = (
+    <div className="mt-2.5 flex flex-wrap items-center gap-2 text-sm">
+      {timeLabel && (
+        <span className="inline-flex items-center gap-1.5 rounded-lg border border-white/[0.06] bg-white/[0.04] px-3 py-1.5 font-semibold text-iwd-gold-300 backdrop-blur-sm sm:text-base">
+          <svg
+            className="size-3.5 opacity-60"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+            strokeWidth={2}
+          >
+            <circle cx="12" cy="12" r="10" />
+            <polyline points="12 6 12 12 16 14" />
+          </svg>
+          {timeLabel}
+        </span>
+      )}
+      {room && (
+        <span className="inline-flex items-center gap-1.5 rounded-lg border border-white/[0.06] bg-white/[0.04] px-3 py-1.5 text-sm text-gray-300 backdrop-blur-sm">
+          <svg
+            className="size-3.5 opacity-60"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+            strokeWidth={2}
+          >
+            <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" />
+            <circle cx="12" cy="10" r="3" />
+          </svg>
+          {room}
+        </span>
+      )}
+    </div>
+  )
 
   return (
     <div className="rounded-2xl border border-white/[0.06] bg-white/[0.02] shadow-lg backdrop-blur-sm transition-all duration-300 hover:border-white/[0.12] hover:bg-white/[0.04]">
@@ -57,59 +100,60 @@ function ActivityCard({
             </svg>
           </div>
           <div className="min-w-0 flex-1">
-            {title && (
-              <h3 className="text-base font-semibold text-white md:text-xl">
-                {title}
-              </h3>
-            )}
-            {(content || cta) && (
-              <div className="mt-1.5 text-pretty text-sm text-gray-200">
-                {content && <span>{content} </span>}
-                {cta?.url && cta?.text && (
-                  <a
-                    href={cta.url}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    aria-label={cta.ariaLabel ?? cta.text}
-                    className={linkClassName}
-                  >
-                    {cta.text}
-                  </a>
+            {isCollapsible ? (
+              <button
+                type="button"
+                onClick={() => setExpanded((open) => !open)}
+                aria-expanded={expanded}
+                aria-controls={panelId}
+                aria-label={`${
+                  expanded ? 'Collapse' : 'Expand'
+                } session details for ${title}`}
+                className="flex w-full items-start gap-3 rounded-xl text-left focus:outline-none focus-visible:ring-2 focus-visible:ring-iwd-gold-400/50"
+              >
+                <span className="min-w-0 flex-1">
+                  {title && (
+                    <h3 className="text-base font-semibold text-white md:text-xl">
+                      {title}
+                    </h3>
+                  )}
+                  {timeMeta}
+                </span>
+                <span className="mt-0.5 flex size-8 shrink-0 items-center justify-center rounded-full border border-white/[0.06] bg-white/[0.04] md:size-9">
+                  <IoChevronDown
+                    className={`size-4 text-gray-200 transition-transform duration-300 ease-out md:size-5 ${
+                      expanded ? '-scale-y-100' : ''
+                    }`}
+                    aria-hidden="true"
+                  />
+                </span>
+              </button>
+            ) : (
+              <>
+                {title && (
+                  <h3 className="text-base font-semibold text-white md:text-xl">
+                    {title}
+                  </h3>
                 )}
-              </div>
+                {(description || cta) && (
+                  <div className="mt-1.5 text-pretty text-sm text-gray-200">
+                    {description && <span>{description} </span>}
+                    {cta?.url && cta?.text && (
+                      <a
+                        href={cta.url}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        aria-label={cta.ariaLabel ?? cta.text}
+                        className={linkClassName}
+                      >
+                        {cta.text}
+                      </a>
+                    )}
+                  </div>
+                )}
+                {timeMeta}
+              </>
             )}
-            <div className="mt-2.5 flex flex-wrap items-center gap-2 text-sm">
-              {timeLabel && (
-                <span className="inline-flex items-center gap-1.5 rounded-lg border border-white/[0.06] bg-white/[0.04] px-3 py-1.5 font-semibold text-iwd-gold-300 backdrop-blur-sm sm:text-base">
-                  <svg
-                    className="size-3.5 opacity-60"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    stroke="currentColor"
-                    strokeWidth={2}
-                  >
-                    <circle cx="12" cy="12" r="10" />
-                    <polyline points="12 6 12 12 16 14" />
-                  </svg>
-                  {timeLabel}
-                </span>
-              )}
-              {room && (
-                <span className="inline-flex items-center gap-1.5 rounded-lg border border-white/[0.06] bg-white/[0.04] px-3 py-1.5 text-sm text-gray-300 backdrop-blur-sm">
-                  <svg
-                    className="size-3.5 opacity-60"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    stroke="currentColor"
-                    strokeWidth={2}
-                  >
-                    <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" />
-                    <circle cx="12" cy="10" r="3" />
-                  </svg>
-                  {room}
-                </span>
-              )}
-            </div>
           </div>
           {activityId && !isArchived && (
             <div className="ml-4 flex items-center justify-center">
@@ -145,6 +189,25 @@ function ActivityCard({
           )}
         </div>
       </div>
+      {isCollapsible && expanded && (
+        <div
+          id={panelId}
+          className="border-t border-white/[0.06] px-4 pb-10 pt-5 md:px-8 lg:px-14"
+        >
+          <p className="whitespace-pre-wrap text-gray-300">{description}</p>
+          {cta?.url && cta?.text && (
+            <a
+              href={cta.url}
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label={cta.ariaLabel ?? cta.text}
+              className={`mt-4 inline-block ${linkClassName}`}
+            >
+              {cta.text}
+            </a>
+          )}
+        </div>
+      )}
     </div>
   )
 }

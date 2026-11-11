@@ -47,7 +47,7 @@ const staticActivities = [
     title: 'Sessions',
     content: null,
     time: '10:00',
-    timeEnd: '12:15',
+    timeEnd: '12:05',
   },
   {
     id: 'schedule-lunch',
@@ -63,7 +63,7 @@ const staticActivities = [
     title: 'Sessions',
     content: null,
     time: '13:00',
-    timeEnd: '16:00',
+    timeEnd: '15:50',
   },
   {
     id: 'schedule-closing',
@@ -80,6 +80,14 @@ const staticActivities = [
     content: null,
     time: '16:30',
     timeEnd: '18:00',
+  },
+  {
+    id: 'innovation-hackathon-winners',
+    track: 'Innovation',
+    title: 'Michigan DevFest Hackathon Winners',
+    content: 'Winning teams from the AI Hackathon present their projects.',
+    time: '15:15',
+    timeEnd: '15:50',
   },
 ]
 
