@@ -207,6 +207,9 @@ const trackDescriptions = {
  * Once conference morning starts, Hackathon leads so it stays easy to find
  * after Schedule becomes the tab that opens.
  */
+/** Browsers store setTimeout delays in a signed 32-bit int. Longer waits fire immediately. */
+const MAX_TIMEOUT_MS = 2 ** 31 - 1
+
 function buildSessionTabs(tracks, isArchived, leadWithHackathon) {
   const scheduleTab = isArchived ? [] : ['My Schedule']
   const tracksWithoutMap = tracks.filter((tab) => tab !== 'Map')
@@ -273,8 +276,15 @@ const SessionsSection = ({
   // only moves Hackathon. A fresh visit after that time opens on Schedule.
   useEffect(() => {
     if (leadWithHackathon) return undefined
-    const wait = msUntilConferenceMorning()
+    let timerId = 0
     const apply = () => {
+      if (!conferenceMorningHasStarted()) {
+        timerId = window.setTimeout(
+          apply,
+          Math.min(msUntilConferenceMorning(), MAX_TIMEOUT_MS)
+        )
+        return
+      }
       const currentTracks = tracksRef.current
       setActiveTab((index) => {
         const before = buildSessionTabs(currentTracks, isArchived, false)
@@ -284,12 +294,13 @@ const SessionsSection = ({
       })
       setLeadWithHackathon(true)
     }
+    const wait = msUntilConferenceMorning()
     if (wait === 0) {
       apply()
       return undefined
     }
-    const id = window.setTimeout(apply, wait)
-    return () => window.clearTimeout(id)
+    timerId = window.setTimeout(apply, Math.min(wait, MAX_TIMEOUT_MS))
+    return () => window.clearTimeout(timerId)
   }, [isArchived, leadWithHackathon])
 
   // Derived, not positional: Map and My Schedule are each conditional, so any
