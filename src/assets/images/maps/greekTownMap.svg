@@ -1,5 +1,5 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="536" height="270" viewBox="0 0 536 270" role="img" aria-labelledby="greektown-map-title">
-<title id="greektown-map-title">Hollywood Casino at Greektown conference center floor plan</title>
+<title id="greektown-map-title">Hollywood Casino at Greektown conference center, fifth floor</title>
 <g id="regions">
 <polygon id="BALLROOMC" class="venue-map-region" points="194 34 254 34 254 123 194 123"/>
 <polygon id="BALLROOMB" class="venue-map-region" points="259 34 318 34 318 123 259 123"/>
@@ -138,5 +138,8 @@
 <text x="426" y="232" font-size="3.4">SALON A</text>
 <text x="492" y="228" font-size="4.2">EXECUTIVE</text>
 <text x="492" y="235" font-size="4.2">BOARDROOM</text>
+</g>
+<g id="floor-label" fill="currentColor" font-family="Arial, Helvetica, sans-serif" font-weight="700" letter-spacing="0.14em" text-anchor="end" pointer-events="none">
+<text x="520" y="36" font-size="11">FIFTH FLOOR</text>
 </g>
 </svg>

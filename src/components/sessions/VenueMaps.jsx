@@ -296,7 +296,7 @@ function VenueMaps() {
               className="absolute inset-1 overflow-hidden rounded-md focus:outline-none focus-visible:ring-2 focus-visible:ring-focus-ring focus-visible:ring-offset-2 focus-visible:ring-offset-iwd-dark-50"
               tabIndex={0}
               role="region"
-              aria-label="Venue floor plan. Tap a room or choose one from the list to center it. Arrow keys pan. Home shows the full plan."
+              aria-label="Fifth floor venue plan. Tap a room or choose one from the list to center it. Arrow keys pan. Home shows the full plan."
             >
               {svgMarkup ? (
                 <div ref={frameRef} className="venue-map-frame">
@@ -309,7 +309,7 @@ function VenueMaps() {
               ) : (
                 <img
                   src={mapUrl}
-                  alt="Hollywood Casino at Greektown conference center floor plan"
+                  alt="Hollywood Casino at Greektown conference center, fifth floor"
                   className="size-full object-contain"
                 />
               )}
