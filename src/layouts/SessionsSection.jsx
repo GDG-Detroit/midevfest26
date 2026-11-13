@@ -19,9 +19,11 @@ import {
 } from '@/data/2026/venues'
 import {
   HACKATHON_DATE,
+  conferenceMorningHasStarted,
   dateForTrack,
   formatEventDate,
   formatEventDayShort,
+  msUntilConferenceMorning,
 } from '@/data/2026/eventDates'
 import { DIRECTION } from '@/constants/directions'
 import { IoChevronDown, IoChevronForward, IoChevronBack } from 'react-icons/io5'
@@ -200,6 +202,30 @@ const trackDescriptions = {
   ),
 }
 
+/**
+ * Map, then My Schedule, then the tracks in the order they were given.
+ * Once conference morning starts, Hackathon leads so it stays easy to find
+ * after Schedule becomes the tab that opens.
+ */
+function buildSessionTabs(tracks, isArchived, leadWithHackathon) {
+  const scheduleTab = isArchived ? [] : ['My Schedule']
+  const tracksWithoutMap = tracks.filter((tab) => tab !== 'Map')
+  const hasMap = tracks.includes('Map')
+  const lead =
+    leadWithHackathon &&
+    !isArchived &&
+    tracksWithoutMap.includes(HACKATHON_TRACK)
+
+  if (!lead) {
+    return hasMap
+      ? ['Map', ...scheduleTab, ...tracksWithoutMap]
+      : [...scheduleTab, ...tracks]
+  }
+
+  const rest = tracksWithoutMap.filter((tab) => tab !== HACKATHON_TRACK)
+  return [HACKATHON_TRACK, ...(hasMap ? ['Map'] : []), ...scheduleTab, ...rest]
+}
+
 const SessionsSection = ({
   speakersData,
   year = new Date().getFullYear(),
@@ -209,15 +235,17 @@ const SessionsSection = ({
   isArchived = false,
 }) => {
   // Opens on `defaultTab` when it is one of the tabs, otherwise the first tab.
+  const [leadWithHackathon, setLeadWithHackathon] = useState(() =>
+    conferenceMorningHasStarted()
+  )
   const [activeTab, setActiveTab] = useState(() => {
-    const names = tracks.includes('Map')
-      ? [
-          'Map',
-          ...(isArchived ? [] : ['My Schedule']),
-          ...tracks.filter((t) => t !== 'Map'),
-        ]
-      : [...(isArchived ? [] : ['My Schedule']), ...tracks]
-    return Math.max(0, names.indexOf(defaultTab))
+    const names = buildSessionTabs(
+      tracks,
+      isArchived,
+      conferenceMorningHasStarted()
+    )
+    const index = names.indexOf(defaultTab)
+    return index < 0 ? 0 : index
   })
   const [isExpanded, setIsExpanded] = useState(defaultExpanded)
   const [direction, setDirection] = useState(
@@ -236,14 +264,33 @@ const SessionsSection = ({
     autoResolveAndAdd,
   } = useSchedule()
 
-  const tracksWithoutMap = tracks.filter((t) => t !== 'Map')
-  // A finished event cannot be planned for, so archive years drop the tab
-  // entirely rather than showing one that can only ever be empty.
-  const scheduleTab = isArchived ? [] : ['My Schedule']
-  const tabs = tracks.includes('Map')
-    ? ['Map', ...scheduleTab, ...tracksWithoutMap]
-    : [...scheduleTab, ...tracks]
+  const tabs = buildSessionTabs(tracks, isArchived, leadWithHackathon)
   const currentSession = tabs[activeTab]
+  const tracksRef = useRef(tracks)
+  tracksRef.current = tracks
+
+  // A page left open across conference morning keeps its current tab and
+  // only moves Hackathon. A fresh visit after that time opens on Schedule.
+  useEffect(() => {
+    if (leadWithHackathon) return undefined
+    const wait = msUntilConferenceMorning()
+    const apply = () => {
+      const currentTracks = tracksRef.current
+      setActiveTab((index) => {
+        const before = buildSessionTabs(currentTracks, isArchived, false)
+        const after = buildSessionTabs(currentTracks, isArchived, true)
+        const next = after.indexOf(before[index])
+        return next < 0 ? 0 : next
+      })
+      setLeadWithHackathon(true)
+    }
+    if (wait === 0) {
+      apply()
+      return undefined
+    }
+    const id = window.setTimeout(apply, wait)
+    return () => window.clearTimeout(id)
+  }, [isArchived, leadWithHackathon])
 
   // Derived, not positional: Map and My Schedule are each conditional, so any
   // hardcoded index is wrong for some combination of them. -1 when absent, and

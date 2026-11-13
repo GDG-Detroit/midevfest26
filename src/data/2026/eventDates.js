@@ -28,11 +28,59 @@ export const todayInEventZone = (now = new Date()) =>
   }).format(now)
 
 /**
- * The tab to open on: the Hackathon until conference day, then the Schedule.
- * Compared as ISO date strings, which sort the same as the dates themselves.
+ * 6:00 AM Detroit on conference day. Before this the Hackathon stays the
+ * default tab in its current place. At this time it moves to the far left
+ * and the Schedule tab is what opens.
+ */
+export const CONFERENCE_MORNING_AT = `${EVENT_DATE}T06:00`
+
+const eventZoneParts = (now) => {
+  const parts = new Intl.DateTimeFormat('en-US', {
+    timeZone: EVENT_TIMEZONE,
+    hourCycle: 'h23',
+    year: 'numeric',
+    month: '2-digit',
+    day: '2-digit',
+    hour: '2-digit',
+    minute: '2-digit',
+  }).formatToParts(now)
+  const value = (type) => parts.find((part) => part.type === type).value
+  return {
+    year: value('year'),
+    month: value('month').padStart(2, '0'),
+    day: value('day').padStart(2, '0'),
+    hour: value('hour').padStart(2, '0'),
+    minute: value('minute').padStart(2, '0'),
+  }
+}
+
+/** "YYYY-MM-DDTHH:mm" for the event zone, so it compares with CONFERENCE_MORNING_AT. */
+export const eventZoneStamp = (now = new Date()) => {
+  const part = eventZoneParts(now)
+  return `${part.year}-${part.month}-${part.day}T${part.hour}:${part.minute}`
+}
+
+/** UTC instant for a "YYYY-MM-DDTHH:mm" wall time in the event zone. */
+const eventZoneInstant = (stamp) => {
+  const utcGuess = new Date(`${stamp}:00Z`)
+  const zonedAsUtc = new Date(`${eventZoneStamp(utcGuess)}:00Z`)
+  return new Date(
+    utcGuess.getTime() + (utcGuess.getTime() - zonedAsUtc.getTime())
+  )
+}
+
+export const conferenceMorningHasStarted = (now = new Date()) =>
+  eventZoneStamp(now) >= CONFERENCE_MORNING_AT
+
+/** Milliseconds until conference morning. Zero once that time has passed. */
+export const msUntilConferenceMorning = (now = new Date()) =>
+  Math.max(0, eventZoneInstant(CONFERENCE_MORNING_AT).getTime() - now.getTime())
+
+/**
+ * The tab to open on: the Hackathon until conference morning, then the Schedule.
  */
 export const defaultTrackForDate = (now = new Date()) =>
-  todayInEventZone(now) < EVENT_DATE ? HACKATHON_TRACK : SCHEDULE_TRACK
+  conferenceMorningHasStarted(now) ? SCHEDULE_TRACK : HACKATHON_TRACK
 
 /** "Friday, November 13" for a YYYY-MM-DD date. */
 export const formatEventDate = (isoDate) =>

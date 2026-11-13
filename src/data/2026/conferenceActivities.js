@@ -56,6 +56,7 @@ const staticActivities = [
     content: null,
     time: '12:15',
     timeEnd: '13:00',
+    room: 'Third Floor',
   },
   {
     id: 'schedule-sessions-afternoon',
@@ -80,6 +81,7 @@ const staticActivities = [
     content: null,
     time: '16:30',
     timeEnd: '18:00',
+    room: 'Third Floor',
   },
   {
     id: 'innovation-hackathon-winners',
